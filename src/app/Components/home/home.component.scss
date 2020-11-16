@@ -1,0 +1,94 @@
+@use '../../../Themes/theme1';
+@import "../../../Themes/theme1";
+@import "~@angular/material/theming";
+@include angular-material-theme($candy-app-theme);
+
+///@group materialHomeComponent
+/*$primary-contrast-color: mat-contrast($candy-app-primary, A200);
+ $primary: map-get($candy-app-theme, primary);
+ $accent: map-get($candy-app-theme, accent);
+ header {
+    //  width: 50%;
+     background-color:mat-color($primary);
+    
+     //  ou tamén así color: map-get($mat-orange,500);
+ }cd..
+ cd
+ .mat-toolbar{
+     background-color:mat-color($accent);
+     color: mat-color($primary);
+ }
+
+ .example-spacer {
+    flex: 1 1 auto;
+  }*/
+:host-context(.container) {
+  width: 100%;
+}
+:host,
+:host-context(.mat-header) {
+  width: 100%;
+}
+li.nav-item a.nav-link{
+  color: black;
+}
+.navbar-brand {
+  color: black;
+}
+/*.jumbotron {
+  background-position: center center;
+  background: url("../../../baroña.jpg");
+  background-repeat: no-repeat;
+  // background-size: cover;
+  height: 100%;
+  -webkit-background-size: 100% 100%;
+  -moz-background-size: 100% 100%;
+  -o-background-size: 100% 100%;
+  background-size: 100% 100%;
+}*/
+header {
+//   height: 25vw;
+//   width: 100%;
+  /* Flexbox */
+  display: flex;
+  align-items: center;
+  background-position: center center;
+  background: url("../../../cies.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+.formulario{
+    // color:white;
+    color:rgb(52,58,64);
+    padding:10px;
+    border-radius: 5px;
+    // background-color: rgb(52,58,64,0.6);
+    background-color: rgb(255,250,250, 0.5);
+    // width: 30vw;
+    margin-left: 20%;
+}
+ .iconoConInput {
+     margin-right: 20px;
+ }
+//   padding: 10px;
+//   align-items: stretch;
+//   height: 7hv;
+//   input {
+//     margin-left: 5px;
+//     border: none;
+//     width: auto;
+//   }
+// }
+
+.show {
+  opacity: 1;
+  transition: opacity 1s;
+  margin-right: 5px;
+    padding-top: 2px;
+}
+
+.hide {
+  opacity: 0;
+  transition: opacity 1s;
+}
+

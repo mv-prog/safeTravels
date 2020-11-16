@@ -1,0 +1,113 @@
+<!-- 
+<div class="containerXeral">
+    <header class="mat-header-cell">  
+       <mat-toolbar>
+        <h1>Safe Travels</h1>
+        <button mat-icon-button>
+          <mat-icon>menu</mat-icon>
+        </button>
+        <button mat-icon-button>
+          <mat-icon><i class="fa-home">home</i></mat-icon>
+        </button>
+        <span class="example-spacer"></span>
+        <button mat-icon-button >
+          <mat-icon>favorite</mat-icon>
+        </button>
+        <button mat-icon-button>
+          <mat-icon>share</mat-icon>
+        </button>
+      </mat-toolbar>
+      </header>
+</div> -->
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <a class="navbar-brand navbar-light bg-light text-dark" href="home.component.html">SafeTravels</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#toggler"
+    aria-controls="toggler" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse">
+    <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+      <li class="nav-item active">
+        <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#">Hotels</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#">My bookings</a>
+      </li>
+    </ul>
+    <form class="form-inline my-2 my-lg-0">
+      <input class="form-control mr-sm-2" type="search" placeholder="Search" />
+      <button class="btn btn-outline-success my-2 my-sm-0" type="submit">
+        Search
+      </button>
+    </form>
+  </div>
+</nav>
+<!--JUMBOTRON 
+  <div class="jumbotron jumbotron shadow">
+  <h1>Safe Travels</h1>
+  <small>Now more than ever!</small> 
+</div> -->
+
+<header class="jumbotron jumbotron shadow">
+  <div class="container">
+    <form class="form formulario">
+      <div class="row">
+        <div class="col-md-6">
+          <legend>
+            <h1>
+              Discover Galicia and Mallorca safely
+              <i class="fas fa-heart" style="color: #bf4080"></i>
+            </h1>
+          </legend>
+          <h2>Book the best and safest hotels and rooms</h2>
+          <div class="form-group iconoConInput">
+            <small [ngClass]="{ hide: hideIndication, show: !hideIndication }">Where?
+               <i class="fas fa-search" style="font-size: 12px; color: #bf4080"></i>
+              </small> 
+            <input type="search" name="searchhotels" class="form-control" id="searchhotels"
+              placeholder="Where are you going?" (focus)="hideIndication = !hideIndication" />
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="form-group iconoConInput col-md-3">
+          <label for="data">
+            <small class="help-block">Check-in - Check-out</small></label>
+          <input type="date" class="form-control" name="datas" id="datas" />
+        </div>
+        <div class="form-group iconoConInput col-md-3">
+          <label for="selectRoom"></label>
+          <select class="form-control selectpicker" name="selectRoom" id="selectRoom" >
+            <option>
+              People
+              <button class="morePeople">
+                <i class="fas fa-plus-circle"></i></button><span class="peopleNumber">2</span><button
+                class="lessPeople">
+                <i class="fas fa-minus-circle"></i>
+              </button>
+            </option>
+            <option>
+              Rooms
+              <button class="moreRooms">
+                <i class="fas fa-plus-circle"></i></button><span class="roomsNumber">1</span><button class="lessRooms">
+                <i class="fas fa-minus-circle"></i>
+              </button>
+            </option>
+            <option>
+              Children
+              <button class="moreChildren">
+                <i class="fas fa-plus-circle"></i></button><span class="childrenNumber">0</span><button
+                class="lessChildren">
+                <i class="fas fa-minus-circle"></i>
+              </button>
+            </option>
+          </select>
+        </div>
+      </div>
+    </form>
+  </div>
+</header>
+
