@@ -9,10 +9,20 @@ import {MatIconModule} from '@angular/material/icon';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ContactComponent } from './Components/contact/contact.component';
+import {MatDatepickerModule} from '@angular/material/datepicker'; 
+import { MatNativeDateModule, MAT_DATE_LOCALE } from '@angular/material/core';
+import {MatInputModule} from '@angular/material/input';
+import { MatFormFieldModule, MAT_FORM_FIELD_DEFAULT_OPTIONS } from '@angular/material/form-field';
+import { MatSelectModule } from '@angular/material/select';
+import {MatAutocompleteModule} from '@angular/material/autocomplete';
+import { MatButtonModule } from '@angular/material/button';
+
+
 @NgModule({
   declarations: [AppComponent, HomeComponent, ContactComponent],
-  imports: [BrowserModule, AppRoutingModule, FlexLayoutModule, MaterialModule, MatIconModule, MatToolbarModule, BrowserAnimationsModule,],
-  providers: [],
+  imports: [BrowserModule, AppRoutingModule, FlexLayoutModule, MaterialModule, MatIconModule, MatInputModule, MatToolbarModule, BrowserAnimationsModule,MatDatepickerModule, MatNativeDateModule, MatFormFieldModule,
+  MatSelectModule, MatAutocompleteModule, MatButtonModule],
+  providers: [ {provide: MAT_FORM_FIELD_DEFAULT_OPTIONS, useValue: {floatLabel: 'always'}}],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

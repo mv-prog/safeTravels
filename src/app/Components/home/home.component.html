@@ -20,29 +20,34 @@
       </header>
 </div> -->
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
-  <a class="navbar-brand navbar-light bg-light text-dark" href="home.component.html">SafeTravels</a>
-  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#toggler"
-    aria-controls="toggler" aria-expanded="false" aria-label="Toggle navigation">
-    <span class="navbar-toggler-icon"></span>
-  </button>
+  <a class="navbar-brand navbar-light bg-light text-dark" routerLink="/home">SafeTravels</a>
   <div class="collapse navbar-collapse">
     <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
       <li class="nav-item active">
-        <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+        <a class="nav-link" routerLink="/home">Home <span class="sr-only">(current)</span></a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="#">Hotels</a>
+        <a class="nav-link" routerLink="#" disabled>Hotels</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="#">My bookings</a>
+        <a class="nav-link" routerLink="#" disabled>My Bookings</a>
       </li>
+
     </ul>
     <form class="form-inline my-2 my-lg-0">
-      <input class="form-control mr-sm-2" type="search" placeholder="Search" />
-      <button class="btn btn-outline-success my-2 my-sm-0" type="submit">
+      <input class="form-control custom-control mr-sm-2" type="search" placeholder="Search" />
+      <button class="btn btn-outline-success custom-btn my-2 my-sm-0" type="submit">
         Search
       </button>
     </form>
+    <ul class="navbar-nav">
+      <li class="nav-item">
+        <a class="nav-link" routerLink="/contact">Contact Us</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" routerLink="#" disabled>Sign In</a>
+      </li>
+    </ul>
   </div>
 </nav>
 <!--JUMBOTRON 
@@ -52,35 +57,107 @@
 </div> -->
 
 <header class="jumbotron jumbotron shadow">
-  <div class="container">
-    <form class="form formulario">
-      <div class="row">
-        <div class="col-md-6">
-          <legend>
-            <h1>
-              Discover Galicia and Mallorca safely
-              <i class="fas fa-heart" style="color: #bf4080"></i>
-            </h1>
-          </legend>
-          <h2>Book the best and safest hotels and rooms</h2>
-          <div class="form-group iconoConInput">
-            <small [ngClass]="{ hide: hideIndication, show: !hideIndication }">Where?
-               <i class="fas fa-search" style="font-size: 12px; color: #bf4080"></i>
-              </small> 
-            <input type="search" name="searchhotels" class="form-control" id="searchhotels"
-              placeholder="Where are you going?" (focus)="hideIndication = !hideIndication" />
-          </div>
-        </div>
+
+  <!-- <form class="form formulario"> -->
+  <form class="formulario col-xs-8 col-sm-10 col-md-6 col-bg-5">
+
+    <!-- <div class="col-md-5"> -->
+    <legend>
+      <h1>
+        Discover Galicia and Mallorca safely
+        <!-- <i class="fas fa-heart" style="color:hotpink"></i>  -->
+      </h1>
+    </legend>
+    <h2>Book the best and safest hotels and rooms</h2>
+    <div class="form-group ">
+      <mat-form-field appearance="outline">
+        <mat-label class="help-block">
+          Where?
+          <!-- <span [ngClass]="{ hide: hideIndication, show: !hideIndication }">Where?
+            <i class="fas fa-search" style="font-size: 12px; color: hotpink"></i>
+          </span> -->
+        </mat-label>
+        <mat-autocomplete #auto="matAutocomplete">
+          <mat-option *ngFor="let option of options" [value]="option">
+            {{option}}
+          </mat-option>
+        </mat-autocomplete>
+        <mat-icon matSuffix color="warn">search</mat-icon>
+        <input matInput type="search" [matAutocomplete]="auto" placeholder="Search Hotels" class="search-input">
+        <!-- <input type="search" placeholder="Search hotels" aria-label="Number" matInput 
+        [matAutocomplete]="auto" (focus)="hideIndication = !hideIndication" style="height: 50px; padding: 20px"> -->
+      </mat-form-field>
+      <!-- <input type="search" name="searchhotels" class="form-control" id="searchhotels" placeholder="Where are you going?"
+        (focus)="hideIndication = !hideIndication" /> -->
+    </div>
+
+    <!-- <div class="form-group iconoConInput col-md-3"> -->
+
+    <form action="" class="form-inline">
+      <div class="form-group mr-2 mb-2">
+        <!-- <label for="data"> -->
+        <!-- <small class="help-block">Check-in - Check-out</small></label> -->
+        <mat-form-field appearance="outline">
+          <mat-label class="help-block">
+            Check-in - Check-out
+          </mat-label>
+          <mat-date-range-input [rangePicker]="picker">
+            <input matStartDate placeholder="Start date">
+            <input matEndDate placeholder="End date">
+          </mat-date-range-input>
+          <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+          <mat-date-range-picker #picker></mat-date-range-picker>
+        </mat-form-field>
+        <!-- <input type="date" class="form-control" name="datas" id="datas" />  -->
       </div>
-      <div class="row">
-        <div class="form-group iconoConInput col-md-3">
-          <label for="data">
-            <small class="help-block">Check-in - Check-out</small></label>
-          <input type="date" class="form-control" name="datas" id="datas" />
-        </div>
-        <div class="form-group iconoConInput col-md-3">
-          <label for="selectRoom"></label>
-          <select class="form-control selectpicker" name="selectRoom" id="selectRoom" >
+
+      <!-- <div class="form-group iconoConInput col-md-3"> -->
+
+      <div class="form-group mb-2 col-xs-5 col-sm-4 col-md-2 col-bg-1">
+        <!-- <label for="selectRoom"></label> -->
+        <mat-form-field appearance="outline" style="width: 100%;">
+          <mat-label class="help-block" id="adultsNumber">
+            Adults
+          </mat-label>
+          <mat-select id="adultsNumber" #adultsNumber>
+            <mat-option *ngFor="let item of [1,2,3,4,5,6,7,8,9,10]">
+              {{item}}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+        <!-- <input type="date" class="form-control" name="datas" id="datas" />  -->
+      </div>
+      <div class="form-group mb-2 col-xs-5 col-sm-4 col-md-2 col-bg-1">
+        <!-- <label for="selectRoom"></label> -->
+        <mat-form-field appearance="outline" style="width: 100%;">
+          <mat-label class="help-block" id="childrenNumber" >
+            Children
+          </mat-label>
+          <mat-select #childrenNumber>
+            <mat-option *ngFor="let item of [0,1,2,3,4,5,6,7,8,9,10]">
+              {{item}}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+        <!-- <input type="date" class="form-control" name="datas" id="datas" />  -->
+      </div>
+      <div class="form-group mb-2 col-xs-5 col-sm-4 col-md-2 col-bg-1">
+        <!-- <label for="selectRoom"></label> -->
+        <mat-form-field appearance="outline" style="width: 100%;">
+          <mat-label class="help-block" id="roomsNumber">
+            Rooms
+          </mat-label>
+          <mat-select #roomsNumber>
+            <mat-option *ngFor="let item of [1,2,3,4,5,6,7,8,9,10]">
+              {{item}}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+        <!-- <input type="date" class="form-control" name="datas" id="datas" />  -->
+      </div>
+
+      <!-- old unfunctional select -->
+      <!-- <select class="form-control selectpicker" name="selectRoom" id="selectRoom">
             <option>
               People
               <button class="morePeople">
@@ -104,10 +181,14 @@
                 <i class="fas fa-minus-circle"></i>
               </button>
             </option>
-          </select>
-        </div>
-      </div>
+          </select> -->
+      <!-- </div> -->
     </form>
-  </div>
-</header>
+    <button type="submit" mat-raised-button color="accent">Submit</button>
+    <!-- </div> -->
 
+
+
+  </form>
+  <!-- </div> -->
+</header>

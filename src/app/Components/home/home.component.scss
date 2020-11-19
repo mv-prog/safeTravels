@@ -1,13 +1,16 @@
 @use '../../../Themes/theme1';
+@import '../../../variables';
 @import "../../../Themes/theme1";
 @import "~@angular/material/theming";
 @include angular-material-theme($candy-app-theme);
+@import '~@angular/cdk/text-field/text-field'; 
+@import '../../../reset';
 
 ///@group materialHomeComponent
-/*$primary-contrast-color: mat-contrast($candy-app-primary, A200);
- $primary: map-get($candy-app-theme, primary);
+$primary-contrast-color: mat-contrast($candy-app-primary, A200);
+ $primary: map-get($candy-app-theme, accent);
  $accent: map-get($candy-app-theme, accent);
- header {
+/* header {
     //  width: 50%;
      background-color:mat-color($primary);
     
@@ -22,6 +25,11 @@
  .example-spacer {
     flex: 1 1 auto;
   }*/
+///@group variables:
+$black: rgb(52, 58, 64);
+$sassPink: #bf4080;
+$childrenWidth50: 50%;
+$accentColor: #ef9a9a;
 :host-context(.container) {
   width: 100%;
 }
@@ -29,11 +37,11 @@
 :host-context(.mat-header) {
   width: 100%;
 }
-li.nav-item a.nav-link{
-  color: black;
+li.nav-item a.nav-link {
+  color: $black;
 }
 .navbar-brand {
-  color: black;
+  color: $black;
 }
 /*.jumbotron {
   background-position: center center;
@@ -47,29 +55,31 @@ li.nav-item a.nav-link{
   background-size: 100% 100%;
 }*/
 header {
-//   height: 25vw;
-//   width: 100%;
+  //   height: 25vw;
+  //   width: 100%;
   /* Flexbox */
   display: flex;
   align-items: center;
   background-position: center center;
-  background: url("../../../cies.jpg");
+  background: url("../../../cat1.jpg");
   background-repeat: no-repeat;
   background-size: cover;
 }
-.formulario{
-    // color:white;
-    color:rgb(52,58,64);
-    padding:10px;
-    border-radius: 5px;
-    // background-color: rgb(52,58,64,0.6);
-    background-color: rgb(255,250,250, 0.5);
-    // width: 30vw;
-    margin-left: 20%;
+.formulario {
+  // color:white;
+  color: $black;
+  padding: 20px;
+  border-radius: 5px;
+  // background-color: rgb(52,58,64,0.6);
+  background-color: rgba(255, 250, 250, 0.767);
+  // width: 30vw;
+  margin-left: 20%;
+   
 }
- .iconoConInput {
-     margin-right: 20px;
- }
+
+// .formParts {
+//   margin-right: 20px;
+// }
 //   padding: 10px;
 //   align-items: stretch;
 //   height: 7hv;
@@ -84,7 +94,7 @@ header {
   opacity: 1;
   transition: opacity 1s;
   margin-right: 5px;
-    padding-top: 2px;
+  padding-top: 2px;
 }
 
 .hide {
@@ -92,3 +102,32 @@ header {
   transition: opacity 1s;
 }
 
+.childrenWidth50 > * {
+  width: $childrenWidth50;
+}
+
+.btn-outline-success.custom-btn {
+  color: $accentColor;	
+  border-color: $accentColor;
+  text-decoration: none;
+  &:hover{
+    background-color: inherit;
+    border: 3px solid $accentColor;
+    }
+  &:active, :focus{
+    background-color: inherit;
+    text-decoration: none;
+    border: 3px solid $accentColor;
+    &:not(:disabled):not(.disabled):active{
+      background-color: inherit;
+      text-decoration: none;
+      border: 3px solid $accentColor;
+    }
+}
+}
+.form-control.custom-control{
+  &:focus, &:active{
+    border: 3px solid $accentColor;
+    outline: none;
+  }
+}
