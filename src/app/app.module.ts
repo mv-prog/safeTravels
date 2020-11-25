@@ -16,12 +16,12 @@ import { MatFormFieldModule, MAT_FORM_FIELD_DEFAULT_OPTIONS } from '@angular/mat
 import { MatSelectModule } from '@angular/material/select';
 import {MatAutocompleteModule} from '@angular/material/autocomplete';
 import { MatButtonModule } from '@angular/material/button';
-
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [AppComponent, HomeComponent, ContactComponent],
-  imports: [BrowserModule, AppRoutingModule, FlexLayoutModule, MaterialModule, MatIconModule, MatInputModule, MatToolbarModule, BrowserAnimationsModule,MatDatepickerModule, MatNativeDateModule, MatFormFieldModule,
-  MatSelectModule, MatAutocompleteModule, MatButtonModule],
+  imports: [BrowserModule, AppRoutingModule, FlexLayoutModule, MaterialModule, MatIconModule, MatInputModule, MatToolbarModule, BrowserAnimationsModule,MatDatepickerModule, MatNativeDateModule, MatFormFieldModule, 
+    MatSelectModule, MatAutocompleteModule, MatButtonModule, FormsModule],
   providers: [ {provide: MAT_FORM_FIELD_DEFAULT_OPTIONS, useValue: {floatLabel: 'always'}}],
   bootstrap: [AppComponent],
 })

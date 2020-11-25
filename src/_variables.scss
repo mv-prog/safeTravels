@@ -6,17 +6,39 @@ $link-color: $accentColor;
 $link-hover-color: $accentColor;
 $link-hover-decoration: none !important;
 $label-margin-bottom: 0;
-
+.mat-form-field{
+  min-width: 50px;
+  width: 220px;
+  justify-content: space-between;
+} 
+// .mat-form-field-appearance-outline .mat-form-field-wrapper{
+//   margin:50px;
+// }
+// div.mat-form-field-infix.ng-tns-c129-4{
+//   margin-right: 200px;
+//   padding:10px;
+// }
 /* $grid-breakpoints: (
    xs: 0, // handset portrait (small, medium, large) | handset landscape (small)
    sm: 600px, // handset landscape (medium, large) | tablet portrait(small, large)
    lg: 1280px, // laptops and desktops
    xl: 1600px // large desktops
+ );*/
+
+//  $grid-breakpoints: (
+//    xs: 0, // handset portrait (small, medium, large) | handset landscape (small)
+//    sm: 600px, // handset landscape (medium, large) | tablet portrait(small, large)
+//    lg: 1280px, // laptops and desktops
+//    xl: 1600px // large desktops
+//  );
+
+
+ $container-max-widths: (
+   sm: 600px,
+   md: 750px,
+   lg: 1280px,
+   xl: 1600
  );
-*/
-// $container-max-widths: (
-//   sm: 600px,
-//   md: 960px,
-//   lg: 1280px,
-//   xl: 16
-// );
+ .formulario{
+   max-width: 600px;
+ }

@@ -1,15 +1,15 @@
 @use '../../../Themes/theme1';
-@import '../../../variables';
+@import "../../../variables";
 @import "../../../Themes/theme1";
 @import "~@angular/material/theming";
 @include angular-material-theme($candy-app-theme);
-@import '~@angular/cdk/text-field/text-field'; 
-@import '../../../reset';
+@import "~@angular/cdk/text-field/text-field";
+@import "../../../reset";
 
 ///@group materialHomeComponent
 $primary-contrast-color: mat-contrast($candy-app-primary, A200);
- $primary: map-get($candy-app-theme, accent);
- $accent: map-get($candy-app-theme, accent);
+$primary: map-get($candy-app-theme, accent);
+$accent: map-get($candy-app-theme, accent);
 /* header {
     //  width: 50%;
      background-color:mat-color($primary);
@@ -30,18 +30,27 @@ $black: rgb(52, 58, 64);
 $sassPink: #bf4080;
 $childrenWidth50: 50%;
 $accentColor: #ef9a9a;
-:host-context(.container) {
-  width: 100%;
-}
 :host,
 :host-context(.mat-header) {
   width: 100%;
 }
 li.nav-item a.nav-link {
   color: $black;
+  &:hover {
+    color: $accentColor;
+    // font-size:16px;
+    &:active {
+      font-size: 16px;
+    }
+    // border: 1px solid $accentColor;
+    // border-radius: 5px;
+  }
 }
 .navbar-brand {
   color: $black;
+}
+.navbar.bg-accent {
+  background-color: $accentColor;
 }
 /*.jumbotron {
   background-position: center center;
@@ -74,7 +83,6 @@ header {
   background-color: rgba(255, 250, 250, 0.767);
   // width: 30vw;
   margin-left: 20%;
-   
 }
 
 // .formParts {
@@ -107,27 +115,51 @@ header {
 }
 
 .btn-outline-success.custom-btn {
-  color: $accentColor;	
+  color: $accentColor;
   border-color: $accentColor;
+  border: 1px solid $accentColor;
   text-decoration: none;
-  &:hover{
+  &:hover {
     background-color: inherit;
-    border: 3px solid $accentColor;
-    }
-  &:active, :focus{
+    color: $accentColor;
+    border-radius: 5px;
+    border: 2px solid $accentColor;
+  }
+  &:active,
+  :focus {
     background-color: inherit;
     text-decoration: none;
     border: 3px solid $accentColor;
-    &:not(:disabled):not(.disabled):active{
+    border-radius: 5px;
+    color: $accentColor;
+    &:not(:disabled):not(.disabled):active {
       background-color: inherit;
       text-decoration: none;
       border: 3px solid $accentColor;
+      border-radius: 5px;
+      color: $accentColor;
     }
+  }
 }
-}
-.form-control.custom-control{
-  &:focus, &:active{
+.form-control.custom-control {
+  &:focus,
+  &:active {
     border: 3px solid $accentColor;
     outline: none;
   }
+}
+
+// .selectsGroup {
+//   max-width: 550px;
+//   //  display: grid;
+//   //  grid-template-columns: 38% 15% 15% 15%;
+//   // grid-column-gap: 5px;
+//   display: flex;
+//   flex-flow: row wrap;
+//   justify-content: space-between;
+//   margin-right: 50px;
+  
+// }
+.mat-form-field-appearance-outline .mat-form-field-wrapper{
+  margin-right: 10px;
 }

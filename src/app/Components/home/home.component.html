@@ -1,24 +1,3 @@
-<!-- 
-<div class="containerXeral">
-    <header class="mat-header-cell">  
-       <mat-toolbar>
-        <h1>Safe Travels</h1>
-        <button mat-icon-button>
-          <mat-icon>menu</mat-icon>
-        </button>
-        <button mat-icon-button>
-          <mat-icon><i class="fa-home">home</i></mat-icon>
-        </button>
-        <span class="example-spacer"></span>
-        <button mat-icon-button >
-          <mat-icon>favorite</mat-icon>
-        </button>
-        <button mat-icon-button>
-          <mat-icon>share</mat-icon>
-        </button>
-      </mat-toolbar>
-      </header>
-</div> -->
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
   <a class="navbar-brand navbar-light bg-light text-dark" routerLink="/home">SafeTravels</a>
   <div class="collapse navbar-collapse">
@@ -83,20 +62,16 @@
           </mat-option>
         </mat-autocomplete>
         <mat-icon matSuffix color="warn">search</mat-icon>
-        <input matInput type="search" [matAutocomplete]="auto" placeholder="Search Hotels" class="search-input">
+        <input matInput type="search" [matAutocomplete]="auto" placeholder="Search Hotels" class="search-input iw-70">
         <!-- <input type="search" placeholder="Search hotels" aria-label="Number" matInput 
         [matAutocomplete]="auto" (focus)="hideIndication = !hideIndication" style="height: 50px; padding: 20px"> -->
       </mat-form-field>
       <!-- <input type="search" name="searchhotels" class="form-control" id="searchhotels" placeholder="Where are you going?"
         (focus)="hideIndication = !hideIndication" /> -->
     </div>
-
-    <!-- <div class="form-group iconoConInput col-md-3"> -->
-
-    <form action="" class="form-inline">
+    <div class="selectsGroup">
+    <form action="" role="group" class="form-inline">
       <div class="form-group mr-2 mb-2">
-        <!-- <label for="data"> -->
-        <!-- <small class="help-block">Check-in - Check-out</small></label> -->
         <mat-form-field appearance="outline">
           <mat-label class="help-block">
             Check-in - Check-out
@@ -113,82 +88,79 @@
 
       <!-- <div class="form-group iconoConInput col-md-3"> -->
 
-      <div class="form-group mb-2 col-xs-5 col-sm-4 col-md-2 col-bg-1">
-        <!-- <label for="selectRoom"></label> -->
-        <mat-form-field appearance="outline" style="width: 100%;">
+      <div class="form-group miniSelect mb-2 col-xs-6 col-sm-7 col-md-2 col-bg-1">
+        <mat-form-field appearance="outline" style="width: 100%;" title="adults">
           <mat-label class="help-block" id="adultsNumber">
             Adults
           </mat-label>
-          <mat-select id="adultsNumber" #adultsNumber>
-            <mat-option *ngFor="let item of [1,2,3,4,5,6,7,8,9,10]">
+          <mat-select id="adultsNumber" placeholder="2" [(value)]="adultsNumber" >
+            <!-- <mat-option *ngFor="let item of [1,2,3,4,5,6,7,8,9,10]">
               {{item}}
-            </mat-option>
+            </mat-option> -->
+            <mat-option value="1">1</mat-option>
+            <mat-option value="2">2</mat-option>
+            <mat-option value="3">3</mat-option>
+            <mat-option value="4">4</mat-option>
+            <mat-option value="5">5</mat-option>
+            <mat-option value="6">6</mat-option>
+            <mat-option value="7">7</mat-option>
+            <mat-option value="8">8</mat-option>
+            <mat-option value="9">9</mat-option>
+            <mat-option value="0">10</mat-option>
           </mat-select>
+          
         </mat-form-field>
         <!-- <input type="date" class="form-control" name="datas" id="datas" />  -->
       </div>
-      <div class="form-group mb-2 col-xs-5 col-sm-4 col-md-2 col-bg-1">
+      <div class="form-group miniSelect mb-2 col-xs-6 col-sm-7 col-md-2 col-bg-1">
+        
         <!-- <label for="selectRoom"></label> -->
-        <mat-form-field appearance="outline" style="width: 100%;">
+        <mat-form-field appearance="outline" style="width: 100%;" title="children">
           <mat-label class="help-block" id="childrenNumber" >
             Children
           </mat-label>
-          <mat-select #childrenNumber>
-            <mat-option *ngFor="let item of [0,1,2,3,4,5,6,7,8,9,10]">
+          <mat-select [(value)]="childrenNumber" placeholder="0">
+            <!-- <mat-option *ngFor="let item of [0,1,2,3,4,5,6,7,8,9,10]">
               {{item}}
-            </mat-option>
+            </mat-option> -->
+            <mat-option value="0">0</mat-option>
+            <mat-option value="1">1</mat-option>
+            <mat-option value="2">2</mat-option>
+            <mat-option value="3">3</mat-option>
+            <mat-option value="4">4</mat-option>
+            <mat-option value="5">5</mat-option>
+            <mat-option value="6">6</mat-option>
+            <mat-option value="7">7</mat-option>
+            <mat-option value="8">8</mat-option>
+            <mat-option value="9">9</mat-option>
           </mat-select>
         </mat-form-field>
-        <!-- <input type="date" class="form-control" name="datas" id="datas" />  -->
       </div>
-      <div class="form-group mb-2 col-xs-5 col-sm-4 col-md-2 col-bg-1">
+      <div class="form-group miniSelect mb-2 col-xs-7 col-sm-7 col-md-2 col-bg-1">
         <!-- <label for="selectRoom"></label> -->
-        <mat-form-field appearance="outline" style="width: 100%;">
+        <mat-form-field appearance="outline" style="width: 100%;" title="rooms">
           <mat-label class="help-block" id="roomsNumber">
             Rooms
           </mat-label>
-          <mat-select #roomsNumber>
-            <mat-option *ngFor="let item of [1,2,3,4,5,6,7,8,9,10]">
+          <mat-select [(value)]="roomsNumber" placeholder="1">
+            <!-- <mat-option *ngFor="let item of [1,2,3,4,5,6,7,8,9,10]">
               {{item}}
-            </mat-option>
+            </mat-option> -->
+            <mat-option value="1">1</mat-option>
+            <mat-option value="2">2</mat-option>
+            <mat-option value="3">3</mat-option>
+            <mat-option value="4">4</mat-option>
+            <mat-option value="5">5</mat-option>
+            <mat-option value="6">6</mat-option>
+            <mat-option value="7">7</mat-option>
+            <mat-option value="8">8</mat-option>
+            <mat-option value="9">9</mat-option>
+            <mat-option value="0">10</mat-option>
           </mat-select>
         </mat-form-field>
-        <!-- <input type="date" class="form-control" name="datas" id="datas" />  -->
       </div>
-
-      <!-- old unfunctional select -->
-      <!-- <select class="form-control selectpicker" name="selectRoom" id="selectRoom">
-            <option>
-              People
-              <button class="morePeople">
-                <i class="fas fa-plus-circle"></i></button><span class="peopleNumber">2</span><button
-                class="lessPeople">
-                <i class="fas fa-minus-circle"></i>
-              </button>
-            </option>
-            <option>
-              Rooms
-              <button class="moreRooms">
-                <i class="fas fa-plus-circle"></i></button><span class="roomsNumber">1</span><button class="lessRooms">
-                <i class="fas fa-minus-circle"></i>
-              </button>
-            </option>
-            <option>
-              Children
-              <button class="moreChildren">
-                <i class="fas fa-plus-circle"></i></button><span class="childrenNumber">0</span><button
-                class="lessChildren">
-                <i class="fas fa-minus-circle"></i>
-              </button>
-            </option>
-          </select> -->
-      <!-- </div> -->
     </form>
+  </div>
     <button type="submit" mat-raised-button color="accent">Submit</button>
-    <!-- </div> -->
-
-
-
   </form>
-  <!-- </div> -->
 </header>
