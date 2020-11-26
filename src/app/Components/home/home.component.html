@@ -1,5 +1,5 @@
-<nav class="navbar navbar-expand-lg navbar-light bg-light">
-  <a class="navbar-brand navbar-light bg-light text-dark" routerLink="/home">SafeTravels</a>
+<nav class="navbar bg-light navbar-expand-lg">
+  <a class="navbar-brand bg-light text-dark" routerLink="/home"><img class="logoIcon" src="/../favicon.ico" alt=" ">SafeTravels</a>
   <div class="collapse navbar-collapse">
     <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
       <li class="nav-item active">
@@ -14,6 +14,7 @@
 
     </ul>
     <form class="form-inline my-2 my-lg-0">
+      
       <input class="form-control custom-control mr-sm-2" type="search" placeholder="Search" />
       <button class="btn btn-outline-success custom-btn my-2 my-sm-0" type="submit">
         Search
@@ -21,10 +22,11 @@
     </form>
     <ul class="navbar-nav">
       <li class="nav-item">
-        <a class="nav-link" routerLink="/contact">Contact Us</a>
+        <!-- <a class="nav-link" routerLink="/contact">Contact Us</a> -->
+        <a class="nav-link" routerLink="#">Contact Us</a> 
       </li>
       <li class="nav-item">
-        <a class="nav-link" routerLink="#" disabled>Sign In</a>
+        <a class="nav-link cursorH" (click)="openDialog()">Sign In</a>
       </li>
     </ul>
   </div>
@@ -38,23 +40,19 @@
 <header class="jumbotron jumbotron shadow">
 
   <!-- <form class="form formulario"> -->
-  <form class="formulario col-xs-8 col-sm-10 col-md-6 col-bg-5">
-
-    <!-- <div class="col-md-5"> -->
+  <form #searchForm="ngForm" class="formulario col-xs-8 col-sm-10 col-md-6 col-bg-5" >
+    <!-- {{searchForm.value | json}} -->
     <legend>
       <h1>
         Discover Galicia and Mallorca safely
-        <!-- <i class="fas fa-heart" style="color:hotpink"></i>  -->
+        <!-- <i class="fas fa-heart"></i>  -->
       </h1>
     </legend>
     <h2>Book the best and safest hotels and rooms</h2>
-    <div class="form-group ">
-      <mat-form-field appearance="outline">
+    <div class="form-group">
+      <mat-form-field appearance="outline" title="Search by Hotel's name, region, provinces or cities">
         <mat-label class="help-block">
           Where?
-          <!-- <span [ngClass]="{ hide: hideIndication, show: !hideIndication }">Where?
-            <i class="fas fa-search" style="font-size: 12px; color: hotpink"></i>
-          </span> -->
         </mat-label>
         <mat-autocomplete #auto="matAutocomplete">
           <mat-option *ngFor="let option of options" [value]="option">
@@ -62,38 +60,39 @@
           </mat-option>
         </mat-autocomplete>
         <mat-icon matSuffix color="warn">search</mat-icon>
-        <input matInput type="search" [matAutocomplete]="auto" placeholder="Search Hotels" class="search-input iw-70">
-        <!-- <input type="search" placeholder="Search hotels" aria-label="Number" matInput 
-        [matAutocomplete]="auto" (focus)="hideIndication = !hideIndication" style="height: 50px; padding: 20px"> -->
+        <input matInput type="search" 
+        [class.is-invalid]="searchInput.invalid && searchInput.touched"
+        required
+        #searchInput="ngModel"
+        [matAutocomplete]="auto" 
+        [(ngModel)]="search.searchInput" name="searchInput" id="searchInput"
+        placeholder="Search Hotels">
       </mat-form-field>
-      <!-- <input type="search" name="searchhotels" class="form-control" id="searchhotels" placeholder="Where are you going?"
-        (focus)="hideIndication = !hideIndication" /> -->
+      <small class="wrong-field" *ngIf="searchInput.touched && searchInput.invalid">Search field is required</small>
     </div>
     <div class="selectsGroup">
-    <form action="" role="group" class="form-inline">
+    <!-- <form action="" role="group" class="form-inline"> -->
       <div class="form-group mr-2 mb-2">
         <mat-form-field appearance="outline">
           <mat-label class="help-block">
             Check-in - Check-out
           </mat-label>
-          <mat-date-range-input [rangePicker]="picker">
-            <input matStartDate placeholder="Start date">
-            <input matEndDate placeholder="End date">
+          <!-- <mat-date-range-input [rangePicker]="picker"> -->
+          <mat-date-range-input [rangePicker]="picker" [class.is-invalid]="dateRange.invalid && dateRange.touched" #dateRange="ngModel" [(ngModel)]="search.dateRange">
+            <input matStartDate placeholder="Start date" ngModel name="startDate">
+            <input matEndDate placeholder="End date" ngModel name="endDate">
           </mat-date-range-input>
           <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
           <mat-date-range-picker #picker></mat-date-range-picker>
         </mat-form-field>
-        <!-- <input type="date" class="form-control" name="datas" id="datas" />  -->
       </div>
 
-      <!-- <div class="form-group iconoConInput col-md-3"> -->
-
       <div class="form-group miniSelect mb-2 col-xs-6 col-sm-7 col-md-2 col-bg-1">
-        <mat-form-field appearance="outline" style="width: 100%;" title="adults">
+        <mat-form-field appearance="outline" style="width: 100%;" title="Adults">
           <mat-label class="help-block" id="adultsNumber">
             Adults
           </mat-label>
-          <mat-select id="adultsNumber" placeholder="2" [(value)]="adultsNumber" >
+          <mat-select id="adultsNumber" placeholder="2" [(value)]="adultsNumber" [(ngModel)]="search.adultsNumber" name="adultsNumber">
             <!-- <mat-option *ngFor="let item of [1,2,3,4,5,6,7,8,9,10]">
               {{item}}
             </mat-option> -->
@@ -108,18 +107,15 @@
             <mat-option value="9">9</mat-option>
             <mat-option value="0">10</mat-option>
           </mat-select>
-          
         </mat-form-field>
-        <!-- <input type="date" class="form-control" name="datas" id="datas" />  -->
       </div>
-      <div class="form-group miniSelect mb-2 col-xs-6 col-sm-7 col-md-2 col-bg-1">
-        
-        <!-- <label for="selectRoom"></label> -->
-        <mat-form-field appearance="outline" style="width: 100%;" title="children">
+
+      <div class="form-group miniSelect mb-2 col-xs-6 col-sm-7 col-md-2 col-bg-1">  
+        <mat-form-field appearance="outline" style="width: 100%;" title="Children">
           <mat-label class="help-block" id="childrenNumber" >
             Children
           </mat-label>
-          <mat-select [(value)]="childrenNumber" placeholder="0">
+          <mat-select [(value)]="childrenNumber" placeholder="0" ngModel name="childrenNumber">
             <!-- <mat-option *ngFor="let item of [0,1,2,3,4,5,6,7,8,9,10]">
               {{item}}
             </mat-option> -->
@@ -136,13 +132,13 @@
           </mat-select>
         </mat-form-field>
       </div>
+
       <div class="form-group miniSelect mb-2 col-xs-7 col-sm-7 col-md-2 col-bg-1">
-        <!-- <label for="selectRoom"></label> -->
-        <mat-form-field appearance="outline" style="width: 100%;" title="rooms">
+        <mat-form-field appearance="outline" style="width: 100%;" title="Rooms">
           <mat-label class="help-block" id="roomsNumber">
             Rooms
           </mat-label>
-          <mat-select [(value)]="roomsNumber" placeholder="1">
+          <mat-select [(value)]="roomsNumber" placeholder="1" ngModel name="roomsNumber">
             <!-- <mat-option *ngFor="let item of [1,2,3,4,5,6,7,8,9,10]">
               {{item}}
             </mat-option> -->
@@ -159,8 +155,8 @@
           </mat-select>
         </mat-form-field>
       </div>
-    </form>
+    <!-- </form> -->
   </div>
-    <button type="submit" mat-raised-button color="accent">Submit</button>
+    <button type="submit" [disabled]="!searchForm.valid" mat-raised-button color="accent">Submit</button>
   </form>
 </header>

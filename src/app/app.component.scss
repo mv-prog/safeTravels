@@ -2,12 +2,5 @@
 @import '../Themes/theme1';
 @import "~@angular/material/theming";
 @include angular-material-theme($candy-app-theme);
+@include angular-material-color($dark-theme);  
 
-// $primary-contrast-color: mat-contrast($candy-app-primary, A200);
-// $primary: map-get($candy-app-theme, primary);
-// $accent: map-get($candy-app-theme, accent);
-
-.active{
-  background-color: map-get($mat-orange,500);
-  margin-right: 20px;
-}

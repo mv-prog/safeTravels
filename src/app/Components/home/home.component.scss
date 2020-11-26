@@ -8,28 +8,47 @@
 
 ///@group materialHomeComponent
 $primary-contrast-color: mat-contrast($candy-app-primary, A200);
-$primary: map-get($candy-app-theme, accent);
+$primary: map-get($candy-app-theme, primary);
 $accent: map-get($candy-app-theme, accent);
-/* header {
-    //  width: 50%;
-     background-color:mat-color($primary);
-    
-     //  ou tamén así color: map-get($mat-orange,500);
- }cd..
- cd
- .mat-toolbar{
-     background-color:mat-color($accent);
-     color: mat-color($primary);
- }
 
- .example-spacer {
-    flex: 1 1 auto;
-  }*/
 ///@group variables:
 $black: rgb(52, 58, 64);
 $sassPink: #bf4080;
+// $brokenWhite:#f5edea;
+$brokenWhite: #f2e9e8;
+$brokenWhite1: #ece9e3;
+$transparentWhite: rgba(255, 250, 250, 0.767);
 $childrenWidth50: 50%;
 $accentColor: #ef9a9a;
+$link-color: $accentColor;
+// $warn: #ff1744;
+// $warn: #d32323;
+
+///@group mixins
+@mixin formulario($marginLeft) {
+  // color:white;
+  color: $black;
+  padding: 20px;
+  border-radius: 5px;
+  // background-color: rgb(52,58,64,0.6);
+  background-color: $transparentWhite;
+  // width: 30vw;
+  margin-left: $marginLeft;
+  // .ng-valid[required], .ng-valid.required {
+  //   border-left: 2px solid #42a947;
+  //   margin-right: 5px;
+  //   padding-right: 5px;
+  // }
+  // .ng-invalid:not(form) {
+  //   border-left: 2px solid $warn;
+  // }
+}
+@mixin wrong-field() {
+  margin-left: 20px;
+  margin-top: 40px;
+  font-style: oblique;
+  color: #ff1744;
+}
 :host,
 :host-context(.mat-header) {
   width: 100%;
@@ -49,8 +68,16 @@ li.nav-item a.nav-link {
 .navbar-brand {
   color: $black;
 }
+.bg-bw {
+  background-color: $brokenWhite;
+}
 .navbar.bg-accent {
   background-color: $accentColor;
+}
+.logoIcon {
+  max-width: 25px;
+  max-height: 25px;
+  margin-right: 6px;
 }
 /*.jumbotron {
   background-position: center center;
@@ -74,15 +101,9 @@ header {
   background-repeat: no-repeat;
   background-size: cover;
 }
+
 .formulario {
-  // color:white;
-  color: $black;
-  padding: 20px;
-  border-radius: 5px;
-  // background-color: rgb(52,58,64,0.6);
-  background-color: rgba(255, 250, 250, 0.767);
-  // width: 30vw;
-  margin-left: 20%;
+  @include formulario(20%);
 }
 
 // .formParts {
@@ -148,18 +169,16 @@ header {
     outline: none;
   }
 }
-
-// .selectsGroup {
-//   max-width: 550px;
-//   //  display: grid;
-//   //  grid-template-columns: 38% 15% 15% 15%;
-//   // grid-column-gap: 5px;
-//   display: flex;
-//   flex-flow: row wrap;
-//   justify-content: space-between;
-//   margin-right: 50px;
-  
-// }
-.mat-form-field-appearance-outline .mat-form-field-wrapper{
-  margin-right: 10px;
+.wrong-field{
+  @include wrong-field();
+}
+.selectsGroup {
+  max-width: 550px;
+  //  display: grid;
+  //  grid-template-columns: 38% 15% 15% 15%;
+  // grid-column-gap: 5px;
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: flex-start;
+  // margin-right: 50px;
 }

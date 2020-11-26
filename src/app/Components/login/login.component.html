@@ -1,0 +1,59 @@
+<!-- <div class="container"> -->
+
+    <mat-card  (clickOutside)="onClickedOutside($event)">
+    <mat-card-header>
+        Continue to your account
+    </mat-card-header>
+    <mat-card-content>
+        <form action="" [formGroup]="loginForm" class="loginForm">
+            
+            <mat-form-field appearance="outline" title="Insert your username">
+                <mat-label class="help-block">
+                    Username
+                </mat-label>
+                <input matInput type="text" formControlName="username"
+                    [class.is-invalid]="loginForm.get('username').touched && loginForm.get('username').invalid">
+                <small class="wrong-field"
+                    *ngIf="loginForm.get('username').touched && loginForm.get('username').invalid">username
+                    required</small>
+            </mat-form-field>
+            <mat-form-field appearance="outline" title="Insert your password">
+                <mat-label class="help-block">
+                    Password
+                </mat-label>
+                <input matInput type="password" formControlName="userpasswd"
+                    [class.is-invalid]="loginForm.get('userpasswd').touched && loginForm.get('userpasswd').invalid">
+                <small class="wrong-field"
+                    *ngIf="loginForm.get('userpasswd').touched && loginForm.get('userpasswd').invalid">password
+                    required</small>
+            </mat-form-field>
+            <mat-card-actions>
+                <button type="button" class="btn btn-success" style="width: 220px;margin-left: 10px"> Log In</button>
+                <!-- <button type="submit" style="background-color: #e7bcbc; margin-left: 10px;" [disabled]="!loginForm.valid" mat-raised-button
+                    color="accent">Submit</button>
+                {{loginForm.value | json}}  -->
+            </mat-card-actions>
+            
+        </form>
+    <!-- </mat-card-content>
+</mat-card>
+<mat-card>
+    <mat-card-header>
+    </mat-card-header>
+    
+    <mat-card-content> -->
+        <!-- <div class="card" style="max-width: 220px;margin-left: 20px;"> -->
+            <p style="margin-left:20px;">Or log in with Google or Facebook</p>
+      
+            <mat-card-actions>
+                <button type="button" class="btn btn-danger btn-ext"> <i class="fab fa-google"></i> Log In with Gmail </button>
+                <p></p>
+                <button type="button" class="btn btn-primary btn-ext"> <i class="fab fa-facebook"></i> Log In with Facebook</button>
+            </mat-card-actions>
+      <div class="unicorn-dark-theme">
+        <p  style="margin-left: 20px;">Don't have an account? <a class="unicorn-dark-theme color-warn" routerLink="/signup">Create Account</a></p>
+    </div>
+    </mat-card-content>
+
+</mat-card>
+<!-- </div> -->

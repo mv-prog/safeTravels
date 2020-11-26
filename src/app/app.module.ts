@@ -16,13 +16,19 @@ import { MatFormFieldModule, MAT_FORM_FIELD_DEFAULT_OPTIONS } from '@angular/mat
 import { MatSelectModule } from '@angular/material/select';
 import {MatAutocompleteModule} from '@angular/material/autocomplete';
 import { MatButtonModule } from '@angular/material/button';
-import { FormsModule } from '@angular/forms';
-
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { LoginComponent } from './Components/login/login.component';
+import { SignupComponent } from './Components/signup/signup.component';
+import {MatCardModule} from '@angular/material/card';;
+import {MatDialogModule } from '@angular/material/dialog';
+import { ClickOutsideModule } from 'ng-click-outside';
+import { ClickOutsideDirective } from './click-outside.directive';
 @NgModule({
-  declarations: [AppComponent, HomeComponent, ContactComponent],
+  declarations: [AppComponent, HomeComponent, ContactComponent, LoginComponent, SignupComponent, ClickOutsideDirective],
   imports: [BrowserModule, AppRoutingModule, FlexLayoutModule, MaterialModule, MatIconModule, MatInputModule, MatToolbarModule, BrowserAnimationsModule,MatDatepickerModule, MatNativeDateModule, MatFormFieldModule, 
-    MatSelectModule, MatAutocompleteModule, MatButtonModule, FormsModule],
+    MatSelectModule, MatAutocompleteModule, MatButtonModule, FormsModule, ReactiveFormsModule, MatCardModule, MatDialogModule, ClickOutsideModule],
   providers: [ {provide: MAT_FORM_FIELD_DEFAULT_OPTIONS, useValue: {floatLabel: 'always'}}],
   bootstrap: [AppComponent],
+  entryComponents: [LoginComponent, SignupComponent]
 })
 export class AppModule {}
