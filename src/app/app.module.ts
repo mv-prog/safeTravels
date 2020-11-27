@@ -22,9 +22,8 @@ import { SignupComponent } from './Components/signup/signup.component';
 import {MatCardModule} from '@angular/material/card';;
 import {MatDialogModule } from '@angular/material/dialog';
 import { ClickOutsideModule } from 'ng-click-outside';
-import { ClickOutsideDirective } from './click-outside.directive';
 @NgModule({
-  declarations: [AppComponent, HomeComponent, ContactComponent, LoginComponent, SignupComponent, ClickOutsideDirective],
+  declarations: [AppComponent, HomeComponent, ContactComponent, LoginComponent, SignupComponent],
   imports: [BrowserModule, AppRoutingModule, FlexLayoutModule, MaterialModule, MatIconModule, MatInputModule, MatToolbarModule, BrowserAnimationsModule,MatDatepickerModule, MatNativeDateModule, MatFormFieldModule, 
     MatSelectModule, MatAutocompleteModule, MatButtonModule, FormsModule, ReactiveFormsModule, MatCardModule, MatDialogModule, ClickOutsideModule],
   providers: [ {provide: MAT_FORM_FIELD_DEFAULT_OPTIONS, useValue: {floatLabel: 'always'}}],

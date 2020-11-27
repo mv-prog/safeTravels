@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, Validators, FormControl } from '@angular/forms';
-import { MatDialogRef } from '@angular/material/dialog';
+import { MatDialog, MatDialogConfig, MatDialogRef } from '@angular/material/dialog';
+import { SignupComponent } from '../signup/signup.component';
 
 @Component({
   selector: 'app-login',
@@ -13,11 +14,16 @@ export class LoginComponent implements OnInit {
     this.dialogRef.close();
     console.log('Clicked outside:', e);
   }
-  constructor() { }
+  constructor(private dialog: MatDialog) { }
   loginForm = new FormGroup({
-    username: new FormControl('', Validators.required),
+    email: new FormControl('', Validators.required),
     userpasswd: new FormControl('', Validators.required)
   });
+  openSignUp(){
+    const matDialogConfig= new MatDialogConfig();
+    matDialogConfig.autoFocus = true;
+    this.dialog.open(SignupComponent, matDialogConfig);
+  }
   
   ngOnInit(): void {
   }

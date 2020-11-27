@@ -6,6 +6,7 @@ import { MatDialog, MatDialogConfig, MatDialogRef } from '@angular/material/dial
 import { ActivatedRoute } from '@angular/router';
 import { LoginComponent } from '../login/login.component';
 // import { FormControl, FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { SignupComponent } from './../signup/signup.component';
 
 @Component({
   selector: 'app-home',
@@ -42,17 +43,22 @@ export class HomeComponent {
     //   roomsNumber: 1,
     // }
   }
-  private dialogRef: MatDialogRef<LoginComponent>;
-  onClickedOutside(e: Event) {
-    this.dialogRef.close();
-    console.log('Clicked outside:', e);
-  }
-  openDialog() {
+  // private dialogRef: MatDialogRef<LoginComponent>;
+  // onClickedOutside(e: Event) {
+  //   this.dialogRef.close();
+  //   console.log('Clicked outside:', e);
+  // }
+  openLogIn() {
     const matDialogConfig= new MatDialogConfig();
     // matDialogConfig.disableClose=true;
     matDialogConfig.autoFocus = true;
     this.dialog.open(LoginComponent, matDialogConfig);
     
+  }
+  openSignUp(){
+    const matDialogConfig= new MatDialogConfig();
+    matDialogConfig.autoFocus = true;
+    this.dialog.open(SignupComponent, matDialogConfig);
   }
   public getSearch(adultsNumber: HTMLInputElement, childrenNumber: HTMLInputElement, roomsNumber: HTMLInputElement) {
 
