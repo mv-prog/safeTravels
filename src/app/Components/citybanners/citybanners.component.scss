@@ -1,5 +1,6 @@
 @import "../../breakpoints";
 $ml: 1%;
+.gen{height: 202px;}
 .citybanners {
     margin-left: 10px;
     display: flex;
@@ -42,7 +43,8 @@ $ml: 1%;
             display: inline;
             position: relative;
             width: 30%;
-            height: 80%;
+            height: 202px;
+            // height: 80%;
             margin-left: $ml;
             z-index: 0;
         }
@@ -73,7 +75,8 @@ $ml: 1%;
         .gen {
             position: relative;
             width: 20%;
-            height: 80%;
+            height: 202px;
+            // height: 80%;
             margin-left: $ml;
             z-index: 0;
         }
