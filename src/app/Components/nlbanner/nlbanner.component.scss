@@ -3,7 +3,7 @@
 @include angular-material-theme($candy-app-theme);
 @import "../../../reset";
 .insidehr{
-    margin-left: 20%;
+    margin-left: 25%;
     display: flex;
     flex-flow: row wrap;
 }
@@ -14,4 +14,7 @@
 .nlsubmit{
     margin-left: 10px;
     // margin-top: 10px;
+}
+h3{
+    font-weight: bold;
 }

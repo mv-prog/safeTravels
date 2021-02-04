@@ -1,12 +1,14 @@
 @import "../../breakpoints";
 $ml: 1%;
 .citybanners {
+    margin-top: 50px;
     margin-left: 10px;
     display: flex;
     flex-direction: column;
-    h1 {
-        margin-left: 40px;
-        font-weight: bold;
+    h2 {
+        // margin-left: 10px;
+        margin-left: 18%;
+        // font-weight: bold;
     }
     @include media(mobile){
         .gen, h1 {
