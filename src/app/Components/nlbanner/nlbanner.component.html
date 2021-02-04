@@ -1,0 +1,34 @@
+<div class="nlbanner">
+    <hr class="top-hr" />
+    <div class="insidehr">
+        <div class="hs">
+            <h2>Sign up to get a 10% discount in all of our hotels</h2>
+            <h5>Join our neswletter to get the best offers and precious coupons</h5>
+        </div>
+        <!-- <form> -->
+        <!-- <div class="form-group" >
+                <label for="email1">Email</label>
+                <input type="email" class="form-control" id="email1" aria-describedby="email1" 
+                    placeholder="Enter email">
+                <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone
+                    else.</small>
+            </div> -->
+        <div class="nlsubs">
+            <mat-form-field appearance="outline" class="form-field">
+                <mat-label>Email</mat-label>
+                <input type="text" matInput placeholder="Enter Email Address" formControlName="nlemail"
+                    pattern="[a-zA-Z0-9.-_]{1,}@[a-zA-Z.-]{2,}[.]{1}[a-zA-Z]{2,}" />
+                <!-- <button class="btn btn-outline-success custom-btn my-2 my-sm-0" type="submit">
+                    Subscribe me!
+                </button> -->
+                <!-- <mat-error class="wrong-field" *ngIf="nlemailForm.get('email').hasError('email')">
+                    <small>Please enter a valid email address</small>
+                </mat-error> -->
+            </mat-form-field>
+            <button class="nlsubmit" type="submit" mat-raised-button color="accent">Subscribe me!</button>
+        </div>
+        <!-- </form> -->
+    </div>
+    <hr class="bottm-hr" />
+</div>
+<!-- APIs en Firebase para meter BD y quitar de ahí los datos -->

@@ -1,6 +1,7 @@
 @use '../../../Themes/theme1';
 @import "../../../variables";
 @import "../../../Themes/theme1";
+@import "../../breakpoints";
 @include angular-material-theme($candy-app-theme);
 @import "../../../reset";
 @mixin formulario($marginLeft) {
@@ -29,6 +30,19 @@ li.nav-item a.nav-link {
     }
   }
 }
+.menu-icon{
+  @include media(mobile,sm){
+    span{
+    display: inline;
+    }
+  }
+  @include media(tablet){
+    span{
+    display: none;
+    }
+  }
+}
+
 .navbar-brand {
   color: $black;
 }

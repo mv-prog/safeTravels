@@ -1,0 +1,17 @@
+@import "../../../variables";
+@import "../../../Themes/theme1";
+@include angular-material-theme($candy-app-theme);
+@import "../../../reset";
+.insidehr{
+    margin-left: 20%;
+    display: flex;
+    flex-flow: row wrap;
+}
+.hs{
+    // margin-left: 20%;
+    margin-right: 5%;
+}
+.nlsubmit{
+    margin-left: 10px;
+    // margin-top: 10px;
+}

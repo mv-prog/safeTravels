@@ -1,7 +1,14 @@
-<nav class="navbar bg-light navbar-expand-lg">
-  <a class="navbar-brand bg-light text-dark" routerLink="/home"><img class="logoIcon" src="/../favicon.ico" alt=" ">SafeTravels</a>
-  <div class="collapse navbar-collapse">
-    <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <a class="navbar-brand bg-light text-dark" routerLink="/home"><img class="logoIcon" src="/../favicon.ico"
+    alt=" ">SafeTravels</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+    aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item active">
       <li class="nav-item active">
         <a class="nav-link" routerLink="/home">Home <span class="sr-only">(current)</span></a>
       </li>
@@ -11,10 +18,8 @@
       <li class="nav-item">
         <a class="nav-link" routerLink="#" disabled>My Bookings</a>
       </li>
-
     </ul>
     <form class="form-inline my-2 my-lg-0">
-      
       <input class="form-control custom-control mr-sm-2" type="search" placeholder="Search" />
       <button class="btn btn-outline-success custom-btn my-2 my-sm-0" type="submit">
         Search
@@ -23,24 +28,19 @@
     <ul class="navbar-nav">
       <li class="nav-item">
         <!-- <a class="nav-link" routerLink="/contact">Contact Us</a> -->
-        <a class="nav-link" routerLink="#">Contact Us</a> 
+        <a class="nav-link" routerLink="#">Contact Us</a>
       </li>
       <li class="nav-item">
         <a class="nav-link cursorH" (click)="openLogIn()">Sign In</a>
       </li>
+      <li class="menu-icon"><span> <i class="fas fa-hamburger"></i> </span></li>
     </ul>
   </div>
 </nav>
-<!--JUMBOTRON 
-  <div class="jumbotron jumbotron shadow">
-  <h1>Safe Travels</h1>
-  <small>Now more than ever!</small> 
-</div> -->
+
 
 <header class="jumbotron jumbotron shadow">
-
-  <!-- <form class="form formulario"> -->
-  <form #searchForm="ngForm" class="formulario col-xs-8 col-sm-10 col-md-6 col-bg-5" >
+  <form #searchForm="ngForm" class="formulario col-xs-8 col-sm-10 col-md-6 col-bg-5">
     <!-- {{searchForm.value | json}} -->
     <legend>
       <h1>
@@ -60,25 +60,22 @@
           </mat-option>
         </mat-autocomplete>
         <mat-icon matSuffix color="warn">search</mat-icon>
-        <input matInput type="search" 
-        [class.is-invalid]="searchInput.invalid && searchInput.touched"
-        required
-        #searchInput="ngModel"
-        [matAutocomplete]="auto" 
-        [(ngModel)]="search.searchInput" name="searchInput" id="searchInput"
-        placeholder="Search Hotels">
+        <input matInput type="search" [class.is-invalid]="searchInput.invalid && searchInput.touched" required
+          #searchInput="ngModel" [matAutocomplete]="auto" [(ngModel)]="search.searchInput" name="searchInput"
+          id="searchInput" placeholder="Search Hotels">
       </mat-form-field>
       <small class="wrong-field" *ngIf="searchInput.touched && searchInput.invalid">Search field is required</small>
     </div>
     <div class="selectsGroup">
-    <!-- <form action="" role="group" class="form-inline"> -->
+      <!-- <form action="" role="group" class="form-inline"> -->
       <div class="form-group mr-2 mb-2">
         <mat-form-field appearance="outline">
           <mat-label class="help-block">
             Check-in - Check-out
           </mat-label>
           <!-- <mat-date-range-input [rangePicker]="picker"> -->
-          <mat-date-range-input [rangePicker]="picker" [class.is-invalid]="dateRange.invalid && dateRange.touched" #dateRange="ngModel" [(ngModel)]="search.dateRange">
+          <mat-date-range-input [rangePicker]="picker" [class.is-invalid]="dateRange.invalid && dateRange.touched"
+            #dateRange="ngModel" [(ngModel)]="search.dateRange">
             <input matStartDate placeholder="Start date" ngModel name="startDate">
             <input matEndDate placeholder="End date" ngModel name="endDate">
           </mat-date-range-input>
@@ -92,7 +89,8 @@
           <mat-label class="help-block" id="adultsNumber">
             Adults
           </mat-label>
-          <mat-select id="adultsNumber" placeholder="2" [(value)]="adultsNumber" [(ngModel)]="search.adultsNumber" name="adultsNumber">
+          <mat-select id="adultsNumber" placeholder="2" [(value)]="adultsNumber" [(ngModel)]="search.adultsNumber"
+            name="adultsNumber">
             <!-- <mat-option *ngFor="let item of [1,2,3,4,5,6,7,8,9,10]">
               {{item}}
             </mat-option> -->
@@ -110,9 +108,9 @@
         </mat-form-field>
       </div>
 
-      <div class="form-group miniSelect mb-2 col-xs-6 col-sm-7 col-md-2 col-bg-1">  
+      <div class="form-group miniSelect mb-2 col-xs-6 col-sm-7 col-md-2 col-bg-1">
         <mat-form-field appearance="outline" style="width: 100%;" title="Children">
-          <mat-label class="help-block" id="childrenNumber" >
+          <mat-label class="help-block" id="childrenNumber">
             Children
           </mat-label>
           <mat-select [(value)]="childrenNumber" placeholder="0" ngModel name="childrenNumber">
@@ -155,40 +153,8 @@
           </mat-select>
         </mat-form-field>
       </div>
-    <!-- </form> -->
-  </div>
-    <button type="submit" [disabled]="!searchForm.valid" mat-raised-button color="accent">Submit</button>
+      <!-- </form> -->
+    </div>
+    <button type="submit" [disabled]="!searchForm.valid" mat-raised-button color="accent">Search hotels</button>
   </form>
 </header>
-<!--<div class="container lugares">
-  <div class="card ltlimg">
-    <img src="/assets/baiona.jpg" alt="">
-  </div>
-  <div class="card ltlimg">
-    <img src="/assets/muros.jpg" alt="">
-  </div>
-  <div class="card ltlimg">
-    <img src="/assets/com.jpg" alt="">
-  </div>
-  <div class="card ltlimg">
-    <img src="/assets/mux.jpg" alt="">
-  </div>
-  <div class="card ltlimg">
-    <img src="/assets/baroña.jpg" alt="">
-  </div>
-  <div class="card ltlimg">
-    <img src="/assets/porco2.jpg" alt="">
-  </div>
-  <div class="card ltlimg">
-    <img src="/assets/ponte.jpg" alt="">
-  </div>
-  <div class="card ltlimg">
-    <img src="/assets/san.jpg" alt="">
-  </div>
-  <div class="card ltlimg">
-    <img src="/assets/mur.jpg" alt="">
-  </div>
-  <div class="card ltlimg">
-    <img src="/assets/choiva.jpg" alt="">
-  </div>
-</div>-->
