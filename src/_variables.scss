@@ -1,11 +1,17 @@
 $accentColor: #ef9a9a;
 $warnColor:#ff1744;
 $black: rgb(52, 58, 64);
-// $link-color: $accentColor;
-// $link-hover-color:currentColor;
 $link-hover-color: $accentColor;
 $link-hover-decoration: none !important;
 $label-margin-bottom: 0;
+$black: rgb(52, 58, 64);
+$sassPink: #bf4080;
+$brokenWhite: #f2e9e8;
+$brokenWhite1: #ece9e3;
+$transparentWhite: rgba(255, 250, 250, 0.767);
+$childrenWidth50: 50%;
+$accentColor: #ef9a9a;
+$link-color: $accentColor;
 .mat-form-field{
   min-width: 50px;
   width: 220px;

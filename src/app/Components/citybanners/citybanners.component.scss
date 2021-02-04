@@ -1,0 +1,102 @@
+@import "../../breakpoints";
+$ml: 1%;
+.citybanners {
+    margin-left: 10px;
+    display: flex;
+    flex-direction: column;
+    h1 {
+        margin-left: 40px;
+        font-weight: bold;
+    }
+    @include media(mobile){
+        .gen, h1 {
+            display: none;
+        }
+        // .alm {
+        //     display: none;
+        // }
+        // .gen, .pont, .cal, .city1, .pal, .cies, .rock {
+        //     display: none;
+        // }
+        // .cal {
+        //     width: 10%;
+        // }
+        // .city1 {
+        //     max-height: 300px;
+        // }
+        // .pal {
+        //     width: 40%;
+        // }
+        // .cies {
+        //     width: 31%;
+        // }
+        // .rock {
+        //     width: 31%;
+        // }
+    }
+    @include media(sm, tablet, desktop) {
+        h1{
+            display: inline;
+        }
+        .gen {
+            display: inline;
+            position: relative;
+            width: 30%;
+            height: 80%;
+            margin-left: $ml;
+            z-index: 0;
+        }
+        .alm {
+            width: 30%;
+        }
+        .pont {
+            width: 42%;
+        }
+        .cal {
+            width: 18%;
+        }
+        .city1 {
+            max-height: 300px;
+        }
+        .pal {
+            width: 60%;
+        }
+        .cies {
+            width: 45%;
+        }
+        .rock {
+            width: 45%;
+        }
+    }
+    @include media(lg) {
+        margin-left: 20%;
+        .gen {
+            position: relative;
+            width: 20%;
+            height: 80%;
+            margin-left: $ml;
+            z-index: 0;
+        }
+        .alm {
+            width: 22%;
+        }
+        .pont {
+            width: 28%;
+        }
+        .cal {
+            width: 10%;
+        }
+        .city1 {
+            max-height: 300px;
+        }
+        .pal {
+            width: 40%;
+        }
+        .cies {
+            width: 31%;
+        }
+        .rock {
+            width: 31%;
+        }
+    }
+}

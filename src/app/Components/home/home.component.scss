@@ -1,53 +1,20 @@
 @use '../../../Themes/theme1';
 @import "../../../variables";
 @import "../../../Themes/theme1";
-@import "~@angular/material/theming";
 @include angular-material-theme($candy-app-theme);
-@import "~@angular/cdk/text-field/text-field";
 @import "../../../reset";
-
-///@group materialHomeComponent
-$primary-contrast-color: mat-contrast($candy-app-primary, A200);
-$primary: map-get($candy-app-theme, primary);
-$accent: map-get($candy-app-theme, accent);
-
-///@group variables:
-$black: rgb(52, 58, 64);
-$sassPink: #bf4080;
-// $brokenWhite:#f5edea;
-$brokenWhite: #f2e9e8;
-$brokenWhite1: #ece9e3;
-$transparentWhite: rgba(255, 250, 250, 0.767);
-$childrenWidth50: 50%;
-$accentColor: #ef9a9a;
-$link-color: $accentColor;
-// $warn: #ff1744;
-// $warn: #d32323;
-
-///@group mixins
 @mixin formulario($marginLeft) {
-  // color:white;
   color: $black;
   padding: 20px;
   border-radius: 5px;
-  // background-color: rgb(52,58,64,0.6);
   background-color: $transparentWhite;
-  // width: 30vw;
   margin-left: $marginLeft;
-  // .ng-valid[required], .ng-valid.required {
-  //   border-left: 2px solid #42a947;
-  //   margin-right: 5px;
-  //   padding-right: 5px;
-  // }
-  // .ng-invalid:not(form) {
-  //   border-left: 2px solid $warn;
-  // }
 }
 @mixin wrong-field() {
   margin-left: 20px;
   margin-top: 40px;
   font-style: oblique;
-  color: #ff1744;
+  color: $warnColor;
 }
 :host,
 :host-context(.mat-header) {
@@ -57,12 +24,9 @@ li.nav-item a.nav-link {
   color: $black;
   &:hover {
     color: $accentColor;
-    // font-size:16px;
     &:active {
       font-size: 16px;
     }
-    // border: 1px solid $accentColor;
-    // border-radius: 5px;
   }
 }
 .navbar-brand {
@@ -79,21 +43,7 @@ li.nav-item a.nav-link {
   max-height: 25px;
   margin-right: 6px;
 }
-/*.jumbotron {
-  background-position: center center;
-  background: url("../../../baroña.jpg");
-  background-repeat: no-repeat;
-  // background-size: cover;
-  height: 100%;
-  -webkit-background-size: 100% 100%;
-  -moz-background-size: 100% 100%;
-  -o-background-size: 100% 100%;
-  background-size: 100% 100%;
-}*/
 header {
-  //   height: 25vw;
-  //   width: 100%;
-  /* Flexbox */
   display: flex;
   align-items: center;
   background-position: center center;
@@ -105,36 +55,19 @@ header {
 .formulario {
   @include formulario(20%);
 }
-
-// .formParts {
-//   margin-right: 20px;
-// }
-//   padding: 10px;
-//   align-items: stretch;
-//   height: 7hv;
-//   input {
-//     margin-left: 5px;
-//     border: none;
-//     width: auto;
-//   }
-// }
-
 .show {
   opacity: 1;
   transition: opacity 1s;
   margin-right: 5px;
   padding-top: 2px;
 }
-
 .hide {
   opacity: 0;
   transition: opacity 1s;
 }
-
 .childrenWidth50 > * {
   width: $childrenWidth50;
 }
-
 .btn-outline-success.custom-btn {
   color: $accentColor;
   border-color: $accentColor;
@@ -174,11 +107,15 @@ header {
 }
 .selectsGroup {
   max-width: 550px;
-  //  display: grid;
-  //  grid-template-columns: 38% 15% 15% 15%;
-  // grid-column-gap: 5px;
   display: flex;
   flex-flow: row wrap;
   justify-content: flex-start;
-  // margin-right: 50px;
+}
+.container.lugares{
+  display: flex;
+  flex-flow: row wrap;
+}
+.card.ltlimg, div.ltlimg{
+  width: 250px;
+  height: 200px;
 }

@@ -2,22 +2,10 @@
 @import "../../../variables";
 @import "../../../Themes/theme1";
 @import "~@angular/material/theming";
-// @include angular-material-theme($candy-app-theme);
 @include angular-material-color($dark-theme);  
 @import "~@angular/cdk/text-field/text-field";
 @import "../home/home.component.scss";
 @import "../../../reset";
-
-
-///@group variables:
-$black: rgb(52, 58, 64);
-$sassPink: #bf4080;
-// $brokenWhite:#f5edea;
-$brokenWhite: #f2e9e8;
-$brokenWhite1: #ece9e3;
-$transparentWhite: rgba(255, 250, 250, 0.767);
-$childrenWidth50: 50%;
-$accentColor: #ef9a9a;
 $warn: #ff1744;
 $link-color: $warnColor;
 .color-warn{
@@ -31,7 +19,6 @@ $link-color: $warnColor;
     @include formulario(0);
     display: flex;
     flex-flow: column wrap;
-    // margin-left: -10px;
 }
 button.btn-ext{
     margin-left: 30px;
@@ -40,7 +27,6 @@ button.btn-ext{
 .wrong-field{
     @include wrong-field();
 }
-
 .unicorn-dark-theme {
     @include angular-material-color($dark-theme);
   }

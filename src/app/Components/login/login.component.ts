@@ -22,6 +22,7 @@ export class LoginComponent implements OnInit {
   openSignUp(){
     const matDialogConfig= new MatDialogConfig();
     matDialogConfig.autoFocus = true;
+    // this.dialog.close(LoginComponent, matDialogConfig);
     this.dialog.open(SignupComponent, matDialogConfig);
   }
   
