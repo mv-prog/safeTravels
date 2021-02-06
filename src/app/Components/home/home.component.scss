@@ -20,20 +20,21 @@
 :host-context(.mat-header) {
   width: 100%;
 }
-li.nav-item a.nav-link {
-  color: $black;
-  &:hover {
-    color: $accentColor;
-    &:active {
-      font-size: 16px;
+mdb-navbar {
+  .navbar-brand{
+    font-weight: 400;
+    color: $black;
+  }
+  li.nav-item a.nav-link{
+    color: $black;
+    font-weight: 400;
+    &:hover {
+      color: $accentColor;
+      &:active {
+        font-size: 16px;
+      }
     }
   }
-}
-.navbar-brand {
-  color: $black;
-}
-.bg-bw {
-  background-color: $brokenWhite;
 }
 .navbar.bg-accent {
   background-color: $accentColor;
@@ -102,7 +103,7 @@ header {
     outline: none;
   }
 }
-.wrong-field{
+.wrong-field {
   @include wrong-field();
 }
 .selectsGroup {
@@ -111,11 +112,12 @@ header {
   flex-flow: row wrap;
   justify-content: flex-start;
 }
-.container.lugares{
+.container.lugares {
   display: flex;
   flex-flow: row wrap;
 }
-.card.ltlimg, div.ltlimg{
+.card.ltlimg,
+div.ltlimg {
   width: 250px;
   height: 200px;
 }
