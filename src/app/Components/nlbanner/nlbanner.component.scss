@@ -2,6 +2,16 @@
 @import "../../../Themes/theme1";
 @include angular-material-theme($candy-app-theme);
 @import "../../../reset";
+@import "../../breakpoints";
+@include media(sm){
+    hr{
+        display: none;
+    }
+    .nlbanner{
+        box-shadow: 10px 10px 20px #d9d9d9, -10px -10px 20px #ffffff;
+    }
+}
+
 .insidehr {
     margin-left: 25%;
     display: flex;
@@ -14,13 +24,8 @@
 .nlsubmit {
     margin-left: 10px;
     // margin-top: 10px;
+    margin-bottom: 20px;
 }
 h3 {
     font-weight: bold;
-}
-.nlbanner {
-    padding: 15px;
-    // border-radius: 50px;
-    background: #ffffff;
-    box-shadow: 10px 10px 20px #d9d9d9, -10px -10px 20px #ffffff;
 }
