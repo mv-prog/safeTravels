@@ -73,7 +73,9 @@ openSignUp(){
   // childrenNumber.value ='';
   // roomsNumber.value='';    
 }
-
+public pecharLinks(e:any){
+    e.hide();
+}
 
 
 }

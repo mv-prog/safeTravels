@@ -8,13 +8,11 @@ footer {
         margin-top: 10px;
         display: flex;
         justify-content: center;
-
         border-radius: 50px;
         background: #343a40;
         box-shadow:  6px 6px 12px #212528,
                      -6px -6px 12px #474f58;
         color: $brokenWhite;
-        // color: $black;
         height: 60px;
         padding-top: 20px;
         padding-bottom: 20px;
@@ -23,7 +21,6 @@ footer {
             font-weight: 600;
             padding-left: 15px;
             color: whitesmoke;
-            // color: $black;
         }
     }
     .cols {
@@ -31,16 +28,14 @@ footer {
         padding-left: 30px;
         display: flex;
         padding-top: 10px;
-        justify-content: space-around;
+        justify-content: space-between;
         .col {
             width: 80px;
             padding: 20px;
-
             display: flex;
             flex-direction: column;
             a {
                 color: whitesmoke;
-                // color: $black;
             }
         }
     }
