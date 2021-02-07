@@ -3,6 +3,7 @@
 @import "../../../Themes/theme1";
 @include angular-material-theme($candy-app-theme);
 @import "../../../reset";
+@import "../../breakpoints";
 @mixin formulario($marginLeft) {
   color: $black;
   padding: 20px;
@@ -21,11 +22,11 @@
   width: 100%;
 }
 mdb-navbar {
-  .navbar-brand{
+  .navbar-brand {
     font-weight: 400;
     color: $black;
   }
-  li.nav-item a.nav-link{
+  li.nav-item a.nav-link {
     color: $black;
     font-weight: 400;
     &:hover {
@@ -36,8 +37,15 @@ mdb-navbar {
     }
   }
 }
-.navbar.bg-accent {
-  background-color: $accentColor;
+@include media(mobile, sm, md, tablet) {
+  form.form-inline.my-2.my-lg-0 {
+    display: none;
+  }
+}
+@include media(formnavbar) {
+  form.form-inline.my-2.my-lg-0 {
+    display: inline;
+  }
 }
 .logoIcon {
   max-width: 25px;
