@@ -25,9 +25,10 @@ import { ClickOutsideModule } from 'ng-click-outside';
 import { CitybannersComponent } from './Components/citybanners/citybanners.component';
 import { MDBBootstrapModule } from 'angular-bootstrap-md';
 import { NlbannerComponent } from './Components/nlbanner/nlbanner.component';
+import { FooterComponent } from './Components/footer/footer.component';
 
 @NgModule({
-  declarations: [AppComponent, HomeComponent, ContactComponent, LoginComponent, SignupComponent, CitybannersComponent, NlbannerComponent],
+  declarations: [AppComponent, HomeComponent, ContactComponent, LoginComponent, SignupComponent, CitybannersComponent, NlbannerComponent, FooterComponent],
   imports: [MDBBootstrapModule.forRoot(), BrowserModule, AppRoutingModule, FlexLayoutModule, MaterialModule, MatIconModule, MatInputModule, MatToolbarModule, BrowserAnimationsModule,MatDatepickerModule, MatNativeDateModule, MatFormFieldModule, 
     MatSelectModule, MatAutocompleteModule, MatButtonModule, FormsModule, ReactiveFormsModule, MatCardModule, MatDialogModule, ClickOutsideModule],
   providers: [ {provide: MAT_FORM_FIELD_DEFAULT_OPTIONS, useValue: {floatLabel: 'always'}}],

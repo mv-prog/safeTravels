@@ -7,14 +7,15 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
   styleUrls: ['./signup.component.scss']
 })
 export class SignupComponent implements OnInit {
-
-  constructor() { }
-  signupForm = new FormGroup({
-    email: new FormControl('', Validators.required),
-    userpasswd: new FormControl('', Validators.required),
-    firstName: new FormControl('', Validators.required), 
-    lastName: new FormControl('', Validators.required),
-  });
+  signupForm: FormGroup;
+  constructor() {
+    this.signupForm = new FormGroup({
+      email: new FormControl('', Validators.required),
+      userpasswd: new FormControl('', Validators.required),
+      firstName: new FormControl('', Validators.required),
+      lastName: new FormControl('', Validators.required),
+    });
+  }
   ngOnInit(): void {
   }
 

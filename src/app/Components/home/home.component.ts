@@ -1,6 +1,7 @@
 import { BLACK_ON_WHITE_CSS_CLASS } from '@angular/cdk/a11y/high-contrast-mode/high-contrast-mode-detector';
 import { ViewChild } from '@angular/core';
 import { Component, OnInit } from '@angular/core';
+import { FormControl, FormGroup } from '@angular/forms';
 import { MatDatepicker } from '@angular/material/datepicker';
 import { MatDialog, MatDialogConfig, MatDialogRef } from '@angular/material/dialog';
 import { ActivatedRoute } from '@angular/router';
@@ -41,35 +42,37 @@ export class HomeComponent {
     //   adultsNumber: 2,
     //   childrenNumber: 0,
     //   roomsNumber: 1,
-    // }
-  }
-  // private dialogRef: MatDialogRef<LoginComponent>;
-  // onClickedOutside(e: Event) {
-  //   this.dialogRef.close();
-  //   console.log('Clicked outside:', e);
-  // }
-  openLogIn() {
-    const matDialogConfig= new MatDialogConfig();
-    // matDialogConfig.disableClose=true;
-    matDialogConfig.autoFocus = true;
-    this.dialog.open(LoginComponent, matDialogConfig);
-    
-  }
-  openSignUp(){
-    const matDialogConfig= new MatDialogConfig();
-    matDialogConfig.autoFocus = true;
-    this.dialog.open(SignupComponent, matDialogConfig);
-  }
+    // 
+
+}
+
+// private dialogRef: MatDialogRef<LoginComponent>;
+// onClickedOutside(e: Event) {
+//   this.dialogRef.close();
+//   console.log('Clicked outside:', e);
+// }
+openLogIn() {
+  const matDialogConfig = new MatDialogConfig();
+  // matDialogConfig.disableClose=true;
+  matDialogConfig.autoFocus = true;
+  this.dialog.open(LoginComponent, matDialogConfig);
+
+}
+openSignUp(){
+  const matDialogConfig = new MatDialogConfig();
+  matDialogConfig.autoFocus = true;
+  this.dialog.open(SignupComponent, matDialogConfig);
+}
   public getSearch(adultsNumber: HTMLInputElement, childrenNumber: HTMLInputElement, roomsNumber: HTMLInputElement) {
 
-    this.adultsNumber = Number(adultsNumber.value),
-      this.childrenNumber = Number(childrenNumber.value),
-      this.roomsNumber = Number(roomsNumber.value);
+  this.adultsNumber = Number(adultsNumber.value),
+    this.childrenNumber = Number(childrenNumber.value),
+    this.roomsNumber = Number(roomsNumber.value);
 
-    // adultsNumber.value='';
-    // childrenNumber.value ='';
-    // roomsNumber.value='';    
-  }
+  // adultsNumber.value='';
+  // childrenNumber.value ='';
+  // roomsNumber.value='';    
+}
 
 
 

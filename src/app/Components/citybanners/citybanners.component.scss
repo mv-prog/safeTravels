@@ -1,6 +1,5 @@
 @import "../../breakpoints";
 $ml: 1%;
-.gen{height: 202px;}
 .citybanners {
     margin-left: 10px;
     display: flex;
@@ -36,7 +35,8 @@ $ml: 1%;
         //     width: 31%;
         // }
     }
-    @include media(sm, tablet, desktop) {
+    
+    @include media(sm, tablet) {
         h2{
             display: inline;
         }
@@ -44,7 +44,7 @@ $ml: 1%;
             display: inline;
             position: relative;
             width: 30%;
-            height: 202px;
+            height: 150px;
             // height: 80%;
             margin-left: $ml;
             z-index: 0;
@@ -70,6 +70,9 @@ $ml: 1%;
         .rock {
             width: 45%;
         }
+    }
+    @include media(md, desktop){
+        .gen{height: 202px;}
     }
     @include media(lg) {
         margin-left: 20%;

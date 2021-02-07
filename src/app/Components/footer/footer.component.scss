@@ -1,0 +1,23 @@
+
+footer {   
+    //border-top: 1px solid #999;
+    margin-top: 30px;
+    padding-left: 30px;
+    line-height: 25px;
+    padding-top: 10px;
+    display: flex;
+    justify-content: space-around;
+    margin-bottom: 30px;
+    background: #ffffff;
+    box-shadow: 10px 10px 20px #d9d9d9, -10px -10px 20px #ffffff;
+    div {
+        width: 80px;
+        padding: 20px;
+
+        display: flex;
+        flex-direction: column;
+        a {
+            color: rgb(83, 83, 83);
+        }
+    }
+}

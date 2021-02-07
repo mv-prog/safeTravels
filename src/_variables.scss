@@ -1,4 +1,8 @@
 $accentColor: #ef9a9a;
+$rosequartz:#f7cac9;
+$rosequartz1:#f8cdcd;
+$serenity: #92a8d1;
+$serenity2: #b3cee5;
 $warnColor:#ff1744;
 $black: rgb(52, 58, 64);
 $link-hover-color: $accentColor;
@@ -17,28 +21,6 @@ $link-color: $accentColor;
   width: 220px;
   justify-content: space-between;
 } 
-// .mat-form-field-appearance-outline .mat-form-field-wrapper{
-//   margin:50px;
-// }
-// div.mat-form-field-infix.ng-tns-c129-4{
-//   margin-right: 200px;
-//   padding:10px;
-// }
-/* $grid-breakpoints: (
-   xs: 0, // handset portrait (small, medium, large) | handset landscape (small)
-   sm: 600px, // handset landscape (medium, large) | tablet portrait(small, large)
-   lg: 1280px, // laptops and desktops
-   xl: 1600px // large desktops
- );*/
-
-//  $grid-breakpoints: (
-//    xs: 0, // handset portrait (small, medium, large) | handset landscape (small)
-//    sm: 600px, // handset landscape (medium, large) | tablet portrait(small, large)
-//    lg: 1280px, // laptops and desktops
-//    xl: 1600px // large desktops
-//  );
-
-
  $container-max-widths: (
    sm: 600px,
    md: 750px,
