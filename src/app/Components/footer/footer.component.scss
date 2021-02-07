@@ -1,27 +1,20 @@
 @import "../../../variables";
 @import "../../breakpoints";
 footer {
-    //border-top: 1px solid #999;
-    // margin-top: 30px;
+    margin-top: 20px;
     padding-top: 10px;
-    background-color: #e0e0e0;
-    // background-color: #393939;
-    // background: #ffffff;
-    // box-shadow: 10px 10px 20px #d9d9d9, -10px -10px 20px #ffffff;
+    background-color: $black;
     .row {
         margin-top: 10px;
-        // border-radius: 36px;
-        // background: linear-gradient(145deg, #333333, #3d3d3d);
-        // box-shadow: 15px 15px 31px #303030, -15px -15px 31px #424242;
-        border-radius: 50px;
-        background: #e0e0e0;
-        box-shadow: 12px 12px 24px #c1c1c1, -12px -12px 24px #ffffff;
         display: flex;
         justify-content: center;
-        // background-color: $black;
-        // background-color: black;
-        // color: whitesmoke;
-        color: $black;
+
+        border-radius: 50px;
+        background: #343a40;
+        box-shadow:  6px 6px 12px #212528,
+                     -6px -6px 12px #474f58;
+        color: $brokenWhite;
+        // color: $black;
         height: 60px;
         padding-top: 20px;
         padding-bottom: 20px;
@@ -29,8 +22,8 @@ footer {
             font-size: 16px;
             font-weight: 600;
             padding-left: 15px;
-            // color: whitesmoke;
-            color: $black;
+            color: whitesmoke;
+            // color: $black;
         }
     }
     .cols {
@@ -46,9 +39,8 @@ footer {
             display: flex;
             flex-direction: column;
             a {
-                // color: rgb(83, 83, 83);
-                // color: whitesmoke;
-                color: $black;
+                color: whitesmoke;
+                // color: $black;
             }
         }
     }
