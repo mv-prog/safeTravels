@@ -25,8 +25,5 @@ export class NavbarComponent implements OnInit {
     matDialogConfig.autoFocus = true;
     this.dialog.open(SignupComponent, matDialogConfig);
   }
-  // tslint:disable-next-line: typedef
-public pecharLinks(e: any){
-  e.hide();
-}
+
 }

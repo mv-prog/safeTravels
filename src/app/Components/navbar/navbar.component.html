@@ -2,19 +2,18 @@
     <mdb-navbar-brand>
         <a class="navbar-brand" routerLink="/home"><img class="logoIcon" src="/../favicon.ico" alt=" ">SafeTravels</a>
     </mdb-navbar-brand>
-    <links (click)="pecharLinks(myNavbar)">
+    <links>
         <ul class="navbar-nav mr-auto">
             <li class="nav-item active">
-                <a class="nav-link waves-light" mdbWavesEffect>Home<span class="sr-only">(current)</span></a>
+                <a class="nav-link waves-light" mdbWavesEffect [routerLink]="['/home']" routerLinkActive="router-link-active" >Home</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link waves-light" mdbWavesEffect>Hotels</a>
+                <a class="nav-link waves-light" mdbWavesEffect [routerLink]="['/hotels']" routerLinkActive="router-link-active" >Hotels</a>
             </li>
             <li class="nav-item">
                 <a class="nav-link waves-light" mdbWavesEffect>My Bookings</a>
             </li>
         </ul>
-        <!-- <div class="d-flex flex-wrap-reverse"> -->
         <form class="form-inline my-2 my-lg-0">
             <input class="form-control custom-control mr-sm-2" type="search" placeholder="Search" />
             <button class="btn btn-outline-success custom-btn my-2 my-sm-0" type="submit">
@@ -29,6 +28,5 @@
                 <a class="nav-link cursorH" (click)="openLogIn()">Sign In</a>
             </li>
         </ul>
-        <!-- </div> -->
     </links>
 </mdb-navbar>
