@@ -2,10 +2,46 @@
 <!-- <mdb-icon fas icon="swimming-pool"></mdb-icon> or <i class="fas fa-swimming-pool"></i> -->
 <!-- <i class="fas fa-hot-tub"></i> -->
 
-<div class="list-group">
+<!-- <div class="list-group">
     <a *ngFor="let hdata of dataList" href="#" class="list-group-item list-group-item-action waves-light" mdbWavesEffect>
         {{ hdata.name }}
     </a>
+</div> -->
+<!-- <mdb-card>
+<div fxLayout="row">
+    <div fxFlex="40">
+        <div *ngFor="let hotel of dataList">
+            <a><img class="imgH" src="./../../{{hotel.imgH}}" alt="hotel {{hotel.name}}"></a>
+            <!-- <p>{{ hotel.id }}</p> -->
+        <!-- </div>
+    </div>
+    <div fxFlex="60">
+        <div *ngFor="let hotel of dataList">
+            <p>{{ hotel.name }}</p>
+        </div>
+    </div>
 </div>
-
+</mdb-card> -->
+<div class="hotellist">
+<div class="card hotels mb-3" style="max-width: 600px" *ngFor="let hotel of dataList">
+    <div class="row g-0">
+      <div class="col-md-4">
+            <a><img class="img-fluid imgH" src="./../../{{hotel.imgH}}" alt="hotel {{hotel.name}}" ></a>
+      </div>
+      <div class="col-md-8">
+        <div class="card-body">
+          <h5 class="card-title">{{hotel.name}}</h5>
+          <p class="card-text">
+            This is a wider card with supporting text below as a natural lead-in to
+            additional content. This content is a little bit longer.
+          </p>
+          <!-- aquí un ngIf para amosar icono de percina e balneario ou non -->
+          <p class="card-text">
+            <small class="text-muted">Last updated 3 mins ago</small>
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
 <app-footer></app-footer>
