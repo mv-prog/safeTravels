@@ -6,11 +6,16 @@
 @import "~@angular/cdk/text-field/text-field";
 @import "../home/home.component.scss";
 @import "../../../reset";
-$warn: #ff1744;
+// $warn: #ff1744;
 $link-color: $warnColor;
-.color-warn{
-    color:$warnColor;
+
+@mixin dark-warn-theming($dark-theme){
+    $dark-warn: map-get($dark-theme, warn)
 }
+.unicorn-dark-theme {
+    color:mat-color($dark-warn);
+}
+
 .bg-warn{
     background-color:$warnColor;
     color: white;

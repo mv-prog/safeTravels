@@ -8,7 +8,8 @@ import { SignupComponent } from '../signup/signup.component';
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.scss']
 })
-export class LoginComponent implements OnInit {
+// export class LoginComponent implements OnInit {
+  export class LoginComponent{
   private dialogRef: MatDialogRef<LoginComponent>;
   onClickedOutside(e: Event) {
     this.dialogRef.close();
@@ -26,7 +27,7 @@ export class LoginComponent implements OnInit {
     this.dialog.open(SignupComponent, matDialogConfig);
   }
   
-  ngOnInit(): void {
-  }
+  // ngOnInit(): void {
+  // }
 
 }
