@@ -29,10 +29,11 @@ import { FooterComponent } from './Components/footer/footer.component';
 import { OffersComponent } from './Components/offers/offers.component';
 import { NavbarComponent } from './Components/navbar/navbar.component';
 import { HotelsComponent } from './Components/hotels/hotels.component';
+import { Error404Component } from './Components/error404/error404.component';
 
 @NgModule({
   // tslint:disable-next-line: max-line-length
-  declarations: [AppComponent, HomeComponent, ContactComponent, LoginComponent, SignupComponent, CitybannersComponent, NlbannerComponent, FooterComponent, OffersComponent, NavbarComponent, HotelsComponent],
+  declarations: [AppComponent, HomeComponent, ContactComponent, LoginComponent, SignupComponent, CitybannersComponent, NlbannerComponent, FooterComponent, OffersComponent, NavbarComponent, HotelsComponent, Error404Component],
   // tslint:disable-next-line: max-line-length
   imports: [MDBBootstrapModule.forRoot(), BrowserModule, AppRoutingModule, FlexLayoutModule, MaterialModule, MatIconModule, MatInputModule, MatToolbarModule, BrowserAnimationsModule, MatDatepickerModule, MatNativeDateModule, MatFormFieldModule,
     // tslint:disable-next-line: max-line-length

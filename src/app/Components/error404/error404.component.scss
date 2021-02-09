@@ -1,0 +1,19 @@
+.error404{
+    h2,h3{
+        font-family: impact;
+    }
+    display: flex;
+    background-color: #eda0a8;
+    div.hs{
+        font-family: Impact;
+        margin: 10%;
+        width: 350px;
+        h2{
+            font-size: 70px;    
+        }
+        h3{
+            font-size: 50px;
+            line-height: 50px;
+        }
+    }
+}
