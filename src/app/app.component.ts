@@ -9,5 +9,7 @@ import { LoginComponent } from './Components/login/login.component';
 })
 export class AppComponent {
   title = 'safeTravels';
+  private loggedin:boolean;
+  
   
 }

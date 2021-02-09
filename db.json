@@ -1,0 +1,104 @@
+{
+    "users": [{
+            "id": 1,
+            "firstName": "Bill",
+            "lastName": "Gates",
+            "email": "bill@microsoft.com",
+            "password": "abc123.."
+        },
+        {
+            "id": 2,
+            "firstName": "Mark",
+            "lastName": "Zuckerberg",
+            "email": "mark@facebook.com",
+            "password": "abc123.."
+        },
+        {
+            "id": 3,
+            "firstName": "Jeff",
+            "lastName": "Bezos",
+            "email": "jeff@amazon.com",
+            "password": "abc123.."
+        }
+    ],
+    "hotels": [{
+            "id": 1,
+            "name": "La reserva Rotana",
+            "address": "Camino Bendris km 3, 07500 Manacor, Mallorca",
+            "imgH": "assets/res/res.jpg",
+            "imgH1": "assets/res/res1.jpg",
+            "imgHR": "assets/res/res2.jpg",
+            "puntuación": 4.5,
+            "precio": 300,
+            "estrellas":5,
+            "piscina": true,
+            "balneario":false 
+        },
+        {
+            "id": 2,
+            "name": "Ca Sa Padrina d'Artà",
+            "address": "Calle Convent 5, 07570 Arta, Mallorca",
+            "imgH": "assets/casa/casa.jpg",
+            "imgH1": "assets/casa/casa1.jpg",
+            "imgHR": "assets/casa/casa2.jpg",
+            "puntuación": 4.4,
+            "precio": 86,
+            "estrellas":3,
+            "piscina": true,
+            "balneario":false 
+        },
+        {
+            "id": 3,
+            "name": "Hotel Samos",
+            "address": "Camino Bendris km 3, 07500 Manacor, Mallorca",
+            "imgH": "assets/res/res.jpg",
+            "imgH1": "assets/res/res1.jpg",
+            "imgHR": "assets/res/res2.jpg",
+            "puntuación": 4.3,
+            "precio": 69,
+            "estrellas":4,
+            "piscina": true,
+            "balneario":false 
+        },
+        {
+            "id": 4,
+            "name": "Parador Hostal Dos Reis Catolicos",
+            "address": "Praza do Obradoiro 1, 15705, Santiago de Compostela, Galicia",
+            "imgH": "assets/par/par.jpg",
+            "imgH1": "assets/par/par1.jpg",
+            "imgHR": "assets/par/par2.jpg",
+            "puntuación": 4.5,
+            "precio": 231,
+            "estrellas":5,
+            "piscina": true,
+            "balneario":false 
+        },
+        {
+            "id": 5,
+            "name": "Eurostars Gran Hotel La Toja",
+            "address": "Illa da Toxa, S/N, 36991, O Grove, Galicia",
+            "imgH": "assets/gran/gran.jpg",
+            "imgH1": "assets/gran/gran1.jpg",
+            "imgHR": "assets/gran/gran2.jpg",
+            "puntuación": 4,
+            "precio": 115, 
+            "Estrellas":5,
+            "piscina": true,
+            "balneario":true
+        },
+        {
+            "id": 6,
+            "name": "O Portelo Rural",
+            "address": "Rua Portelo 20, 32660 Allariz, Galicia",
+            "imgH": "assets/port/port.jpg",
+            "imgH1": "assets/port/port1.jpg",
+            "imgHR": "assets/port/port2.jpg",
+            "puntuación": 4.5,
+            "precio": 55, 
+            "Estrellas":2,
+            "piscina": false,
+            "balneario":false
+        }
+    ]
+
+}
