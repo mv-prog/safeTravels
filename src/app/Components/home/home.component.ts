@@ -8,13 +8,13 @@ import { MatDatepicker } from '@angular/material/datepicker';
 })
 export class HomeComponent {
   @ViewChild(MatDatepicker) datepicker: MatDatepicker<Date>;
-  public options = ['bla', 'bla', 'bla'];
+  public options = ['Mallorca', 'Santiago', 'Ca Sa Padrina d\'Artà'];
   public hideIndication = true;
   public adultsNumber: number;
   public roomsNumber: number;
   public childrenNumber: number;
   search = {
-    searchInput: 'oneHotel',
+    searchInput: 'All hotels and places',
     dateRange: '',
     adultsNumber: 2,
     childrenNumber: 0,

@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { HdataService } from 'src/app/hdata.service';
 
 @Component({
   selector: 'app-hotels',
@@ -7,9 +8,13 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HotelsComponent implements OnInit {
 
-  constructor() { }
+  dataList: any = [];
+  constructor(private hdataservice: HdataService){}
 
   ngOnInit(): void {
+    this.hdataservice.getHData().subscribe(response => {
+      this.dataList = response;
+    });
   }
 
 }

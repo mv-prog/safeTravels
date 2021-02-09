@@ -1,3 +1,11 @@
 <app-navbar></app-navbar>
-<p>hotels works!</p>
+<!-- <mdb-icon fas icon="swimming-pool"></mdb-icon> or <i class="fas fa-swimming-pool"></i> -->
+<!-- <i class="fas fa-hot-tub"></i> -->
+
+<div class="list-group">
+    <a *ngFor="let hdata of dataList" href="#" class="list-group-item list-group-item-action waves-light" mdbWavesEffect>
+        {{ hdata.name }}
+    </a>
+</div>
+
 <app-footer></app-footer>

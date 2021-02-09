@@ -30,6 +30,7 @@ import { OffersComponent } from './Components/offers/offers.component';
 import { NavbarComponent } from './Components/navbar/navbar.component';
 import { HotelsComponent } from './Components/hotels/hotels.component';
 import { Error404Component } from './Components/error404/error404.component';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   // tslint:disable-next-line: max-line-length
@@ -37,7 +38,7 @@ import { Error404Component } from './Components/error404/error404.component';
   // tslint:disable-next-line: max-line-length
   imports: [MDBBootstrapModule.forRoot(), BrowserModule, AppRoutingModule, FlexLayoutModule, MaterialModule, MatIconModule, MatInputModule, MatToolbarModule, BrowserAnimationsModule, MatDatepickerModule, MatNativeDateModule, MatFormFieldModule,
     // tslint:disable-next-line: max-line-length
-    MatSelectModule, MatAutocompleteModule, MatButtonModule, FormsModule, ReactiveFormsModule, MatCardModule, MatDialogModule, ClickOutsideModule],
+    MatSelectModule, MatAutocompleteModule, MatButtonModule, FormsModule, ReactiveFormsModule, MatCardModule, MatDialogModule, ClickOutsideModule, HttpClientModule],
   providers: [ {provide: MAT_FORM_FIELD_DEFAULT_OPTIONS, useValue: {floatLabel: 'always'}}],
   bootstrap: [AppComponent],
   entryComponents: [LoginComponent, SignupComponent]

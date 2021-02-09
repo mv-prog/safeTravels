@@ -2,9 +2,10 @@
 <header class="jumbotron jumbotron shadow">
   <form #searchForm="ngForm" class="formulario col-xs-8 col-sm-10 col-md-6 col-bg-5">
     <!-- {{searchForm.value | json}} -->
-    <legend>
+    <legend class="leg">
+      <a [routerLink]="['/home']" routerLinkActive="router-link-active" ><img class="logo" src="../favicon.ico" alt="logo"></a>
       <h1>
-        Discover Galicia and Mallorca safely
+        Discover Galicia and Mallorca Safely 
       </h1>
     </legend>
     <h2>Book the best and safest hotels and rooms</h2>
@@ -113,7 +114,8 @@
         </mat-form-field>
       </div>
     </div>
-    <button type="submit" [disabled]="!searchForm.valid" mat-raised-button color="accent">Search Hotels!</button>
+    <button type="submit" [routerLink]="['/hotels', search]"
+    routerLinkActive="router-link-active" [disabled]="!searchForm.valid" mat-raised-button color="accent">Search Hotels!</button>
   </form>
 </header>
 <nlbanner></nlbanner>
