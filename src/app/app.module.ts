@@ -9,7 +9,7 @@ import {MatIconModule} from '@angular/material/icon';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ContactComponent } from './Components/contact/contact.component';
-import {MatDatepickerModule} from '@angular/material/datepicker'; 
+import {MatDatepickerModule} from '@angular/material/datepicker';
 import { MatNativeDateModule, MAT_DATE_LOCALE } from '@angular/material/core';
 import {MatInputModule} from '@angular/material/input';
 import { MatFormFieldModule, MAT_FORM_FIELD_DEFAULT_OPTIONS } from '@angular/material/form-field';
@@ -19,17 +19,22 @@ import { MatButtonModule } from '@angular/material/button';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { LoginComponent } from './Components/login/login.component';
 import { SignupComponent } from './Components/signup/signup.component';
-import {MatCardModule} from '@angular/material/card';;
+import {MatCardModule} from '@angular/material/card';
 import {MatDialogModule } from '@angular/material/dialog';
 import { ClickOutsideModule } from 'ng-click-outside';
 import { CitybannersComponent } from './Components/citybanners/citybanners.component';
 import { MDBBootstrapModule } from 'angular-bootstrap-md';
 import { NlbannerComponent } from './Components/nlbanner/nlbanner.component';
 import { FooterComponent } from './Components/footer/footer.component';
+import { OffersComponent } from './Components/offers/offers.component';
+import { NavbarComponent } from './Components/navbar/navbar.component';
 
 @NgModule({
-  declarations: [AppComponent, HomeComponent, ContactComponent, LoginComponent, SignupComponent, CitybannersComponent, NlbannerComponent, FooterComponent],
-  imports: [MDBBootstrapModule.forRoot(), BrowserModule, AppRoutingModule, FlexLayoutModule, MaterialModule, MatIconModule, MatInputModule, MatToolbarModule, BrowserAnimationsModule,MatDatepickerModule, MatNativeDateModule, MatFormFieldModule, 
+  // tslint:disable-next-line: max-line-length
+  declarations: [AppComponent, HomeComponent, ContactComponent, LoginComponent, SignupComponent, CitybannersComponent, NlbannerComponent, FooterComponent, OffersComponent, NavbarComponent],
+  // tslint:disable-next-line: max-line-length
+  imports: [MDBBootstrapModule.forRoot(), BrowserModule, AppRoutingModule, FlexLayoutModule, MaterialModule, MatIconModule, MatInputModule, MatToolbarModule, BrowserAnimationsModule, MatDatepickerModule, MatNativeDateModule, MatFormFieldModule,
+    // tslint:disable-next-line: max-line-length
     MatSelectModule, MatAutocompleteModule, MatButtonModule, FormsModule, ReactiveFormsModule, MatCardModule, MatDialogModule, ClickOutsideModule],
   providers: [ {provide: MAT_FORM_FIELD_DEFAULT_OPTIONS, useValue: {floatLabel: 'always'}}],
   bootstrap: [AppComponent],

@@ -1,0 +1,67 @@
+@import "../../breakpoints";
+@import "../../../variables";
+@include media(mobile, sm, md, tablet) {
+    form.form-inline.my-2.my-lg-0 {
+        display: none;
+    }
+}
+@include media(formnavbar) {
+    form.form-inline.my-2.my-lg-0 {
+        display: inline;
+    }
+}
+mdb-navbar {
+    .navbar-brand {
+        font-weight: 400;
+        color: $black;
+    }
+    li.nav-item a.nav-link {
+        color: $black;
+        font-weight: 400;
+        &:hover {
+            color: $accentColor;
+            &:active {
+                font-size: 16px;
+            }
+        }
+    }
+}
+.logoIcon {
+    max-width: 25px;
+    max-height: 25px;
+    margin-right: 6px;
+}
+.btn-outline-success.custom-btn {
+    color: $accentColor;
+    border-color: $accentColor;
+    border: 1px solid $accentColor;
+    text-decoration: none;
+    &:hover {
+        background-color: inherit;
+        color: $accentColor;
+        border-radius: 5px;
+        border: 2px solid $accentColor;
+    }
+    &:active,
+    :focus {
+        background-color: inherit;
+        text-decoration: none;
+        border: 3px solid $accentColor;
+        border-radius: 5px;
+        color: $accentColor;
+        &:not(:disabled):not(.disabled):active {
+            background-color: inherit;
+            text-decoration: none;
+            border: 3px solid $accentColor;
+            border-radius: 5px;
+            color: $accentColor;
+        }
+    }
+}
+.form-control.custom-control {
+    &:focus,
+    &:active {
+        border: 3px solid $accentColor;
+        outline: none;
+    }
+}

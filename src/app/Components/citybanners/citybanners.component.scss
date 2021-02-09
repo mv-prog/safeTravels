@@ -1,42 +1,19 @@
 @import "../../breakpoints";
 $ml: 1%;
 .citybanners {
-    margin-top: 20px;
+    margin-top: 40px;
     margin-left: 10px;
     display: flex;
     flex-direction: column;
     h2 {
         margin-top: 20px;
         margin-left: 18%;
-        // font-weight: bold;
     }
     @include media(mobile){
         .gen, h2 {
             display: none;
         }
-        // .alm {
-        //     display: none;
-        // }
-        // .gen, .pont, .cal, .city1, .pal, .cies, .rock {
-        //     display: none;
-        // }
-        // .cal {
-        //     width: 10%;
-        // }
-        // .city1 {
-        //     max-height: 300px;
-        // }
-        // .pal {
-        //     width: 40%;
-        // }
-        // .cies {
-        //     width: 31%;
-        // }
-        // .rock {
-        //     width: 31%;
-        // }
     }
-    
     @include media(sm, tablet) {
         h2{
             display: inline;
@@ -46,7 +23,6 @@ $ml: 1%;
             position: relative;
             width: 30%;
             height: 150px;
-            // height: 80%;
             margin-left: $ml;
             z-index: 0;
         }
@@ -81,7 +57,6 @@ $ml: 1%;
             position: relative;
             width: 20%;
             height: 202px;
-            // height: 80%;
             margin-left: $ml;
             z-index: 0;
         }
