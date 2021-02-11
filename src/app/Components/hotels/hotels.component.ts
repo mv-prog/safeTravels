@@ -10,7 +10,6 @@ export class HotelsComponent implements OnInit {
 
   dataList: any = [];
   constructor(private hdataservice: HdataService){}
-
   ngOnInit(): void {
     this.hdataservice.getHData().subscribe(response => {
       this.dataList = response;

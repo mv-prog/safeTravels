@@ -1,15 +1,39 @@
-.imgH{
-    width: 250px;
-    height: 250px;
+@import "../../breakpoints";
+
+@include media(mobile) {
+    .imgH {
+        width: 400px;
+        height: 350px;
+    }
+    div.hotellist {
+        margin-top: 200px;
+        margin-left: 10%;
+        max-width: 400px;
+    }
 }
-h5.card-title{
- font-size: 20px;   
+@include media(sm){
+    div.hotellist{
+        margin-left: 30%;
+    }
 }
-div.card.hotels{
+@include media(cards, md, desktop) {
+    .imgH {
+        width: 250px;
+        height: 210px;
+    }
+    div.hotellist {
+        margin-top: 200px;
+        max-width: 600px
+        // margin-left: 30%;
+    }
+}
+h5.card-title {
+    font-size: 20px;
+    // font-weight: 500;
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+}
+div.card.hotels {
     display: flex;
     flex-direction: row;
 }
-div.hotellist{
-    margin-top: 200px;
-    margin-left: 25%;
-}
+
