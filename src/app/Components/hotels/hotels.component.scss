@@ -1,12 +1,11 @@
 @import "../../breakpoints";
-
 @include media(mobile) {
     .imgH {
         width: 400px;
         height: 350px;
     }
     div.hotellist {
-        margin-top: 200px;
+        margin-top: 20px;
         margin-left: 10%;
         max-width: 400px;
     }
@@ -22,7 +21,7 @@
         height: 210px;
     }
     div.hotellist {
-        margin-top: 200px;
+        margin-top: 20px;
         max-width: 600px
         // margin-left: 30%;
     }

@@ -1,37 +1,30 @@
-@import "../../breakpoints";
 @import "../../../variables";
-@include media(mobile, sm, md, tablet) {
-    form.form-inline.my-2.my-lg-0 {
-        display: none;
+h2 {
+    //text-align: center;
+    margin-left: 15%;
+    margin-top: 40px;
+    font-size: 25px;
+}
+mdb-card.eachcard{
+    max-width: 300px;
+    max-height: 500px;
+    .imgdiv{
+        max-height: 250px;
+    mdb-card-img.ht{
+        height: 250px;
+        max-height: 250px;
     }
 }
-@include media(formnavbar) {
-    form.form-inline.my-2.my-lg-0 {
-        display: inline;
-    }
+    
 }
-mdb-navbar {
-    .navbar-brand {
-        font-weight: 400;
-        color: $black;
-    }
-    li.nav-item a.nav-link {
-        color: $black;
-        font-weight: 400;
-        &:hover {
-            color: $accentColor;
-            &:active {
-                font-size: 16px;
-            }
-        }
-    }
+.offers{
+    display: flex;
+    justify-content: space-evenly;
+    margin-bottom: 20px;
 }
-.logoIcon {
-    max-width: 40px;
-    max-height: 40px;
-    margin-right: 6px;
-}
+
 .btn-outline-accent.custom-btn {
+    margin-left: 40%;
     color: $accentColor;
     border-color: $accentColor;
     border: 1px solid $accentColor;
@@ -56,12 +49,5 @@ mdb-navbar {
             border-radius: 5px;
             color: $accentColor;
         }
-    }
-}
-.form-control.custom-control {
-    &:focus,
-    &:active {
-        border: 3px solid $accentColor;
-        outline: none;
     }
 }

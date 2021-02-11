@@ -2,11 +2,12 @@ import { Component, OnInit } from '@angular/core';
 import { HdataService } from 'src/app/hdata.service';
 
 @Component({
-  selector: 'app-offers',
-  templateUrl: './offers.component.html',
-  styleUrls: ['./offers.component.scss']
+  selector: 'app-recommended',
+  templateUrl: './recommended.component.html',
+  styleUrls: ['./recommended.component.scss']
 })
-export class OffersComponent implements OnInit {
+export class RecommendedComponent implements OnInit {
+
   dataList: any = [];
   constructor(private hdataservice: HdataService){}
   ngOnInit(): void {
@@ -14,5 +15,4 @@ export class OffersComponent implements OnInit {
       this.dataList = response;
     });
   }
-
 }

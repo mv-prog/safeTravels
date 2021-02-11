@@ -1,13 +1,13 @@
 import { Component, OnInit } from '@angular/core';
-import { HdataService } from 'src/app/hdata.service';
 import { ViewChild } from '@angular/core';
 import { MatDatepicker } from '@angular/material/datepicker';
+
 @Component({
-  selector: 'app-hotels',
-  templateUrl: './hotels.component.html',
-  styleUrls: ['./hotels.component.scss']
+  selector: 'app-hotelsform',
+  templateUrl: './hotelsform.component.html',
+  styleUrls: ['./hotelsform.component.scss']
 })
-export class HotelsComponent implements OnInit {
+export class HotelsformComponent implements OnInit {
   @ViewChild(MatDatepicker) datepicker: MatDatepicker<Date>;
   public options = ['Mallorca', 'Santiago', 'Ca Sa Padrina d\'Artà'];
   public hideIndication = true;
@@ -21,12 +21,9 @@ export class HotelsComponent implements OnInit {
     childrenNumber: 0,
     roomsNumber: 1,
   };
-  dataList: any = [];
-  constructor(private hdataservice: HdataService){}
+  constructor() { }
+
   ngOnInit(): void {
-    this.hdataservice.getHData().subscribe(response => {
-      this.dataList = response;
-    });
   }
   // tslint:disable-next-line: typedef
   public getSearch(adultsNumber: HTMLInputElement, childrenNumber: HTMLInputElement, roomsNumber: HTMLInputElement) {
@@ -35,4 +32,3 @@ export class HotelsComponent implements OnInit {
       this.roomsNumber = Number(roomsNumber.value);
   }
 }
-
