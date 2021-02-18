@@ -7,9 +7,9 @@
                 <a><mdb-card-img src="./../../{{hotel.imgD}}" alt="img {{hotel.name}}" class="ht"></mdb-card-img></a>
             </div>
             <mdb-card-body>
-                <mdb-card-title class="hotelName text-primary" >
-                    <a><h3>{{hotel.name}}</h3></a>
-                </mdb-card-title>
+                <a class="hotelName text-primary" >
+                    <h3>{{hotel.name}}</h3>
+                </a>
                 <p class="text-body"> <a>{{ hotel.city}}, {{ hotel.region }}</a> <span class="starting text-success"> From {{hotel.price}}€ </span> </p>
                 <button mat-fab color="warn" class="offers">
                     {{hotel.offer}}% off

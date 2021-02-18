@@ -2,14 +2,14 @@
 @import "~@angular/material/theming";
 @include angular-material-color($dark-theme);
 h2 {
-    margin-left: 15%;
+    margin-left: 17%;
     margin-top: 40px;
-    font-size: 25px;
+    font-size: 28px;
     font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
 }
 mdb-card.eachcard {
     max-width: 300px;
-    max-height: 500px;
+    max-height: 350px;
     margin-bottom: 20px;
     margin-right: 20px;
     box-sizing: border-box;
@@ -37,7 +37,7 @@ div.offers {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
-    margin-bottom: 50px;
+    margin-bottom: 30px;
 }
 button.offers {
     position: absolute;
