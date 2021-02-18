@@ -13,6 +13,7 @@ export class HomeComponent {
   public adultsNumber: number;
   public roomsNumber: number;
   public childrenNumber: number;
+  public showBrowserBanners: boolean;
   search = {
     searchInput: 'All hotels and places',
     dateRange: '',
@@ -20,7 +21,9 @@ export class HomeComponent {
     childrenNumber: 0,
     roomsNumber: 1,
   };
-  constructor() {}
+  constructor() {
+    this.showBrowserBanners = true;
+  }
   // tslint:disable-next-line: typedef
   public getSearch(adultsNumber: HTMLInputElement, childrenNumber: HTMLInputElement, roomsNumber: HTMLInputElement) {
   this.adultsNumber = Number(adultsNumber.value),

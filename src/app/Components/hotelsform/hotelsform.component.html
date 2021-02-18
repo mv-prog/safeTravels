@@ -113,6 +113,6 @@
             </mat-form-field>
         </div>
     </div>
-    <button type="submit" [routerLink]="['/hotels', search]" routerLinkActive="router-link-active"
+    <button type="submit" [routerLink]="['/hotels', search]" (click)= dontShowbb() routerLinkActive="router-link-active"
         [disabled]="!searchForm.valid" mat-raised-button color="accent">Search Hotels!</button>
 </form>

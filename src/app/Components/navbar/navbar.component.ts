@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { LoginComponent } from '../login/login.component';
 import { SignupComponent } from './../signup/signup.component';
 import { MatDialog, MatDialogConfig} from '@angular/material/dialog';
@@ -8,7 +8,12 @@ import { MatDialog, MatDialogConfig} from '@angular/material/dialog';
   styleUrls: ['./navbar.component.scss']
 })
 export class NavbarComponent implements OnInit {
+  @Input() showBrowserBanners;
+  @Output() showBB = new EventEmitter<void>();
   constructor(private dialog: MatDialog) { }
+  public showbb(): void{
+    this.showBB.emit(this.showBrowserBanners);
+  }
   ngOnInit(): void {
   }
   // tslint:disable-next-line: typedef

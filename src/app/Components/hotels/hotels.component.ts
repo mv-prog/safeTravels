@@ -8,12 +8,14 @@ import { MatDatepicker } from '@angular/material/datepicker';
   styleUrls: ['./hotels.component.scss']
 })
 export class HotelsComponent implements OnInit {
+  selected = 'recommended';
   @ViewChild(MatDatepicker) datepicker: MatDatepicker<Date>;
   public options = ['Mallorca', 'Santiago', 'Ca Sa Padrina d\'Artà'];
   public hideIndication = true;
   public adultsNumber: number;
   public roomsNumber: number;
   public childrenNumber: number;
+  public showBrowserBanners: boolean;
   search = {
     searchInput: 'All hotels and places',
     dateRange: '',
@@ -22,7 +24,15 @@ export class HotelsComponent implements OnInit {
     roomsNumber: 1,
   };
   dataList: any = [];
-  constructor(private hdataservice: HdataService){}
+  constructor(private hdataservice: HdataService){
+    this.showBrowserBanners = true;
+  }
+  public dontShowBrowserBanners(e): void{
+    this.showBrowserBanners = false;
+  }
+  public showbrowserbanners(e): void{
+    this.showBrowserBanners = true;
+  }
   ngOnInit(): void {
     this.hdataservice.getHData().subscribe(response => {
       this.dataList = response;
