@@ -1,33 +1,55 @@
 @import "../../../Themes/theme1";
 @import "~@angular/material/theming";
-@include angular-material-color($dark-theme); 
+@include angular-material-color($dark-theme);
 h2 {
-    //text-align: center;
     margin-left: 15%;
     margin-top: 40px;
     font-size: 25px;
+    font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
 }
-mdb-card.eachcard{
+mdb-card.eachcard {
     max-width: 300px;
     max-height: 500px;
-    .imgdiv{
-        max-height: 250px;
-    mdb-card-img.ht{
-        height: 250px;
-        max-height: 250px;
-    }
-}
-    
-}
-.offers{
-    display: flex;
-    justify-content: space-evenly;
     margin-bottom: 20px;
+    margin-right: 20px;
+    box-sizing: border-box;
+    &:hover {
+        opacity: 0.9;
+    }
+    .imgdiv {
+        height: 250px;
+        mdb-card-img.ht {
+            height: 250px;
+            // max-height: 250px;
+        }
+    }
+    span.starting{
+        // width: 75px;
+        font-size: 20px;
+        padding: 10px;
+        font-weight: 800;
+        margin-left: 7%;
+    }
+   
 }
-.linkbutton{
-    border-radius: 50px;
-    margin-left: 25%;
+
+div.offers {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin-bottom: 50px;
+}
+button.offers {
+    position: absolute;
+    top: 0;
+    right: 0;
+    z-index: 1;
+    margin-top: 2px;
+    margin-right: 2px;
+    padding-left: 5px;
+    padding-right: 5px;
 }
 .unicorn-dark-theme {
-    color:mat-color($dark-warn);
+    font-weight: 800;
+    color: mat-color($dark-accent);
 }

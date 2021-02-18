@@ -18,12 +18,15 @@
 @include media(cards, md, desktop) {
     .imgH {
         width: 250px;
-        height: 210px;
+        height: 220px;
     }
     div.hotellist {
         margin-top: 20px;
-        max-width: 600px;
+        max-width: 800px;
         // margin-left: 30%;
+    }
+    div.card.hotels {
+        height: 220px;
     }
 }
 h5.card-title {
@@ -35,12 +38,17 @@ div.card.hotels {
     display: flex;
     flex-direction: row;
 }
-.searchfilters {
-    margin-left: 50%;
+.searchOrder {
+    margin-left: 60%;
     mat-form-field {
-      margin-top: 30px;
+        margin-top: 30px;
     }
-  }
+}
+div.searchfilters {
+    p{
+    margin-left: 20%;
+    }
+}
 header.jumbotron.hotels {
     display: flex;
     align-items: center;

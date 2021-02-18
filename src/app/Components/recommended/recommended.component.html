@@ -1,22 +1,40 @@
-<h2>Recommended by other travelers!</h2>
-<div class="offers">
-    <ng-container *ngFor="let hotel of dataList">
-        <mdb-card class="eachcard" *ngIf="hotel.recommended">
-            <div class="view imgdiv rgba-white-slight waves-light" mdbWavesEffect>
-                <mdb-card-img src="./../../{{hotel.imgD}}" alt="img {{hotel.name}}" class="ht"></mdb-card-img>
-                <a>
-                    <div class="mask"></div>
-                </a>
-            </div>
-            <mdb-card-body>
-                <mdb-card-title>
-                    <a><h4>{{hotel.name}}</h4></a>
-                </mdb-card-title>
-                <mdb-card-text> {{hotel.description}}
-                </mdb-card-text> 
-                <!-- <a href="#" color="pink" mdbWavesEffect>Explore</a> -->
-                <button class="btn btn-outline-accent custom-btn my-2 my-sm-0" type="submit">Explore ></button>
-            </mdb-card-body>
-        </mdb-card>
-    </ng-container>
+<div class="recommendedsection">
+    <h2>
+        <span class="material-icons unicorn-dark-theme">
+            arrow_upward
+        </span>
+        <span class="material-icons unicorn-dark-theme">
+            arrow_upward
+        </span>
+        Top hotels that our travelers love! <i class="fas fa-heart unicorn-dark-theme"></i>
+    </h2>
+    <div class="offers ">
+        <ng-container *ngFor="let hotel of dataList">
+            <mdb-card class="eachcard" *ngIf="hotel.recommended">
+                <div class="view imgdiv rgba-white-slight waves-light" mdbWavesEffect>
+                    <a>
+                        <mdb-card-img src="./../../{{hotel.imgD}}" alt="img {{hotel.name}}" class="ht"></mdb-card-img>
+                    </a>
+                </div>
+                <mdb-card-body>
+                    <mdb-card-title class="hotelName text-primary">
+                        <a>
+                            <h3>{{hotel.name}}</h3>
+                        </a>
+                    </mdb-card-title>
+                    <p class="text-body"><a> {{ hotel.city}}, {{ hotel.region }} </a></p>
+                    <!-- <ng-container *ngFor="let reviews of hotel.reviews"> -->
+                    <p class="ratingP"> <span class="rating text-white bg-info"> {{ hotel.rating}}  </span> <span class="reviewsNumber">{{ hotel.reviews.length}} reviews</span>
+                        <!-- <a mat-raised-button href="https://www.google.com/" target="_blank">Link</a> -->
+                        <button mat-raised-button style="margin-left: 50px;" color="accent">Explore ></button>
+                        <!-- <button class="botonExplore btn btn-outline-accent custom-btn my-2 my-sm-0" type="submit">
+                            Explore >
+                        </button> -->
+                    </p>
+                    <!-- </ng-container> -->
+
+                </mdb-card-body>
+            </mdb-card>
+        </ng-container>
+    </div>
 </div>

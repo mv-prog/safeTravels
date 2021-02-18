@@ -1,5 +1,5 @@
 <app-navbar [showBrowserBanners]="showbrowserbanners" (showBB)="showbrowserbanners($event)"></app-navbar>
-<div class="searchfilters" [style.display]="showBrowserBanners ? 'none':'inherit'">
+<div class="searchOrder" [style.display]="showBrowserBanners ? 'none':'inherit'">
   <mat-form-field appearance="outline">
     <mat-label>Select an option</mat-label>
     <mat-select [(value)]="selected">
@@ -12,6 +12,22 @@
   </mat-form-field>
   <!-- <p>You selected: {{selected}}</p> -->
 </div>
+<!-- <div class="searchfilters" [style.display]="showBrowserBanners ? 'none':'inherit'">
+  <p>{{dataList.length}} results</p>
+  <h3>Filter by</h3>
+  <h4>Stars</h4>
+  <mat-checkbox class="starscheckboxes"
+  [color]="star.color">
+{{star.name}}
+</mat-checkbox>
+</div> -->
+<!-- <ul>
+  <li *ngFor="let star of star.stars">
+    <mat-checkbox [color]="star.color">
+      {{star.name}}
+    </mat-checkbox>
+  </li>
+</ul> -->
 <div class="show-browser-banners" [style.display]="showBrowserBanners ? 'inherit':'none'">
   <header class="jumbotron hotels jumbotron shadow">
     <app-hotelsform [showBrowserBanners]="showBrowserBanners" (dontShowBB)="dontShowBrowserBanners($event)">
@@ -27,7 +43,7 @@
       <div class="col-md-4">
         <a><img class="img-fluid imgH" src="./../../{{hotel.imgD}}" alt="img {{hotel.name}}"></a>
       </div>
-      <div class="col-md-8">
+      <div class="col-md-6">
         <div class="card-body">
           <h5 class="card-title">{{hotel.name}}</h5>
           <p class="card-text">
@@ -46,7 +62,16 @@
           </p>
         </div>
       </div>
-     
+      <div class="col-md-2">
+        <div *ngIf="hotel.offer>0"> <span class="originalprice"><s> {{ hotel.price }} </s></span> <span class="offer">
+            -{{hotel.offer}}%! </span>
+        </div>
+        <p class="card-text price">
+          {{ hotel.price }} 
+        </p>
+        <button type="submit" mat-raised-button color="accent">View more</button>
+      </div>
+
     </div>
   </div>
 </div>
