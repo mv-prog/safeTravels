@@ -24,12 +24,18 @@ export class HomeComponent {
   constructor() {
     this.showBrowserBanners = true;
   }
+  public dontShowBrowserBanners(e): void {
+    this.showBrowserBanners = false;
+  }
+  public showbrowserbanners(e): void {
+    this.showBrowserBanners = true;
+  }
   // tslint:disable-next-line: typedef
   public getSearch(adultsNumber: HTMLInputElement, childrenNumber: HTMLInputElement, roomsNumber: HTMLInputElement) {
-  this.adultsNumber = Number(adultsNumber.value),
-    this.childrenNumber = Number(childrenNumber.value),
-    this.roomsNumber = Number(roomsNumber.value);
-}
+    this.adultsNumber = Number(adultsNumber.value),
+      this.childrenNumber = Number(childrenNumber.value),
+      this.roomsNumber = Number(roomsNumber.value);
+  }
 
 
 }

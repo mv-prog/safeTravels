@@ -48,7 +48,7 @@
                 <mat-label class="help-block" id="adultsNumber">
                     Adults
                 </mat-label>
-                <mat-select id="adultsNumber" placeholder="2" [(value)]="adultsNumber" [(ngModel)]="search.adultsNumber"
+                <mat-select id="adultsNumber" placeholder="2" [(value)]="search.adultsNumber" [(ngModel)]="search.adultsNumber"
                     name="adultsNumber">
                     <!-- <mat-option *ngFor="let item of [1,2,3,4,5,6,7,8,9,10]">
               {{item}}
@@ -72,7 +72,7 @@
                 <mat-label class="help-block" id="childrenNumber">
                     Children
                 </mat-label>
-                <mat-select [(value)]="childrenNumber" placeholder="0" ngModel name="childrenNumber">
+                <mat-select [(value)]="search.childrenNumber" placeholder="0" ngModel name="search.childrenNumber">
                     <!-- <mat-option *ngFor="let item of [0,1,2,3,4,5,6,7,8,9,10]">
               {{item}}
             </mat-option> -->
@@ -95,7 +95,7 @@
                 <mat-label class="help-block" id="roomsNumber">
                     Rooms
                 </mat-label>
-                <mat-select [(value)]="roomsNumber" placeholder="1" ngModel name="roomsNumber">
+                <mat-select [(value)]="search.roomsNumber" placeholder="1" ngModel name="search.roomsNumber">
                     <!-- <mat-option *ngFor="let item of [1,2,3,4,5,6,7,8,9,10]">
               {{item}}
             </mat-option> -->
@@ -113,6 +113,6 @@
             </mat-form-field>
         </div>
     </div>
-    <button type="submit" [routerLink]="['/hotels', search]" (click)= dontShowbb() routerLinkActive="router-link-active"
-        [disabled]="!searchForm.valid" mat-raised-button color="accent">Search Hotels!</button>
+    <button type="submit" [routerLink]="['/hlistings', search]" (click)= dontShowbb() routerLinkActive="router-link-active"
+    [disabled]="!searchForm.valid" mat-raised-button color="accent">Search Hotels!</button>
 </form>

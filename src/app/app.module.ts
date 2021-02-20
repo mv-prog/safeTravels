@@ -33,11 +33,11 @@ import { Error404Component } from './Components/error404/error404.component';
 import { HttpClientModule } from '@angular/common/http';
 import { HotelsformComponent } from './Components/hotelsform/hotelsform.component';
 import { RecommendedComponent } from './Components/recommended/recommended.component';
-import { CalculateOriginalPricePipe } from './Components/calculate-original-price.pipe';
+import { HlistingsComponent } from './Components/hlistings/hlistings.component';
 
 @NgModule({
   // tslint:disable-next-line: max-line-length
-  declarations: [AppComponent, HomeComponent, ContactComponent, LoginComponent, SignupComponent, CitybannersComponent, NlbannerComponent, FooterComponent, OffersComponent, NavbarComponent, HotelsComponent, Error404Component, HotelsformComponent, RecommendedComponent, CalculateOriginalPricePipe],
+  declarations: [AppComponent, HomeComponent, ContactComponent, LoginComponent, SignupComponent, CitybannersComponent, NlbannerComponent, FooterComponent, OffersComponent, NavbarComponent, HotelsComponent, Error404Component, HotelsformComponent, RecommendedComponent, HlistingsComponent],
   // tslint:disable-next-line: max-line-length
   imports: [MDBBootstrapModule.forRoot(), BrowserModule, AppRoutingModule, FlexLayoutModule, MaterialModule, MatIconModule, MatInputModule, MatToolbarModule, BrowserAnimationsModule, MatDatepickerModule, MatNativeDateModule, MatFormFieldModule,
     // tslint:disable-next-line: max-line-length

@@ -1,20 +1,14 @@
-import { Component, OnInit } from '@angular/core';
-import { HdataService } from 'src/app/hdata.service';
-import { ViewChild } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { MatDatepicker } from '@angular/material/datepicker';
-import { ThemePalette } from '@angular/material/core';
-export interface Star {
-  name?: string;
-  color?: ThemePalette;
-  stars?: Star[];
-}
+import { HdataService } from 'src/app/hdata.service';
+import { Star } from '../hotels/hotels.component';
 
 @Component({
-  selector: 'app-hotels',
-  templateUrl: './hotels.component.html',
-  styleUrls: ['./hotels.component.scss']
+  selector: 'app-hlistings',
+  templateUrl: './hlistings.component.html',
+  styleUrls: ['./hlistings.component.scss']
 })
-export class HotelsComponent implements OnInit {
+export class HlistingsComponent implements OnInit {
   selected = 'recommended';
   star: Star = {
     stars: [
@@ -25,6 +19,7 @@ export class HotelsComponent implements OnInit {
       { name: '5 stars', color: 'warn' }
     ]
   };
+
   @ViewChild(MatDatepicker) datepicker: MatDatepicker<Date>;
   public options = ['Mallorca', 'Santiago', 'Ca Sa Padrina d\'Artà'];
   public hideIndication = true;
@@ -41,18 +36,20 @@ export class HotelsComponent implements OnInit {
   };
   dataList: any = [];
   constructor(private hdataservice: HdataService) {
-    this.showBrowserBanners = true;
   }
   ngOnInit(): void {
     this.hdataservice.getHData().subscribe(response => {
       this.dataList = response;
     });
   }
-  public dontShowBrowserBanners(e): void {
-    this.showBrowserBanners = false;
+  // tslint:disable-next-line: typedef
+  public getSearch(adultsNumber: HTMLInputElement, childrenNumber: HTMLInputElement, roomsNumber: HTMLInputElement) {
+    this.adultsNumber = Number(adultsNumber.value),
+      this.childrenNumber = Number(childrenNumber.value),
+      this.roomsNumber = Number(roomsNumber.value);
   }
-  public showbrowserbanners(e): void {
-    this.showBrowserBanners = true;
+  calculatePercentage(orPrice, percentage): number{
+    return orPrice - (orPrice * percentage / 100);
   }
-}
 
+}

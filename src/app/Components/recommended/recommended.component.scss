@@ -22,8 +22,8 @@
     flex-direction: column;
 }
 h2 {
-    //text-align: center;
-    margin-left: 38%;
+    text-align: center;
+    // margin-left: 38%;
     // margin-top: 10px;
     font-size: 28px;
     font-family: Impact, Haettenschweiler, "Arial Narrow Bold", sans-serif;
@@ -51,12 +51,6 @@ div.recommendedsection {
                     }
                 }
             }
-            mdb-card-title.hotelName {
-                line-height: 100px;
-            }
-            p.text-body {
-                line-height: -20px;
-            }
             span.starting {
                 // width: 75px;
                 font-size: 20px;
@@ -67,15 +61,16 @@ div.recommendedsection {
             .ratingP {
                 display: flex;
                 flex-direction: row;
+                line-height: -1.1;
                 span.reviewsNumber {
                     padding-top: 5px;
-                    padding-left: 5px;
+                    padding-left: 2px;
                     font-size: 15px;
                 }
                 span.rating {
                     padding-top: 5px;
-                    padding-left: 5px;
-                    padding-right: 5px;
+                    padding-left: 3px;
+                    padding-right: 3px;
                     font-size: 20px;
                     border-radius: 5px;
                 }
@@ -85,7 +80,7 @@ div.recommendedsection {
 }
 
 .btn-outline-accent.custom-btn {
-    margin-left: 5%;
+    margin-left: 25%;
     color: $accentColor;
     border-color: $accentColor;
     border: 1px solid $accentColor;

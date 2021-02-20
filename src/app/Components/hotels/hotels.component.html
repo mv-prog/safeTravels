@@ -1,17 +1,15 @@
-<app-navbar [showBrowserBanners]="showbrowserbanners" (showBB)="showbrowserbanners($event)"></app-navbar>
-<div class="searchOrder" [style.display]="showBrowserBanners ? 'none':'inherit'">
-  <mat-form-field appearance="outline">
-    <mat-label>Select an option</mat-label>
-    <mat-select [(value)]="selected">
-      <mat-option>None</mat-option>
-      <mat-option value="lowest">Lowest Price First</mat-option>
-      <mat-option value="highest">Highest Price First</mat-option>
-      <mat-option value="rating">Customer Rating</mat-option>
-      <mat-option value="recommended">Recommended</mat-option>
-    </mat-select>
-  </mat-form-field>
-  <!-- <p>You selected: {{selected}}</p> -->
+<app-navbar [showBrowserBanners]="showbrowserbanners" (showBB)="showbrowserbanners($event)" (dontShowBB)="dontShowBrowserBanners($event)"></app-navbar>
+
+<div class="show-browser-banners" [style.display]="showBrowserBanners ? 'inherit':'none'">
+  <header class="jumbotron hotels jumbotron shadow">
+    <app-hotelsform [search]='search' [showBrowserBanners]="showBrowserBanners" (dontShowBB)="dontShowBrowserBanners($event)">
+    </app-hotelsform>
+  </header>
+  <nlbanner></nlbanner>
+  <app-offers></app-offers>
+  <app-recommended></app-recommended>
 </div>
+
 <!-- <div class="searchfilters" [style.display]="showBrowserBanners ? 'none':'inherit'">
   <p>{{dataList.length}} results</p>
   <h3>Filter by</h3>
@@ -28,51 +26,4 @@
     </mat-checkbox>
   </li>
 </ul> -->
-<div class="show-browser-banners" [style.display]="showBrowserBanners ? 'inherit':'none'">
-  <header class="jumbotron hotels jumbotron shadow">
-    <app-hotelsform [showBrowserBanners]="showBrowserBanners" (dontShowBB)="dontShowBrowserBanners($event)">
-    </app-hotelsform>
-  </header>
-  <nlbanner></nlbanner>
-  <app-offers></app-offers>
-  <app-recommended></app-recommended>
-</div>
-<div class="hotellist">
-  <div class="card hotels mb-3" *ngFor="let hotel of dataList">
-    <div class="row g-0">
-      <div class="col-md-4">
-        <a><img class="img-fluid imgH" src="./../../{{hotel.imgD}}" alt="img {{hotel.name}}"></a>
-      </div>
-      <div class="col-md-6">
-        <div class="card-body">
-          <h5 class="card-title">{{hotel.name}}</h5>
-          <p class="card-text">
-            <span class="stars-number"> {{hotel.stars }} </span>
-            <span class="material-icons yellow-text yellowstar">star_rate</span>
-          </p>
-          <p class="card-text">
-            {{ hotel.description }}
-          </p>
-          <!-- aquí un ngIf para amosar icono de percina e balneario ou non -->
-          <p class="card-text">
-            <span *ngIf="hotel.balneario"><i class="fas fa-hot-tub"></i> &nbsp; </span>
-            <span *ngIf="hotel.piscina"> <i class="fas fa-swimming-pool"></i> &nbsp;</span>
-            <span *ngIf="hotel.wifi"> <i class="fas fa-wifi"></i> &nbsp;</span>
-            <span *ngIf="hotel.parking"> <i class="fas fa-parking"></i> </span>
-          </p>
-        </div>
-      </div>
-      <div class="col-md-2">
-        <div *ngIf="hotel.offer>0"> <span class="originalprice"><s> {{ hotel.price }} </s></span> <span class="offer">
-            -{{hotel.offer}}%! </span>
-        </div>
-        <p class="card-text price">
-          {{ hotel.price }} 
-        </p>
-        <button type="submit" mat-raised-button color="accent">View more</button>
-      </div>
-
-    </div>
-  </div>
-</div>
 <app-footer></app-footer>

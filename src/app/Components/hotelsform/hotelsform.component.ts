@@ -9,20 +9,20 @@ import { MatDatepicker } from '@angular/material/datepicker';
 })
 export class HotelsformComponent implements OnInit {
   @ViewChild(MatDatepicker) datepicker: MatDatepicker<Date>;
-  public options = ['Mallorca', 'Santiago', 'Ca Sa Padrina d\'Artà'];
-  public hideIndication = true;
-  public adultsNumber: number;
-  public roomsNumber: number;
-  public childrenNumber: number;
-  // public showBrowserBanners: boolean;
-  search = {
-    searchInput: 'All hotels and places',
-    dateRange: '',
-    adultsNumber: 2,
-    childrenNumber: 0,
-    roomsNumber: 1,
-  };
+  public options = ['All hotels and places', 'Mallorca', 'Santiago', 'Ca Sa Padrina d\'Artà'];
+  // public adultsNumber: number;
+  // public roomsNumber: number;
+  // public childrenNumber: number;
+  // // public showBrowserBanners: boolean;
+  // search = {
+  //   searchInput: '',
+  //   dateRange: '',
+  //   adultsNumber: 2,
+  //   childrenNumber: 0,
+  //   roomsNumber: 1,
+  // };
   @Input() showBrowserBanners;
+  @Input() search;
   @Output() dontShowBB = new EventEmitter<void>();
   constructor() {
     // this.showBrowserBanners = true;
@@ -35,11 +35,11 @@ export class HotelsformComponent implements OnInit {
 
   ngOnInit(): void {
   }
-  public getSearch(adultsNumber: HTMLInputElement, childrenNumber: HTMLInputElement, roomsNumber: HTMLInputElement): void {
-    this.adultsNumber = Number(adultsNumber.value),
-      this.childrenNumber = Number(childrenNumber.value),
-      this.roomsNumber = Number(roomsNumber.value);
-  }
+  // public getSearch(adultsNumber: HTMLInputElement, childrenNumber: HTMLInputElement, roomsNumber: HTMLInputElement): void {
+  //   this.adultsNumber = Number(adultsNumber.value),
+  //     this.childrenNumber = Number(childrenNumber.value),
+  //     this.roomsNumber = Number(roomsNumber.value);
+  // }
 
   // tslint:disable-next-line: typedef
   // public getOptions() {

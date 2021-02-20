@@ -5,6 +5,7 @@ import { ContactComponent } from './Components/contact/contact.component';
 import { LoginComponent } from './Components/login/login.component';
 import { HotelsComponent } from './Components/hotels/hotels.component';
 import { Error404Component } from './Components/error404/error404.component';
+import { HlistingsComponent } from './Components/hlistings/hlistings.component';
 
 const routes: Routes = [
   {
@@ -15,6 +16,9 @@ const routes: Routes = [
   },
   {
     path: 'hotels', component: HotelsComponent
+  },
+  {
+    path: 'hlistings', component: HlistingsComponent
   },
   {
     path: 'error404',
@@ -28,6 +32,6 @@ const routes: Routes = [
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
-exports: [RouterModule]
+  exports: [RouterModule]
 })
 export class AppRoutingModule { }

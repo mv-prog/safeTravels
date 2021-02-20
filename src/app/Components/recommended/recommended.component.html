@@ -16,20 +16,19 @@
                         <mdb-card-img src="./../../{{hotel.imgD}}" alt="img {{hotel.name}}" class="ht"></mdb-card-img>
                     </a>
                 </div>
-                <mdb-card-body>
-                    <mdb-card-title class="hotelName text-primary">
+                <mdb-card-body class="bg-light-gray">
+                    <mdb-card-title class="hotelName text-secondary">
                         <a>
                             <h3>{{hotel.name}}</h3>
                         </a>
                     </mdb-card-title>
                     <p class="text-body"><a> {{ hotel.city}}, {{ hotel.region }} </a></p>
                     <!-- <ng-container *ngFor="let reviews of hotel.reviews"> -->
-                    <p class="ratingP"> <span class="rating text-white bg-info"> {{ hotel.rating}}  </span> <span class="reviewsNumber">{{ hotel.reviews.length}} reviews</span>
-                        <!-- <a mat-raised-button href="https://www.google.com/" target="_blank">Link</a> -->
-                        <button mat-raised-button style="margin-left: 50px;" color="accent">Explore ></button>
-                        <!-- <button class="botonExplore btn btn-outline-accent custom-btn my-2 my-sm-0" type="submit">
+                    <p class="ratingP"><span class="rating text-white bg-info">{{ hotel.rating}}</span><span class="reviewsNumber"><i class="fas fa-arrow-right"></i> {{ hotel.reviews.length}} reviews</span>
+                        <!-- <button mat-raised-button style="margin-left: 50px;" color="accent">Explore ></button> -->
+                        <button class="botonExplore btn btn-outline-accent custom-btn btn-sm" type="submit">
                             Explore >
-                        </button> -->
+                        </button>
                     </p>
                     <!-- </ng-container> -->
 
