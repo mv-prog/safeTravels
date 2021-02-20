@@ -34,14 +34,16 @@ import { HttpClientModule } from '@angular/common/http';
 import { HotelsformComponent } from './Components/hotelsform/hotelsform.component';
 import { RecommendedComponent } from './Components/recommended/recommended.component';
 import { CalculateOriginalPricePipe } from './Components/calculate-original-price.pipe';
+import { FilterPipe } from './Components/filter.pipe';
+import {MatCheckboxModule} from '@angular/material/checkbox';
 
 @NgModule({
   // tslint:disable-next-line: max-line-length
-  declarations: [AppComponent, HomeComponent, ContactComponent, LoginComponent, SignupComponent, CitybannersComponent, NlbannerComponent, FooterComponent, OffersComponent, NavbarComponent, HotelsComponent, Error404Component, HotelsformComponent, RecommendedComponent, CalculateOriginalPricePipe],
+  declarations: [AppComponent, HomeComponent, ContactComponent, LoginComponent, SignupComponent, CitybannersComponent, NlbannerComponent, FooterComponent, OffersComponent, NavbarComponent, HotelsComponent, Error404Component, HotelsformComponent, RecommendedComponent, CalculateOriginalPricePipe, FilterPipe],
   // tslint:disable-next-line: max-line-length
   imports: [MDBBootstrapModule.forRoot(), BrowserModule, AppRoutingModule, FlexLayoutModule, MaterialModule, MatIconModule, MatInputModule, MatToolbarModule, BrowserAnimationsModule, MatDatepickerModule, MatNativeDateModule, MatFormFieldModule,
     // tslint:disable-next-line: max-line-length
-    MatSelectModule, MatAutocompleteModule, MatButtonModule, FormsModule, ReactiveFormsModule, MatCardModule, MatDialogModule, ClickOutsideModule, HttpClientModule],
+    MatSelectModule, MatCheckboxModule , MatAutocompleteModule, MatButtonModule, FormsModule, ReactiveFormsModule, MatCardModule, MatDialogModule, ClickOutsideModule, HttpClientModule],
   providers: [ {provide: MAT_FORM_FIELD_DEFAULT_OPTIONS, useValue: {floatLabel: 'always'}}],
   bootstrap: [AppComponent],
   entryComponents: [LoginComponent, SignupComponent]

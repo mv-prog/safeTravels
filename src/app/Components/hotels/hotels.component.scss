@@ -30,6 +30,17 @@
         height: 220px;
     }
 }
+.searchfilters{
+    position: absolute;
+    left: 0;
+    top: 0;
+    
+    margin-top: 100px;
+    margin-left: 50px;
+    ul{
+        list-style-type: none;    
+    }
+}
 h5.card-title {
     font-size: 20px;
     // font-weight: 500;

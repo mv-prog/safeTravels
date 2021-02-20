@@ -3,6 +3,7 @@ import { HdataService } from 'src/app/hdata.service';
 import { ViewChild } from '@angular/core';
 import { MatDatepicker } from '@angular/material/datepicker';
 import { ThemePalette } from '@angular/material/core';
+import { FilterPipe } from './../filter.pipe';
 export interface Star {
   name?: string;
   color?: ThemePalette;
@@ -63,6 +64,9 @@ export class HotelsComponent implements OnInit {
   }
   calculatePercentage(orPrice, percentage): number {
     return orPrice - (orPrice * percentage / 100);
+  }
+  getHotelsData(e): any{
+    return e;
   }
 }
 
