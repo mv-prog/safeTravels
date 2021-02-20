@@ -18,11 +18,11 @@ export class HotelsComponent implements OnInit {
   selected = 'recommended';
   star: Star = {
     stars: [
-      {name: '1 star',  color: 'warn'},
-      {name: '2 stars', color: 'warn'},
-      {name: '3 stars', color: 'warn'},
-      {name: '4 stars', color: 'warn'},
-      {name: '5 stars', color: 'warn'}
+      { name: '1 star', color: 'warn' },
+      { name: '2 stars', color: 'warn' },
+      { name: '3 stars', color: 'warn' },
+      { name: '4 stars', color: 'warn' },
+      { name: '5 stars', color: 'warn' }
     ]
   };
 
@@ -41,13 +41,13 @@ export class HotelsComponent implements OnInit {
     roomsNumber: 1,
   };
   dataList: any = [];
-  constructor(private hdataservice: HdataService){
+  constructor(private hdataservice: HdataService) {
     this.showBrowserBanners = true;
   }
-  public dontShowBrowserBanners(e): void{
+  public dontShowBrowserBanners(e): void {
     this.showBrowserBanners = false;
   }
-  public showbrowserbanners(e): void{
+  public showbrowserbanners(e): void {
     this.showBrowserBanners = true;
   }
   ngOnInit(): void {
@@ -60,6 +60,9 @@ export class HotelsComponent implements OnInit {
     this.adultsNumber = Number(adultsNumber.value),
       this.childrenNumber = Number(childrenNumber.value),
       this.roomsNumber = Number(roomsNumber.value);
+  }
+  calculatePercentage(orPrice, percentage): number {
+    return orPrice - (orPrice * percentage / 100);
   }
 }
 

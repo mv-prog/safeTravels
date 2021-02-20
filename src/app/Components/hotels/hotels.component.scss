@@ -1,4 +1,5 @@
 @import "../../breakpoints";
+@import "../../../variables";
 @include media(mobile) {
     .imgH {
         width: 400px;
@@ -44,9 +45,41 @@ div.card.hotels {
         margin-top: 30px;
     }
 }
+div.col3rd {
+    display: inline-block;
+    font-family: BlinkMacSystemFont, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif;
+    padding-right: 25px;
+    div.price1 {
+        margin-top: 95%;
+        text-align: right;
+        .originalprice {
+            background-color: $rosequartz1;
+            color: $accent-dark;
+            padding: 3px;
+        }
+        .percentage {
+            background-color: $accent-dark;
+            font-weight: 600;
+            padding: 3px;
+        }
+    }
+    .finalprice {
+        font-size: 28px;
+        position: absolute;
+        padding-right: 30px;
+        bottom: 0;
+        right: 0;
+        margin-bottom: 70px;
+    }
+    button.viewmore {
+        position: absolute;
+        bottom: 0;
+        margin-bottom: 20px;
+    }
+}
 div.searchfilters {
-    p{
-    margin-left: 20%;
+    p {
+        margin-left: 20%;
     }
 }
 header.jumbotron.hotels {
