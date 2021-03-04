@@ -4,6 +4,7 @@ import { ViewChild } from '@angular/core';
 import { MatDatepicker } from '@angular/material/datepicker';
 import { ThemePalette } from '@angular/material/core';
 import { FilterPipe } from './../filter.pipe';
+import { OrderByPipe } from './../order-by.pipe';
 export interface Star {
   id?: string;
   name?: string;
@@ -20,11 +21,11 @@ export class HotelsComponent implements OnInit {
   selected = 'recommended';
   star: Star = {
     stars: [
-      { id: '1', name: '1 star', color: 'primary' },
-      { id: '2', name: '2 stars', color: 'primary' },
-      { id: '3', name: '3 stars', color: 'primary' },
-      { id: '4', name: '4 stars', color: 'primary' },
-      { id: '5', name: '5 stars', color: 'primary' }
+      { id: '1', name: '1 star', color: 'accent' },
+      { id: '2', name: '2 stars', color: 'accent' },
+      { id: '3', name: '3 stars', color: 'accent' },
+      { id: '4', name: '4 stars', color: 'accent' },
+      { id: '5', name: '5 stars', color: 'accent' }
     ]
   };
   @ViewChild(MatDatepicker) datepicker: MatDatepicker<Date>;

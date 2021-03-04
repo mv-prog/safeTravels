@@ -17,14 +17,14 @@
                     </a>
                 </div>
                 <mdb-card-body>
-                    <mdb-card-title class="hotelName text-primary">
+                    <mdb-card-title class="hotelName text-warning">
                         <a>
                             <h3>{{hotel.name}}</h3>
                         </a>
                     </mdb-card-title>
                     <p class="text-body"><a> {{ hotel.city}}, {{ hotel.region }} </a></p>
                     <!-- <ng-container *ngFor="let reviews of hotel.reviews"> -->
-                    <p class="ratingP"> <span class="rating text-white bg-info"> {{ hotel.rating}}  </span> <span class="reviewsNumber">{{ hotel.reviews.length}} reviews</span>
+                    <p class="ratingP"> <a> <span class="rating text-white bg-secondary"> {{ hotel.rating}}  </span> <span class="reviewsNumber">{{ hotel.reviews.length}} reviews</span></a>
                         <!-- <a mat-raised-button href="https://www.google.com/" target="_blank">Link</a> -->
                         <button mat-raised-button style="margin-left: 50px;" color="accent">Explore ></button>
                         <!-- <button class="botonExplore btn btn-outline-accent custom-btn my-2 my-sm-0" type="submit">
