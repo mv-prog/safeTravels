@@ -7,13 +7,23 @@
     button.botonExplore {
         display: none;
     }
+    div.recommendedsection{
+        h2{
+            margin-left: 15%;
+        }
+    }
 }
 .unicorn-dark-theme {
-    color: mat-color($dark-warn);
+    color: mat-color($dark-accent);
 }
 @include media(desktop) {
     button.botonExplore {
         display: inherit;
+    }
+    div.recommendedsection{
+        h2{
+            margin-left: 35%;
+        }
     }
 }
 
@@ -40,6 +50,13 @@ div.recommendedsection {
             max-width: 300px;
             max-height: 380px;
             margin-right: 20px;
+            // box-shadow: 5px 10px #cfe08f;
+            // -webkit-box-shadow: 5px 5px 9px 1px #FFC667;
+            // box-shadow: 5px 5px 9px 1px #FFC667;
+            border-radius: 0px;
+            background: #ffffff;
+            box-shadow: 7px 7px 14px #858585, -7px -7px 14px #ffffff;
+
             margin-bottom: 20px;
             .imgdiv {
                 max-height: 250px;

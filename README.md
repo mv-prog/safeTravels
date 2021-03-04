@@ -2,6 +2,10 @@
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 10.2.0.
 
+# Firebase 
+
+This project is being hosted with Firebase. You can find it here: [safeTravels@Firebase](https://safetravels-365a8.web.app/)
+
 ## Development server
 
 Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.

@@ -1,36 +1,20 @@
-<!-- <app-navbar [showBrowserBanners]="showbrowserbanners" (showBB)="showbrowserbanners($event)"></app-navbar> -->
-<app-navbar></app-navbar> 
+<app-navbar [showBrowserBanners]="showbrowserbanners" (showBB)="showbrowserbanners($event)"></app-navbar>
+<!-- <app-navbar></app-navbar> -->
 <div class="show-browser-banners" [style.display]="showBrowserBanners ? 'inherit':'none'">
   <header class="jumbotron hotels jumbotron shadow">
-    <!-- <app-hotelsform [search]='search' (sendHotelsData)='getHotelsData($event)' [showBrowserBanners]="showBrowserBanners"
-      (dontShowBB)="dontShowBrowserBanners($event)">
-    </app-hotelsform> -->
-    <app-hotelsform [search]='search' (sendHotelsData)='getHotelsData($event)'
+    <app-hotelsform [search]='search' (sendHotelsData)='getHotelsData($event)' [showBrowserBanners]="showBrowserBanners"
       (dontShowBB)="dontShowBrowserBanners($event)">
     </app-hotelsform>
+    <!-- <app-hotelsform [search]='search' (sendHotelsData)='getHotelsData($event)'
+      (dontShowBB)="dontShowBrowserBanners($event)">
+    </app-hotelsform> -->
   </header>
   <nlbanner></nlbanner>
   <app-offers></app-offers>
   <app-recommended></app-recommended>
 </div>
 
-<div class="searchfilters" [style.display]="showBrowserBanners ? 'none':'inherit'">
-  <p><span class="numberResults">{{dataList.length}}</span><span class="results"> results</span></p>
-  <h3>Filter by</h3>
-  <h4>Stars</h4>
-  <!-- <mat-checkbox class="starscheckboxes"
-  [color]="star.color">
-{{star.name}}
-</mat-checkbox> -->
 
-  <ul>
-    <li *ngFor="let star of star.stars">
-      <mat-checkbox [color]="star.color">
-        {{star.name}}
-      </mat-checkbox>
-    </li>
-  </ul>
-</div>
 <div class="searchOrder" [style.display]="showBrowserBanners ? 'none':'inherit'">
   <mat-form-field appearance="outline">
     <mat-label>Select an option</mat-label>
@@ -46,44 +30,84 @@
   <!-- <p>{{search.searchInput}}</p> -->
 </div>
 <div class="hotellist" [style.display]="showBrowserBanners ? 'none':'block'">
-  <ng-container *ngFor="let hotel of dataList">
-    <div class="card hotels mb-3"
-      *ngIf=" search.searchInput == hotel.region || search.searchInput == hotel.city || search.searchInput == hotel.name || search.searchInput == 'All hotels and places'">
-      <div class="row g-0">
-        <div class="col-md-4">
-          <a><img class="img-fluid imgH" src="./../../{{hotel.imgD}}" alt="img {{hotel.name}}"></a>
-        </div>
-        <div class="col-md-6">
-          <div class="card-body">
-            <h5 class="card-title">{{hotel.name}}</h5>
-            <p class="card-text">
-              <span class="stars-number"> {{hotel.stars }} </span>
-              <span class="material-icons yellow-text yellowstar">star_rate</span>
-            </p>
-            <p class="card-text">
-              {{ hotel.description }}
-            </p>
-            <!-- aquí un ngIf para amosar icono de percina e balneario ou non -->
-            <p class="card-text">
-              <span *ngIf="hotel.balneario"><i class="fas fa-hot-tub"></i> &nbsp; </span>
-              <span *ngIf="hotel.piscina"> <i class="fas fa-swimming-pool"></i> &nbsp;</span>
-              <span *ngIf="hotel.wifi"> <i class="fas fa-wifi"></i> &nbsp;</span>
-              <span *ngIf="hotel.parking"> <i class="fas fa-parking"></i> </span>
-            </p>
+  <ng-container *ngIf="{{selected}} == lowest">
+    <ng-container *ngFor="let hotel of dataList as hotels | orderBy: price: true">
+      <div class="searchfilters" [style.display]="showBrowserBanners ? 'none':'inherit'">
+        <p class="text-primary "><span class="numberResults lead">{{hotels.length}}</span><span class="results">
+            results</span></p>
+        <h3 class="h3filter text-muted">Filter by</h3>
+        <h3 class="h3filter stars text-primary">Stars</h3>
+        <ul>
+          <!-- <li *ngFor="let star of star.stars" (click)=reload() [showBrowserBanners]='isFalse'> -->
+          <li *ngFor="let star of star.stars">
+            <mat-checkbox [color]="star.color" class="{{star.name}}">
+              {{star.name}}
+            </mat-checkbox>
+          </li>
+        </ul>
+        <li>
+          <h3 class="h3filter text-primary"> Popular filters</h3>
+          <ul>
+            <li>
+              <mat-checkbox color="primary">
+                Swimming pool
+              </mat-checkbox>
+            </li>
+            <li>
+              <mat-checkbox color="primary">
+                Spa
+              </mat-checkbox>
+            </li>
+            <li>
+              <mat-checkbox color="primary">
+                Free parking
+              </mat-checkbox>
+            </li>
+            <li>
+              <mat-checkbox color="primary">
+                Free Wifi
+              </mat-checkbox>
+            </li>
+          </ul>
+      </div>
+      <div class="card hotels mb-3"
+        *ngIf=" search.searchInput == hotel.region || search.searchInput == hotel.city || search.searchInput == hotel.name || search.searchInput == 'All hotels and places' && star.id == hotel.star">
+        <div class="row g-0">
+          <div class="col-md-4">
+            <a><img class="img-fluid imgH" src="./../../{{hotel.imgD}}" alt="img {{hotel.name}}"></a>
           </div>
-        </div>
-        <div class="col-md-2 col3rd">
-          <div class="price1" *ngIf="hotel.offer>0"> <span class="originalprice"><s> {{ hotel.price }}€
-              </s></span> <span class="percentage text-white">
-              {{hotel.offer}}% off</span>
+          <div class="col-md-6">
+            <div class="card-body">
+              <h5 class="card-title">{{hotel.name}}</h5>
+              <p class="card-text">
+                <span class="stars-number"> {{hotel.stars }} </span>
+                <span class="material-icons yellow-text yellowstar">star_rate</span>
+              </p>
+              <p class="card-text">
+                {{ hotel.description }}
+              </p>
+              <!-- aquí un ngIf para amosar icono de percina e balneario ou non -->
+              <p class="card-text">
+                <span *ngIf="hotel.balneario"><i class="fas fa-hot-tub"></i> &nbsp; </span>
+                <span *ngIf="hotel.piscina"> <i class="fas fa-swimming-pool"></i> &nbsp;</span>
+                <span *ngIf="hotel.wifi"> <i class="fas fa-wifi"></i> &nbsp;</span>
+                <span *ngIf="hotel.parking"> <i class="fas fa-parking"></i> </span>
+              </p>
+            </div>
           </div>
-          <p class="card-text finalprice">
-            {{ calculatePercentage(hotel.price, hotel.offer) }}€
-          </p>
-          <button type="submit" mat-raised-button class="viewmore" color="accent">View more</button>
+          <div class="col-md-2 col3rd">
+            <div class="price1" *ngIf="hotel.offer>0"> <span class="originalprice"><s> {{ hotel.price }}€
+                </s></span> <span class="percentage text-white">
+                {{hotel.offer}}% off</span>
+            </div>
+            <p class="card-text finalprice">
+              {{ calculatePercentage(hotel.price, hotel.offer) }}€
+            </p>
+            <button type="submit" mat-raised-button class="viewmore" color="accent">View more</button>
+          </div>
         </div>
       </div>
-    </div>
+    </ng-container>
   </ng-container>
 </div>
 <app-footer></app-footer>

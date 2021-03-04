@@ -1,6 +1,9 @@
 @import "../../../Themes/theme1";
 @import "~@angular/material/theming";
 @include angular-material-color($dark-theme);
+.div.all{
+    background-color:#f57280;
+}
 h2 {
     margin-left: 17%;
     margin-top: 40px;
@@ -12,6 +15,13 @@ mdb-card.eachcard {
     max-height: 350px;
     margin-bottom: 20px;
     margin-right: 20px;
+    // box-shadow: 5px 10px #ff8e8e;
+    // -webkit-box-shadow: 5px 5px 9px 1px #F57280;
+    // box-shadow: 5px 5px 9px 1px #F57280;
+    border-radius: 0px;
+    background: #ffffff;
+    box-shadow: inset 5px 5px 10px #808080,
+                inset -5px -5px 10px #ffffff;
     box-sizing: border-box;
     &:hover {
         opacity: 0.9;
@@ -23,14 +33,13 @@ mdb-card.eachcard {
             // max-height: 250px;
         }
     }
-    span.starting{
+    span.starting {
         // width: 75px;
         font-size: 20px;
         padding: 10px;
         font-weight: 800;
         margin-left: 7%;
     }
-   
 }
 
 div.offers {
@@ -51,5 +60,6 @@ button.offers {
 }
 .unicorn-dark-theme {
     font-weight: 800;
-    color: mat-color($dark-accent);
+    color: mat-color($dark-warn);
+    // color: mat-color($dark-accent);
 }

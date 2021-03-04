@@ -5,6 +5,7 @@ import { MatDatepicker } from '@angular/material/datepicker';
 import { ThemePalette } from '@angular/material/core';
 import { FilterPipe } from './../filter.pipe';
 export interface Star {
+  id?: string;
   name?: string;
   color?: ThemePalette;
   stars?: Star[];
@@ -19,14 +20,13 @@ export class HotelsComponent implements OnInit {
   selected = 'recommended';
   star: Star = {
     stars: [
-      { name: '1 star', color: 'warn' },
-      { name: '2 stars', color: 'warn' },
-      { name: '3 stars', color: 'warn' },
-      { name: '4 stars', color: 'warn' },
-      { name: '5 stars', color: 'warn' }
+      { id: '1', name: '1 star', color: 'primary' },
+      { id: '2', name: '2 stars', color: 'primary' },
+      { id: '3', name: '3 stars', color: 'primary' },
+      { id: '4', name: '4 stars', color: 'primary' },
+      { id: '5', name: '5 stars', color: 'primary' }
     ]
   };
-
   @ViewChild(MatDatepicker) datepicker: MatDatepicker<Date>;
   public options = ['Mallorca', 'Santiago', 'Ca Sa Padrina d\'Artà'];
   public hideIndication = true;
@@ -34,6 +34,7 @@ export class HotelsComponent implements OnInit {
   public roomsNumber: number;
   public childrenNumber: number;
   public showBrowserBanners: boolean;
+  public isFalse: boolean;
   search = {
     searchInput: 'All hotels and places',
     dateRange: '',
@@ -44,7 +45,11 @@ export class HotelsComponent implements OnInit {
   dataList: any = [];
   constructor(private hdataservice: HdataService) {
     this.showBrowserBanners = true;
+    this.isFalse = false;
   }
+  reload(): void {
+    window.location.reload();
+}
   public dontShowBrowserBanners(e): void {
     this.showBrowserBanners = false;
   }
