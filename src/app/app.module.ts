@@ -37,10 +37,11 @@ import { CalculateOriginalPricePipe } from './Components/calculate-original-pric
 import { FilterPipe } from './Components/filter.pipe';
 import {MatCheckboxModule} from '@angular/material/checkbox';
 import { OrderByPipe } from './Components/order-by.pipe';
+import { ListusersComponent } from './Components/listusers/listusers.component';
 
 @NgModule({
   // tslint:disable-next-line: max-line-length
-  declarations: [AppComponent, HomeComponent, ContactComponent, OrderByPipe, LoginComponent, SignupComponent, CitybannersComponent, NlbannerComponent, FooterComponent, OffersComponent, NavbarComponent, HotelsComponent, Error404Component, HotelsformComponent, RecommendedComponent, CalculateOriginalPricePipe, FilterPipe, OrderByPipe],
+  declarations: [AppComponent, HomeComponent, ContactComponent, OrderByPipe, LoginComponent, SignupComponent, CitybannersComponent, NlbannerComponent, FooterComponent, OffersComponent, NavbarComponent, HotelsComponent, Error404Component, HotelsformComponent, RecommendedComponent, CalculateOriginalPricePipe, FilterPipe, OrderByPipe, ListusersComponent],
   // tslint:disable-next-line: max-line-length
   imports: [MDBBootstrapModule.forRoot(), BrowserModule, AppRoutingModule, FlexLayoutModule, MaterialModule, MatIconModule, MatInputModule, MatToolbarModule, BrowserAnimationsModule, MatDatepickerModule, MatNativeDateModule, MatFormFieldModule,
     // tslint:disable-next-line: max-line-length
