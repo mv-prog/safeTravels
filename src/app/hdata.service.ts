@@ -28,6 +28,7 @@ export class HdataService {
 
   // my json server data, stored in db.json
   getHData(): any {
-    return this.httpClient.get('http://localhost:3000/hotels');
+    // return this.httpClient.get('http://localhost:3000/hotels'); mock json server
+    return this.httpClient.get('http://localhost:8080/hotels');
   }
 }

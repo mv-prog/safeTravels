@@ -5,6 +5,8 @@ import { MatDatepicker } from '@angular/material/datepicker';
 import { ThemePalette } from '@angular/material/core';
 import { FilterPipe } from './../filter.pipe';
 import { OrderByPipe } from './../order-by.pipe';
+import { HttpClient } from '@angular/common/http';
+import { Hotel } from './../../models/hotel.model';
 export interface Star {
   id?: string;
   name?: string;
@@ -36,6 +38,7 @@ export class HotelsComponent implements OnInit {
   public childrenNumber: number;
   public showBrowserBanners: boolean;
   public isFalse: boolean;
+  public name: string;
   search = {
     searchInput: 'All hotels and places',
     dateRange: '',
@@ -43,10 +46,18 @@ export class HotelsComponent implements OnInit {
     childrenNumber: 0,
     roomsNumber: 1,
   };
-  dataList: any = [];
-  constructor(private hdataservice: HdataService) {
+   public dataList: any;
+  // dataList: any = [];
+  // dataList: Hotel;
+  // constructor(private hdataservice: HdataService) { this used to consume the json server data.
+  constructor(private http: HttpClient) {
     this.showBrowserBanners = true;
     this.isFalse = false;
+  }
+  Search(): any{
+    this.dataList = this.dataList.filter(res => {
+      return res.name.toLocaleLowerCase().match(this.name.toLocaleLowerCase());
+    });
   }
   reload(): void {
     window.location.reload();
@@ -58,9 +69,12 @@ export class HotelsComponent implements OnInit {
     this.showBrowserBanners = true;
   }
   ngOnInit(): void {
-    this.hdataservice.getHData().subscribe(response => {
-      this.dataList = response;
-    });
+    // this.hdataservice.getHData().subscribe(response => {
+    //   this.dataList = response;
+    // });
+    const response = this.http.get('http://localhost:8080/hotels');
+    // tslint:disable-next-line: deprecation
+    response.subscribe((data) => this.dataList = data);
   }
   // tslint:disable-next-line: typedef
   public getSearch(adultsNumber: HTMLInputElement, childrenNumber: HTMLInputElement, roomsNumber: HTMLInputElement) {
@@ -68,6 +82,17 @@ export class HotelsComponent implements OnInit {
       this.childrenNumber = Number(childrenNumber.value),
       this.roomsNumber = Number(roomsNumber.value);
   }
+
+  // Local filter
+performFilter(filterBy: string): any {
+  if (filterBy) {
+      filterBy = filterBy.toLocaleLowerCase();
+      return this.dataList.filter((hotel: any) =>
+          hotel.name.toLocaleLowerCase().indexOf(filterBy) !== -1);
+  } else {
+      return this.dataList;
+  }
+}
   calculatePercentage(orPrice, percentage): number {
     return orPrice - (orPrice * percentage / 100);
   }

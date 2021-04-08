@@ -3,10 +3,10 @@
     <h2> <span class="unicorn-dark-theme">Hot</span> Deals!</h2>
     <div class="offers">
         <ng-container *ngFor="let hotel of dataList">
-            <mdb-card class="eachcard" *ngIf="hotel.offer>0">
+            <mdb-card class="eachcard" *ngIf="hotel.discount>0">
                 <div class="view imgdiv rgba-white-slight waves-light" mdbWavesEffect>
                     <a>
-                        <mdb-card-img src="./../../{{hotel.imgD}}" alt="img {{hotel.name}}" class="ht"></mdb-card-img>
+                        <mdb-card-img src="./../../assets/sm/{{hotel.id}}.jpg" alt="img {{hotel.name}}" class="ht"></mdb-card-img>
                     </a>
                 </div>
                 <mdb-card-body>
@@ -14,9 +14,9 @@
                         <h3>{{hotel.name}}</h3>
                     </a>
                     <p class="text-body"> <a>{{ hotel.city}}, {{ hotel.region }}</a> <span
-                            class="starting text-success"> From {{hotel.price}}€ </span> </p>
+                            class="starting text-success"> From 50€ </span> </p>
                     <button mat-fab color="warn" class="offers">
-                        {{hotel.offer}}% off
+                        {{hotel.discount}}% off
                     </button>
                     <!-- <button mat-raised-button color="accent">Accent</button> -->
                 </mdb-card-body>

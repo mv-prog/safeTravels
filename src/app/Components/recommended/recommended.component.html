@@ -13,7 +13,7 @@
             <mdb-card class="eachcard" *ngIf="hotel.recommended">
                 <div class="view imgdiv rgba-white-slight waves-light" mdbWavesEffect>
                     <a>
-                        <mdb-card-img src="./../../{{hotel.imgD}}" alt="img {{hotel.name}}" class="ht"></mdb-card-img>
+                        <mdb-card-img src="./../../assets/sm/{{hotel.id}}.jpg" alt="img {{hotel.name}}" class="ht"></mdb-card-img>
                     </a>
                 </div>
                 <mdb-card-body>
@@ -24,7 +24,8 @@
                     </mdb-card-title>
                     <p class="text-body"><a> {{ hotel.city}}, {{ hotel.region }} </a></p>
                     <!-- <ng-container *ngFor="let reviews of hotel.reviews"> -->
-                    <p class="ratingP"> <a> <span class="rating text-white bg-secondary"> {{ hotel.rating}}  </span> <span class="reviewsNumber">{{ hotel.reviews.length}} reviews</span></a>
+                        <!-- instead of {{hotel.reviews.length}} and {{hotel.rating}}: -->
+                    <p class="ratingP"> <a> <span class="rating text-white bg-secondary"> 4,5  </span> <span class="reviewsNumber">25 reviews</span></a>
                         <!-- <a mat-raised-button href="https://www.google.com/" target="_blank">Link</a> -->
                         <button mat-raised-button style="margin-left: 50px;" color="accent">Explore ></button>
                         <!-- <button class="botonExplore btn btn-outline-accent custom-btn my-2 my-sm-0" type="submit">
