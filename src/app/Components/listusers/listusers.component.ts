@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { HdataService } from 'src/app/hdata.service';
 import { User } from './../../models/user';
+import { HttpClient } from '@angular/common/http';
 
 @Component({
   selector: 'app-listusers',
@@ -8,15 +9,21 @@ import { User } from './../../models/user';
   styleUrls: ['./listusers.component.scss']
 })
 export class ListusersComponent implements OnInit {
+users: any;
+  // users: User[] = [];
+  // constructor(private userservice: HdataService) { }
+  constructor(private http: HttpClient){
 
-  users: User[] = [];
-  constructor(private userservice: HdataService) { }
+  }
 
   ngOnInit(): void {
     // tslint:disable-next-line: deprecation
     // this.userservice.getUsers().subscribe(
     //   userdata => this.users = userdata
     // );
+    const response = this.http.get('http://localhost:8080/users');
+    // tslint:disable-next-line: deprecation
+    response.subscribe((data) => this.users = data);
   }
 
 }

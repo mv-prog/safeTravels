@@ -5,6 +5,7 @@ import { MatDatepicker } from '@angular/material/datepicker';
 import { ThemePalette } from '@angular/material/core';
 import { FilterPipe } from './../filter.pipe';
 import { OrderByPipe } from './../order-by.pipe';
+import { HttpClient } from '@angular/common/http';
 export interface Star {
   id?: string;
   name?: string;
@@ -43,8 +44,10 @@ export class HotelsComponent implements OnInit {
     childrenNumber: 0,
     roomsNumber: 1,
   };
-  dataList: any = [];
-  constructor(private hdataservice: HdataService) {
+  public dataList: any;
+  // dataList: any = [];
+  // constructor(private hdataservice: HdataService) { this used to consume the json server data.
+  constructor(private http: HttpClient) {
     this.showBrowserBanners = true;
     this.isFalse = false;
   }
@@ -58,9 +61,12 @@ export class HotelsComponent implements OnInit {
     this.showBrowserBanners = true;
   }
   ngOnInit(): void {
-    this.hdataservice.getHData().subscribe(response => {
-      this.dataList = response;
-    });
+    // this.hdataservice.getHData().subscribe(response => {
+    //   this.dataList = response;
+    // });
+    const response = this.http.get('http://localhost:8080/hotels');
+    // tslint:disable-next-line: deprecation
+    response.subscribe((data) => this.dataList = data);
   }
   // tslint:disable-next-line: typedef
   public getSearch(adultsNumber: HTMLInputElement, childrenNumber: HTMLInputElement, roomsNumber: HTMLInputElement) {

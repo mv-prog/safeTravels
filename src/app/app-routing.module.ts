@@ -5,6 +5,7 @@ import { ContactComponent } from './Components/contact/contact.component';
 import { LoginComponent } from './Components/login/login.component';
 import { HotelsComponent } from './Components/hotels/hotels.component';
 import { Error404Component } from './Components/error404/error404.component';
+import { ListusersComponent } from './Components/listusers/listusers.component';
 
 const routes: Routes = [
   {
@@ -15,6 +16,10 @@ const routes: Routes = [
   },
   {
     path: 'hotels', component: HotelsComponent
+  },
+  {
+    path: 'users',
+    component: ListusersComponent
   },
   {
     path: 'error404',
