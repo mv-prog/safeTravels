@@ -1,7 +1,11 @@
 <app-navbar></app-navbar>
+<<<<<<< HEAD
+=======
+<input type="text" #myInput [(ngModel)]="firstname" (input)='Search()'>{{firstname}}
+>>>>>>> db3cc9b6a445de0bebd68a68930fb7ae41294685
 <div class="container" *ngFor="let user of users">
     <h3>{{user.email}}</h3>
-    <p>{{user.name}}</p>
+    <p>{{user.firstname}}</p>
     <p>{{user.lastname}}</p>
 </div>
 <app-footer></app-footer>

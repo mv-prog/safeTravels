@@ -12,6 +12,10 @@ export class ListusersComponent implements OnInit {
 users: any;
   // users: User[] = [];
   // constructor(private userservice: HdataService) { }
+<<<<<<< HEAD
+=======
+  firstname: string;
+>>>>>>> db3cc9b6a445de0bebd68a68930fb7ae41294685
   constructor(private http: HttpClient){
 
   }
@@ -24,6 +28,13 @@ users: any;
     const response = this.http.get('http://localhost:8080/users');
     // tslint:disable-next-line: deprecation
     response.subscribe((data) => this.users = data);
+<<<<<<< HEAD
+=======
   }
-
+  Search(): any{
+    this.users = this.users.filter(res => {
+      return res.firstname.toLocaleLowerCase().match(this.firstname.toLocaleLowerCase());
+    });
+>>>>>>> db3cc9b6a445de0bebd68a68930fb7ae41294685
+  }
 }
