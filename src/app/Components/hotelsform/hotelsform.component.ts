@@ -1,7 +1,6 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { ViewChild } from '@angular/core';
 import { MatDatepicker } from '@angular/material/datepicker';
-import { HttpClient } from '@angular/common/http';
 
 @Component({
   selector: 'app-hotelsform',
@@ -12,30 +11,34 @@ export class HotelsformComponent implements OnInit {
   @ViewChild(MatDatepicker) datepicker: MatDatepicker<Date>;
   public options = ['Mallorca', 'Santiago', 'Ca Sa Padrina d\'Artà'];
   @Input() showBrowserBanners;
-  @Input() search;
-  public name: string;
+  // @Input() search;
   @Output() dontShowBB = new EventEmitter<void>();
   @Output() sendHotelsData = new EventEmitter<void>();
-  public dataList: any;
-  constructor(private http: HttpClient){}
-  // tslint:disable-next-line: typedef
-  dontShowbb(){
+  public search: any = {
+    searchInput: 'All hotels and places',
+    dateRange: '',
+    adultsNumber: 2,
+    childrenNumber: 0,
+    roomsNumber: 1,
+  };
+  constructor(){}
+  /**
+   * dontShowbb
+   * emits a boolean variable, showBrowserBanners, set to false, in order not to show this component in the parent component.
+   */
+  dontShowbb(): any{
     this.showBrowserBanners = false;
     this.dontShowBB.emit(this.showBrowserBanners);
   }
 
   // tslint:disable-next-line: typedef
-  sendData(){
+  /**
+   * sendData
+   * emits/outputs the search input gotten in the hotels form.
+   */
+  sendData(): any{
     this.sendHotelsData.emit(this.search);
   }
   ngOnInit(): void {
-    const response = this.http.get('http://localhost:8080/hotels');
-    // tslint:disable-next-line: deprecation
-    response.subscribe((data) => this.dataList = data);
-  }
-  Search(): any{
-    this.dataList = this.dataList.filter(res => {
-      return res.name.toLocaleLowerCase().match(this.name.toLocaleLowerCase());
-    });
   }
 }

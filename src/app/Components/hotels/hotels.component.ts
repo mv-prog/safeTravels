@@ -39,13 +39,7 @@ export class HotelsComponent implements OnInit {
   public showBrowserBanners: boolean;
   public isFalse: boolean;
   public name: string;
-  search = {
-    searchInput: 'All hotels and places',
-    dateRange: '',
-    adultsNumber: 2,
-    childrenNumber: 0,
-    roomsNumber: 1,
-  };
+  public search: any;
    public dataList: any;
   // dataList: any = [];
   // dataList: Hotel;
