@@ -15,7 +15,13 @@ export class HomeComponent {
   public childrenNumber: number;
   public showBrowserBanners: boolean;
   public isFalse: boolean;
-  public search: any;
+  public search: any = {
+    searchInput: 'All hotels and places',
+    dateRange: '',
+    adultsNumber: 2,
+    childrenNumber: 0,
+    roomsNumber: 1,
+  };
   constructor() {
     this.showBrowserBanners = true;
     this.isFalse = false;
@@ -24,10 +30,10 @@ export class HomeComponent {
    * dontShowbb
    * emits a boolean variable, showBrowserBanners, set to false, in order not to show this component in the hotels page.
    */
-  // dontShowbb(): any {
-  //   this.showBrowserBanners = false;
-  //   this.dontShowBB.emit(this.showBrowserBanners);
-  // }
+  dontShowbb(): Boolean {
+    return this.showBrowserBanners = false;
+    //this.dontShowBB.emit(this.showBrowserBanners);
+  }
   // tslint:disable-next-line: typedef
   public getSearch(adultsNumber: HTMLInputElement, childrenNumber: HTMLInputElement, roomsNumber: HTMLInputElement) {
     this.adultsNumber = Number(adultsNumber.value),

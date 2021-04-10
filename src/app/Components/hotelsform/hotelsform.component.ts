@@ -11,17 +11,13 @@ export class HotelsformComponent implements OnInit {
   @ViewChild(MatDatepicker) datepicker: MatDatepicker<Date>;
   public options = ['Mallorca', 'Santiago', 'Ca Sa Padrina d\'Artà'];
   @Input() showBrowserBanners;
-  // @Input() search;
+  @Input() search;
   @Output() dontShowBB = new EventEmitter<void>();
   @Output() sendHotelsData = new EventEmitter<void>();
-  public search: any = {
-    searchInput: 'All hotels and places',
-    dateRange: '',
-    adultsNumber: 2,
-    childrenNumber: 0,
-    roomsNumber: 1,
-  };
-  constructor(){}
+  
+  constructor(){
+
+  }
   /**
    * dontShowbb
    * emits a boolean variable, showBrowserBanners, set to false, in order not to show this component in the parent component.

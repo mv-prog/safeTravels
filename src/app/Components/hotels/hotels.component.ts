@@ -36,17 +36,22 @@ export class HotelsComponent implements OnInit {
   public adultsNumber: number;
   public roomsNumber: number;
   public childrenNumber: number;
-  public showBrowserBanners: boolean;
+  // public showBrowserBanners: boolean;
   public isFalse: boolean;
   public name: string;
-  public search: any;
+  public search: any = {
+    searchInput: 'All hotels and places',
+    dateRange: '',
+    adultsNumber: 2,
+    childrenNumber: 0,
+    roomsNumber: 1,
+  };
+  showBrowserBanners: Boolean;
    public dataList: any;
   // dataList: any = [];
   // dataList: Hotel;
   // constructor(private hdataservice: HdataService) { this used to consume the json server data.
   constructor(private http: HttpClient) {
-    this.showBrowserBanners = true;
-    this.isFalse = false;
   }
   Search(): any{
     this.dataList = this.dataList.filter(res => {
@@ -56,11 +61,14 @@ export class HotelsComponent implements OnInit {
   reload(): void {
     window.location.reload();
 }
-  public dontShowBrowserBanners(e): void {
-    this.showBrowserBanners = false;
+public dontShowbb(): Boolean {
+  return this.showBrowserBanners = false;
+}
+  public dontShowBrowserBanners(showBrowserBanners: Boolean): Boolean {
+    return showBrowserBanners = false;
   }
-  public showbrowserbanners(e): void {
-    this.showBrowserBanners = true;
+  public showbrowserbanners(showBrowserBanners: Boolean): Boolean {
+    return showBrowserBanners = true;
   }
   ngOnInit(): void {
     // this.hdataservice.getHData().subscribe(response => {

@@ -2,8 +2,8 @@
 <!-- <app-navbar></app-navbar> -->
 <div class="show-browser-banners" [style.display]="showBrowserBanners ? 'inherit':'none'">
   <header class="jumbotron hotels jumbotron shadow">
-    <app-hotelsform [search]='search' (sendHotelsData)='getHotelsData($event)' [showBrowserBanners]="showBrowserBanners"
-      (dontShowBB)="dontShowBrowserBanners($event)">
+    <app-hotelsform [search]='search' (sendHotelsData)='getHotelsData($event)' [showBrowserBanners] ="dontShowbb()"
+      (dontShowBB)="dontShowBrowserBanners(showBrowserBanners)">
     </app-hotelsform>
     <!-- <app-hotelsform [search]='search' (sendHotelsData)='getHotelsData($event)'
       (dontShowBB)="dontShowBrowserBanners($event)">
