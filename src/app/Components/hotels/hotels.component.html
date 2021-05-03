@@ -2,18 +2,14 @@
 <!-- <app-navbar></app-navbar> -->
 <div class="show-browser-banners" [style.display]="showBrowserBanners ? 'inherit':'none'">
   <header class="jumbotron hotels jumbotron shadow">
-    <app-hotelsform [search]='search' (sendHotelsData)='getHotelsData($event)' [showBrowserBanners] ="dontShowbb()"
-      (dontShowBB)="dontShowBrowserBanners(showBrowserBanners)">
+    <app-hotelsform [search]='search' (sendHotelsData)='getHotelsData($event)' [showBrowserBanners] ="showBrowserBanners">
     </app-hotelsform>
-    <!-- <app-hotelsform [search]='search' (sendHotelsData)='getHotelsData($event)'
-      (dontShowBB)="dontShowBrowserBanners($event)">
-    </app-hotelsform> -->
+
   </header>
   <nlbanner></nlbanner>
   <app-offers></app-offers>
   <app-recommended></app-recommended>
 </div>
-
 <div class="searchOrder" [style.display]="showBrowserBanners ? 'none':'inherit'">
   <mat-form-field appearance="outline">
     <mat-label>Select an option</mat-label>

@@ -59,7 +59,8 @@ mdb-card.eachcard {
 div.offers {
     display: flex;
     flex-wrap: wrap;
-    justify-content: center;
+    // justify-content: center;
+    justify-content: space-around;
     margin-bottom: 30px;
 }
 button.offers {

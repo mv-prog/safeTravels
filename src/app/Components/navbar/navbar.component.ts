@@ -12,6 +12,7 @@ export class NavbarComponent implements OnInit {
   @Output() showBB = new EventEmitter<void>();
   constructor(private dialog: MatDialog) { }
   public showbb(): void{
+    this.showBrowserBanners=true;
     this.showBB.emit(this.showBrowserBanners);
   }
   ngOnInit(): void {

@@ -1,0 +1,60 @@
+@import "../../../variables";
+.orderByDiv{
+    text-align: left;
+    margin-top: 25px;
+}
+#formComponent {
+    width: 100%;
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+#formSearch{
+    max-width:95%;
+}
+#formContainer {
+    background-color: rgba(0, 0, 0, 0.6);
+    width: 100%;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    border-radius: 15px;
+}
+#formLogo{
+    max-width:50px;
+    margin-right: 5px;
+}
+#formButton, .btn.btn-primary.r {
+    color: #fff;
+    background-color: $indianRed;
+    border-color: $indianRed;
+    margin-left: 50px;
+}
+// <#--  *{
+//     margin: 0 auto;
+// }  -->
+.row{
+    margin-left: 10px;
+}
+
+#formButton:hover {
+    background-color: #d17575;
+
+    border-color: #d17575;
+}
+
+#formButton:active, .btn.btn-primary.radius:active {
+    background-color: #d17575;
+    border-color: #d17575;
+}
+
+#formButton:focus, .btn.btn-primary.r:focus {
+    background-color: #d17575;
+    border-color: #d17575;
+}
+
+div.buttonSubmit {
+    margin-top: 31px;
+}
+
+.form-group.r, #formSearch {
+    margin-right: 10px;
+}

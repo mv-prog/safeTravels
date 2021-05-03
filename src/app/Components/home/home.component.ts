@@ -13,7 +13,7 @@ export class HomeComponent {
   public adultsNumber: number;
   public roomsNumber: number;
   public childrenNumber: number;
-  public showBrowserBanners: boolean;
+  public showBrowserBanners: any;
   public isFalse: boolean;
   public search: any = {
     searchInput: 'All hotels and places',
@@ -22,6 +22,7 @@ export class HomeComponent {
     childrenNumber: 0,
     roomsNumber: 1,
   };
+  @Output() showBB = new EventEmitter<void>();
   constructor() {
     this.showBrowserBanners = true;
     this.isFalse = false;
@@ -33,6 +34,10 @@ export class HomeComponent {
   dontShowbb(): Boolean {
     return this.showBrowserBanners = false;
     //this.dontShowBB.emit(this.showBrowserBanners);
+  }
+  public showbb(): void{
+    this.showBrowserBanners=true;
+    this.showBB.emit(this.showBrowserBanners);
   }
   // tslint:disable-next-line: typedef
   public getSearch(adultsNumber: HTMLInputElement, childrenNumber: HTMLInputElement, roomsNumber: HTMLInputElement) {
