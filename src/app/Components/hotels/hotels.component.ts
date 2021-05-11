@@ -46,10 +46,12 @@ export class HotelsComponent implements OnInit {
     childrenNumber: 0,
     roomsNumber: 1,
   };
+<<<<<<< HEAD
   showBrowserBanners: Boolean;
+=======
+
+>>>>>>> master1.4
    public dataList: any;
-  // dataList: any = [];
-  // dataList: Hotel;
   // constructor(private hdataservice: HdataService) { this used to consume the json server data.
   constructor(private http: HttpClient) {
   }
