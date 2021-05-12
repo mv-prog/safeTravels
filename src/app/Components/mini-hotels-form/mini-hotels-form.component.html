@@ -1,85 +1,96 @@
-<div id="formComponent">
-    <div class="container" id="formContainer">
-        <legend class="leg">
-            <a [routerLink]="['/home']" routerLinkActive="router-link-active"><img class="logo" src="../favicon.ico"
-                    alt="logo"></a>
-            <h1>
-                Discover Galicia Safely
-            </h1>
-        </legend>
-        <form>
-            <div class="row">
-                <div class="form-group">
-                    <label for="formSearch">Search</label>
-                    <input type="search" class="form-control" id="formSearch" aria-describedby="searchHelp"
-                        placeholder="Search Hotels or places">
-                    <small id="searchHelp" class="form-text text-white">Search Hotels or places</small>
-                </div>
-                <div class="form-group r">
-                    <label for="checkInDate">Check-In Date</label>
-                    <input type="date" class="form-control" id="checkInDate">
-                </div>
-                <div class="form-group r">
-                    <label for="checkOutDate">Check-Out Date</label>
-                    <input type="date" class="form-control" id="checkOutDate">
-                </div>
-                <div class="form-group r selects">
-                    <label for="formRooms">Rooms</label>
-                    <select name="formRooms" class="form-control" id="formRooms">
-                        <option selected value="1">1</option>
-                        <option value="2">2</option>
-                        <option value="3">3</option>
-                        <option value="4">4</option>
-                        <option value="5">5</option>
-                        <option value="6">6</option>
-                        <option value="7">7</option>
-                        <option value="8">8</option>
-                    </select>
-                </div>
-                <div class="form-group r selects">
-                    <label for="formAdults">Adults</label>
-                    <select name="formAdults" class="form-control" id="formAdults">
-                        <option value="1">1</option>
-                        <option selected value="2">2</option>
-                        <option value="3">3</option>
-                        <option value="4">4</option>
-                        <option value="5">5</option>
-                        <option value="6">6</option>
-                        <option value="7">7</option>
-                        <option value="8">8</option>
-                    </select>
-                </div>
-                <div class="form-group r selects">
-                    <label for="formChildren">Children</label>
-                    <select name="formChildren" class="form-control" id="formChildren">
-                        <option selected value="0">0</option>
-                        <option value="1">1</option>
-                        <option value="2">2</option>
-                        <option value="3">3</option>
-                        <option value="4">4</option>
-                        <option value="5">5</option>
-                        <option value="6">6</option>
-                        <option value="7">7</option>
-                        <option value="8">8</option>
-                    </select>
-                </div>
-                <div class="buttonSubmit">
-                    <button type="submit" id="formButton" href="" class="btn btn-primary r">Search!</button>
-                </div>
-            </div>
-        </form>
-    </div>
-    <div class="orderByDiv">
-        <form action="">
-        <div class="form-group orderbyGroup">
-            <label for="OrderBy">Order By</label>
-            <select name="OrderBy" class="form-control col-lg-2 col-md-3" id="OrderBy">
-                <option selected value="Lowest Price First">Lowest Price First</option>
-                <option value="Highest Price First">Highest Price First</option>
-                <option value="Popular">Popular</option>
-                <option value="Recommended">Recommended</option>
-            </select>
+<!-- <form #searchForm="ngForm" class="formulario1 col-xs-11 col-sm-11 col-md-11 col-bg-11"> -->
+    <form #searchForm="ngForm" class="formulario1 col-md-9 col-lg-9">
+    <!-- {{searchForm.value | json}} -->
+    <legend class="leg1">
+        <a [routerLink]="['/home']" routerLinkActive="router-link-active"><img class="logo" src="../favicon.ico"
+                alt="logo"></a>
+        <h2>
+            Find amazing places
+        </h2>
+    </legend>
+    <div class="selectsGroup1">
+        <div class="form-group mb-1 mr-1">
+            <mat-form-field appearance="outline" title="Search by Hotel's name, region, provinces or cities">
+                <mat-label class="help-block">
+                    Where?
+                </mat-label>
+                <mat-autocomplete #auto="matAutocomplete">
+                    <mat-option *ngFor="let option of options" [value]="option">
+                        {{option}}
+                    </mat-option>
+                </mat-autocomplete>
+                <mat-icon matSuffix color="warn">search</mat-icon>
+                <input matInput type="search" [class.is-invalid]="searchInput.invalid && searchInput.touched" required
+                    #searchInput="ngModel" [matAutocomplete]="auto" [(ngModel)]="search.searchInput" name="searchInput"
+                    id="searchInput" placeholder="Search Hotels">
+            </mat-form-field>
+            <small class="wrong-field" *ngIf="searchInput.touched && searchInput.invalid">Search field is
+                required</small>
         </div>
-    </form>
+
+        <!-- <form action="" role="group" class="form-inline"> -->
+        <div class="form-group mr-1 mb-1">
+            <mat-form-field appearance="outline">
+                <mat-label class="help-block">
+                    Check-in - Check-out
+                </mat-label>
+                <!-- <mat-date-range-input [rangePicker]="picker"> -->
+                <mat-date-range-input [rangePicker]="picker" [class.is-invalid]="dateRange.invalid && dateRange.touched"
+                    #dateRange="ngModel" [(ngModel)]="search.dateRange">
+                    <input matStartDate placeholder="Start date" ngModel name="startDate">
+                    <input matEndDate placeholder="End date" ngModel name="endDate">
+                </mat-date-range-input>
+                <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                <mat-date-range-picker #picker></mat-date-range-picker>
+            </mat-form-field>
+        </div>
+
+        <div class="form-group miniSelect col-xs-6 col-sm-7 col-md-2 col-bg-1">
+            <mat-form-field appearance="outline" style="width: 100%;" title="Adults">
+                <mat-label class="help-block" id="adultsNumber">
+                    Adults
+                </mat-label>
+                <!-- <mat-select id="adultsNumber" placeholder="2" [(value)]="search.adultsNumber"
+                    [(ngModel)]="search.adultsNumber" name="adultsNumber"> -->
+                    <mat-select id="adultsNumber" placeholder="2"
+                    [(ngModel)]="adSelected" name="adultsNumber">
+                    <mat-option *ngFor="let item of adRoOptions" [value]="item.id">
+              {{item.id}}
+            </mat-option>
+                </mat-select>
+            </mat-form-field>
+        </div>
+        <div class="form-group miniSelect col-xs-6 col-sm-7 col-md-2 col-bg-1">
+            <mat-form-field appearance="outline" style="width: 100%;" title="Children">
+                <mat-label class="help-block" id="childrenNumber">
+                    Children
+                </mat-label>
+                <mat-select placeholder="0" [(ngModel)]="chSelected"
+                    name="childrenNumber">
+                    <mat-option *ngFor="let item of chOptions" [value]="item.id">
+              {{item.id}}
+            </mat-option>
+                </mat-select>
+            </mat-form-field>
+        </div>
+
+        <div class="form-group miniSelect mb-2 col-xs-7 col-sm-7 col-md-2 col-bg-1">
+            <mat-form-field appearance="outline" style="width: 100%;" title="Rooms">
+                <mat-label class="help-block" id="roomsNumber">
+                    Rooms
+                </mat-label>
+                <mat-select placeholder="1" [(ngModel)]="roSelected"
+                    name="roomsNumber">
+                    <mat-option *ngFor="let item of adRoOptions" [value]="item.id">
+              {{item.id}}
+            </mat-option>
+                </mat-select>
+            </mat-form-field>
+        </div>
+        <div class="buttonSpace">
+            <button type="submit" [routerLink]="['/hotels', search]" routerLinkActive="router-link-active"
+                [disabled]="!searchForm.valid" mat-raised-button color="accent">Search Hotels!</button>
+        </div>
     </div>
-</div>
+
+</form>

@@ -4,12 +4,12 @@
   <header class="jumbotron hotels jumbotron shadow">
     <app-hotelsform [search]='search' (sendHotelsData)='getHotelsData($event)' [showBrowserBanners] ="showBrowserBanners">
     </app-hotelsform>
-
   </header>
   <nlbanner></nlbanner>
   <app-offers></app-offers>
   <app-recommended></app-recommended>
 </div>
+<app-mini-hotels-form [search]='search' (sendHotelsData)='getHotelsData($event)' ></app-mini-hotels-form>
 <div class="searchOrder" [style.display]="showBrowserBanners ? 'none':'inherit'">
   <mat-form-field appearance="outline">
     <mat-label>Select an option</mat-label>

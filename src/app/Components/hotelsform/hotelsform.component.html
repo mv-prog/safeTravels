@@ -26,13 +26,11 @@
         <small class="wrong-field" *ngIf="searchInput.touched && searchInput.invalid">Search field is required</small>
     </div>
     <div class="selectsGroup">
-        <!-- <form action="" role="group" class="form-inline"> -->
         <div class="form-group mr-2 mb-2">
             <mat-form-field appearance="outline">
                 <mat-label class="help-block">
                     Check-in - Check-out
                 </mat-label>
-                <!-- <mat-date-range-input [rangePicker]="picker"> -->
                 <mat-date-range-input [rangePicker]="picker" [class.is-invalid]="dateRange.invalid && dateRange.touched"
                     #dateRange="ngModel" [(ngModel)]="search.dateRange">
                     <input matStartDate placeholder="Start date" ngModel name="startDate">
