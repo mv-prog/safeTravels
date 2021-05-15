@@ -8,5 +8,15 @@
 @import "~bootstrap/dist/css/bootstrap.css";
 @import "~bootstrap/scss/bootstrap-reboot.scss";
 @import "reset";
-html, body { height: 100%; width: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+// html, body { height: 100%; width: 100%; }
+// *{
+//     margin: 0 auto;
+// }
+body, html{
+        // width: 100%; 
+        // width: 100vw;
+        width: 100vw;
+        height: 100vh;
+        // box-sizing: content-box;
+}
+body { margin: 0 auto; font-family: Roboto, "Helvetica Neue", sans-serif; }

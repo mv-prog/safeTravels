@@ -10,13 +10,36 @@
         margin-left: 10%;
         max-width: 400px;
     }
+    .searchfilters{
+        // facer unha modal cun boton para chamala onde se amosen os filtros. en grande o boton non se amosa.
+        display: none;
+    }
+    .searchOrder {
+        margin-left: 10%;
+        mat-form-field {
+            margin-top: 30px;
+        }
+    }
+    .card hotel{
+        .col3rd{
+            margin-top: 20px;
+        }
+    }
+    button.viewmore {
+        margin-left: 20px;
+        margin-bottom: 20px;
+    }
 }
-@include media(sm) {
+@include media(sm, cards, md) {
     div.hotellist {
         margin-left: 30%;
     }
+    .searchfilters{
+        display: none;
+    }
+    
 }
-@include media(cards, md, desktop) {
+@include media(desktop) {
     .imgH {
         width: 250px;
         height: 220px;
@@ -29,18 +52,21 @@
     div.card.hotels {
         height: 220px;
     }
-}
-.searchfilters {
-    position: absolute;
-    left: 0;
-    top: 0;
-
-    margin-top: 200px;
-    margin-left: 100px;
-    ul,
-    li {
-        list-style-type: none;
+    .searchOrder {
+        margin-left: 70%;
     }
+    .searchfilters {
+        display: block;
+        position: absolute;
+        left: 0;
+        top: 0;
+        margin-top: 300px;
+        margin-left: 100px;
+        ul,
+        li {
+            list-style-type: none;
+        }
+    }   
     .numberResults {
         font-weight: 400;
     }
@@ -50,8 +76,20 @@
             text-align: center;
         }
     }
+    button.viewmore {
+        position: absolute;
+        bottom: 0;
+        margin-bottom: 20px;
+    }
 }
-h5.card-title {
+.stars-number{
+    padding-bottom: 5px;
+}
+.hotelsContainer{
+    max-width: 100vh;
+    max-width: 100%;
+}
+.card-title {
     font-size: 20px;
     // font-weight: 500;
     font-family: Impact, Haettenschweiler, "Arial Narrow Bold", sans-serif;
@@ -60,12 +98,7 @@ div.card.hotels {
     display: flex;
     flex-direction: row;
 }
-.searchOrder {
-    margin-left: 60%;
-    mat-form-field {
-        margin-top: 30px;
-    }
-}
+
 div.col3rd {
     display: inline-block;
     font-family: BlinkMacSystemFont, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif;
@@ -92,11 +125,7 @@ div.col3rd {
         right: 0;
         margin-bottom: 70px;
     }
-    button.viewmore {
-        position: absolute;
-        bottom: 0;
-        margin-bottom: 20px;
-    }
+
 }
 div.searchfilters {
     p {

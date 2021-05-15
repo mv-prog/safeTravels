@@ -1,0 +1,16 @@
+@mixin formulario($marginLeft) {
+    color: $black;
+    padding:10px;
+    border-radius: 5px;
+    // background-color: $transparentBlack;
+    background-color: whitesmoke;
+    margin-left: $marginLeft;
+    margin-top: 10px;
+    margin-bottom: 10px;
+  }
+  @mixin wrong-field() {
+    margin-left: 20px;
+    margin-top: 40px;
+    font-style: oblique;
+    color: $warnColor;
+  }

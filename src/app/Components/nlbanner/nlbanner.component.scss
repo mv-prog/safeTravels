@@ -3,6 +3,12 @@
 @include angular-material-theme($candy-app-theme);
 @import "../../../reset";
 @import "../../breakpoints";
+@include media(mobile){
+    .insidehr {
+        margin-left: 15px;
+        margin-right: 5px;
+    }
+}
 @include media(sm){
     hr{
         display: none;
@@ -10,9 +16,12 @@
     .nlbanner{
         box-shadow: 10px 10px 20px #d9d9d9, -10px -10px 20px #ffffff;
     }
+    .insidehr {
+        margin-left: 25%;
+    }
 }
+
 .insidehr {
-    margin-left: 25%;
     display: flex;
     flex-flow: row wrap;
 }

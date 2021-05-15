@@ -17,10 +17,11 @@
   font-style: oblique;
   color: $warnColor;
 }
-:host,
-:host-context(.mat-header) {
-  width: 100%;
-}
+// :host,
+// :host-context(.mat-header) {
+//   width: 50%;
+// }
+
 header {
   display: flex;
   align-items: center;
@@ -29,10 +30,17 @@ header {
   background-repeat: no-repeat;
   background-size: cover;
 }
-
+@include media(mobile, sm, md) {
 .formulario {
-  @include formulario(20%);
+  @include formulario(0px);
 }
+}
+@include media(desktop, lg) {
+  .formulario {
+    @include formulario(20%);
+  }
+  }
+
 .show {
   opacity: 1;
   transition: opacity 1s;
@@ -50,20 +58,46 @@ header {
   @include wrong-field();
 }
 .selectsGroup {
-  max-width: 550px;
   display: flex;
   flex-flow: row wrap;
   justify-content: flex-start;
 }
-.leg{
+@include media(mobile) {
+  .selectsGroup {
+    flex-flow: row wrap;
+  }
+  .miniSelect {
+    width: 30%;
+  }
+}
+@include media(sm, md, desktop, lg) {
+  .mat-form-field,
+  .mat-form-field-wrapper,
+  .mat-form-field-*,
+  .miniSelects,
+  * {
+    width: 100%;
+  }
+  .selectsGroup {
+    flex-flow: row wrap;
+    max-width: 550px;
+  }
+}
+@include media(desktop, lg) {
+  .appHotelsFormContainer {
+    padding-left: 10%;
+  }
+}
+
+.leg {
   display: flex;
-  .logo{
+  .logo {
     width: 50px;
     height: 50px;
   }
-  h1{
+  h1 {
     padding-top: 10px;
-    margin-left: 20px;
+    margin-left: 10px;
     // margin-right: 20px;
     line-height: -20px;
   }
