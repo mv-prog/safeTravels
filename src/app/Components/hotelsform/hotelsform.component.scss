@@ -37,7 +37,7 @@ header {
 }
 @include media(desktop, lg) {
   .formulario {
-    @include formulario(20%);
+    @include formulario(30%);
   }
   }
 
@@ -85,7 +85,7 @@ header {
 }
 @include media(desktop, lg) {
   .appHotelsFormContainer {
-    padding-left: 10%;
+    width: 100%;
   }
 }
 
