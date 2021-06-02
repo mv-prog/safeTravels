@@ -8,8 +8,14 @@
         margin-left: 15px;
         margin-right: 5px;
     }
+    .nlbanner{
+        display: none;
+    }
 }
 @include media(sm){
+    .nlbanner{
+        display: block;
+    }
     hr{
         display: none;
     }
