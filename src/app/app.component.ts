@@ -10,9 +10,10 @@ import { HdataService } from './hdata.service';
 })
 export class AppComponent implements OnInit{
   title = 'safeTravels';
-  private loggedin:boolean;
+  private loggedin: boolean;
   dataList: any = [];
   constructor(private hdataservice: HdataService){}
+  // tslint:disable-next-line: typedef
   ngOnInit(){
     this.hdataservice.getHData().subscribe(response => {
       this.dataList = response;

@@ -46,7 +46,7 @@ export class HotelsComponent implements OnInit {
     childrenNumber: 0,
     roomsNumber: 1,
   };
-  showBrowserBanners: Boolean;
+  showBrowserBanners: boolean;
    public dataList: any;
   // dataList: any = [];
   // dataList: Hotel;
@@ -61,13 +61,13 @@ export class HotelsComponent implements OnInit {
   reload(): void {
     window.location.reload();
 }
-public dontShowbb(): Boolean {
+public dontShowbb(): boolean {
   return this.showBrowserBanners = false;
 }
-  public dontShowBrowserBanners(showBrowserBanners: Boolean): Boolean {
+  public dontShowBrowserBanners(showBrowserBanners: boolean): boolean {
     return showBrowserBanners = false;
   }
-  public showbrowserbanners(showBrowserBanners: Boolean): Boolean {
+  public showbrowserbanners(showBrowserBanners: boolean): boolean {
     return showBrowserBanners = true;
   }
   ngOnInit(): void {

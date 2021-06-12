@@ -21,6 +21,7 @@ import { LoginComponent } from './Components/login/login.component';
 import { SignupComponent } from './Components/signup/signup.component';
 import {MatCardModule} from '@angular/material/card';
 import {MatDialogModule } from '@angular/material/dialog';
+import { MatTabsModule } from '@angular/material/tabs';
 import { ClickOutsideModule } from 'ng-click-outside';
 import { CitybannersComponent } from './Components/citybanners/citybanners.component';
 import { MDBBootstrapModule } from 'angular-bootstrap-md';
@@ -39,13 +40,14 @@ import {MatCheckboxModule} from '@angular/material/checkbox';
 import { OrderByPipe } from './Components/order-by.pipe';
 import { ListusersComponent } from './Components/listusers/listusers.component';
 import { MiniHotelsFormComponent } from './Components/mini-hotels-form/mini-hotels-form.component';
+import { UserpageComponent } from './Components/userpage/userpage.component';
 
 @NgModule({
   // tslint:disable-next-line: max-line-length
-  declarations: [AppComponent, HomeComponent, ContactComponent, OrderByPipe, LoginComponent, SignupComponent, CitybannersComponent, NlbannerComponent, FooterComponent, OffersComponent, NavbarComponent, HotelsComponent, Error404Component, HotelsformComponent, RecommendedComponent, CalculateOriginalPricePipe, FilterPipe, OrderByPipe, ListusersComponent, MiniHotelsFormComponent],
+  declarations: [AppComponent, HomeComponent, ContactComponent, OrderByPipe, LoginComponent, SignupComponent, CitybannersComponent, NlbannerComponent, FooterComponent, OffersComponent, NavbarComponent, HotelsComponent, Error404Component, HotelsformComponent, RecommendedComponent, CalculateOriginalPricePipe, FilterPipe, OrderByPipe, ListusersComponent, MiniHotelsFormComponent, UserpageComponent],
   // tslint:disable-next-line: max-line-length
-  imports: [MDBBootstrapModule.forRoot(), BrowserModule, AppRoutingModule, FlexLayoutModule, MaterialModule, MatIconModule, MatInputModule, MatToolbarModule, BrowserAnimationsModule, MatDatepickerModule, MatNativeDateModule, MatFormFieldModule,
-    // tslint:disable-next-line: max-line-length
+  imports: [MDBBootstrapModule.forRoot(), BrowserModule, AppRoutingModule, FlexLayoutModule, MaterialModule, MatIconModule, MatInputModule, MatToolbarModule, BrowserAnimationsModule, MatDatepickerModule, MatNativeDateModule, MatFormFieldModule, MatTabsModule,
+  // tslint:disable-next-line: max-line-length
     MatSelectModule, MatCheckboxModule , MatAutocompleteModule, MatButtonModule, FormsModule, ReactiveFormsModule, MatCardModule, MatDialogModule, ClickOutsideModule, HttpClientModule],
   providers: [ {provide: MAT_FORM_FIELD_DEFAULT_OPTIONS, useValue: {floatLabel: 'always'}}],
   bootstrap: [AppComponent],

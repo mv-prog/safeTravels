@@ -1,0 +1,142 @@
+<app-navbar></app-navbar>
+<mat-tab-group>
+    <mat-tab class="booking-tabs" label="My Bookings">
+        <ng-template matTabContent>
+            <div class="bookings-container" *ngIf="numberOfBookings !=null && numberOfBookings != 0; else noBookings">
+                Lista de bookings
+            </div>
+            <ng-template #noBookings>
+                <!-- <div class="no-bookings"> -->
+                <div class="entireContainer">
+                    <div class="glass-panel">
+                        <h1><a href="https://superdevresources.com/glassmorphism-ui-css/" target="_blank">You don't have
+                                any bookings yet.</a></h1>
+                        <p>Take a look at our hotel selection to find amazing choices of safe leisure adequate to your needs!</p>
+                        <div class="glass-toolbar">
+                            <a href="http://localhost:4200/hotels" class="glass-button">Start a new adventure!</a>
+                            <a href="http://localhost:4200/home" target="_blank"
+                                class="glass-button">Go Back</a>
+                        </div>
+                    </div>
+                    <footer class="parallax">
+                        <div class="row footerRow">
+                            <a href="">Find us in </a>
+                            <a><i class="fab fa-facebook"></i> Facebook </a>
+                            <a href=""> <i class="fab fa-instagram"></i> Instagram</a>
+                            <a href=""><i class="fab fa-twitter"></i> Twitter</a>
+                        </div>
+                        <div class="cols footerCols">
+                        <div class="col col1">
+                            <p><b class="text-white">Get to know us</b></p>
+                            <a href="">Who we are</a>
+                            <a href="">Our vision</a>
+                            <a href="">Our mission</a>
+                            <a href="">Work with us!</a>
+                        </div>
+                        <div class="col col2">
+                            <p><b class="text-white">Reach us</b></p>
+                            <a href="">Any questions? Contact Us <i class="fas fa-headphones"></i></a>
+                            <a href="">Become a partner</a>
+                            <a href="">Advertise</a>
+                            <a href="">Rewards</a>
+                        </div>
+                        <div class="col col3">
+                            <p><b class="text-white">Your data and our data</b></p>
+                            <a href="">Terms & Conditions</a>
+                            <a>Privacy policy</a>
+                            <a href="">Cookies</a>
+                            <a>Press</a>
+                        </div>
+                        <div class="col col4">
+                            <p><b class="text-white">Other useful information</b></p>
+                            <a>Our affiliates </a>
+                            <a>Safety guide</a>
+                            <a href=""> Why Galicia</a>
+                            <a href="">Holiday destinations</a>
+                        </div>
+                    </div>
+                    </footer>
+                </div>
+            </ng-template>
+
+        </ng-template>
+    </mat-tab>
+    <mat-tab label="My Profile">
+        <ng-template matTabContent>
+            <div class="no-bookings">
+                <h2>My profile!!</h2>
+                <button class="profileChanges" type="submit" [routerLink]="['/hotels', search]" routerLinkActive="router-link-active"
+                    [disabled]="!searchForm.valid" mat-raised-button color="warm"> Save changes </button>
+            </div>
+        </ng-template>
+    </mat-tab>
+    <mat-tab label="My reviews">
+        <ng-template matTabContent>
+            <div class="bookings-container" *ngIf="numberOfReviews !=null && numberOfReviews != 0; else noReviews">
+                Reviews list
+            </div>
+            <ng-template #noReviews>
+                <div class="entireContainer">
+                    <div class="glass-panel">
+                        <h1><a href="https://superdevresources.com/glassmorphism-ui-css/" target="_blank">You don't have
+                                any reviews yet.</a></h1>
+                        <p>Take a look at our hotel selection to find amazing choices of safe leisure adequate to your needs!</p>
+                        <div class="glass-toolbar">
+                            <a href="http://localhost:4200/hotels" class="glass-button">Start a new adventure!</a>
+                            <a href="http://localhost:4200/home" target="_blank"
+                                class="glass-button">Go Back</a>
+                        </div>
+                    </div>
+                    <footer class="parallax">
+                        <div class="row footerRow">
+                            <a href="">Find us in </a>
+                            <a><i class="fab fa-facebook"></i> Facebook </a>
+                            <a href=""> <i class="fab fa-instagram"></i> Instagram</a>
+                            <a href=""><i class="fab fa-twitter"></i> Twitter</a>
+                        </div>
+                        <div class="cols footerCols">
+                        <div class="col col1">
+                            <p><b class="text-white">Get to know us</b></p>
+                            <a href="">Who we are</a>
+                            <a href="">Our vision</a>
+                            <a href="">Our mission</a>
+                            <a href="">Work with us!</a>
+                        </div>
+                        <div class="col col2">
+                            <p><b class="text-white">Reach us</b></p>
+                            <a href="">Any questions? Contact Us <i class="fas fa-headphones"></i></a>
+                            <a href="">Become a partner</a>
+                            <a href="">Advertise</a>
+                            <a href="">Rewards</a>
+                        </div>
+                        <div class="col col3">
+                            <p><b class="text-white">Your data and our data</b></p>
+                            <a href="">Terms & Conditions</a>
+                            <a>Privacy policy</a>
+                            <a href="">Cookies</a>
+                            <a>Press</a>
+                        </div>
+                        <div class="col col4">
+                            <p><b class="text-white">Other useful information</b></p>
+                            <a>Our affiliates </a>
+                            <a>Safety guide</a>
+                            <a href=""> Why Galicia</a>
+                            <a href="">Holiday destinations</a>
+                        </div>
+                    </div>
+                    </footer>
+                </div>
+            </ng-template>
+        </ng-template>
+    </mat-tab>
+    <mat-tab label="Settings">
+        <ng-template matTabContent>
+            <div class="no-bookings">
+                <h2>My Settings buahahaha</h2>
+                <button class="deleteAccount" type="submit" mat-raised-button color="warm"> Delete your Account! </button>
+            </div>
+        </ng-template>
+    </mat-tab>
+</mat-tab-group>
+
+<!-- <app-footer></app-footer> -->

@@ -62,7 +62,7 @@ $breakpoints: (
   lg: 1200px
 );
 
-//  mixin to print out media queries (based on map keys passed) 
+//  mixin to print out MIN-WIDTH media queries (based on map keys passed) 
 @mixin media($keys...){
   @each $key in $keys { 
     @media (min-width: map-get($breakpoints, $key)){
@@ -70,7 +70,7 @@ $breakpoints: (
     } 
   }
 }
-
+//  mixin to print out MAX-WIDTH media queries (based on map keys passed) 
 @mixin max-media($keys...){
   @each $key in $keys { 
     @media (max-width: map-get($breakpoints, $key)){
