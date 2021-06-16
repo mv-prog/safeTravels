@@ -59,7 +59,11 @@
     }
     
 }
+
 @include media(desktop) {
+    // .hotelsContainer{
+    //     min-height: 1200px !important;
+    // }
     .imgH {
         width: 250px;
         height: 220px;
@@ -108,7 +112,6 @@
     padding-bottom: 5px;
 }
 .hotelsContainer{
-    max-width: 100vh;
     max-width: 100%;
 }
 .card-title {

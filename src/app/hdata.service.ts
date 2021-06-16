@@ -31,4 +31,8 @@ export class HdataService {
     // return this.httpClient.get('http://localhost:3000/hotels'); mock json server
     return this.httpClient.get('http://localhost:8080/hotels');
   }
+
+  getBookingsData(): any {
+    return this.httpClient.get('http://localhost:8080/bookings');
+  }
 }

@@ -6,6 +6,70 @@
 @import "../../breakpoints";
 
 // ------------------MY BOOKINGS TAB SECTION STYLE!!!!-----------------------
+// ------------------------------YESBOOKINGS AREA-----------------------------------------
+// @include media(sm) {
+//     .bookings-container {
+//         h1 {
+//             margin-left: 1rem;
+//         }
+//         .eachBooking {
+//             .bookingdate,
+//             .hotelplace {
+//                 margin-left: 1rem;
+//             }
+//         }
+//     }
+// }
+@include media(tablet) {
+    .bookings-container {
+        h1 {
+            margin-left: 20px;
+        }
+        .eachBooking {
+            margin-left: 20px;
+        }
+    }
+}
+.bookings-container {
+    text-decoration: none;
+    a {
+        color: black;
+        &.bookingDetailLink {
+            color: rgb(29, 68, 177);
+        }
+    }
+    h1 {
+        margin-top: 1.5rem;
+        font: {
+            family: Tahoma;
+            weight: bold;
+            size: 1.7rem;
+        }
+    }
+}
+.eachBooking {
+    .hotelplace {
+        font: {
+            size: 1.5rem;
+            weight: bold;
+            family: Tahoma;
+        }
+    }
+    .bookingdate {
+        font: {
+            size: 1rem;
+            family: Tahoma;
+        }
+    }
+    .bprice {
+        margin-left: 2rem;
+        padding-top: 0.3rem;
+        font-size: 1.1rem;
+    }
+}
+
+// ----------------------END OF YESBOOKINGS AREA--------------------------------
+//  ------------------NO BOOKINGS AREA---------------
 .no-bookings {
     button.deleteAccount {
         color: #fff;
@@ -21,74 +85,76 @@
 .glass-panel {
     color: #fff;
     margin: 40px auto;
-    background-color: rgba(255,255,255,0.06);
-    border: 1px solid rgba(255,255,255,0.1);
+    background-color: rgba(255, 255, 255, 0.06);
+    border: 1px solid rgba(255, 255, 255, 0.1);
     width: 100%;
     border-radius: 15px;
     padding: 32px;
     backdrop-filter: blur(10px);
-  }
-  
-  .glass-button {
+}
+
+.glass-button {
     display: inline-block;
     padding: 24px 32px;
     border: 0;
     text-decoration: none;
     border-radius: 15px;
-    background-color: rgba(255,255,255,0.1);
-    border: 1px solid rgba(255,255,255,0.1);
+    background-color: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.1);
     backdrop-filter: blur(30px);
-    color: rgba(255,255,255,0.8);
+    color: rgba(255, 255, 255, 0.8);
     font-size: 14px;
     letter-spacing: 2px;
     cursor: pointer;
     text-transform: uppercase;
-  }
-  
-  .glass-button:hover {
-    background-color: rgba(255,255,255,0.2);
-  }
-  
- .entireContainer {
-     width: 100%;
-    background: url(https://images.unsplash.com/photo-1582647035366-429001bf1273?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1050&q=80)  no-repeat center center fixed;
+}
+
+.glass-button:hover {
+    background-color: rgba(255, 255, 255, 0.2);
+}
+
+.entireContainer {
+    width: 100%;
+    background: url(https://images.unsplash.com/photo-1582647035366-429001bf1273?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1050&q=80)
+        no-repeat center center fixed;
     -webkit-background-size: cover;
     -moz-background-size: cover;
     -o-background-size: cover;
     padding: 20px 0px;
     background-size: cover;
     text-align: center;
-    font-family: 'Open Sans', sans-serif;
- }
-  
-  .glass-panel {  
+    font-family: "Open Sans", sans-serif;
+}
+
+.glass-panel {
     max-width: 600px;
-  }
-  
-  .glass-button {
-    margin: 15px;
-    margin-top: 40px;
-  }
-  
-  h1, h1 a {
-    min-height: 120px;
-    width: 90%;
-    max-width: 700px;
-    vertical-align: middle;
-    text-align: center;
-    margin: 0 auto;
-    text-decoration: none;
-    color: #fff;
-    padding-top: 60px;
-    color: rgba(255,255,255,0.8);
-  }
-  
-  p {
-    width: 80%;
-    margin: 0 auto;
-    padding-bottom: 32px;
-    color: rgba(255,255,255,0.6);
-  }
+    h1,
+    h1 a {
+        min-height: 120px;
+        width: 90%;
+        max-width: 700px;
+        vertical-align: middle;
+        text-align: center;
+        margin: 0 auto;
+        text-decoration: none;
+        color: #fff;
+        padding-top: 60px;
+        color: rgba(255, 255, 255, 0.8);
+    }
+
+    p {
+        width: 80%;
+        margin: 0 auto;
+        padding-bottom: 32px;
+        color: rgba(255, 255, 255, 0.6);
+    }
+
+    .glass-button {
+        margin: 15px;
+        margin-top: 40px;
+    }
+}
+
 @include max-media(tablet) {
     .no-bookings {
         h2 {
@@ -135,96 +201,129 @@
 //         }
 //     }
 // }
-::ng-deep .mat-tab-label{
+::ng-deep .mat-tab-label {
     margin-top: 10px;
     // color: #ff2970;
     color: darkblue;
     font-weight: bold;
 }
 // --------------MY BOOKINGS FOOTER STYLE!!!-------------
-footer.parallax{
-    background-color: rgba(255,255,255,0.06);
+footer.parallax {
+    background-color: rgba(255, 255, 255, 0.06);
     font-weight: 600;
     color: white;
 }
 
 @include media(mobile, sm) {
-  .footerRow {
-      width: 98%;
-      margin-left: 1.5%;
-      margin-top: 10px;
-      a {
-          font-size: 13px;
-      }
-  }
-  .cols.footerCols {
-      display: flex;
-      flex-direction: column;
-      width: 100%;
-      .col {
-          display: flex;
-          flex-direction: column;
-          width: 100%;
-          b {
-              font-size: 14px;
-          }
-      }
-  }
+    .footerRow {
+        width: 98%;
+        margin-left: 1.5%;
+        margin-top: 10px;
+        a {
+            font-size: 13px;
+        }
+    }
+    .cols.footerCols {
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+        .col {
+            display: flex;
+            flex-direction: column;
+            width: 100%;
+            b {
+                font-size: 14px;
+            }
+        }
+    }
 }
 @include media(tablet) {
-  .footerRow {
-      width: 99%;
-      margin-left: 3px;
-      a {
-          font-size: 16px;
-          padding-top: 10px;
-      }
-  }
-  .cols.footerCols {
-      display: flex;
-      flex-direction: row;
-      .col {
-          width: 80px;
-          display: flex;
-          flex-direction: column;
-          b {
-              font-size: 16px;
-          }
-      }
-  }
+    .footerRow {
+        width: 99%;
+        margin-left: 3px;
+        a {
+            font-size: 16px;
+            padding-top: 10px;
+        }
+    }
+    .cols.footerCols {
+        display: flex;
+        flex-direction: row;
+        .col {
+            width: 80px;
+            display: flex;
+            flex-direction: column;
+            b {
+                font-size: 16px;
+            }
+        }
+    }
 }
 
 footer {
-  width: 100vw;
-  padding-top: 1px;
-  .footerRow {
-      margin-top: 10px;
-      justify-content: center;
-      border-radius: 50px;
-      color: $brokenWhite;
-      height: 60px;
-      padding-top: 20px;
-      padding-bottom: 20px;
-      a {
-          font-weight: 600;
-          padding-left: 15px;
-          color: whitesmoke;
-      }
-  }
-  .cols.footerCols {
-      line-height: 25px;
-      padding-left: 30px;
-      display: flex;
-      padding-top: 10px;
-      justify-content: space-between;
-      .col {
-          padding: 20px;
+    width: 100vw;
+    padding-top: 1px;
+    .footerRow {
+        margin-top: 10px;
+        justify-content: center;
+        border-radius: 50px;
+        color: $brokenWhite;
+        height: 60px;
+        padding-top: 20px;
+        padding-bottom: 20px;
+        a {
+            font-weight: 600;
+            padding-left: 15px;
+            color: whitesmoke;
+        }
+    }
+    .cols.footerCols {
+        line-height: 25px;
+        padding-left: 30px;
+        display: flex;
+        padding-top: 10px;
+        justify-content: space-between;
+        .col {
+            padding: 20px;
 
-          a {
-              color: whitesmoke;
-          }
-      }
-  }
+            a {
+                color: whitesmoke;
+            }
+        }
+    }
 }
 // --------------END OF MY BOOKINGS FOOTER STYLE!!!-------------
+//  ------------------END OF #NOBOOKINGS AREA---------------
 // --------------END OF MY BOOKINGS TAB SECTION STYLE!!!-------------
+
+// --------------------START OF MY PROFILE AREA----------------------------
+@include media(tablet) {
+    .container.profile {
+        margin-top: 20px;
+    }
+}
+@include media(tablet) {
+    .container.profile {
+        margin: 3rem auto;
+        padding: 2rem;
+        box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);
+        // box-shadow: 0px 0px 0px 5px rgba(255, 255, 255, 0.4), 0px 4px 20px rgba(0, 0, 0, 0.92);
+        // -moz-border-radius-topleft: 7px;
+        // -webkit-border-top-left-radius: 7px;
+        // border-top-left-radius: 7px;
+        // -moz-border-radius-topright: 7px;
+        // -webkit-border-top-right-radius: 7px;
+        // border-top-right-radius: 7px;
+        // -moz-border-radius-bottomleft: 7px;
+        // -webkit-border-bottom-left-radius: 7px;
+        // border-bottom-left-radius: 7px;
+        // -moz-border-radius-bottomright: 7px;
+        // -webkit-border-bottom-right-radius: 7px;
+        // border-bottom-right-radius: 7px;
+        div.row {
+            .mat-form-field {
+                margin-right: 2rem;
+            }
+        }
+    }
+}

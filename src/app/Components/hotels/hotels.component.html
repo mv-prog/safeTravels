@@ -1,18 +1,22 @@
-
-  <app-navbar [showBrowserBanners]="showbrowserbanners" (showBB)="showbrowserbanners($event)"></app-navbar>
-  <!-- <app-navbar></app-navbar> -->
-  <div class="show-browser-banners" [style.display]="showBrowserBanners ? 'inherit':'none'">
-    <header class="jumbotron hotels jumbotron shadow">
-      <app-hotelsform [search]='search' (sendHotelsData)='getHotelsData($event)'
-        [showBrowserBanners]="showBrowserBanners">
-      </app-hotelsform>
-    </header>
-    <nlbanner></nlbanner>
-    <app-offers></app-offers>
-    <app-recommended></app-recommended>
-  </div>
-  <div class="hotelsContainer">
-  <app-mini-hotels-form [search]='search' (sendHotelsData)='getHotelsData($event)'></app-mini-hotels-form>
+<app-navbar [showBrowserBanners]="showbrowserbanners" (showBB)="showbrowserbanners($event)"></app-navbar>
+<!-- <app-navbar></app-navbar> -->
+<div class="show-browser-banners" [style.display]="showBrowserBanners ? 'inherit':'none'">
+  <header class="jumbotron hotels jumbotron shadow">
+    <!-- <app-hotelsform [search]='search' (sendHotelsData)='getHotelsData($event)'
+        [showBrowserBanners]="showBrowserBanners"> -->
+    <app-hotelsform [search]='search' (sendHotelsData)='getHotelsData($event)'>
+    </app-hotelsform>
+  </header>
+  <nlbanner></nlbanner>
+  <app-offers></app-offers>
+  <app-recommended></app-recommended>
+</div>
+<div class="hotelsContainer">
+  <header class="jumbotron hotels jumbotron shadow">
+    <app-hotelsform [search]='search' (sendHotelsData)='getHotelsData($event)'>
+    </app-hotelsform>
+  </header>
+  <!-- <app-mini-hotels-form [search]='search' (sendHotelsData)='getHotelsData($event)'></app-mini-hotels-form> -->
   <div class="searchOrder" [style.display]="showBrowserBanners ? 'none':'inherit'">
     <mat-form-field appearance="outline">
       <mat-label>Select an option</mat-label>
@@ -33,7 +37,7 @@
     <!-- <ng-container *ngFor="let hotel of dataList as hotels"> -->
 
     <!-- <div class="searchfilters" [style.display]="showBrowserBanners ? 'none':''"> -->
-      <div class="searchfilters" >
+    <div class="searchfilters">
       <p class="text-primary ">
         <!-- <span class="numberResults lead">{{hotels.length}}</span><span class="results">results</span> -->
       </p>

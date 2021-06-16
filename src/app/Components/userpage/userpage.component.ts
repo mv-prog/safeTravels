@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
+import { MatTabsModule } from '@angular/material/tabs';
 
 @Component({
   selector: 'app-userpage',
@@ -8,11 +10,22 @@ import { Component, OnInit } from '@angular/core';
 export class UserpageComponent implements OnInit {
   public numberOfBookings: number;
   public numberOfReviews: number;
-  constructor() {
-    this.numberOfBookings = 0;
+  public bookingList: any;
+  public bookingId: number;
+  public bookingCompleted: boolean;
+  constructor(private http: HttpClient) {
+    this.numberOfBookings = 1;
     this.numberOfReviews = 0;
+    this.bookingCompleted = true;
+  }
+  BookingSearch(): any{
+    this.bookingList = this.bookingList.filter(res => {
+      return res.id;
+    });
   }
   ngOnInit(): void {
+    const bresponse = this.http.get('http://localhost:8080/bookings');
+    // tslint:disable-next-line: deprecation
+    bresponse.subscribe((data) => this.bookingList = data);
   }
-
 }
