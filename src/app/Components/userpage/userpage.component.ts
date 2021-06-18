@@ -13,10 +13,16 @@ export class UserpageComponent implements OnInit {
   public bookingList: any;
   public bookingId: number;
   public bookingCompleted: boolean;
+  private currencies: string[];
+  private selectedCurrency: string;
+  private signedToNl: boolean;
   constructor(private http: HttpClient) {
     this.numberOfBookings = 1;
     this.numberOfReviews = 0;
     this.bookingCompleted = true;
+    this.currencies = ['€ Euro', 'KRW Korean Won', '£ Pound Sterling', 'USD American Dollar', 'JPY Japanese Yen', 'CNY Chinese Yuan'];
+    this.selectedCurrency = '€ Euro';
+    this.signedToNl = true;
   }
   BookingSearch(): any{
     this.bookingList = this.bookingList.filter(res => {
