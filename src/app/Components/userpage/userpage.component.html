@@ -166,152 +166,242 @@
             </ng-template>
         </ng-template>
     </mat-tab>
-    <mat-tab label="My Profile">
+    <mat-tab label="My Account">
         <ng-template matTabContent>
-            <div class="container profile">
-                <form class="formulario col-xs-8 col-sm-10 col-md-6 col-bg-5">
-                    <!-- {{firstname.value | json}} -->
-                    <legend class="leg">
-                        <h2>My Personal Data</h2>
-                    </legend>
-                    <div class="form-group">
-                        <div class="row">
-                            <mat-form-field appearance="outline" title="First Name">
-                                <mat-label class="help-block">
-                                    First Name
+            <div class="bookings-container">
+                <h1>My Account</h1>
+                <div class="container profile">
+                    <h2 class="account-option">My Personal Data</h2>
+                    <form class="formulario col-xs-8 col-sm-10 col-md-6 col-bg-5">
+                        <!-- {{firstname.value | json}} -->
+                        <div class="form-group">
+                            <div class="row">
+                                <mat-form-field appearance="outline" title="First Name">
+                                    <mat-label class="help-block">
+                                        First Name
+                                    </mat-label>
+                                    <input matInput type="text" required [matAutocomplete]="auto" name="firstname"
+                                        id="firstname">
+                                    <!-- [(ngModel)]="fulanito.firstname" placeholder="fulanito.firstname"> -->
+                                </mat-form-field>
+                                <!-- <small class="wrong-field" *ngIf="firstname.touched && firstname.invalid">First Name is -->
+                                <!-- required</small> -->
+                                <mat-form-field appearance="outline" title="Last Name">
+                                    <mat-label class="help-block">
+                                        Last Name
+                                    </mat-label>
+                                    <input matInput type="text" required [matAutocomplete]="auto" name="lastname"
+                                        id="lastname">
+                                </mat-form-field>
+                            </div>
+                            <div class="row">
+                                <mat-form-field appearance="outline" title="Country">
+                                    <mat-label class="help-block">
+                                        Country
+                                    </mat-label>
+                                    <input matInput type="country" required [matAutocomplete]="auto" name="country"
+                                        id="country">
+                                </mat-form-field>
+                                <mat-form-field appearance="outline" title="Language">
+                                    <mat-label class="help-block">
+                                        <!-- i am erasing this as soon as I create a language button in my main navbar just like in Balearia's site. Or if I place it in preferences. buthaving it here and in the navbar seems also lik a plausible option -->
+                                        Language
+                                    </mat-label>
+                                    <input matInput type="text" required [matAutocomplete]="auto" name="language"
+                                        id="language">
+                                </mat-form-field>
+                            </div>
+                            <div class="row">
+                                <mat-form-field appearance="outline" title="Birth Date">
+                                    <mat-label class="help-block">
+                                        Birth Date
+                                    </mat-label>
+                                    <input matInput type="date" required [matAutocomplete]="auto" name="birthdate"
+                                        id="birthdate">
+                                </mat-form-field>
+                                <mat-form-field appearance="outline" title="Phone">
+                                    <mat-label class="help-block">
+                                        Phone Number
+                                    </mat-label>
+                                    <input type="tel" matInput id="phone" name="phone"
+                                        pattern="[0-9]{3}-[0-9]{2}-[0-9]{3}" type="phone" required
+                                        [matAutocomplete]="auto">
+                                </mat-form-field>
+                            </div>
+                            <div class="row">
+                                <mat-form-field appearance="outline" title="email">
+                                    <mat-label class="help-block">
+                                        Email linked to your account
+                                    </mat-label>
+                                    <input matInput type="email" required [matAutocomplete]="auto" name="email"
+                                        id="email">
+                                </mat-form-field>
+                            </div>
+                        </div>
+                        <button type="submit" mat-raised-button color="accent"> Save changes </button>
+                    </form>
+                </div>
+                <div class="container profile">
+                    <form action="" class="form-group">
+                        <h2 class="account-option">Preferences</h2>
+                        <div class="eachoption-group">
+                            <h3>Accessibility</h3>
+                            <p>
+                                <mat-checkbox formControlName="Accessibility">Browse only through accessible properties
+                                </mat-checkbox>
+                            </p>
+                        </div>
+                        <div class="eachoption-group">
+                            <h3 class="elev">Currency</h3>
+                            <mat-form-field appearance="outline" title="currency">
+                                <mat-label class="help-block" id="adultsNumber">
+                                    Preferred Currency
                                 </mat-label>
-                                <input matInput type="text" required [matAutocomplete]="auto" name="firstname"
-                                    id="firstname">
-                                <!-- [(ngModel)]="fulanito.firstname" placeholder="fulanito.firstname"> -->
-                            </mat-form-field>
-                            <!-- <small class="wrong-field" *ngIf="firstname.touched && firstname.invalid">First Name is -->
-                            <!-- required</small> -->
-                            <mat-form-field appearance="outline" title="Last Name">
-                                <mat-label class="help-block">
-                                    Last Name
-                                </mat-label>
-                                <input matInput type="text" required [matAutocomplete]="auto" name="lastname"
-                                    id="lastname">
+                                <mat-select id="currency" placeholder="{{selectedCurrency}}"
+                                    [(ngModel)]="selectedCurrency" name="currency">
+                                    <mat-option *ngFor="let item of currencies" [value]="item">
+                                        {{item}}
+                                    </mat-option>
+                                </mat-select>
                             </mat-form-field>
                         </div>
-                        <div class="row">
-                            <mat-form-field appearance="outline" title="Country">
-                                <mat-label class="help-block">
-                                    Country
-                                </mat-label>
-                                <input matInput type="country" required [matAutocomplete]="auto" name="country"
-                                    id="country">
-                            </mat-form-field>
-                            <mat-form-field appearance="outline" title="Language">
-                                <mat-label class="help-block">
-                                    <!-- i am erasing this as soon as I create a language button in my main navbar just like in Balearia's site. Or if I place it in preferences. buthaving it here and in the navbar seems also lik a plausible option -->
-                                    Language
-                                </mat-label>
-                                <input matInput type="text" required [matAutocomplete]="auto" name="language"
-                                    id="language">
-                            </mat-form-field>
+                        <div class="eachoption-group">
+                            <h3>Newsletter</h3>
+                            <mat-slide-toggle>Subscribe to our Newsletter and get the best deals</mat-slide-toggle>
                         </div>
-                        <div class="row">
-                            <mat-form-field appearance="outline" title="Birth Date">
-                                <mat-label class="help-block">
-                                    Birth Date
-                                </mat-label>
-                                <input matInput type="date" required [matAutocomplete]="auto" name="birthdate"
-                                    id="birthdate">
-                            </mat-form-field>
-                        </div>
-                        <div class="row">
-                            <mat-form-field appearance="outline" title="email">
-                                <mat-label class="help-block">
-                                    Email linked to your account
-                                </mat-label>
-                                <input matInput type="email" required [matAutocomplete]="auto" name="email" id="email">
-                            </mat-form-field>
-                        </div>
+                    </form>
+                </div>
+                <div class="container profile">
+                    <h2 class="account-option">Security</h2>
+                    <div class="eachoption-group">
+                        <form action="" class="form-group">
+                            <div class="row">
+                                <h3 class="elev">Change Password</h3>
+                                <mat-form-field class="pass" appearance="outline" title="Current Password">
+                                    <mat-label class="help-block">
+                                        Current Password
+                                    </mat-label>
+                                    <input matInput type="password" required name="cpassword" id="cpassword">
+                                </mat-form-field>
+                                <mat-form-field class="pass" appearance="outline" title="New Password">
+                                    <mat-label class="help-block">
+                                        New Password
+                                    </mat-label>
+                                    <input matInput type="password" required [matAutocomplete]="auto" name="npassword"
+                                        id="npassword">
+                                </mat-form-field>
+                                <button class="savePass" type="submit" mat-raised-button color="warm"> Change Password
+                                </button>
+                            </div>
+                        </form>
                     </div>
-                    <button type="submit" mat-raised-button color="accent"> Save changes </button>
-                </form>
+                    <div class="eachoption-group">
+                        <form action="" class="form-group">
+                            <div class="row">
+                                <h3 class="elev">Delete Account</h3>
+                                <mat-form-field class="pass" appearance="outline" title="Current Password">
+                                    <mat-label class="help-block">
+                                        Enter Password
+                                    </mat-label>
+                                    <input matInput type="password" required name="cpassword" id="cpassword">
+                                </mat-form-field>
+                                <div class="col">
+                                    <button class="savePass" type="submit" mat-raised-button color="warm">
+                                        Delete Account <mat-icon>warning</mat-icon>
+                                    </button>
+                                    <mat-hint> Changes cannot be unmade! </mat-hint>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
             </div>
+
             <app-footer></app-footer>
         </ng-template>
     </mat-tab>
-    <mat-tab label="Settings">
+    <!-- <mat-tab label="Settings">
         <ng-template matTabContent>
             <div class="bookings-container">
                 <h1>Account Settings</h1>
-                <h2 class="account-option">Preferences</h2>
-                <div class="eachoption-group">
-                    <h3>Accessibility</h3>
-                    <p>
-                        <mat-checkbox formControlName="Accessibility">Browse only through accessible properties
-                        </mat-checkbox>
-                    </p>
-                </div>
-                <div class="eachoption-group">
-                    <h3>Currency</h3>
-                    <mat-form-field appearance="outline" title="currency">
-                        <mat-label class="help-block" id="adultsNumber">
-                            Preferred Currency
-                        </mat-label>
-                        <mat-select id="currency" placeholder="{{selectedCurrency}}" [(ngModel)]="selectedCurrency"
-                            name="currency">
-                            <mat-option *ngFor="let item of currencies" [value]="item">
-                                {{item}}
-                            </mat-option>
-                        </mat-select>
-                    </mat-form-field>
-                </div>
-                <div class="eachoption-group">
-                    <h3>Newsletter</h3>
-                    <mat-slide-toggle [value]="signedToNl">Subscribe to our Newsletter</mat-slide-toggle>
-                </div>
-
-
-                <h2 class="account-option">Security</h2>
-                <div class="eachoption-group">
-                    <h3>Change Password</h3>
-                    <div class="row">
-                        <mat-form-field class="pass" appearance="outline" title="Current Password">
-                            <mat-label class="help-block">
-                                Current Password
-                            </mat-label>
-                            <input matInput type="password" required name="cpassword" id="cpassword">
-                        </mat-form-field>
-                        <mat-form-field class="pass" appearance="outline" title="New Password">
-                            <mat-label class="help-block">
-                                New Password
-                            </mat-label>
-                            <input matInput type="password" required [matAutocomplete]="auto" name="npassword"
-                                id="npassword">
-                        </mat-form-field>
-                        <button class="savePass" type="submit" mat-raised-button color="warm"> Change Password
-                        </button>
-                    </div>
-                </div>
-                <div class="eachoption-group">
-                    <h3>Erase Account</h3>
-                    <div class="row">
-                        <mat-form-field class="pass" appearance="outline" title="Current Password">
-                            <mat-label class="help-block">
-                                Enter Password
-                            </mat-label>
-                            <input matInput type="password" required name="cpassword" id="cpassword">
-                        </mat-form-field>
-                        <div class="col">
-                            <button class="savePass" type="submit" mat-raised-button color="warm">
-                                <mat-icon>warning</mat-icon> Delete Account
-                            </button>
-                            <mat-hint> Changes cannot be unmade! </mat-hint>
+                <div class="container profile">
+                    <form action="" class="form-group">
+                        <h2 class="account-option">Preferences</h2>
+                        <div class="eachoption-group">
+                            <h3>Accessibility</h3>
+                            <p>
+                                <mat-checkbox formControlName="Accessibility">Browse only through accessible properties
+                                </mat-checkbox>
+                            </p>
                         </div>
+                        <div class="eachoption-group">
+                            <h3>Currency</h3>
+                            <mat-form-field appearance="outline" title="currency">
+                                <mat-label class="help-block" id="adultsNumber">
+                                    Preferred Currency
+                                </mat-label>
+                                <mat-select id="currency" placeholder="{{selectedCurrency}}"
+                                    [(ngModel)]="selectedCurrency" name="currency">
+                                    <mat-option *ngFor="let item of currencies" [value]="item">
+                                        {{item}}
+                                    </mat-option>
+                                </mat-select>
+                            </mat-form-field>
+                        </div>
+                        <div class="eachoption-group">
+                            <h3>Newsletter</h3>
+                            <mat-slide-toggle>Subscribe to our Newsletter and get the best deals</mat-slide-toggle>
+                        </div>
+                    </form>
+                </div>
+                <div class="container profile">
+                    <h2 class="account-option">Security</h2>
+                    <div class="eachoption-group">
+                        <form action="" class="form-group">
+                            <div class="row">
+                                <h3>Change Password</h3>
+                                <mat-form-field class="pass" appearance="outline" title="Current Password">
+                                    <mat-label class="help-block">
+                                        Current Password
+                                    </mat-label>
+                                    <input matInput type="password" required name="cpassword" id="cpassword">
+                                </mat-form-field>
+                                <mat-form-field class="pass" appearance="outline" title="New Password">
+                                    <mat-label class="help-block">
+                                        New Password
+                                    </mat-label>
+                                    <input matInput type="password" required [matAutocomplete]="auto" name="npassword"
+                                        id="npassword">
+                                </mat-form-field>
+                                <button class="savePass" type="submit" mat-raised-button color="warm"> Change Password
+                                </button>
+                            </div>
+                        </form>
+                    </div>
+                    <div class="eachoption-group">
+                        <form action="" class="form-group">
+                            <div class="row">
+                                <h3>Delete Account</h3>
+                                <mat-form-field class="pass" appearance="outline" title="Current Password">
+                                    <mat-label class="help-block">
+                                        Enter Password
+                                    </mat-label>
+                                    <input matInput type="password" required name="cpassword" id="cpassword">
+                                </mat-form-field>
+                                <div class="col">
+                                    <button class="savePass" type="submit" mat-raised-button color="warm">
+                                        Delete Account <mat-icon>warning</mat-icon>
+                                    </button>
+                                    <mat-hint> Changes cannot be unmade! </mat-hint>
+                                </div>
+                            </div>
+                        </form>
                     </div>
                 </div>
-                <!-- <button class="deleteAccount" type="submit" mat-raised-button color="warm"> Delete your Account!
-                </button> -->
-
             </div>
             <app-footer></app-footer>
         </ng-template>
-    </mat-tab>
+    </mat-tab> -->
 </mat-tab-group>
 
 <!-- <app-footer></app-footer> -->

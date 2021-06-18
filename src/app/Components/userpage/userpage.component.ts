@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { MatTabsModule } from '@angular/material/tabs';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-userpage',
@@ -16,13 +17,19 @@ export class UserpageComponent implements OnInit {
   private currencies: string[];
   private selectedCurrency: string;
   private signedToNl: boolean;
-  constructor(private http: HttpClient) {
+  isChecked = true;
+  formGroup: FormGroup;
+  constructor(formBuilder: FormBuilder, private http: HttpClient) {
     this.numberOfBookings = 1;
     this.numberOfReviews = 0;
     this.bookingCompleted = true;
     this.currencies = ['€ Euro', 'KRW Korean Won', '£ Pound Sterling', 'USD American Dollar', 'JPY Japanese Yen', 'CNY Chinese Yuan'];
     this.selectedCurrency = '€ Euro';
     this.signedToNl = true;
+    this.formGroup = formBuilder.group({
+      enableWifi: '',
+      acceptTerms: ['', Validators.requiredTrue]
+    });
   }
   BookingSearch(): any{
     this.bookingList = this.bookingList.filter(res => {
