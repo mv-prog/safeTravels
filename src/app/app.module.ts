@@ -42,11 +42,11 @@ import { ListusersComponent } from './Components/listusers/listusers.component';
 import { MiniHotelsFormComponent } from './Components/mini-hotels-form/mini-hotels-form.component';
 import { UserpageComponent } from './Components/userpage/userpage.component';
 import {MatSlideToggleModule} from '@angular/material/slide-toggle';
-import { FichaHotelComponent } from './Components/ficha-hotel/ficha-hotel.component';
+import { HotelDetailsComponent } from './Components/hotel-details/hotel-details.component';
 @NgModule({
   // tslint:disable-next-line: max-line-length
   declarations: [AppComponent, HomeComponent, ContactComponent, OrderByPipe, LoginComponent, SignupComponent, CitybannersComponent, NlbannerComponent, FooterComponent, OffersComponent, NavbarComponent, HotelsComponent, Error404Component, HotelsformComponent, RecommendedComponent, CalculateOriginalPricePipe,
-    FilterPipe, OrderByPipe, ListusersComponent, MiniHotelsFormComponent, UserpageComponent, FichaHotelComponent],
+    FilterPipe, OrderByPipe, ListusersComponent, MiniHotelsFormComponent, UserpageComponent, HotelDetailsComponent],
   imports: [MDBBootstrapModule.forRoot(), BrowserModule, AppRoutingModule, FlexLayoutModule, MaterialModule, MatIconModule,
   MatInputModule, MatToolbarModule, MatSlideToggleModule,
     BrowserAnimationsModule, MatDatepickerModule, MatNativeDateModule, MatFormFieldModule, MatTabsModule,

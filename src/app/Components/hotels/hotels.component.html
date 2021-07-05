@@ -101,11 +101,13 @@
           <!-- *ngIf=" search.searchInput == hotel.region || search.searchInput == hotel.city || search.searchInput == hotel.name || search.searchInput == 'All hotels and places' && star.id == hotel.star"> -->
           <div class="row g-0">
             <div class="col-md-4">
-              <a><img class="img-fluid imgH" src="./../../assets/sm/{{hotel.id}}.jpg" alt="img {{hotel.name}}"></a>
+              <a href="{{hotelPath + hotel.id}}" target="_blank"><img class="img-fluid imgH" src="./../../assets/sm/{{hotel.id}}.jpg" alt="img {{hotel.name}}"></a>
             </div>
             <div class="col-md-6">
               <div class="card-body">
+                <a href="{{detailedPath + hotel.id}}" target="_blank">
                 <h5 class="card-title">{{hotel.name}}</h5>
+                </a>
                 <p class="card-text">
                   <span class="stars-number"> {{hotel.stars }} </span>
                   <span class="material-icons yellow-text yellowstar">star_rate</span>
@@ -115,10 +117,10 @@
                 </p>
                 <!-- aquí un ngIf para amosar icono de percina e balneario ou non -->
                 <p class="card-text">
-                  <span *ngIf="hotel.spa"><i class="fas fa-hot-tub"></i> &nbsp; </span>
-                  <span *ngIf="hotel.pool"> <i class="fas fa-swimming-pool"></i> &nbsp;</span>
-                  <span *ngIf="hotel.wifi"> <i class="fas fa-wifi"></i> &nbsp;</span>
-                  <span *ngIf="hotel.parking"> <i class="fas fa-parking"></i> </span>
+                  <span title="spa" *ngIf="hotel.spa"><i class="fas fa-hot-tub"></i> &nbsp; </span>
+                  <span title="swimming pool" *ngIf="hotel.pool"> <i class="fas fa-swimming-pool"></i> &nbsp;</span>
+                  <span title="wifi" *ngIf="hotel.wifi"> <i class="fas fa-wifi"></i> &nbsp;</span>
+                  <span title="parking" *ngIf="hotel.parking"> <i class="fas fa-parking"></i> </span>
                 </p>
               </div>
             </div>
@@ -135,7 +137,7 @@
               <p class="card-text finalprice">
                 <!-- {{ calculatePercentage(hotel.price, hotel.offer) }}€ I'll have to create a new method in sql for that-->
               </p>
-              <button type="submit" mat-raised-button class="viewmore" color="accent">View more</button>
+              <a type="submit" mat-raised-button class="viewmore" color="accent" href="{{detailedPath + hotel.id}}" target="_blank">View more</a>
             </div>
           </div>
         </div>

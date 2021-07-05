@@ -31,7 +31,7 @@ export class HotelsComponent implements OnInit {
     ]
   };
   @ViewChild(MatDatepicker) datepicker: MatDatepicker<Date>;
-  public options = ['Mallorca', 'Santiago', 'Ca Sa Padrina d\'Artà'];
+  public options = ['A Coruña', 'Santiago', 'Hotel A Casa'];
   public hideIndication = true;
   public adultsNumber: number;
   public roomsNumber: number;
@@ -46,6 +46,7 @@ export class HotelsComponent implements OnInit {
     childrenNumber: 0,
     roomsNumber: 1,
   };
+  public hotelPath;
   showBrowserBanners: boolean;
    public dataList: any;
   // dataList: any = [];
@@ -70,7 +71,9 @@ public dontShowbb(): boolean {
   public showbrowserbanners(showBrowserBanners: boolean): boolean {
     return showBrowserBanners = true;
   }
+
   ngOnInit(): void {
+    this.hotelPath = window.location.origin + '/hotel/';
     // this.hdataservice.getHData().subscribe(response => {
     //   this.dataList = response;
     // });
