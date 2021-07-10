@@ -74,6 +74,7 @@ public dontShowbb(): boolean {
 
   ngOnInit(): void {
     this.hotelPath = window.location.origin + '/hotel/';
+    console.log(this.hotelPath);
     // this.hdataservice.getHData().subscribe(response => {
     //   this.dataList = response;
     // });

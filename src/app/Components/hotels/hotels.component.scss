@@ -32,7 +32,7 @@
     //         margin-top: 20px;
     //     }
     // }
-    button.viewmore {
+    .viewmore {
         position: absolute;
         bottom: 0;
         right: 0;
@@ -48,7 +48,7 @@
             max-height: 220px;
         }
     }
-    button.viewmore {
+    .viewmore {
         margin-right: 20px;
     }
     div.hotellist {
@@ -72,12 +72,12 @@
         display: flex;
         flex-direction: row;
         div.searchfilters{
-            width: 20%;
+            width: 15%;
             display: flex;
             flex-direction: column;
         }
         div.hotel-search-result{
-            width: 80%;
+            width: 60%;
             display: flex;
             flex-direction: column;
         }
@@ -104,7 +104,7 @@
             text-align: center;
         }
     }
-    button.viewmore {
+    .viewmore {
         position: absolute;
         bottom: 0;
         margin-bottom: 20px;

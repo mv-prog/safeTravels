@@ -33,6 +33,7 @@ const routes: Routes = [
   },
   {
   path: 'hotel/:hotelId',
+  // path: 'hotel',
   component: HotelDetailsComponent
   },
   {
