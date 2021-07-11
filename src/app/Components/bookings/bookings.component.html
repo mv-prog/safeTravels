@@ -3,14 +3,17 @@
     <mat-tab class="booking-tabs" label="My Bookings">
         <ng-template matTabContent>
             <div class="bookings-container" *ngIf="numberOfBookings !=null && numberOfBookings != 0; else noBookings">
+                <!-- I think this is not working bc of the foreign key constraint realted to table review,but is oesno't <i class="fab fa-expeditedssl"></i>
+                yet as a service. Create object in spring -->
+                <!-- <ng-container *ngFor="let booking of bookingList"> -->
                 <h1>Bookings List</h1>
                 <div class="eachBooking">
-                    <p class="hotelplace">Santiago</p>
+                    <p class="hotelplace">Parador Hostal Dos Reis Catolicos</p>
                     <p class="text-muted bookingdate">Mar 22- Mar 24</p>
                     <div class="card mb-3" style="max-width: 540px;">
                         <div class="row g-0">
                             <div class="col-md-4">
-                                <img src="./../../../assets/sm/4.jpg" alt="hotel img" class="img-fluid" />
+                                <img src="./../../../assets/sm/Parador Hostal Dos Reis Catolicos.jpg" alt="hotel img" class="img-fluid" />
                             </div>
                             <div class="col-md-8">
                                 <div class="card-body">
@@ -51,6 +54,7 @@
                     </div>
                 </div>
                 <app-footer></app-footer>
+           <!-- </ng-container> -->
             </div>
             <ng-template #noBookings>
                 <div class="entireContainer">

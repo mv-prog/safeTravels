@@ -102,13 +102,14 @@
           <div class="row g-0">
             <div class="col-md-4">
               <!-- <a href="{{hotelPath + hotel.id}}" target="_blank"> -->
-              <a href="{{hotelPath + hotel.id}}" target="_blank">
-                <img class="img-fluid imgH" src="./../../assets/sm/{{hotel.name}}.jpg" alt="img {{hotel.name}}"></a>
+                <a target="_blank" [routerLink]="['/hotel', hotel.id]">
+                <img class="img-fluid imgH" src="./../../assets/sm/{{hotel.name}}.jpg" alt="img {{hotel.name}}">
+              </a>
             </div>
             <div class="col-md-6">
               <div class="card-body">
-                <a href="{{hotelPath + hotel.id}}" target="_blank">
-                <!-- <a href="{{hotelPath}}" target="_blank"> -->
+                <!-- <a href="{{hotelPath + hotel.id}}" target="_blank"> -->
+                <a target="_blank" [routerLink]="['/hotel', hotel.id]" >
                   <h5 class="card-title">{{hotel.name}}</h5>
                 </a>
                 <p class="card-text">
@@ -140,9 +141,10 @@
               <p class="card-text finalprice">
                 <!-- {{ calculatePercentage(hotel.price, hotel.offer) }}€ I'll have to create a new method in sql for that-->
               </p>
-              <a type="submit" mat-raised-button class="viewmore" color="accent" href="{{hotelPath + hotel.id}}" target="_blank">
-              <!-- <a type="submit" mat-raised-button class="viewmore" color="accent" href="{{ hotelPath }}" -->
-              View more</a>
+              <a mat-raised-button class="viewmore" color="accent" target="_blank" [routerLink]="['/hotel', hotel.id]">
+              <!-- <a type="submit" mat-raised-button class="viewmore" color="accent" href="{{hotelPath + hotel.id}}" target="_blank"> -->
+              View more
+            </a>
             </div>
           </div>
         </div>

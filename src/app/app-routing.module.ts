@@ -6,7 +6,7 @@ import { LoginComponent } from './Components/login/login.component';
 import { HotelsComponent } from './Components/hotels/hotels.component';
 import { Error404Component } from './Components/error404/error404.component';
 import { ListusersComponent } from './Components/listusers/listusers.component';
-import { UserpageComponent } from './Components/userpage/userpage.component';
+import { BookingsComponent } from './Components/bookings/bookings.component';
 import { HotelDetailsComponent } from './Components/hotel-details/hotel-details.component';
 
 const routes: Routes = [
@@ -29,11 +29,10 @@ const routes: Routes = [
   },
   {
     path: 'mybookings',
-    component: UserpageComponent
+    component: BookingsComponent
   },
   {
-  path: 'hotel/:hotelId',
-  // path: 'hotel',
+  path: 'hotel/:id',
   component: HotelDetailsComponent
   },
   {

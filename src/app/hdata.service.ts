@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { User } from './models/user';
+import { Hotel } from './models/hotel.model';
 
 @Injectable({
   providedIn: 'root'
@@ -10,8 +11,10 @@ import { User } from './models/user';
 export class HdataService {
   user: User[];
   private baseHotelsUrl = 'http://localhost:8080/hotels';
+  private baseHotelUrl = 'http://localhost:8080/hotel';
   constructor(private httpClient: HttpClient) { }
   private baseUsersUrl = 'http://localhost:8080/users';
+  private baseBookingsUrls = 'http://localhost:8080/bookings';
 // tslint:disable-next-line: typedef
 // getUsers(){
 // return this.httpClient.get<User>;
@@ -34,23 +37,30 @@ export class HdataService {
   }
 
   getBookingsData(): any {
-    return this.httpClient.get('http://localhost:8080/bookings');
+    return this.httpClient.get(this.baseBookingsUrls);
   }
 
   getAllHotels(): Observable<any>{
     return this.httpClient.get(this.baseHotelsUrl);
   }
-  getHotelId(): Observable<any>{
-    return this.httpClient.get('${this.baseHotelsUrl}/${id}');
+  getHotelById(id: any): Observable<any>{
+    return this.httpClient.get(`${this.baseHotelUrl}/${id}`);
   }
+  // get(id: any): Observable<Hotel> {
+  //   return this.httpClient.get(`${this.baseHotelsUrl}/${id}`);
+  // }
+
 createUsr(data): Observable<any>{
   return this.httpClient.post(this.baseUsersUrl, data);
 }
-  updateHotel(id, data): Observable<any>{
-  return this.httpClient.put('${this.baseHotelsUrl}/${id}', data);
+//   updateHotel(id, data): Observable<any>{
+//   return this.httpClient.put('${this.baseHotelsUrl}/${id}', data);
+// }
+updateHotel(id: any, data: any): Observable<any> {
+  return this.httpClient.put(`${this.baseHotelUrl}/${id}`, data);
 }
   deleteHotel(id): Observable<any>{
-  return this.httpClient.delete('${this.baseHotelsUrl}/${id}');
+  return this.httpClient.delete(`${this.baseHotelsUrl}/${id}`);
 }
 
 }

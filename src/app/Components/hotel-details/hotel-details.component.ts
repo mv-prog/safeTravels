@@ -9,9 +9,9 @@ import { ActivatedRoute } from '@angular/router';
 export class HotelDetailsComponent implements OnInit {
 
   public hotelId;
+  public hotel;
   constructor(private routeParams: ActivatedRoute) {
   }
-
   ngOnInit(): void {
     this.routeParams.params.subscribe(params => {
       // tslint:disable-next-line: radix

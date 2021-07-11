@@ -15,4 +15,8 @@ export class RecommendedComponent implements OnInit {
       this.dataList = response;
     });
   }
+  // tslint:disable-next-line: typedef
+  trackByfn(index, item) {
+    return item.uniqueValue;
+  }
 }

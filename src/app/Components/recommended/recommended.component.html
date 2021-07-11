@@ -8,8 +8,13 @@
         </span>
         Top hotels that our travelers love! <i class="fas fa-heart unicorn-dark-theme"></i>
     </h2>
+    
     <div class="offers ">
-        <ng-container *ngFor="let hotel of dataList">
+        
+        <!-- <ng-container *ngFor="let hotel of dataList"> -->
+            <ng-container *ngFor="let hotel of dataList | slice:0:5; let i=index" class="carousel" (click)="onClick(hotel)">
+
+            
             <mdb-card class="eachcard" *ngIf="hotel.recommended">
                 <div class="view imgdiv rgba-white-slight waves-light" mdbWavesEffect>
                     <a>

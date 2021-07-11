@@ -4,11 +4,11 @@ import { MatTabsModule } from '@angular/material/tabs';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 @Component({
-  selector: 'app-userpage',
-  templateUrl: './userpage.component.html',
-  styleUrls: ['./userpage.component.scss']
+  selector: 'app-bookings',
+  templateUrl: './bookings.component.html',
+  styleUrls: ['./bookings.component.scss']
 })
-export class UserpageComponent implements OnInit {
+export class BookingsComponent implements OnInit {
   public numberOfBookings: number;
   public numberOfReviews: number;
   public bookingList: any;
@@ -40,5 +40,6 @@ export class UserpageComponent implements OnInit {
     const bresponse = this.http.get('http://localhost:8080/bookings');
     // tslint:disable-next-line: deprecation
     bresponse.subscribe((data) => this.bookingList = data);
+    console.log(this.bookingList);
   }
 }

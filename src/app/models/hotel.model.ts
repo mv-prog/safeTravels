@@ -4,6 +4,7 @@ export class Hotel {
     address: string;
     city: string;
     region: string;
+    email: string;
     phone: string;
     numberOfRooms: number;
     rating: number;

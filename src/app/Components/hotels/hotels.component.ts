@@ -7,6 +7,7 @@ import { FilterPipe } from './../filter.pipe';
 import { OrderByPipe } from './../order-by.pipe';
 import { HttpClient } from '@angular/common/http';
 import { Hotel } from './../../models/hotel.model';
+// import {}
 export interface Star {
   id?: string;
   name?: string;
