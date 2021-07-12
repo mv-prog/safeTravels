@@ -17,7 +17,10 @@ const routes: Routes = [
     path: 'home', component: HomeComponent
   },
   {
-    path: 'hotels', component: HotelsComponent
+    path: 'hotels', component: HotelsComponent, children: [{
+      path: 'hotel/:id',
+      component: HotelDetailsComponent
+      }]
   },
   {
     path: 'users',
@@ -30,10 +33,6 @@ const routes: Routes = [
   {
     path: 'mybookings',
     component: BookingsComponent
-  },
-  {
-  path: 'hotel/:id',
-  component: HotelDetailsComponent
   },
   {
     path: '**',

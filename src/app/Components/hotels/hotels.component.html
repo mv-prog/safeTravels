@@ -4,7 +4,7 @@
   <header class="jumbotron hotels jumbotron shadow">
     <!-- <app-hotelsform [search]='search' (sendHotelsData)='getHotelsData($event)'
         [showBrowserBanners]="showBrowserBanners"> -->
-    <app-hotelsform [search]='search' (sendHotelsData)='getHotelsData($event)'>
+    <app-hotelsform [search]='search' (sendHotelId)="sendHotelIdHandler($event)" (sendHotelsData)='getHotelsData($event)'>
     </app-hotelsform>
   </header>
   <nlbanner></nlbanner>
@@ -12,10 +12,6 @@
   <app-recommended></app-recommended>
 </div>
 <div class="hotelsContainer">
-  <!-- <header class="jumbotron hotels jumbotron shadow">
-    <app-hotelsform [search]='search' (sendHotelsData)='getHotelsData($event)'>
-    </app-hotelsform>
-  </header> -->
   <app-mini-hotels-form [search]='search' (sendHotelsData)='getHotelsData($event)'></app-mini-hotels-form>
   <div class="searchOrder" [style.display]="showBrowserBanners ? 'none':'inherit'">
     <mat-form-field appearance="outline">
@@ -35,7 +31,6 @@
   <div class="hotellist">
     <!-- <ng-container *ngIf="{{selected}} == lowest"> -->
     <!-- <ng-container *ngFor="let hotel of dataList as hotels | orderBy: price: true"> -->
-    <!-- <ng-container *ngFor="let hotel of dataList as hotels"> -->
 
     <!-- <div class="searchfilters" [style.display]="showBrowserBanners ? 'none':''"> -->
     <div class="searchfilters">
@@ -96,7 +91,10 @@
         </ul>
     </div>
     <div class="hotel-search-result">
-      <ng-container *ngFor="let hotel of dataList">
+      <!-- <ng-container *ngFor="let hotel of dataList"> -->
+        <ng-container *ngFor="let hotel of hotels; let i = index"
+        [class.active]="i == curIndex"
+        (click)="setActiveHotel(hotel, i)">
         <div class="card hotels mb-3">
           <!-- *ngIf=" search.searchInput == hotel.region || search.searchInput == hotel.city || search.searchInput == hotel.name || search.searchInput == 'All hotels and places' && star.id == hotel.star"> -->
           <div class="row g-0">
@@ -141,6 +139,7 @@
               <p class="card-text finalprice">
                 <!-- {{ calculatePercentage(hotel.price, hotel.offer) }}€ I'll have to create a new method in sql for that-->
               </p>
+              <a mat-raised-button class="viewmore" color="accent" target="_blank" routerLink="/hotel/{{ hotel.id }}"></a>
               <a mat-raised-button class="viewmore" color="accent" target="_blank" [routerLink]="['/hotel', hotel.id]">
               <!-- <a type="submit" mat-raised-button class="viewmore" color="accent" href="{{hotelPath + hotel.id}}" target="_blank"> -->
               View more

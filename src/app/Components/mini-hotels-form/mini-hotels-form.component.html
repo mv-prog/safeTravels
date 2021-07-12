@@ -23,7 +23,7 @@
                         </mat-autocomplete>
                         <mat-icon matSuffix color="warn">search</mat-icon>
                         <input matInput type="search" [class.is-invalid]="searchInput.invalid && searchInput.touched"
-                            required #searchInput="ngModel" [matAutocomplete]="auto" [(ngModel)]="search.searchInput"
+                            required #searchInput="ngModel" [matAutocomplete]="auto" [(ngModel)]="id"
                             name="searchInput" id="searchInput" placeholder="Search Hotels">
                     </mat-form-field>
                     <small class="wrong-field" *ngIf="searchInput.touched && searchInput.invalid">Search field is
@@ -87,7 +87,7 @@
                 </mat-form-field>
             </div>
             <div class="buttonSpace">
-                <button type="submit" [routerLink]="['/hotels', search]" routerLinkActive="router-link-active"
+                <button type="button"  [routerLink]="['/hotels', search]" routerLinkActive="router-link-active"
                     [disabled]="!searchForm.valid" mat-raised-button color="accent">Search Hotels!</button>
             </div>
         </div>

@@ -7,7 +7,10 @@ import { FilterPipe } from './../filter.pipe';
 import { OrderByPipe } from './../order-by.pipe';
 import { HttpClient } from '@angular/common/http';
 import { Hotel } from './../../models/hotel.model';
-// import {}
+import { Observable } from 'rxjs';
+import { switchMap } from 'rxjs/operators';
+import { ActivatedRoute } from '@angular/router';
+
 export interface Star {
   id?: string;
   name?: string;
@@ -21,6 +24,15 @@ export interface Star {
   styleUrls: ['./hotels.component.scss']
 })
 export class HotelsComponent implements OnInit {
+  hotels?: Hotel[];
+  curHotel?: Hotel;
+  curIndex = -1;
+   id = 0;
+hotelslist$: Observable<Hotel[]>;
+  selectedId: number;
+// hotelslist = Hotel;
+
+
   selected = 'recommended';
   star: Star = {
     stars: [
@@ -31,6 +43,7 @@ export class HotelsComponent implements OnInit {
       { id: '5', name: '5 stars', color: 'accent' }
     ]
   };
+
   @ViewChild(MatDatepicker) datepicker: MatDatepicker<Date>;
   public options = ['A Coruña', 'Santiago', 'Hotel A Casa'];
   public hideIndication = true;
@@ -53,8 +66,9 @@ export class HotelsComponent implements OnInit {
   // dataList: any = [];
   // dataList: Hotel;
   // constructor(private hdataservice: HdataService) { this used to consume the json server data.
-  constructor(private http: HttpClient) {
+  constructor(private hDataService: HdataService, public route: ActivatedRoute) {
   }
+
   Search(): any{
     this.dataList = this.dataList.filter(res => {
       return res.name.toLocaleLowerCase().match(this.name.toLocaleLowerCase());
@@ -73,16 +87,53 @@ public dontShowbb(): boolean {
     return showBrowserBanners = true;
   }
 
+  // ngOnInit(): void {
+  //   this.getHotels();
+  // }
   ngOnInit(): void {
-    this.hotelPath = window.location.origin + '/hotel/';
-    console.log(this.hotelPath);
-    // this.hdataservice.getHData().subscribe(response => {
-    //   this.dataList = response;
-    // });
-    const response = this.http.get('http://localhost:8080/hotels');
-    // tslint:disable-next-line: deprecation
-    response.subscribe((data) => this.dataList = data);
+    this.getHotels();
+    this.hotelslist$ = this.route.paramMap.pipe(
+      switchMap(params => {
+        this.selectedId = Number(params.get('id'));
+        return this.hDataService.getAllHotels();
+      })
+    );
   }
+  getHotels(): void {
+    this.hDataService.getAllHotels().
+    subscribe(
+      hoteldata => {
+        this.hotels = hoteldata;
+        console.log(hoteldata);
+      },
+      error => {
+        console.log(error);
+      }
+    );
+  }
+  refreshList(): void {
+    this.getHotels();
+    this.curHotel = undefined;
+    this.curIndex = -1;
+  }
+
+  setActiveHotel(hotel: Hotel, index: number): void{
+    this.curHotel = hotel;
+    this.curIndex = index;
+  }
+  searchHotelById(): void {
+    this.hDataService.getHotelById(this.id).
+    subscribe(
+      hoteldata => {
+        this.hotels = hoteldata;
+        console.log(hoteldata);
+      },
+      error => {
+        console.log(error);
+      }
+    );
+  }
+
   // tslint:disable-next-line: typedef
   public getSearch(adultsNumber: HTMLInputElement, childrenNumber: HTMLInputElement, roomsNumber: HTMLInputElement) {
     this.adultsNumber = Number(adultsNumber.value),
@@ -90,7 +141,20 @@ public dontShowbb(): boolean {
       this.roomsNumber = Number(roomsNumber.value);
   }
 
-  // Local filter
+  calculatePercentage(orPrice, percentage): number {
+    return orPrice - (orPrice * percentage / 100);
+  }
+  getHotelsData(e): any{
+    return e;
+  }
+
+  // tslint:disable-next-line: typedef
+  sendHotelIdHandler(id: number){
+    this.id = id;
+    console.log(id);
+  }
+
+   // Local filter
 performFilter(filterBy: string): any {
   if (filterBy) {
       filterBy = filterBy.toLocaleLowerCase();
@@ -100,11 +164,5 @@ performFilter(filterBy: string): any {
       return this.dataList;
   }
 }
-  calculatePercentage(orPrice, percentage): number {
-    return orPrice - (orPrice * percentage / 100);
-  }
-  getHotelsData(e): any{
-    return e;
-  }
 }
 
