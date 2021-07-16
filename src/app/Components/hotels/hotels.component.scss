@@ -42,10 +42,10 @@
 }
 @include media(sm, cards, md) {
     .card.hotels{
-        max-height: 220px;
+        max-height: 230px;
         max-width: 70vh;
         .img-fluid.imgH{
-            max-height: 220px;
+            max-height: 230px;
         }
     }
     .viewmore {
@@ -65,8 +65,8 @@
     //     min-height: 1200px !important;
     // }
     .imgH {
-        width: 250px;
-        height: 220px;
+        width: 260px;
+        height: 230px;
     }
     div.hotellist {
         display: flex;
@@ -83,7 +83,7 @@
         }
     }
     div.card.hotels {
-        height: 220px;
+        height: 230px;
         max-width: 100%;
     }
     .searchOrder {

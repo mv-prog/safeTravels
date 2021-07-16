@@ -1,17 +1,17 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute, Router } from '@angular/router';
-import { Hotel } from './../../models/hotel.model';
+import { ActivatedRoute, Router, ParamMap } from '@angular/router';
+import { Hotel } from '../../models/hotel.model';
 import { HdataService } from 'src/app/hdata.service';
-import { ParamMap } from '@angular/router';
 import { Observable } from 'rxjs';
 @Component({
   selector: 'app-hotel-details',
-  templateUrl: './hotel-details.component.html',
-  styleUrls: ['./hotel-details.component.scss']
+  templateUrl: './hotelDetails.component.html',
+  styleUrls: ['./hotelDetails.component.scss']
 })
 export class HotelDetailsComponent implements OnInit {
+  id: number;
   hotel$: Observable<Hotel[]>;
-  curHotel: Hotel = {
+  hotel: Hotel = {
     id: 0,
     name: '',
     address: '',
@@ -35,19 +35,13 @@ export class HotelDetailsComponent implements OnInit {
   };
   description = '';
   public hotelId;
-  public hotel;
+  public curHotel;
 
   constructor(
     private hDataService: HdataService,
     public route: ActivatedRoute,
     private router: Router) { }
-    // tslint:disable-next-line: typedef
-    goToHotel(hotel: Hotel) {
-      const hotelId = hotel ? hotel.id : null;
-      // Pass along the hotel id if available
-      // so that the HeroList component can select that item.
-      this.router.navigate(['/hotels', { id: hotelId }]);
-    }
+
   // ngOnInit(): void {
   //   this.routeParams.params.subscribe(params => {
   //     // tslint:disable-next-line: radix
@@ -55,11 +49,18 @@ export class HotelDetailsComponent implements OnInit {
   //   });
   ngOnInit(): void {
     this.description = '';
-    const heroId = this.route.snapshot.paramMap.get('id');
-    this.hotel$ = this.hDataService.getHotelById(heroId);
-    // this.getHotel(this.route.snapshot.params.get('id'));
-    // console.log(this.getHotel(this.route.snapshot.params.id));
-    // console.log(this.getHotel(this.route.snapshot.params.get('id')));
+    // with the snapshot one can get a parameter, but in order to get the whole thing and get changes done inside the component,
+    // not just the url, you need to subscribe.
+    // this.id = this.route.snapshot.paramMap.get('id');
+    // this.hotel = this.hDataService.getHotelById(this.id); --> this is not working
+    this.route.paramMap.subscribe((params: ParamMap) => {
+      this.id = +params.get('id');
+    });
+    this.getHotel(this.route.snapshot.paramMap.get('id'));
+    this.hotel$ = this.hDataService.getHotelById(this.hotelId);
+    // this.router.events.subscribe(() => {
+    //   this.getHotel(this.hotelId);
+    // });
     // this.route.params.subscribe(params => {
     //   // tslint:disable-next-line: radix
     //   this.hotelId = parseInt(params.hotelId);
@@ -67,11 +68,11 @@ export class HotelDetailsComponent implements OnInit {
     // });
   }
 
-  getHotel(id: number): void {
+  getHotel(id: any): void {
     this.hDataService.getHotelById(id)
       .subscribe(
         data => {
-          this.curHotel = data;
+          this.hotel = data;
           console.log(data);
         },
         error => {

@@ -14,9 +14,5 @@ export class AppComponent implements OnInit{
   dataList: any = [];
   constructor(private hdataservice: HdataService){}
   // tslint:disable-next-line: typedef
-  ngOnInit(){
-    this.hdataservice.getHData().subscribe(response => {
-      this.dataList = response;
-    });
-  }
+  ngOnInit(){}
 }

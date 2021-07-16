@@ -13,7 +13,7 @@ import { ActivatedRoute } from '@angular/router';
 
 export interface Star {
   id?: string;
-  name?: string;
+  starname?: string;
   color?: ThemePalette;
   stars?: Star[];
 }
@@ -25,25 +25,25 @@ export interface Star {
 })
 export class HotelsComponent implements OnInit {
   hotels?: Hotel[];
-  curHotel?: Hotel;
+  hotel?: Hotel;
   curIndex = -1;
-   id = 0;
+  id = 0;
+  name = '';
 hotelslist$: Observable<Hotel[]>;
-  selectedId: number;
-// hotelslist = Hotel;
+selectedId: number;
+// hotelslist = HOTELS;
 
 
   selected = 'recommended';
   star: Star = {
     stars: [
-      { id: '1', name: '1 star', color: 'accent' },
-      { id: '2', name: '2 stars', color: 'accent' },
-      { id: '3', name: '3 stars', color: 'accent' },
-      { id: '4', name: '4 stars', color: 'accent' },
-      { id: '5', name: '5 stars', color: 'accent' }
+      { id: '1', starname: '1 star', color: 'accent' },
+      { id: '2', starname: '2 stars', color: 'accent' },
+      { id: '3', starname: '3 stars', color: 'accent' },
+      { id: '4', starname: '4 stars', color: 'accent' },
+      { id: '5', starname: '5 stars', color: 'accent' }
     ]
   };
-
   @ViewChild(MatDatepicker) datepicker: MatDatepicker<Date>;
   public options = ['A Coruña', 'Santiago', 'Hotel A Casa'];
   public hideIndication = true;
@@ -52,7 +52,6 @@ hotelslist$: Observable<Hotel[]>;
   public childrenNumber: number;
   // public showBrowserBanners: boolean;
   public isFalse: boolean;
-  public name: string;
   public search: any = {
     searchInput: 'All hotels and places',
     dateRange: '',
@@ -87,17 +86,21 @@ public dontShowbb(): boolean {
     return showBrowserBanners = true;
   }
 
-  // ngOnInit(): void {
-  //   this.getHotels();
-  // }
+
   ngOnInit(): void {
     this.getHotels();
-    this.hotelslist$ = this.route.paramMap.pipe(
-      switchMap(params => {
-        this.selectedId = Number(params.get('id'));
-        return this.hDataService.getAllHotels();
-      })
-    );
+    // this.route.queryParams.subscribe(params => {
+    //   this.id = params['id'];
+    // });
+    // this.hotelslist$ = this.route.paramMap.pipe(
+    //   switchMap(params => {
+    //     this.selectedId = Number(params.get('id'));
+    //     return this.hDataService.getAllHotels();
+    //   })
+    // );
+  }
+  showIdData(data): void{
+    console.log(data);
   }
   getHotels(): void {
     this.hDataService.getAllHotels().
@@ -113,16 +116,16 @@ public dontShowbb(): boolean {
   }
   refreshList(): void {
     this.getHotels();
-    this.curHotel = undefined;
+    this.hotel = undefined;
     this.curIndex = -1;
   }
 
   setActiveHotel(hotel: Hotel, index: number): void{
-    this.curHotel = hotel;
+    this.hotel = hotel;
     this.curIndex = index;
   }
-  searchHotelById(): void {
-    this.hDataService.getHotelById(this.id).
+  searchHotelById(id: any): void {
+    this.hDataService.getHotelById(id).
     subscribe(
       hoteldata => {
         this.hotels = hoteldata;
@@ -163,6 +166,19 @@ performFilter(filterBy: string): any {
   } else {
       return this.dataList;
   }
+}
+// this shouldn't be here but at the end of my mini-hotels-form browser component.
+getHotelByName(): void{
+  this.hDataService.getHotelByName(this.name)
+  .subscribe(
+    data => {
+      this.hotels = data;
+      console.log(data);
+    },
+    error => {
+      console.log(error);
+    }
+  );
 }
 }
 

@@ -7,7 +7,7 @@ import { HotelsComponent } from './Components/hotels/hotels.component';
 import { Error404Component } from './Components/error404/error404.component';
 import { ListusersComponent } from './Components/listusers/listusers.component';
 import { BookingsComponent } from './Components/bookings/bookings.component';
-import { HotelDetailsComponent } from './Components/hotel-details/hotel-details.component';
+import { HotelDetailsComponent } from './Components/hotelDetails/hotelDetails.component';
 
 const routes: Routes = [
   {
@@ -17,10 +17,16 @@ const routes: Routes = [
     path: 'home', component: HomeComponent
   },
   {
-    path: 'hotels', component: HotelsComponent, children: [{
-      path: 'hotel/:id',
-      component: HotelDetailsComponent
-      }]
+    path: 'hotels', component: HotelsComponent,
+    children: [
+      {
+        path: 'hotel/:id', component: HotelDetailsComponent
+      },
+    ]
+  },
+  {
+    path: 'hotel/:id',
+    component: HotelDetailsComponent
   },
   {
     path: 'users',
@@ -42,6 +48,6 @@ const routes: Routes = [
 
 @NgModule({
   imports: [RouterModule.forRoot(routes, { onSameUrlNavigation: 'reload', relativeLinkResolution: 'legacy' })],
-exports: [RouterModule]
+  exports: [RouterModule]
 })
 export class AppRoutingModule { }

@@ -42,7 +42,7 @@ import { ListusersComponent } from './Components/listusers/listusers.component';
 import { MiniHotelsFormComponent } from './Components/mini-hotels-form/mini-hotels-form.component';
 import { BookingsComponent } from './Components/bookings/bookings.component';
 import {MatSlideToggleModule} from '@angular/material/slide-toggle';
-import { HotelDetailsComponent } from './Components/hotel-details/hotel-details.component';
+import { HotelDetailsComponent } from './Components/hotelDetails/hotelDetails.component';
 @NgModule({
   // tslint:disable-next-line: max-line-length
   declarations: [AppComponent, HomeComponent, ContactComponent, OrderByPipe, LoginComponent, SignupComponent, CitybannersComponent, NlbannerComponent, FooterComponent, OffersComponent, NavbarComponent, HotelsComponent, Error404Component, HotelsformComponent, RecommendedComponent, CalculateOriginalPricePipe,

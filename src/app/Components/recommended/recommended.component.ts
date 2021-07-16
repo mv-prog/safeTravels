@@ -11,7 +11,7 @@ export class RecommendedComponent implements OnInit {
   dataList: any = [];
   constructor(private hdataservice: HdataService){}
   ngOnInit(): void {
-    this.hdataservice.getHData().subscribe(response => {
+    this.hdataservice.getAllHotels().subscribe(response => {
       this.dataList = response;
     });
   }

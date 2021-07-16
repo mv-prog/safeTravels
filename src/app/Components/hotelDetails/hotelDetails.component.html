@@ -1,0 +1,59 @@
+<!--Carousel Wrapper-->
+<!-- <mdb-carousel [isControls]="true" class="carousel slide carousel-fade" [animation]="'fade'">
+  <mdb-carousel-item>
+    <div class="view w-50">
+      <img class="d-block w-100" src="https://mdbootstrap.com/img/Photos/Slides/img%20(68).jpg"
+           alt="First slide">
+      <div class="mask rgba-black-light waves-light" mdbWavesEffect></div>
+    </div>
+    <div class="carousel-caption">
+      <h3 class="h3-responsive">Light mask</h3>
+      <p>First text</p>
+    </div>
+  </mdb-carousel-item>
+  <mdb-carousel-item>
+    <div class="view w-100">
+      <img class="d-block w-100" src="https://mdbootstrap.com/img/Photos/Slides/img%20(6).jpg"
+           alt="Second slide">
+      <div class="mask rgba-black-strong waves-light" mdbWavesEffect></div>
+    </div>
+    <div class="carousel-caption">
+      <h3 class="h3-responsive">Strong mask</h3>
+      <p>Secondary text</p>
+    </div>
+  </mdb-carousel-item>
+  <mdb-carousel-item>
+    <div class="view w-100">
+      <img class="d-block w-100" src="https://mdbootstrap.com/img/Photos/Slides/img%20(9).jpg"
+           alt="Third slide">
+      <div class="mask rgba-black-slight waves-light" mdbWavesEffect></div>
+    </div>
+    <div class="carousel-caption">
+      <h3 class="h3-responsive">Slight mask</h3>
+      <p>Third text</p>
+    </div>
+  </mdb-carousel-item>
+</mdb-carousel> -->
+<!--/.Carousel Wrapper-->
+<div>
+  <p>vldsjknvds</p>
+  <router-outlet></router-outlet>
+</div>
+<div>
+  <p> {{ id }} </p>
+</div>
+
+<div *ngIf="hotel$">
+  <h4>Hotel</h4>
+  <form>
+    <div class="form-group">
+      <label for="title">Title</label>
+      <input type="text" class="form-control" id="title" [ngModel]="hotel.name" name="title" placeholder="{{ hotel.name }}"/>
+
+    </div>
+    <div class="form-group">
+      <label for="description">Description</label>
+      <input type="text" class="form-control" id="description" [(ngModel)]="hotel.address" name="address" placeholder="{{ id }}" />
+    </div>
+  </form>
+</div>
