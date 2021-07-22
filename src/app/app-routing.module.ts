@@ -41,6 +41,10 @@ const routes: Routes = [
     component: BookingsComponent
   },
   {
+    path: 'checkout',
+    component: Error404Component
+  },
+  {
     path: '**',
     redirectTo: 'error404'
   }

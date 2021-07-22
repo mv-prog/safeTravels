@@ -92,9 +92,9 @@
     </div>
     <div class="hotel-search-result mb-5">
       <!-- <ng-container *ngFor="let hotel of dataList"> -->
-        <ng-container *ngFor="let hotel of hotels; let i = index"
-        [class.active]="i == curIndex"
-        (click)="setActiveHotel(hotel, i)">
+        <ng-container *ngFor="let hotel of hotels; let i = index">
+        <!-- [class.active]="i == curIndex"
+        (click)="setActiveHotel(hotel, i)"> -->
         <div class="card hotels mb-3">
           <!-- *ngIf=" search.searchInput == hotel.region || search.searchInput == hotel.city || search.searchInput == hotel.name || search.searchInput == 'All hotels and places' && star.id == hotel.star"> -->
           <div class="row g-0">
@@ -109,7 +109,7 @@
                 <a target="_blank" [routerLink]="['/hotel', hotel.id]" >
                   <h5 class="card-title">{{hotel.name}}</h5>
                 </a>
-                <p class="card-text">
+                <p class="card-text" *ngIf="hotel.stars!=0">
                   <span class="stars-number"> {{hotel.stars }} </span>
                   <span class="material-icons yellow-text yellowstar">star_rate</span>
                 </p>

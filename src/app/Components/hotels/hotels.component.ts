@@ -31,7 +31,6 @@ export class HotelsComponent implements OnInit {
   name = '';
 hotelslist$: Observable<Hotel[]>;
 selectedId: number;
-// hotelslist = HOTELS;
 
 
   selected = 'recommended';
@@ -89,15 +88,6 @@ public dontShowbb(): boolean {
 
   ngOnInit(): void {
     this.getHotels();
-    // this.route.queryParams.subscribe(params => {
-    //   this.id = params['id'];
-    // });
-    // this.hotelslist$ = this.route.paramMap.pipe(
-    //   switchMap(params => {
-    //     this.selectedId = Number(params.get('id'));
-    //     return this.hDataService.getAllHotels();
-    //   })
-    // );
   }
   showIdData(data): void{
     console.log(data);
@@ -113,16 +103,6 @@ public dontShowbb(): boolean {
         console.log(error);
       }
     );
-  }
-  refreshList(): void {
-    this.getHotels();
-    this.hotel = undefined;
-    this.curIndex = -1;
-  }
-
-  setActiveHotel(hotel: Hotel, index: number): void{
-    this.hotel = hotel;
-    this.curIndex = index;
   }
   searchHotelById(id: any): void {
     this.hDataService.getHotelById(id).

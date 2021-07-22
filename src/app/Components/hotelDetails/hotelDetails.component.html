@@ -1,59 +1,152 @@
-<!--Carousel Wrapper-->
-<!-- <mdb-carousel [isControls]="true" class="carousel slide carousel-fade" [animation]="'fade'">
-  <mdb-carousel-item>
-    <div class="view w-50">
-      <img class="d-block w-100" src="https://mdbootstrap.com/img/Photos/Slides/img%20(68).jpg"
-           alt="First slide">
-      <div class="mask rgba-black-light waves-light" mdbWavesEffect></div>
-    </div>
-    <div class="carousel-caption">
-      <h3 class="h3-responsive">Light mask</h3>
-      <p>First text</p>
-    </div>
-  </mdb-carousel-item>
-  <mdb-carousel-item>
-    <div class="view w-100">
-      <img class="d-block w-100" src="https://mdbootstrap.com/img/Photos/Slides/img%20(6).jpg"
-           alt="Second slide">
-      <div class="mask rgba-black-strong waves-light" mdbWavesEffect></div>
-    </div>
-    <div class="carousel-caption">
-      <h3 class="h3-responsive">Strong mask</h3>
-      <p>Secondary text</p>
-    </div>
-  </mdb-carousel-item>
-  <mdb-carousel-item>
-    <div class="view w-100">
-      <img class="d-block w-100" src="https://mdbootstrap.com/img/Photos/Slides/img%20(9).jpg"
-           alt="Third slide">
-      <div class="mask rgba-black-slight waves-light" mdbWavesEffect></div>
-    </div>
-    <div class="carousel-caption">
-      <h3 class="h3-responsive">Slight mask</h3>
-      <p>Third text</p>
-    </div>
-  </mdb-carousel-item>
-</mdb-carousel> -->
-<!--/.Carousel Wrapper-->
-<div>
-  <p>vldsjknvds</p>
-  <router-outlet></router-outlet>
-</div>
-<div>
-  <p> {{ id }} </p>
-</div>
+<!-- Gallery -->
+<div class="container">
+<div class="row mt-4">
+  <div class="col-lg-3 col-md-12 mb-4 mb-lg-0">
+    <img
+      src="/assets/{{hotel.name}}/1.jpg"
+      class="w-100 shadow-1-strong rounded mb-4"
+      alt=""
+    />
 
-<div *ngIf="hotel$">
-  <h4>Hotel</h4>
-  <form>
-    <div class="form-group">
-      <label for="title">Title</label>
-      <input type="text" class="form-control" id="title" [ngModel]="hotel.name" name="title" placeholder="{{ hotel.name }}"/>
+    <img
+      src="/assets/{{hotel.name}}/4.jpg"
+      class="w-100 shadow-1-strong rounded mb-4"
+      alt=""
+    />
+  </div>
 
-    </div>
-    <div class="form-group">
-      <label for="description">Description</label>
-      <input type="text" class="form-control" id="description" [(ngModel)]="hotel.address" name="address" placeholder="{{ id }}" />
-    </div>
-  </form>
+  <div class="col-lg-3 mb-4 mb-lg-0">
+    <img
+      src="/assets/{{hotel.name}}/2.jpg"
+      class="w-100 shadow-1-strong rounded mb-4"
+      alt=""
+    />
+
+    <img
+      src="/assets/{{hotel.name}}/3.jpg"
+      class="w-100 shadow-1-strong rounded mb-4"
+      alt=""
+    />
+  </div>
+
+  <div class="col-lg-3 mb-4 mb-lg-0">
+    <img
+      src="/assets/{{hotel.name}}/20.jpg"
+      class="w-100 shadow-1-strong rounded mb-4"
+      alt=""
+    />
+
+    <img
+      src="/assets/{{hotel.name}}/22.jpg"
+      class="w-100 shadow-1-strong rounded mb-4"
+      alt=""
+    />
+  </div>
+  <div class="col-lg-3 mb-4 mb-lg-0">
+    <img
+      src="/assets/{{hotel.name}}/21.jpg"
+      class="w-100 shadow-1-strong rounded mb-4"
+      alt=""
+    />
+
+    <img
+      src="/assets/{{hotel.name}}/23.jpg"
+      class="w-100 shadow-1-strong rounded mb-4"
+      alt=""
+    />
+  </div>
 </div>
+</div>
+<!-- Gallery -->
+<div class="container">
+  <div class="row tabsrow my-5">
+    <span class="tab" (click)="moveToDescription()"><a href="#descriptionSection" class="tablink 1">
+        Hotel Description
+      </a></span>
+    <span class="tab" (click)="moveToRooms()"><a href="#roomsSection" class="tablink 2">
+        Rooms
+      </a></span>
+    <span class="tab" (click)="moveToReviews()"><a href="#reviewsSection" class="tablink 3">
+        Reviews
+      </a></span>
+  </div>
+  <div class="hinformation">
+    <div *ngIf="hotel">
+      <p class="h2">{{ hotel.name }}</p>
+      <p>{{ hotel.address }}, {{ hotel.city }}</p>
+      <p class="font-weight-bold text-warning" *ngIf="hotel.stars!=0"> {{ hotel.stars }}-star hotel </p>
+      <section #descriptionSection id="descriptionSection">
+        <p class="hdescription my-5">
+          {{ hotel.hdescription }}
+        </p>
+      </section>
+      <section #roomsSection id="roomsSection" *ngIf="rooms" class="mb-5">
+        <p class="h3 text-center my-5">Select your room</p>
+        <div class="row my-3 py-3" style="border-bottom: 1px solid rgb(63, 62, 62);">
+          <div class="col-lg-2">
+            <p> Room Type </p>
+          </div>
+          <div class="col-lg-2" style="padding-left: 5em;">
+            <p>Maximum Hosts</p>
+          </div>
+          <div class="col-lg-1"></div>
+          <div class="col-lg-2" style="padding-left: 7em;">
+            Price
+          </div>
+          <div class="col-lg-3">
+            <p>Included</p>  
+          </div>
+          <div class="col-lg-2"></div>
+          </div>
+        <div class="row my-3 py-3" style="border-bottom: 1px solid rgb(63, 62, 62);" *ngFor="let room of rooms">
+          <ng-container *ngIf="room.seaView; then noSeaView">
+            <div class="col-lg-3">
+              <p> {{ room.roomType }} room with Sea View</p>
+            </div>
+            <div class="col-lg-1">
+              <p>{{room.maxHosts}}</p>
+              
+            </div>
+
+            <div class="col-lg-2">
+              {{room.price  + 10 + 20}}
+            </div>
+            <div class="col-lg-3">
+              <p>Breakfast included</p>
+              <p>Free Cancellation </p>
+              <!-- before search.checkinDate.getday()-1 -->
+            </div>
+            <div class="col-lg-2">
+              <a >Book Me</a>
+            </div>
+          </ng-container>
+          <ng-container #noSeaView>
+            <div class="col-lg-3">
+              <p class="font-weight-bold">{{ room.roomType }} room</p>
+              <p *ngIf="room.privateToilet">with private toilet</p>
+              <p *ngIf="room.privateBathroom">with private bathroom</p>
+              <p *ngIf="room.balcony">with balcony</p>
+              <p *ngIf="room.jacuzzi">with jacuzzi</p>
+            </div>
+            <div class="col-lg-3">
+              <p>{{room.maxHosts}}</p>
+            </div>
+
+            <div class="col-lg-1">
+              <p> {{room.price  + 10 }} €</p>
+            </div>
+            <div class="col-lg-3">
+              <p>Breakfast included</p>
+              <!-- before search.checkinDate.getday()-1 -->
+            </div>
+            <div class="col-lg-2">
+              <a  mat-raised-button class="viewmore" color="accent" target="_blank" (click)="bookHotelGoToCheckout()">Book Me</a>
+            </div>
+          </ng-container>
+        </div>
+      </section>
+    </div>
+
+  </div>
+</div>
+<app-footer></app-footer>

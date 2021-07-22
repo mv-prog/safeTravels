@@ -1,215 +1,37 @@
+@import "../../breakpoints";
+@import "../../../variables";
+@include media(mobile) {
+  .tabsrow{
+    display: none;
+  }
+  .viewmore {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    margin-right: 20px;
+    margin-bottom: 20px;
+}
+}
+@include media(tablet) {
+  .tabsrow{
+    display: block;
+    border-radius: 0.5em;
+    padding: 1.5em;
+    box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 1px 3px 1px;
+    .tab{
+      padding: .75em;
+      margin-right: 5em;
+      margin-left: 2em;
+      
+      &:active, &:focus, &:visited{
+        border-bottom: 3px solid rgba(60, 64, 67, 0.3);
+      }
+    }
+    .tablink{
+      color: $black;
+      font-weight: bold;
+      
+    }
+  }
 
-	#gridGallery {
-        max-width: 1170px;
-        margin-left: auto;
-        margin-right: auto;
-      }
-      
-      h2,
-      .ms-WPBody h2 {
-        color: #000;
-      }
-      
-      .box h3 {
-        color: #fff;
-        font-family: 'Source Sans Pro';
-      font-weight:700;
-      }
-      
-      section {
-        margin: 25px 0;
-      }
-      
-      #gridGallery .row {
-        background-color: black;
-      }
-      
-      .box {
-        background-position: center center;
-        background-size: cover;
-        border: 1px solid #fff;
-        transition: opacity .25s;
-        overflow: hidden;
-      }
-      
-  
-      .box:hover {
-        cursor: pointer;
-        z-index: 1;
-      }
-      
-      #boxOne,
-      #boxTwo,
-      #boxSeven,
-      #boxEight {
-        height: 300px;
-      }
-      
-      #boxThree,
-      #boxFour,
-      #boxFive,
-      #boxSix {
-        height: 150px;
-      }
-      
-      #boxOne {
-        background-image: url('http://www.ucdenver.edu/SiteCollectionImages/GridGallery/imageOne.jpg');
-      }
-      
-      #boxEight {
-        background-image: url('http://www.ucdenver.edu/SiteCollectionImages/GridGallery/imageEight.jpg');
-      }
-      
-      #boxTwo {
-        background-image: url('http://www.ucdenver.edu/SiteCollectionImages/GridGallery/imageTwo.jpg');
-      }
-      
-      #boxSeven {
-        background-image: url('http://www.ucdenver.edu/SiteCollectionImages/GridGallery/imageSeven.jpg');
-      }
-      
-      #boxThree {
-        background-image: url('http://www.ucdenver.edu/SiteCollectionImages/GridGallery/imageThree.jpg');
-      }
-      
-      #boxSix {
-        background-image: url('http://www.ucdenver.edu/SiteCollectionImages/GridGallery/imageSix.jpg');
-      }
-      
-      #boxFour {
-        background-image: url('http://www.ucdenver.edu/SiteCollectionImages/GridGallery/imageFour.jpg');
-      }
-      
-      #boxFive {
-        background-image: url('http://www.ucdenver.edu/SiteCollectionImages/GridGallery/imageFive.jpg');
-      }
-      
-      .full {
-        float: none;
-        height: 600px !important;
-        width: 1170px;
-        position: absolute;
-        z-index: 2;
-      }
-      
-      #gridH {
-        background-color: #eee;
-        min-height: 600px;
-        margin-bottom: 50px;
-      }
-      
-      #gridH .row {
-        margin-top: 150px;
-      }
-      
-      #gridH .row .full {
-        margin-top: -150px;
-      }
-      
-      .full:hover {
-        transform: scale(1);
-        box-shadow: none;
-      }
-      
-      .opacity {
-        opacity: .8;
-      }
-      
-      .captionBox {
-        background-color: rgba(0, 0, 0, 0.8);
-        bottom: 50px;
-        color: white;
-        left: 50px;
-        padding: 25px;
-        position: absolute;
-        opacity: 0;
-      }
-      
-      .captionBox p {
-        font-size: 16px;
-      font-weight:300;
-      }
-      
-      .captionBox h3 {
-        margin-top: 0;
-        text-transform: uppercase;
-      }
-      
-      .transition {
-        transition: 1s;
-      }
-      
-      .bottomRight {
-        left: auto;
-        right: 80px;
-      }
-      
-      .topRight {
-        left: auto;
-        right: 50px;
-        bottom: auto;
-        top: 50px;
-      }
-      
-      .topLeft {
-        bottom: auto;
-        top: 50px;
-      }
-      #gridGallery > .row {
-        margin: 0;
-      }
-      
-      @media (max-width: 1200px) {
-        .full {
-          width: 970px;
-        }
-      }
-      
-      @media (max-width: 992px) {
-        .full {
-          width: 750px;
-        }
-      }
-      
-      @media (max-width: 768px) {
-        #boxThree,
-        #boxFour,
-        #boxFive,
-        #boxSix {
-          height: 300px;
-        }
-        .toggleIcon {
-          display: none;
-        }
-        .full .captionBox {
-          bottom: 0;
-          left: 0;
-          position: absolute;
-          width: 100%;
-          padding: 10px;
-        }
-        .full .captionBox p {
-          display: none;
-        }
-        .full .captionBox h3 {
-          margin-bottom: 0;
-        }
-        .box.full {
-          height: inherit;
-          width: 100%;
-        }
-        .box {
-          max-height: 150px !important;
-        }
-        #gridGallery .row {
-          background-color: transparent;
-        }
-        #gridH .row {
-          margin-top: 0px;
-        }
-        .mobileFunction {
-          float: left;
-          height: 150px;
-          width: 100%;
-        }
-      }
+}

@@ -1,16 +1,26 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { ActivatedRoute, Router, ParamMap } from '@angular/router';
 import { Hotel } from '../../models/hotel.model';
 import { HdataService } from 'src/app/hdata.service';
 import { Observable } from 'rxjs';
+import { Room } from 'src/app/models/room.model';
 @Component({
   selector: 'app-hotel-details',
   templateUrl: './hotelDetails.component.html',
   styleUrls: ['./hotelDetails.component.scss']
 })
 export class HotelDetailsComponent implements OnInit {
+  @ViewChild('descriptionSection') public descriptionSection: ElementRef;
+  @ViewChild('roomsSection') public roomsSection: ElementRef;
+  @ViewChild('reviewsSection') public reviewsSection: ElementRef;
   id: number;
-  hotel$: Observable<Hotel[]>;
+  // this is wrong cause there are many rooms in one hotel and I am treating them
+  // as one. Do as in the list hotels, and the do an ng-For to go through
+  // each room.
+  // room$: Observable<Room[]>;
+  rooms?: Room[];
+  room?: Room;
+  // hotel$: Observable<Hotel[]>;
   hotel: Hotel = {
     id: 0,
     name: '',
@@ -33,14 +43,17 @@ export class HotelDetailsComponent implements OnInit {
     discount: 0,
     recommended: false
   };
+
   description = '';
   public hotelId;
   public curHotel;
-
+  numbers: Array<any> = [];
   constructor(
     private hDataService: HdataService,
     public route: ActivatedRoute,
-    private router: Router) { }
+    private router: Router) {
+      this.numbers = Array.from({length: 10}, (v, k) => k + 1);
+     }
 
   // ngOnInit(): void {
   //   this.routeParams.params.subscribe(params => {
@@ -48,7 +61,6 @@ export class HotelDetailsComponent implements OnInit {
   //     this.hotelId = parseInt(params.id);
   //   });
   ngOnInit(): void {
-    this.description = '';
     // with the snapshot one can get a parameter, but in order to get the whole thing and get changes done inside the component,
     // not just the url, you need to subscribe.
     // this.id = this.route.snapshot.paramMap.get('id');
@@ -57,7 +69,7 @@ export class HotelDetailsComponent implements OnInit {
       this.id = +params.get('id');
     });
     this.getHotel(this.route.snapshot.paramMap.get('id'));
-    this.hotel$ = this.hDataService.getHotelById(this.hotelId);
+
     // this.router.events.subscribe(() => {
     //   this.getHotel(this.hotelId);
     // });
@@ -66,8 +78,35 @@ export class HotelDetailsComponent implements OnInit {
     //   this.hotelId = parseInt(params.hotelId);
     //   console.log('hotelId:' + this.hotelId);
     // });
+    // this.getRoomsById(this.route.snapshot.paramMap.get('id'));
+    // this.getRooms();
+    this.getRoomsById(this.id);
+    console.log(this.getRooms());
   }
-
+  getRoomsById(id: any): void {
+    this.hDataService.getAllRoomsByHotel(id).
+    subscribe(
+      roomsdata => {
+        this.rooms = roomsdata;
+        console.log(this.rooms);
+      },
+      error => {
+        console.log(error);
+      }
+    );
+  }
+  getRooms(): void{
+    this.hDataService.getAllRooms().
+    subscribe(
+      roomsdata => {
+        this.rooms = roomsdata;
+        console.log(this.rooms);
+      },
+      error => {
+        console.log(error);
+      }
+    );
+  }
   getHotel(id: any): void {
     this.hDataService.getHotelById(id)
       .subscribe(
@@ -79,5 +118,13 @@ export class HotelDetailsComponent implements OnInit {
           console.log(error);
         });
   }
-
+  public moveToStructure(): void {
+    this.descriptionSection.nativeElement.scrollIntoView({ behavior: 'smooth', block: 'end', inline: 'start' });
+  }
+  public moveToRooms(): void {
+      this.roomsSection.nativeElement.scrollIntoView({ behavior: 'smooth', block: 'end', inline: 'start' });
+  }
+  public moveToReviews(): void {
+      this.reviewsSection.nativeElement.scrollIntoView({ behavior: 'smooth', block: 'end', inline: 'start' });
+  }
 }
