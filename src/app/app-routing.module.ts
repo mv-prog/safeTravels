@@ -29,24 +29,20 @@ const routes: Routes = [
     component: HotelDetailsComponent
   },
   {
-    path: 'users',
-    component: ListusersComponent
+    path: 'users', component: ListusersComponent
   },
   {
-    path: 'error404',
-    component: Error404Component
+    path: 'error404', component: Error404Component
   },
   {
-    path: 'mybookings',
-    component: BookingsComponent
+    path: 'mybookings', component: BookingsComponent
+  },
+  {path: 'logout', component: LoginComponent},
+  {
+    path: 'checkout', component: Error404Component
   },
   {
-    path: 'checkout',
-    component: Error404Component
-  },
-  {
-    path: '**',
-    redirectTo: 'error404'
+    path: '**', redirectTo: 'error404'
   }
 ];
 

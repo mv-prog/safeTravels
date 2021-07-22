@@ -1,7 +1,9 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { LoginComponent } from '../login/login.component';
 import { SignupComponent } from './../signup/signup.component';
-import { MatDialog, MatDialogConfig} from '@angular/material/dialog';
+import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
+import { AuthService } from './../../auth.service';
+import { ActivatedRoute, Router } from '@angular/router';
 @Component({
   selector: 'app-navbar',
   templateUrl: './navbar.component.html',
@@ -10,12 +12,21 @@ import { MatDialog, MatDialogConfig} from '@angular/material/dialog';
 export class NavbarComponent implements OnInit {
   @Input() showBrowserBanners;
   @Output() showBB = new EventEmitter<void>();
-  constructor(private dialog: MatDialog) { }
-  public showbb(): void{
-    this.showBrowserBanners=true;
+  isLoggedIn = false;
+  constructor(private dialog: MatDialog, private route: ActivatedRoute,
+              private router: Router,
+              private authenticationService: AuthService) { }
+  public showbb(): void {
+    this.showBrowserBanners = true;
     this.showBB.emit(this.showBrowserBanners);
   }
   ngOnInit(): void {
+    this.isLoggedIn = this.authenticationService.isUserLoggedIn();
+    console.log('menu ->' + this.isLoggedIn);
+  }
+
+  handleLogout(): void{
+    this.authenticationService.logout();
   }
   // tslint:disable-next-line: typedef
   public openLogIn() {
@@ -26,7 +37,7 @@ export class NavbarComponent implements OnInit {
 
   }
   // tslint:disable-next-line: typedef
-  openSignUp(){
+  openSignUp() {
     const matDialogConfig = new MatDialogConfig();
     matDialogConfig.autoFocus = true;
     this.dialog.open(SignupComponent, matDialogConfig);

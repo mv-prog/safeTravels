@@ -19,18 +19,21 @@
                 <mat-label class="help-block">
                     Password
                 </mat-label>
-                <input matInput type="password" formControlName="userpasswd"
-                    [class.is-invalid]="loginForm.get('userpasswd').touched && loginForm.get('userpasswd').invalid">
+                <input matInput type="password" formControlName="passwd"
+                    [class.is-invalid]="loginForm.get('passwd').touched && loginForm.get('passwd').invalid">
                 <small class="wrong-field"
-                    *ngIf="loginForm.get('userpasswd').touched && loginForm.get('userpasswd').invalid">password
+                    *ngIf="loginForm.get('passwd').touched && loginForm.get('passwd').invalid">password
                     required</small>
             </mat-form-field>
             <mat-card-actions>
-                <button type="button" class="btn btn-success" style="width: 220px;margin-left: 10px"> Log In</button>
+                <button type="button" class="btn btn-success" style="width: 220px;margin-left: 10px"
+                    (click)=handleLogin()> Log In</button>
                 <!-- <button type="submit" style="background-color: #e7bcbc; margin-left: 10px;" [disabled]="!loginForm.valid" mat-raised-button
                     color="accent">Submit</button>
                 {{loginForm.value | json}}  -->
             </mat-card-actions>
+            <div class="text-danger" *ngIf='invalidLogin'>{{errorMessage}}</div>
+            <div class="text-success" *ngIf='loginSuccess'>{{successMessage}}</div>
         </form>
         <p style="margin-left:20px;">Or log in with Google or Facebook</p>
         <mat-card-actions>
@@ -42,7 +45,7 @@
         </mat-card-actions>
         <div class="unicorn">
             <p style="margin-left: 20px;">Don't have an account? <span class="unicorn-dark-theme"><a
-                    (click)="openSignUp()">Create Account</a></span></p>
+                        (click)="openSignUp()">Create Account</a></span></p>
         </div>
     </mat-card-content>
 </mat-card>

@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { map } from 'rxjs/operators';
+
 
 @Injectable({
   providedIn: 'root'
@@ -8,31 +9,31 @@ import { map } from 'rxjs/operators';
 export class AuthService {
   USER_NAME_SESSION_ATTRIBUTE_NAME = 'authenticatedUser';
 
-  public username: string;
-  public password: string;
+  public email: string;
+  public passwd: string;
   constructor(private http: HttpClient) { }
   // tslint:disable-next-line: typedef
-  authenticationService(username: string, password: string) {
+  authenticationService(email: string, passwd: string) {
     return this.http.get(`http://localhost:8080/api/v1/basicauth`,
-      { headers: { authorization: this.createBasicAuthToken(username, password) } }).pipe(map((res) => {
-        this.username = username;
-        this.password = password;
-        this.registerSuccessfulLogin(username, password);
+      { headers: { authorization: this.createBasicAuthToken(email, passwd) } }).pipe(map((res) => {
+        this.email = email;
+        this.passwd = passwd;
+        this.registerSuccessfulLogin(email, passwd);
       }));
   }
 
-  createBasicAuthToken(username: string, password: string): string {
-    return 'Basic ' + window.btoa(username + ':' + password);
+  createBasicAuthToken(email: string, passwd: string): string {
+    return 'Basic ' + window.btoa(email + ':' + passwd);
   }
 
-  registerSuccessfulLogin(username, password): void {
-    sessionStorage.setItem(this.USER_NAME_SESSION_ATTRIBUTE_NAME, username);
+  registerSuccessfulLogin(email, passwd): void {
+    sessionStorage.setItem(this.USER_NAME_SESSION_ATTRIBUTE_NAME, email);
   }
 
   logout(): void {
     sessionStorage.removeItem(this.USER_NAME_SESSION_ATTRIBUTE_NAME);
-    this.username = null;
-    this.password = null;
+    this.email = null;
+    this.passwd = null;
   }
   isUserLoggedIn(): boolean {
     const user = sessionStorage.getItem(this.USER_NAME_SESSION_ATTRIBUTE_NAME);
@@ -40,7 +41,7 @@ export class AuthService {
     return true;
   }
 
-  getLoggedInUserName(): string {
+  getLoggedInemail(): string {
     const user = sessionStorage.getItem(this.USER_NAME_SESSION_ATTRIBUTE_NAME);
     if (user === null) { return ''; }
     return user;
