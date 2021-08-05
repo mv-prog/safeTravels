@@ -13,10 +13,10 @@ import { AuthService } from './../../auth.service';
 // export class LoginComponent implements OnInit {
 export class LoginComponent {
   loginForm = new FormGroup({
-    email: new FormControl('', Validators.required),
+    username: new FormControl('', Validators.required),
     passwd: new FormControl('', Validators.required)
   });
-  email: string;
+  username: string;
   passwd: string;
   errorMessage = 'Invalid Credentials';
   successMessage: string;
@@ -39,7 +39,7 @@ export class LoginComponent {
   // ngOnInit(): void {
   // }
   handleLogin(): void {
-    this.authenticationService.authenticationService(this.email, this.passwd).subscribe((result) => {
+    this.authenticationService.authenticationService(this.username, this.passwd).subscribe((result) => {
       this.invalidLogin = false;
       this.successfulLogin = true;
       this.successMessage = 'Login Successful.';

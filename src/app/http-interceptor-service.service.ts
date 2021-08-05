@@ -14,7 +14,7 @@ export class HttpInterceptorServiceService implements HttpInterceptor {
         const authReq = req.clone({
             headers: new HttpHeaders({
                 'Content-Type': 'application/json',
-                authorization: `Basic ${window.btoa(this.authenticationService.email + ':' + this.authenticationService.passwd)}`
+                authorization: `Basic ${window.btoa(this.authenticationService.username + ':' + this.authenticationService.passwd)}`
             })
         });
         return next.handle(authReq);

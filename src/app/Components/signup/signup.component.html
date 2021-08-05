@@ -27,26 +27,16 @@
             </mat-form-field>
             <mat-form-field appearance="outline" title="Insert your email name">
                 <mat-label class="help-block">
-                    First Name
+                    Username
                 </mat-label>
-                <input matInput type="text" formControlName="firstName" placeholder="First Name"
-                    [class.is-invalid]="signupForm.get('firstName').touched && signupForm.get('firstName').invalid">
+                <input matInput type="text" formControlName="username" placeholder="Username"
+                    [class.is-invalid]="signupForm.get('username').touched && signupForm.get('username').invalid">
                 <!-- <small class="wrong-field"
                     *ngIf="signupForm.get('email').touched && signupForm.get('email').invalid">First name
                     required</small> -->
             </mat-form-field>
-            <mat-form-field appearance="outline" title="Insert your email last name">
-                <mat-label class="help-block">
-                    Last Name
-                </mat-label>
-                <input matInput type="lastName" formControlName="lastName" placeholder="Last Name"
-                    [class.is-invalid]="signupForm.get('email').touched && signupForm.get('email').invalid">
-                <!-- <small class="wrong-field"
-                    *ngIf="signupForm.get('email').touched && signupForm.get('email').invalid">Last Name
-                    required</small> -->
-            </mat-form-field>
             <mat-card-actions>
-            <button type="button" class="btn btn-success" style="width: 220px;margin-left: 10px"> Log In</button>
+            <button type="button" class="btn btn-success" style="width: 220px;margin-left: 10px"> Register</button>
             </mat-card-actions>
         </form>
 

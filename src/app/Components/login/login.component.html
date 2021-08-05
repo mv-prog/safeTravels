@@ -5,14 +5,14 @@
     <mat-card-content>
         <form action="" [formGroup]="loginForm" class="loginForm">
 
-            <mat-form-field appearance="outline" title="Insert your email address">
+            <mat-form-field appearance="outline" title="Insert your username">
                 <mat-label class="help-block">
-                    Email Address
+                    username
                 </mat-label>
-                <input matInput type="email" formControlName="email" placeholder="Email Address"
-                    [class.is-invalid]="loginForm.get('email').touched && loginForm.get('email').invalid">
+                <input matInput type="username" formControlName="username" placeholder="username"
+                    [class.is-invalid]="loginForm.get('username').touched && loginForm.get('username').invalid">
                 <small class="wrong-field"
-                    *ngIf="loginForm.get('email').touched && loginForm.get('email').invalid">email
+                    *ngIf="loginForm.get('username').touched && loginForm.get('username').invalid">username
                     required</small>
             </mat-form-field>
             <mat-form-field appearance="outline" title="Insert your password">
