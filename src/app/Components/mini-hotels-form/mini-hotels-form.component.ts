@@ -19,6 +19,13 @@ export class MiniHotelsFormComponent implements OnInit {
   curHotel?: Hotel;
   curIndex = -1;
   id = 0;
+  form: any = {
+    searchInput: null,
+    dateRange: null,
+    rooms: null,
+    adults: null,
+    children: null
+  };
   constructor(private hDataService: HdataService) { }
   public adRoOptions = [
     {id: 1},
@@ -57,7 +64,9 @@ export class MiniHotelsFormComponent implements OnInit {
   ngOnInit(): void {
     this.getHotels();
   }
-
+  // onSubmit(){
+  //   this.searchByName(this.searchInput);
+  // }
   getHotels(): void {
     this.hDataService.getAllHotels().
     subscribe(
@@ -92,5 +101,16 @@ export class MiniHotelsFormComponent implements OnInit {
         console.log(error);
       }
     );
+  }
+  searchByName(): void {
+    this.hDataService.getHotelsByName(this.form.searchInput)
+      .subscribe(
+        data => {
+          this.hotels = data;
+          console.log(data);
+        },
+        error => {
+          console.log(error);
+        });
   }
 }

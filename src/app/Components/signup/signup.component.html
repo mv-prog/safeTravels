@@ -1,54 +1,70 @@
 <mat-card>
-    <mat-card-header>
-        Create a new account
-    </mat-card-header>
-    <mat-card-content>
-        <form action="" [formGroup]="signupForm" class="signupForm">
-            <mat-form-field appearance="outline" title="Insert your email address">
-                <mat-label class="help-block">
-                    Email Address
-                </mat-label>
-                <input matInput type="email" formControlName="email" placeholder="Email Address"
-                    [class.is-invalid]="signupForm.get('email').touched && signupForm.get('email').invalid">
-                <!-- <small class="wrong-field"
-                    *ngIf="signupForm.get('email').touched && signupForm.get('email').invalid">email
-                    required</small> -->
-            </mat-form-field>
-            <mat-form-field appearance="outline" title="Insert your password">
-                <mat-label class="help-block">
-                    Password
-                </mat-label>
-                <input matInput type="password" formControlName="userpasswd" placeholder="Password"
-                    [class.is-invalid]="signupForm.get('userpasswd').touched && signupForm.get('userpasswd').invalid">
-                    <!-- <mat-hint>Between 7 and 20 characters long.</mat-hint> -->
-                <!-- <small class="wrong-field"
-                    *ngIf="signupForm.get('userpasswd').touched && signupForm.get('userpasswd').invalid">password
-                    required</small> -->
-            </mat-form-field>
-            <mat-form-field appearance="outline" title="Insert your email name">
-                <mat-label class="help-block">
-                    Username
-                </mat-label>
-                <input matInput type="text" formControlName="username" placeholder="Username"
-                    [class.is-invalid]="signupForm.get('username').touched && signupForm.get('username').invalid">
-                <!-- <small class="wrong-field"
-                    *ngIf="signupForm.get('email').touched && signupForm.get('email').invalid">First name
-                    required</small> -->
-            </mat-form-field>
-            <mat-card-actions>
-            <button type="button" class="btn btn-success" style="width: 220px;margin-left: 10px"> Register</button>
-            </mat-card-actions>
-        </form>
+  <mat-card-header>
+    Create a new account
+  </mat-card-header>
+  <mat-card-content>
+    <form action="" class="signupForm" *ngIf="!isSuccessful" name="form" (ngSubmit)="f.form.valid && onSubmit()"
+      #f="ngForm" novalidate>
+      <mat-form-field appearance="outline" title="Insert your email address">
+        <mat-label class="help-block">
+          Email Address
+        </mat-label>
+        <input matInput type="email" name="email" [(ngModel)]="form.email" required placeholder="Email Address"
+          #email="ngModel">
+        <div class="alert-danger" *ngIf="email.errors && f.submitted">
+          <small *ngIf="email.errors.required">Email is required</small>
+          <small *ngIf="email.errors.email"> Email must be a valid email address</small>
+        </div>
+      </mat-form-field>
+      <mat-form-field appearance="outline" title="Insert your password">
+        <mat-label class="help-block">
+          Password
+        </mat-label>
+        <input matInput type="password" name="passwd" [(ngModel)]="form.passwd" required minlength="6" #passwd="ngModel"
+          placeholder="Password">
+        <!-- <mat-hint>Between 7 and 20 characters long.</mat-hint> -->
+        <div class="text-danger" *ngIf="passwd.errors && f.submitted">
+          <small *ngIf="passwd.errors.required">Password is required</small>
+          <small *ngIf="passwd.errors.minlength">
+            Password must be at least 6 characters
+          </small>
+        </div>
+      </mat-form-field>
+      <mat-form-field appearance="outline" title="Insert your email name">
+        <mat-label class="help-block">
+          Username
+        </mat-label>
+        <input matInput type="text" name="username" [(ngModel)]="form.username" required minlength="4" maxlength="20"
+          #username="ngModel" placeholder="Username">
+        <div class="alert-danger" *ngIf="username.errors && f.submitted">
+          <small *ngIf="username.errors.required">Username is required</small>
+          <small *ngIf="username.errors.minlength">
+            Username must be at least 4 characters
+          </small>
+          <div *ngIf="username.errors.maxlength">
+            Username must be at most 20 characters
+          </div>
+        </div>
+      </mat-form-field>
+      <mat-card-actions>
+        <button type="submit" class="btn btn-success" style="width: 220px;margin-left: 10px"> Register </button>
+      </mat-card-actions>
+      <div class="alert alert-warning" *ngIf="f.submitted && isSignUpFailed">
+        Signup failed!<br />{{ errorMessage }}
+      </div>
+    </form>
+    <div class="alert alert-success" *ngIf="isSuccessful">
+      Successfully registered!
+    </div>
+    <p style="margin-left:20px;">Or log in with Google or Facebook</p>
 
-        <p style="margin-left:20px;">Or log in with Google or Facebook</p>
-
-        <mat-card-actions>
-            <button type="button" class="btn btn-danger btn-ext"> <i class="fab fa-google"></i> Log In with Gmail
-            </button>
-            <p></p>
-            <button type="button" class="btn btn-primary btn-ext"> <i class="fab fa-facebook"></i> Log In with
-                Facebook</button>
-        </mat-card-actions>
-    </mat-card-content>
+    <mat-card-actions>
+      <button type="submit" class="btn btn-danger btn-ext"> <i class="fab fa-google"></i> Log In with Gmail
+      </button>
+      <p></p>
+      <button type="submit" class="btn btn-primary btn-ext"> <i class="fab fa-facebook"></i> Log In with
+        Facebook</button>
+    </mat-card-actions>
+  </mat-card-content>
 
 </mat-card>

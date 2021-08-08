@@ -1,4 +1,5 @@
 <app-navbar></app-navbar>
+<div *ngIf="currentUser; else loggedOut">
 <mat-tab-group>
     <mat-tab class="booking-tabs" label="My Bookings">
         <ng-template matTabContent>
@@ -173,23 +174,29 @@
     <mat-tab label="My Account">
         <ng-template matTabContent>
             <div class="bookings-container">
-                <h1>My Account</h1>
+                <h1>{{ currentUser.username }}'s' Account</h1>
                 <div class="container profile">
                     <h2 class="account-option">My Personal Data</h2>
                     <form class="formulario col-xs-8 col-sm-10 col-md-6 col-bg-5">
                         <!-- {{firstname.value | json}} -->
                         <div class="form-group">
                             <div class="row">
+                                <mat-form-field appearance="outline" title="Username">
+                                    <mat-label class="help-block">
+                                        Username
+                                    </mat-label>
+                                    <input matInput type="text" required [matAutocomplete]="auto" name="username"
+                                        id="username" [(ngModel)]="currentUser.username" placeholder="currentUser.username"> 
+                                </mat-form-field>
+                                <!-- <small class="wrong-field" *ngIf="firstname.touched && firstname.invalid">First Name is -->
+                                <!-- required</small> -->
                                 <mat-form-field appearance="outline" title="First Name">
                                     <mat-label class="help-block">
                                         First Name
                                     </mat-label>
                                     <input matInput type="text" required [matAutocomplete]="auto" name="firstname"
                                         id="firstname">
-                                    <!-- [(ngModel)]="fulanito.firstname" placeholder="fulanito.firstname"> -->
                                 </mat-form-field>
-                                <!-- <small class="wrong-field" *ngIf="firstname.touched && firstname.invalid">First Name is -->
-                                <!-- required</small> -->
                                 <mat-form-field appearance="outline" title="Last Name">
                                     <mat-label class="help-block">
                                         Last Name
@@ -238,7 +245,7 @@
                                         Email linked to your account
                                     </mat-label>
                                     <input matInput type="email" required [matAutocomplete]="auto" name="email"
-                                        id="email">
+                                        id="email" [(ngModel)]="currentUser.email" placeholder="currentUser.email">
                                 </mat-form-field>
                             </div>
                         </div>
@@ -407,5 +414,8 @@
         </ng-template>
     </mat-tab> -->
 </mat-tab-group>
-
+</div>
+<ng-template #loggedOut>
+    Please log in!
+</ng-template>
 <!-- <app-footer></app-footer> -->

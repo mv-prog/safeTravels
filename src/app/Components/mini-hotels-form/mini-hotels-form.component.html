@@ -1,6 +1,6 @@
 <!-- <form #searchForm="ngForm" class="formulario1 col-xs-11 col-sm-11 col-md-11 col-bg-11"> -->
 <div class="miniHotelsFormContainer">
-    <form #searchForm="ngForm" class="formulario1">
+    <form #searchForm="ngForm" name="form" class="formulario1">
         <!-- {{searchForm.value | json}} -->
         <legend class="leg1">
             <a [routerLink]="['/home']" routerLinkActive="router-link-active"><img class="logo" src="../favicon.ico"
@@ -22,8 +22,8 @@
                             </mat-option>
                         </mat-autocomplete>
                         <mat-icon matSuffix color="warn">search</mat-icon>
-                        <input matInput type="search" [class.is-invalid]="searchInput.invalid && searchInput.touched"
-                            required #searchInput="ngModel" [matAutocomplete]="auto" [(ngModel)]="id"
+                        <input matInput type="search" [class.is-invalid]="searchInput.invalid"
+                            required #searchInput="ngModel" [matAutocomplete]="auto" [(ngModel)]="form.searchInput"
                             name="searchInput" id="searchInput" placeholder="Search Hotels">
                     </mat-form-field>
                     <small class="wrong-field" *ngIf="searchInput.touched && searchInput.invalid">Search field is
@@ -38,8 +38,8 @@
                         </mat-label>
                         <!-- <mat-date-range-input [rangePicker]="picker"> -->
                         <mat-date-range-input [rangePicker]="picker"
-                            [class.is-invalid]="dateRange.invalid && dateRange.touched" #dateRange="ngModel"
-                            [(ngModel)]="search.dateRange">
+                            [class.is-invalid]="dateRange.invalid" name="dateRange" #dateRange="ngModel"
+                            [(ngModel)]="form.dateRange">
                             <input matStartDate placeholder="Start date" ngModel name="startDate">
                             <input matEndDate placeholder="End date" ngModel name="endDate">
                         </mat-date-range-input>
@@ -53,9 +53,7 @@
                     <mat-label class="help-block" id="adultsNumber">
                         Adults
                     </mat-label>
-                    <!-- <mat-select id="adultsNumber" placeholder="2" [(value)]="search.adultsNumber"
-                    [(ngModel)]="search.adultsNumber" name="adultsNumber"> -->
-                    <mat-select id="adultsNumber" placeholder="2" [(ngModel)]="adSelected" name="adultsNumber">
+                    <mat-select id="adults" placeholder="2" [(ngModel)]="form.adults" name="adults">
                         <mat-option *ngFor="let item of adRoOptions" [value]="item.id">
                             {{item.id}}
                         </mat-option>
@@ -67,7 +65,7 @@
                     <mat-label class="help-block" id="childrenNumber">
                         Children
                     </mat-label>
-                    <mat-select placeholder="0" [(ngModel)]="chSelected" name="childrenNumber">
+                    <mat-select placeholder="0" [(ngModel)]="form.children" name="children">
                         <mat-option *ngFor="let item of chOptions" [value]="item.id">
                             {{item.id}}
                         </mat-option>
@@ -79,7 +77,7 @@
                     <mat-label class="help-block" id="roomsNumber">
                         Rooms
                     </mat-label>
-                    <mat-select placeholder="1" [(ngModel)]="roSelected" name="roomsNumber">
+                    <mat-select placeholder="1" [(ngModel)]="form.rooms" name="rooms">
                         <mat-option *ngFor="let item of adRoOptions" [value]="item.id">
                             {{item.id}}
                         </mat-option>
@@ -88,7 +86,7 @@
             </div>
             <div class="buttonSpace">
                 <button type="button"  [routerLink]="['/hotels', search]" routerLinkActive="router-link-active"
-                    [disabled]="!searchForm.valid" mat-raised-button color="accent">Search Hotels!</button>
+                     (click)="searchByName()" mat-raised-button color="accent">Search Hotels!</button>
             </div>
         </div>
     </form>

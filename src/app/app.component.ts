@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
 import { LoginComponent } from './Components/login/login.component';
 import { HdataService } from './hdata.service';
+import { TokenStorageService } from './token-storage.service';
 
 @Component({
   selector: 'app-root',
@@ -10,9 +11,29 @@ import { HdataService } from './hdata.service';
 })
 export class AppComponent implements OnInit{
   title = 'safeTravels';
-  private loggedin: boolean;
   dataList: any = [];
-  constructor(private hdataservice: HdataService){}
-  // tslint:disable-next-line: typedef
-  ngOnInit(){}
+  private roles: string[] = [];
+  isLoggedIn = false;
+  showAdminBoard = false;
+  showModeratorBoard = false;
+  username?: string;
+  constructor(private hdataservice: HdataService, private tokenStorageService: TokenStorageService){}
+  ngOnInit(): void {
+    this.isLoggedIn = !!this.tokenStorageService.getToken();
+
+    if (this.isLoggedIn) {
+      const user = this.tokenStorageService.getUser();
+      this.roles = user.roles;
+
+      this.showAdminBoard = this.roles.includes('ROLE_ADMIN');
+      this.showModeratorBoard = this.roles.includes('ROLE_MODERATOR');
+
+      this.username = user.username;
+    }
+  }
+
+  logout(): void {
+    this.tokenStorageService.signOut();
+    window.location.reload();
+  }
 }

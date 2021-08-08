@@ -3,45 +3,51 @@
         Continue to your account
     </mat-card-header>
     <mat-card-content>
-        <form action="" [formGroup]="loginForm" class="loginForm">
+        <form action="" class="loginForm" *ngIf="!isLoggedIn" name="form" (ngSubmit)="f.form.valid && onSubmit()"
+            #f="ngForm" novalidate>
 
             <mat-form-field appearance="outline" title="Insert your username">
                 <mat-label class="help-block">
                     username
                 </mat-label>
-                <input matInput type="username" formControlName="username" placeholder="username"
-                    [class.is-invalid]="loginForm.get('username').touched && loginForm.get('username').invalid">
-                <small class="wrong-field"
-                    *ngIf="loginForm.get('username').touched && loginForm.get('username').invalid">username
-                    required</small>
+                <input matInput type="username" name="username" [(ngModel)]="form.username" required minlength="4" maxlength="20"
+                    #username="ngModel" placeholder="Username">
+                <small class="wrong-field" *ngIf="username.errors && f.submitted">
+                    Username is required!
+                </small>
             </mat-form-field>
             <mat-form-field appearance="outline" title="Insert your password">
                 <mat-label class="help-block">
                     Password
                 </mat-label>
-                <input matInput type="password" formControlName="passwd"
-                    [class.is-invalid]="loginForm.get('passwd').touched && loginForm.get('passwd').invalid">
-                <small class="wrong-field"
-                    *ngIf="loginForm.get('passwd').touched && loginForm.get('passwd').invalid">password
-                    required</small>
+                <input matInput type="password" name="passwd" [(ngModel)]="form.passwd" required minlength="6" #passwd="ngModel">
+                <div class="alert-danger" *ngIf="passwd.errors && f.submitted">
+                    <div *ngIf="passwd.errors.required">Password is required</div>
+                    <div *ngIf="passwd.errors.minlength">
+                        Password must be at least 6 characters
+                    </div>
+                </div>
             </mat-form-field>
+
             <mat-card-actions>
-                <button type="button" class="btn btn-success" style="width: 220px;margin-left: 10px"
-                    (click)=handleLogin()> Log In</button>
-                <!-- <button type="submit" style="background-color: #e7bcbc; margin-left: 10px;" [disabled]="!loginForm.valid" mat-raised-button
-                    color="accent">Submit</button>
-                {{loginForm.value | json}}  -->
+                <button type="submit" class="btn btn-success" style="width: 220px;margin-left: 10px"> Log In </button>
+                <!-- {{loginForm.value | json}} -->
             </mat-card-actions>
-            <div class="text-danger" *ngIf='invalidLogin'>{{errorMessage}}</div>
-            <div class="text-success" *ngIf='loginSuccess'>{{successMessage}}</div>
+            <div class="form-group">
+                <div class="alert alert-danger" role="alert" *ngIf="f.submitted && isLoginFailed">
+                    <!-- Login failed: {{ errorMessage }} -->
+                    Login failed!
+                </div>
+            </div>
         </form>
+        <div class="alert alert-success" *ngIf="isLoggedIn">
+            Logged in as {{ roles }}.
+        </div>
         <p style="margin-left:20px;">Or log in with Google or Facebook</p>
         <mat-card-actions>
             <button type="button" class="btn btn-danger btn-ext"> <i class="fab fa-google"></i> Log In with Gmail
             </button>
             <p></p>
-            <button type="button" class="btn btn-primary btn-ext"> <i class="fab fa-facebook"></i> Log In with
-                Facebook</button>
         </mat-card-actions>
         <div class="unicorn">
             <p style="margin-left: 20px;">Don't have an account? <span class="unicorn-dark-theme"><a

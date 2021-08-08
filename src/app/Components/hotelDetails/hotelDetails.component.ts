@@ -19,7 +19,6 @@ export class HotelDetailsComponent implements OnInit {
   // each room.
   // room$: Observable<Room[]>;
   rooms?: Room[];
-  room?: Room;
   // hotel$: Observable<Hotel[]>;
   hotel: Hotel = {
     id: 0,

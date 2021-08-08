@@ -5,6 +5,7 @@ import { map } from 'rxjs/operators';
 import { User } from './models/user';
 import { Hotel } from './models/hotel.model';
 import { Room } from './models/room.model';
+import { Booking } from './models/booking.model';
 
 @Injectable({
   providedIn: 'root'
@@ -18,14 +19,6 @@ export class HdataService {
   private baseRoomsUrl = 'http://localhost:8080/rooms';
   constructor(private httpClient: HttpClient) { }
 
-  // my previous json server data, stored in db.json
-  // getHData(): any {
-  // return this.httpClient.get('http://localhost:3000/hotels'); mock json server
-  // }
-  // Bookings methods
-  getAllBookings(): any {
-    return this.httpClient.get(this.baseBookingsUrl);
-  }
   // Hotels methods
   getAllHotels(): Observable<any> {
     return this.httpClient.get<Hotel[]>(this.baseHotelsUrl);
@@ -36,14 +29,17 @@ export class HdataService {
   getHotelByName(name: any): Observable<Hotel[]> {
     return this.httpClient.get<Hotel[]>(`http://localhost:8080/hotelByName/${name}`);
   }
-
-
+  getHotelsByName(name: any): Observable<Hotel[]> {
+    return this.httpClient.get<Hotel[]>(`${this.baseHotelsUrl}?name=${name}`);
+  }
   updateHotel(id: any, data: any): Observable<any> {
     return this.httpClient.put(`${this.baseHotelUrl}/${id}`, data);
   }
   deleteHotel(id): Observable<any> {
     return this.httpClient.delete(`${this.baseHotelsUrl}/${id}`);
   }
+
+
   // rooms methods
   getAllRoomsByHotel(id: any): Observable<Room[]> {
     return this.httpClient.get<Room[]>(`/hotel/${id}/rooms`);
@@ -52,9 +48,17 @@ export class HdataService {
     return this.httpClient.get<Room[]>(this.baseRoomsUrl);
   }
 
-  // Users methods
-  createUsr(data): Observable<any> {
-    return this.httpClient.post(this.baseUsersUrl, data);
+  // Bookings methods
+  getAllBookings(): Observable<Booking[]> {
+    return this.httpClient.get<Booking[]>(this.baseBookingsUrl);
   }
+  getBookingsById(id: any): Observable<Booking[]> {
+    return this.httpClient.get<Booking[]>(`${this.baseBookingsUrl}/${id}`);
+   }
+
+     // my previous json server data, stored in db.json
+  // getHData(): any {
+  // return this.httpClient.get('http://localhost:3000/hotels'); mock json server
+  // }
 }
 

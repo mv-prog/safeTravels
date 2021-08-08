@@ -43,8 +43,8 @@ import { MiniHotelsFormComponent } from './Components/mini-hotels-form/mini-hote
 import { BookingsComponent } from './Components/bookings/bookings.component';
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import { HotelDetailsComponent } from './Components/hotelDetails/hotelDetails.component';
-import { HttpInterceptorServiceService } from './http-interceptor-service.service';
 import { LogoutComponent } from './Components/logout/logout.component';
+import { authInterceptorProviders } from './../_helpers/auth.interceptor';
 @NgModule({
   // tslint:disable-next-line: max-line-length
   declarations: [AppComponent, HomeComponent, ContactComponent, OrderByPipe, LoginComponent, SignupComponent, CitybannersComponent, NlbannerComponent, FooterComponent, OffersComponent, NavbarComponent, HotelsComponent, Error404Component, HotelsformComponent, RecommendedComponent, CalculateOriginalPricePipe,
@@ -54,13 +54,7 @@ import { LogoutComponent } from './Components/logout/logout.component';
     BrowserAnimationsModule, MatDatepickerModule, MatNativeDateModule, MatFormFieldModule, MatTabsModule,
     MatSelectModule, MatCheckboxModule, MatAutocompleteModule, MatButtonModule, FormsModule, ReactiveFormsModule,
     MatCardModule, MatDialogModule, ClickOutsideModule, HttpClientModule],
-  providers: [{ provide: MAT_FORM_FIELD_DEFAULT_OPTIONS, useValue: { floatLabel: 'always' } },
-  {
-    provide: HTTP_INTERCEPTORS,
-    useClass: HttpInterceptorServiceService,
-    multi: true
-  }
-  ],
+  providers: [authInterceptorProviders, { provide: MAT_FORM_FIELD_DEFAULT_OPTIONS, useValue: { floatLabel: 'always' } }],
   bootstrap: [AppComponent],
   entryComponents: [LoginComponent, SignupComponent]
 })

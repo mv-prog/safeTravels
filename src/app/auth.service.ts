@@ -1,49 +1,31 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { map } from 'rxjs/operators';
+import { Observable } from 'rxjs';
 
+const AUTH_API = 'http://localhost:8080/api/auth/';
+
+const httpOptions = {
+  headers: new HttpHeaders({ 'Content-Type': 'application/json' })
+};
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
-  USER_NAME_SESSION_ATTRIBUTE_NAME = 'authenticatedUser';
-
-  public username: string;
-  public passwd: string;
   constructor(private http: HttpClient) { }
-  // tslint:disable-next-line: typedef
-  authenticationService(username: string, passwd: string) {
-    return this.http.get(`http://localhost:8080/api/v1/basicauth`,
-      { headers: { authorization: this.createBasicAuthToken(username, passwd) } }).pipe(map((res) => {
-        this.username = username;
-        this.passwd = passwd;
-        this.registerSuccessfulLogin(username, passwd);
-      }));
+
+  login(username: string, passwd: string): Observable<any> {
+    return this.http.post(AUTH_API + 'login', {
+      username,
+      passwd
+    }, httpOptions);
   }
 
-  createBasicAuthToken(username: string, passwd: string): string {
-    return 'Basic ' + window.btoa(username + ':' + passwd);
-  }
-
-  registerSuccessfulLogin(username, passwd): void {
-    sessionStorage.setItem(this.USER_NAME_SESSION_ATTRIBUTE_NAME, username);
-  }
-
-  logout(): void {
-    sessionStorage.removeItem(this.USER_NAME_SESSION_ATTRIBUTE_NAME);
-    this.username = null;
-    this.passwd = null;
-  }
-  isUserLoggedIn(): boolean {
-    const user = sessionStorage.getItem(this.USER_NAME_SESSION_ATTRIBUTE_NAME);
-    if (user === null) { return false; }
-    return true;
-  }
-
-  getLoggedInusername(): string {
-    const user = sessionStorage.getItem(this.USER_NAME_SESSION_ATTRIBUTE_NAME);
-    if (user === null) { return ''; }
-    return user;
+  signup(username: string, email: string, passwd: string): Observable<any> {
+    return this.http.post(AUTH_API + 'signup', {
+      username,
+      email,
+      passwd
+    }, httpOptions);
   }
 }
