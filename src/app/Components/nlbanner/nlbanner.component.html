@@ -5,7 +5,7 @@
             <h5>Join our neswletter to get the best offers and precious coupons</h5>
         </div>
         <div class="nlsubs">
-            <mat-form-field appearance="outline" class="form-field">
+            <mat-form-field [formGroup]="nlemailForm" appearance="outline" class="form-field">
                 <mat-label>Email</mat-label>
                 <input type="text" matInput placeholder="Enter Email Address" formControlName="nlemail"
                     pattern="[a-zA-Z0-9.-_]{1,}@[a-zA-Z.-]{2,}[.]{1}[a-zA-Z]{2,}" />

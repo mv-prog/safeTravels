@@ -1,5 +1,5 @@
 <div class="appHotelsFormContainer">
-    <form #searchForm="ngForm" class="formulario col-xs-8 col-sm-10 col-md-6 col-bg-5">
+    <form #searchForm="ngForm" name="form" class="formulario col-xs-8 col-sm-10 col-md-6 col-bg-5">
         <!-- {{searchForm.value | json}} -->
         <legend class="leg">
             <a [routerLink]="['/home']" routerLinkActive="router-link-active"><img class="logo" src="../favicon.ico"
@@ -21,8 +21,8 @@
                 </mat-autocomplete>
                 <mat-icon matSuffix color="warn">search</mat-icon>
                 <input matInput type="search" [class.is-invalid]="searchInput.invalid && searchInput.touched" required
-                    #searchInput="ngModel" [matAutocomplete]="auto" [(ngModel)]="search.searchInput" name="searchInput"
-                    id="searchInput" placeholder="Search Hotels">
+                    #searchInput="ngModel" [matAutocomplete]="auto" [(ngModel)]="form.searchInput" name="searchInput"
+                    placeholder="Search Hotels">
             </mat-form-field>
             <small class="wrong-field" *ngIf="searchInput.touched && searchInput.invalid">Search field is
                 required</small>
@@ -35,7 +35,7 @@
                     </mat-label>
                     <mat-date-range-input [rangePicker]="picker"
                         [class.is-invalid]="dateRange.invalid && dateRange.touched" #dateRange="ngModel"
-                        [(ngModel)]="search.dateRange">
+                        [(ngModel)]="form.dateRange" name="dateRange">
                         <input matStartDate placeholder="Start date" ngModel name="startDate">
                         <input matEndDate placeholder="End date" ngModel name="endDate">
                     </mat-date-range-input>
@@ -46,11 +46,11 @@
 
             <div class="form-group miniSelect mb-2 col-xs-6 col-sm-3 col-md-2 col-bg-1">
                 <mat-form-field appearance="outline" style="width: 100%;" title="Adults">
-                    <mat-label class="help-block" id="adultsNumber">
+                    <mat-label class="help-block">
                         Adults
                     </mat-label>
-                    <mat-select id="adultsNumber" placeholder="2" [(value)]="search.adultsNumber"
-                        [(ngModel)]="search.adultsNumber" name="adultsNumber">
+                    <mat-select placeholder="2" name="adultsNumber" [(value)]="search.adultsNumber"
+                        [(ngModel)]="form.adultsNumber">
                         <!-- <mat-option *ngFor="let item of [1,2,3,4,5,6,7,8,9,10]">
               {{item}}
             </mat-option> -->
@@ -70,10 +70,10 @@
 
             <div class="form-group miniSelect mb-2 col-xs-6 col-sm-7 col-md-2 col-bg-1">
                 <mat-form-field appearance="outline" style="width: 100%;" title="Children">
-                    <mat-label class="help-block" id="childrenNumber">
+                    <mat-label class="help-block">
                         Children
                     </mat-label>
-                    <mat-select [(value)]="search.childrenNumber" placeholder="0" [(ngModel)]="search.childrenNumber"
+                    <mat-select [(value)]="form.childrenNumber" placeholder="0" [(ngModel)]="form.childrenNumber"
                         name="childrenNumber">
                         <!-- <mat-option *ngFor="let item of [0,1,2,3,4,5,6,7,8,9,10]">
               {{item}}
@@ -94,10 +94,10 @@
 
             <div class="form-group miniSelect mb-2 col-xs-7 col-sm-7 col-md-2 col-bg-1">
                 <mat-form-field appearance="outline" style="width: 100%;" title="Rooms">
-                    <mat-label class="help-block" id="roomsNumber">
+                    <mat-label class="help-block">
                         Rooms
                     </mat-label>
-                    <mat-select [(value)]="search.roomsNumber" placeholder="1" [(ngModel)]="search.roomsNumber"
+                    <mat-select [(value)]="form.roomsNumber" placeholder="1" [(ngModel)]="form.roomsNumber"
                         name="roomsNumber">
                         <!-- <mat-option *ngFor="let item of [1,2,3,4,5,6,7,8,9,10]">
               {{item}}

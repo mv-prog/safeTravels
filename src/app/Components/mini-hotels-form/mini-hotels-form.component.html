@@ -24,7 +24,7 @@
                         <mat-icon matSuffix color="warn">search</mat-icon>
                         <input matInput type="search" [class.is-invalid]="searchInput.invalid"
                             required #searchInput="ngModel" [matAutocomplete]="auto" [(ngModel)]="form.searchInput"
-                            name="searchInput" id="searchInput" placeholder="Search Hotels">
+                            name="searchInput" placeholder="Search Hotels">
                     </mat-form-field>
                     <small class="wrong-field" *ngIf="searchInput.touched && searchInput.invalid">Search field is
                         required</small>
@@ -50,10 +50,10 @@
             </div>
             <div class="form-group miniSelect col-xs-6 col-sm-7 col-md-2 col-bg-1">
                 <mat-form-field appearance="outline" style="width: 100%;" title="Adults">
-                    <mat-label class="help-block" id="adultsNumber">
+                    <mat-label class="help-block">
                         Adults
                     </mat-label>
-                    <mat-select id="adults" placeholder="2" [(ngModel)]="form.adults" name="adults">
+                    <mat-select placeholder="2" [(ngModel)]="form.adults" name="adults">
                         <mat-option *ngFor="let item of adRoOptions" [value]="item.id">
                             {{item.id}}
                         </mat-option>
@@ -62,7 +62,7 @@
             </div>
             <div class="form-group miniSelect col-xs-6 col-sm-7 col-md-2 col-bg-1">
                 <mat-form-field appearance="outline" style="width: 100%;" title="Children">
-                    <mat-label class="help-block" id="childrenNumber">
+                    <mat-label class="help-block">
                         Children
                     </mat-label>
                     <mat-select placeholder="0" [(ngModel)]="form.children" name="children">
@@ -74,7 +74,7 @@
             </div>
             <div class="form-group miniSelect col-xs-7 col-sm-7 col-md-2 col-bg-1">
                 <mat-form-field appearance="outline" style="width: 100%;" title="Rooms">
-                    <mat-label class="help-block" id="roomsNumber">
+                    <mat-label class="help-block">
                         Rooms
                     </mat-label>
                     <mat-select placeholder="1" [(ngModel)]="form.rooms" name="rooms">

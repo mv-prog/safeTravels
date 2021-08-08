@@ -14,6 +14,13 @@ export class HotelsformComponent implements OnInit {
   @Input() search;
   @Output() dontShowBB = new EventEmitter<void>();
   @Output() sendHotelsData = new EventEmitter<void>();
+  form: any = {
+    searchInput: null,
+    dateRange: null,
+    adultsNumber: null,
+    childrenNumber: null,
+    roomsNumber: null
+  };
   constructor(){
 
   }
