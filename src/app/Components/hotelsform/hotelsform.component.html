@@ -33,13 +33,11 @@
                     <mat-label class="help-block">
                         Check-in - Check-out
                     </mat-label>
-                    <mat-date-range-input [rangePicker]="picker"
-                        [class.is-invalid]="dateRange.invalid && dateRange.touched" #dateRange="ngModel"
-                        [(ngModel)]="form.dateRange" name="dateRange">
-                        <input matStartDate placeholder="Start date" ngModel name="startDate">
-                        <input matEndDate placeholder="End date" ngModel name="endDate">
+                    <mat-date-range-input [rangePicker]="picker" name="range">
+                        <input matStartDate [placeholder]="form.range.startDate" name="startDate" [(ngModel)]="startDate">
+                        <input matEndDate [placeholder]="form.range.endDate" name="endDate"  [(ngModel)]="endDate">
                     </mat-date-range-input>
-                    <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                    <mat-datepicker-toggle matSuffix ></mat-datepicker-toggle>
                     <mat-date-range-picker #picker></mat-date-range-picker>
                 </mat-form-field>
             </div>
@@ -49,7 +47,7 @@
                     <mat-label class="help-block">
                         Adults
                     </mat-label>
-                    <mat-select placeholder="2" name="adultsNumber" [(value)]="search.adultsNumber"
+                    <mat-select placeholder="2" name="adultsNumber" [(value)]="form.adultsNumber"
                         [(ngModel)]="form.adultsNumber">
                         <!-- <mat-option *ngFor="let item of [1,2,3,4,5,6,7,8,9,10]">
               {{item}}

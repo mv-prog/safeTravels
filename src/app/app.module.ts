@@ -46,6 +46,7 @@ import { HotelDetailsComponent } from './Components/hotelDetails/hotelDetails.co
 import { LogoutComponent } from './Components/logout/logout.component';
 import { authInterceptorProviders } from './../_helpers/auth.interceptor';
 import { HdataService } from './hdata.service';
+import { DatePipe } from '@angular/common';
 @NgModule({
   // tslint:disable-next-line: max-line-length
   declarations: [AppComponent, HomeComponent, ContactComponent, OrderByPipe, LoginComponent, SignupComponent, CitybannersComponent, NlbannerComponent, FooterComponent, OffersComponent, NavbarComponent, HotelsComponent, Error404Component, HotelsformComponent, RecommendedComponent, CalculateOriginalPricePipe,
@@ -59,7 +60,8 @@ import { HdataService } from './hdata.service';
     authInterceptorProviders, 
     { 
       provide: MAT_FORM_FIELD_DEFAULT_OPTIONS, useValue: { floatLabel: 'always' } 
-    }
+    },
+    DatePipe
   ],
   bootstrap: [AppComponent],
   entryComponents: [LoginComponent, SignupComponent]

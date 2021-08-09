@@ -21,7 +21,7 @@ export class MiniHotelsFormComponent implements OnInit {
   id = 0;
   form: any = {
     searchInput: null,
-    dateRange: null,
+    range: null,
     rooms: null,
     adults: null,
     children: null

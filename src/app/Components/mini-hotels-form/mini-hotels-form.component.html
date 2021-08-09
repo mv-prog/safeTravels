@@ -36,14 +36,11 @@
                         <mat-label class="help-block">
                             Check-in - Check-out
                         </mat-label>
-                        <!-- <mat-date-range-input [rangePicker]="picker"> -->
-                        <mat-date-range-input [rangePicker]="picker"
-                            [class.is-invalid]="dateRange.invalid" name="dateRange" #dateRange="ngModel"
-                            [(ngModel)]="form.dateRange">
-                            <input matStartDate placeholder="Start date" ngModel name="startDate">
-                            <input matEndDate placeholder="End date" ngModel name="endDate">
+                        <mat-date-range-input [rangePicker]="picker" name="range">
+                            <input matStartDate placeholder="Start date" name="startDate">
+                            <input matEndDate placeholder="End date" name="endDate">
                         </mat-date-range-input>
-                        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                        <mat-datepicker-toggle matSuffix ></mat-datepicker-toggle>
                         <mat-date-range-picker #picker></mat-date-range-picker>
                     </mat-form-field>
                 </div>
