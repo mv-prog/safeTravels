@@ -6,6 +6,7 @@ import { Hotel } from './models/hotel.model';
 import { Room } from './models/room.model';
 import { BehaviorSubject } from 'rxjs';
 import { Booking } from './models/booking.model';
+import { map } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'
@@ -35,12 +36,25 @@ export class HdataService {
   getHotelsByName(name: any): Observable<Hotel[]> {
     return this.httpClient.get<Hotel[]>(`${this.baseHotelsUrl}?name=${name}`);
   }
+  getHotelsByProvince(province: any): Observable<Hotel[]> {
+    return this.httpClient.get<Hotel[]>(`${this.baseHotelsUrl}?province=${province}`);
+  }
+  getHotelsByCity(city: any): Observable<Hotel[]> {
+    return this.httpClient.get<Hotel[]>(`${this.baseHotelsUrl}?city=${city}`);
+  }
   updateHotel(id: any, data: any): Observable<any> {
     return this.httpClient.put(`${this.baseHotelUrl}/${id}`, data);
   }
   deleteHotel(id): Observable<any> {
     return this.httpClient.delete(`${this.baseHotelsUrl}/${id}`);
   }
+  getByName(name: string): Observable<string[]> {
+    return this.httpClient.get<Hotel[]>(`http://localhost:8080/hotelByName/${name}`)
+      .pipe(map(hotelList => hotelList.map(({ name }) => name)));
+  }
+
+  
+
   /** the hotel-data-related searches */
   editSearchInputData(newSearchInput){
     this.searchInputFormData.next(newSearchInput);

@@ -3,6 +3,11 @@ import { ViewChild } from '@angular/core';
 import { DateRange, MatDatepicker } from '@angular/material/datepicker';
 import { HdataService } from 'src/app/hdata.service';
 import { DatePipe } from '@angular/common';
+import { AbstractControl, FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Observable } from 'rxjs';
+import { debounceTime, distinctUntilChanged, switchMap, filter } from 'rxjs/operators';
+import { MatAutocomplete } from '@angular/material/autocomplete';
+
 
 @Component({
   selector: 'app-hotelsform',
@@ -17,50 +22,61 @@ export class HotelsformComponent implements OnInit {
   @Output() dontShowBB = new EventEmitter<void>();
   @Output() sendHotelsData = new EventEmitter<void>();
   private todaysDate = new Date();
-  tomorrowsDateNumber: number = this.todaysDate.getDate()+1;
-  private tomorrowsDate: Date =  new Date(this.tomorrowsDateNumber);
+  tomorrowsDateNumber: number = this.todaysDate.getDate() + 1;
+  private tomorrowsDate: Date = new Date(this.tomorrowsDateNumber);
+  hotelList$: Observable<string[]>;
+  // form = this.formBuilder.group({
+  //   name: [null],
+  // });
+  form: any = {
+    searchInput: null,
+    name: null,
+    dateRange: {
+      startDate: this.todaysDate,
+      endDate: this.tomorrowsDate
+    },
+    adultsNumber: 2,
+    childrenNumber: 0,
+    roomsNumber: 1
+  };
+  searchInput: string;
+  constructor(private hDataService: HdataService, private datepipe: DatePipe, private formBuilder: FormBuilder) {
+    this.form.dateRange.startDate = this.datepipe.transform(this.todaysDate, "dd/mm/yyyy");
+    this.form.dateRange.endDate = this.datepipe.transform(this.tomorrowsDate, "dd/mm/yyyy");
+    // this.hotelList$ = this.form.get('name')!.valueChanges.pipe(
+    //   distinctUntilChanged(),
+    //   debounceTime(1000),
+    //   filter((name: string) => !!name),
+    //   switchMap(name => this.hDataService.getByName(name))
+    // );
+  }
 
-form: any = {
-  searchInput: null,
-  dateRange: {
-    startDate: this.todaysDate,
-    endDate: this.tomorrowsDate
-  },
-  adultsNumber: 2,
-  childrenNumber: 0,
-  roomsNumber: 1
-};
-searchInput: string;
-constructor(private hDataService: HdataService, private datepipe: DatePipe){
-  this.form.dateRange.startDate= this.datepipe.transform(this.todaysDate, "dd/mm/yyyy"),
-  this.form.dateRange.endDate= this.datepipe.transform(this.tomorrowsDate, "dd/mm/yyyy")
-}
+  /**
+   * dontShowbb
+   * emits a boolean variable, showBrowserBanners, set to false, in order not to show this component in the parent component.
+   */
+  dontShowbb(): any {
+    this.showBrowserBanners = false;
+    this.dontShowBB.emit(this.showBrowserBanners);
+  }
 
-/**
- * dontShowbb
- * emits a boolean variable, showBrowserBanners, set to false, in order not to show this component in the parent component.
- */
-dontShowbb(): any{
-  this.showBrowserBanners = false;
-  this.dontShowBB.emit(this.showBrowserBanners);
-}
+  /**
+   * sendData
+   * emits/outputs the search input gotten in the hotels form.
+   */
+  sendData(): any {
+    this.sendHotelsData.emit(this.search);
+  }
+  ngOnInit(): void {
+    // subscribo os datos a unha varable que creo e que é a que vou chamar por doquier
+    this.hDataService.searchInputToObservable.subscribe(searchinput => this.searchInput = searchinput);
+  }
+  /**
+   * updateSearchInput
+   * actualizo a variable creada cos datos do meu ngModel.
+   * */
+  updateSearchInput() {
+    this.hDataService.editSearchInputData(this.form.searchInput);
+  }
 
-/**
- * sendData
- * emits/outputs the search input gotten in the hotels form.
- */
-sendData(): any{
-  this.sendHotelsData.emit(this.search);
-}
-ngOnInit(): void {
-  // subscribo os datos a unha varable que creo e que é a que vou chamar por doquier
-  this.hDataService.searchInputToObservable.subscribe(searchinput => this.searchInput = searchinput);
-}
-/**
- * updateSearchInput
- * actualizo a variable creada cos datos do meu ngModel.
- * */
-updateSearchInput(){
-  this.hDataService.editSearchInputData(this.form.searchInput);
-}
 }

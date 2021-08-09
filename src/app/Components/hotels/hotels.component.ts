@@ -13,7 +13,7 @@ import { ActivatedRoute } from '@angular/router';
 
 export interface Star {
   id?: string;
-  starname?: string;
+  name?: string;
   color?: ThemePalette;
   stars?: Star[];
 }
@@ -32,15 +32,17 @@ export class HotelsComponent implements OnInit {
   selected = 'recommended';
   star: Star = {
     stars: [
-      { id: '1', starname: '1 star', color: 'accent' },
-      { id: '2', starname: '2 stars', color: 'accent' },
-      { id: '3', starname: '3 stars', color: 'accent' },
-      { id: '4', starname: '4 stars', color: 'accent' },
-      { id: '5', starname: '5 stars', color: 'accent' }
+      { id: '1', name: '1 star', color: 'accent' },
+      { id: '2', name: '2 stars', color: 'accent' },
+      { id: '3', name: '3 stars', color: 'accent' },
+      { id: '4', name: '4 stars', color: 'accent' },
+      { id: '5', name: '5 stars', color: 'accent' }
     ]
   };
   @ViewChild(MatDatepicker) datepicker: MatDatepicker<Date>;
   public options = ['A Coruña', 'Santiago', 'Hostal dos Reis Católicos'];
+  public provinces = ['A Coruña', 'Ourense', 'Pontevedra', 'Lugo'];
+  public cities = ['Santiago', 'Santiago de Compostela', 'Sober'];
   public hideIndication = true;
   public adultsNumber: number;
   public roomsNumber: number;
@@ -58,8 +60,6 @@ export class HotelsComponent implements OnInit {
   showBrowserBanners: boolean;
   public dataList: any;
   searchInput: string;
-  // dataList: any = [];
-  // dataList: Hotel;
   // constructor(private hdataservice: HdataService) { this used to consume the json server data.
   constructor(private hDataService: HdataService, public route: ActivatedRoute) {
   }
@@ -87,6 +87,8 @@ export class HotelsComponent implements OnInit {
     // this.getHotels();
     // subscribo os datos a unha varable que creo e que é a que vou chamar por doquier
     this.hDataService.searchInputToObservable.subscribe(searchinput => this.searchInput = searchinput);
+    this.getHotelsByCity(this.searchInput);
+    this.getHotelsByProvince(this.searchInput);
     this.getHotelsByName(this.searchInput);
   }
   showIdData(data): void {
@@ -141,7 +143,30 @@ export class HotelsComponent implements OnInit {
       return this.dataList;
     }
   }
-
+  getHotelsByCity(city): void {
+    this.hDataService.getHotelsByCity(city)
+      .subscribe(
+        data => {
+          this.hotels = data;
+          console.log(data);
+        },
+        error => {
+          console.log(error);
+        }
+      );
+  }
+  getHotelsByProvince(province): void {
+    this.hDataService.getHotelsByProvince(province)
+      .subscribe(
+        data => {
+          this.hotels = data;
+          console.log(data);
+        },
+        error => {
+          console.log(error);
+        }
+      );
+  }
   getHotelsByName(name): void {
     this.hDataService.getHotelsByName(name)
       .subscribe(

@@ -33,7 +33,7 @@
                     <mat-label class="help-block">
                         Check-in - Check-out
                     </mat-label>
-                    <mat-date-range-input [rangePicker]="picker"
+                    <mat-date-range-input [rangePicker]="picker" [matAutocomplete]="auto"
                         [class.is-invalid]="dateRange.invalid && dateRange.touched" #dateRange="ngModel"
                         [(ngModel)]="form.dateRange" name="dateRange">
                         <input matStartDate [placeholder]="form.dateRange.startDate" ngModel [(ngModel)]="startDate" name="startDate">
@@ -42,6 +42,11 @@
                     <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
                     <mat-date-range-picker #picker></mat-date-range-picker>
                 </mat-form-field>
+                <mat-autocomplete #auto="matAutocomplete">
+                    <mat-option *ngFor="let hotelname of hotelList$ | async" [value]="hotelname">
+                      {{hotelname}}
+                    </mat-option>
+                  </mat-autocomplete>
             </div>
 
             <div class="form-group miniSelect mb-2 col-xs-6 col-sm-3 col-md-2 col-bg-1">
