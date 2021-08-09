@@ -1,12 +1,11 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { map } from 'rxjs/operators';
 import { User } from './models/user';
 import { Hotel } from './models/hotel.model';
 import { Room } from './models/room.model';
-import { Booking } from './models/booking.model';
 import { BehaviorSubject } from 'rxjs';
+import { Booking } from './models/booking.model';
 
 @Injectable({
   providedIn: 'root'

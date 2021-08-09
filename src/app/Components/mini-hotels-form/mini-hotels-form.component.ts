@@ -1,8 +1,10 @@
 import { Component, Input, OnInit, Output, ViewChild } from '@angular/core';
-import { MatDatepicker } from '@angular/material/datepicker';
+import { MatDatepicker, DateRange } from '@angular/material/datepicker';
 import { EventEmitter } from '@angular/core';
 import { HdataService } from 'src/app/hdata.service';
 import { DatePipe } from '@angular/common';
+import { FormsModule } from '@angular/forms';
+
 
 @Component({
   selector: 'app-mini-hotels-form',
@@ -10,7 +12,7 @@ import { DatePipe } from '@angular/common';
   styleUrls: ['./mini-hotels-form.component.scss']
 })
 export class MiniHotelsFormComponent implements OnInit {
-  @ViewChild(MatDatepicker) rangePicker: MatDatepicker<Date>;
+  @ViewChild(MatDatepicker) dateRange: MatDatepicker<Date>;
   public options = ['A Coruña', 'Santiago', 'Hostal dos Reis Católicos'];
   @Input() showBrowserBanners;
   @Input() search;
@@ -21,18 +23,18 @@ export class MiniHotelsFormComponent implements OnInit {
   private tomorrowsDate: Date = new Date(this.tomorrowsDateNumber);
 form: any = {
   searchInput: null,
-  range: {
+  dateRange: {
     startDate: this.todaysDate,
     endDate: this.tomorrowsDate
   },
-  adultsNumber: 2,
-  childrenNumber: 0,
-  roomsNumber: 1
+  adults: 2,
+  children: 0,
+  rooms: 1
 };
 searchInput: string;
 constructor(private hDataService: HdataService, private datepipe: DatePipe){
-  this.form.range.startDate= this.datepipe.transform(this.todaysDate, "dd/mm/yyyy"),
-  this.form.range.endDate= this.datepipe.transform(this.tomorrowsDate, "dd/mm/yyyy")
+  this.form.dateRange.startDate= this.datepipe.transform(this.todaysDate, "dd/mm/yyyy"),
+  this.form.dateRange.endDate= this.datepipe.transform(this.tomorrowsDate, "dd/mm/yyyy")
 }
 
 /**

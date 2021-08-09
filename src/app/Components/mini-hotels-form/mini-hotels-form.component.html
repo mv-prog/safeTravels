@@ -1,7 +1,6 @@
-<!-- <form #searchForm="ngForm" class="formulario1 col-xs-11 col-sm-11 col-md-11 col-bg-11"> -->
 <div class="miniHotelsFormContainer">
     <form #searchForm="ngForm" name="form" class="formulario1">
-        <!-- {{searchForm.value | json}} -->
+        <!-- {{form.value | json}} -->
         <legend class="leg1">
             <a [routerLink]="['/home']" routerLinkActive="router-link-active"><img class="logo" src="../favicon.ico"
                     alt="logo"></a>
@@ -29,18 +28,18 @@
                     <small class="wrong-field" *ngIf="searchInput.touched && searchInput.invalid">Search field is
                         required</small>
                 </div>
-
-                <!-- <form action="" role="group" class="form-inline"> -->
                 <div class="form-group mr-1">
                     <mat-form-field appearance="outline">
                         <mat-label class="help-block">
                             Check-in - Check-out
                         </mat-label>
-                        <mat-date-range-input [rangePicker]="picker" name="range">
-                            <input matStartDate placeholder="Start date" name="startDate">
-                            <input matEndDate placeholder="End date" name="endDate">
+                        <mat-date-range-input [rangePicker]="picker"
+                            [class.is-invalid]="dateRange.invalid && dateRange.touched" #dateRange="ngModel"
+                            [(ngModel)]="form.dateRange" name="dateRange">
+                            <input matStartDate [placeholder]="form.dateRange.startDate" ngModel [(ngModel)]="startDate" name="startDate">
+                            <input matEndDate [placeholder]="form.dateRange.endDate" ngModel [(ngModel)]="endDate" name="endDate">
                         </mat-date-range-input>
-                        <mat-datepicker-toggle matSuffix ></mat-datepicker-toggle>
+                        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
                         <mat-date-range-picker #picker></mat-date-range-picker>
                     </mat-form-field>
                 </div>
@@ -50,10 +49,18 @@
                     <mat-label class="help-block">
                         Adults
                     </mat-label>
-                    <mat-select placeholder="2" [(ngModel)]="form.adults" name="adults">
-                        <mat-option *ngFor="let item of adRoOptions" [value]="item.id">
-                            {{item.id}}
-                        </mat-option>
+                    <mat-select placeholder="2" name="adults" [placeholder]="form.adults" [(value)]="form.adults"
+                        [(ngModel)]="form.adults">
+                        <mat-option value="1">1</mat-option>
+                        <mat-option value="2">2</mat-option>
+                        <mat-option value="3">3</mat-option>
+                        <mat-option value="4">4</mat-option>
+                        <mat-option value="5">5</mat-option>
+                        <mat-option value="6">6</mat-option>
+                        <mat-option value="7">7</mat-option>
+                        <mat-option value="8">8</mat-option>
+                        <mat-option value="9">9</mat-option>
+                        <mat-option value="0">10</mat-option>
                     </mat-select>
                 </mat-form-field>
             </div>
@@ -62,10 +69,18 @@
                     <mat-label class="help-block">
                         Children
                     </mat-label>
-                    <mat-select placeholder="0" [(ngModel)]="form.children" name="children">
-                        <mat-option *ngFor="let item of chOptions" [value]="item.id">
-                            {{item.id}}
-                        </mat-option>
+                    <mat-select [(value)]="form.children" [placeholder]="form.children" [(ngModel)]="form.children"
+                        name="children">
+                        <mat-option value="0">0</mat-option>
+                        <mat-option value="1">1</mat-option>
+                        <mat-option value="2">2</mat-option>
+                        <mat-option value="3">3</mat-option>
+                        <mat-option value="4">4</mat-option>
+                        <mat-option value="5">5</mat-option>
+                        <mat-option value="6">6</mat-option>
+                        <mat-option value="7">7</mat-option>
+                        <mat-option value="8">8</mat-option>
+                        <mat-option value="9">9</mat-option>
                     </mat-select>
                 </mat-form-field>
             </div>
@@ -74,10 +89,18 @@
                     <mat-label class="help-block">
                         Rooms
                     </mat-label>
-                    <mat-select placeholder="1" [(ngModel)]="form.rooms" name="rooms">
-                        <mat-option *ngFor="let item of adRoOptions" [value]="item.id">
-                            {{item.id}}
-                        </mat-option>
+                    <mat-select [(value)]="form.rooms" [placeholder]="form.rooms" [(ngModel)]="form.rooms"
+                        name="rooms">
+                        <mat-option value="1">1</mat-option>
+                        <mat-option value="2">2</mat-option>
+                        <mat-option value="3">3</mat-option>
+                        <mat-option value="4">4</mat-option>
+                        <mat-option value="5">5</mat-option>
+                        <mat-option value="6">6</mat-option>
+                        <mat-option value="7">7</mat-option>
+                        <mat-option value="8">8</mat-option>
+                        <mat-option value="9">9</mat-option>
+                        <mat-option value="0">10</mat-option>
                     </mat-select>
                 </mat-form-field>
             </div>

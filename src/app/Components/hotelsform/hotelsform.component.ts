@@ -10,7 +10,7 @@ import { DatePipe } from '@angular/common';
   styleUrls: ['./hotelsform.component.scss']
 })
 export class HotelsformComponent implements OnInit {
-  @ViewChild(MatDatepicker) rangePicker: MatDatepicker<Date>;
+  @ViewChild(MatDatepicker) dateRange: MatDatepicker<Date>;
   public options = ['A Coruña', 'Santiago', 'Hostal dos Reis Católicos'];
   @Input() showBrowserBanners;
   @Input() search;
@@ -22,7 +22,7 @@ export class HotelsformComponent implements OnInit {
 
 form: any = {
   searchInput: null,
-  range: {
+  dateRange: {
     startDate: this.todaysDate,
     endDate: this.tomorrowsDate
   },
@@ -32,8 +32,8 @@ form: any = {
 };
 searchInput: string;
 constructor(private hDataService: HdataService, private datepipe: DatePipe){
-  this.form.range.startDate= this.datepipe.transform(this.todaysDate, "dd/mm/yyyy"),
-  this.form.range.endDate= this.datepipe.transform(this.tomorrowsDate, "dd/mm/yyyy")
+  this.form.dateRange.startDate= this.datepipe.transform(this.todaysDate, "dd/mm/yyyy"),
+  this.form.dateRange.endDate= this.datepipe.transform(this.tomorrowsDate, "dd/mm/yyyy")
 }
 
 /**
