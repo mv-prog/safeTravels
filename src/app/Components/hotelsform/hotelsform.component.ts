@@ -3,6 +3,7 @@ import { ViewChild } from '@angular/core';
 import { DateRange, MatDatepicker } from '@angular/material/datepicker';
 import { HdataService } from 'src/app/hdata.service';
 import { DatePipe } from '@angular/common';
+
 @Component({
   selector: 'app-hotelsform',
   templateUrl: './hotelsform.component.html',
@@ -16,8 +17,9 @@ export class HotelsformComponent implements OnInit {
   @Output() dontShowBB = new EventEmitter<void>();
   @Output() sendHotelsData = new EventEmitter<void>();
   private todaysDate = new Date();
-  private tomorrowsDateNumber: number = this.todaysDate.getDate()+1;
-  private tomorrowsDate: Date = new Date(this.tomorrowsDateNumber);
+  tomorrowsDateNumber: number = this.todaysDate.getDate()+1;
+  private tomorrowsDate: Date =  new Date(this.tomorrowsDateNumber);
+
 form: any = {
   searchInput: null,
   range: {

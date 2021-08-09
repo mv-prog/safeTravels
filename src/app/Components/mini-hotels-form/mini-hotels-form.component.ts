@@ -2,7 +2,7 @@ import { Component, Input, OnInit, Output, ViewChild } from '@angular/core';
 import { MatDatepicker } from '@angular/material/datepicker';
 import { EventEmitter } from '@angular/core';
 import { HdataService } from 'src/app/hdata.service';
-import { Hotel } from './../../models/hotel.model';
+import { DatePipe } from '@angular/common';
 
 @Component({
   selector: 'app-mini-hotels-form',
@@ -10,122 +10,56 @@ import { Hotel } from './../../models/hotel.model';
   styleUrls: ['./mini-hotels-form.component.scss']
 })
 export class MiniHotelsFormComponent implements OnInit {
-  @ViewChild(MatDatepicker) datepicker: MatDatepicker<Date>;
+  @ViewChild(MatDatepicker) rangePicker: MatDatepicker<Date>;
+  public options = ['A Coruña', 'Santiago', 'Hostal dos Reis Católicos'];
+  @Input() showBrowserBanners;
   @Input() search;
+  @Output() dontShowBB = new EventEmitter<void>();
   @Output() sendHotelsData = new EventEmitter<void>();
-  @Output() sendHotelId = new EventEmitter<void>();
-  public options = ['All places', 'Santiago', 'Lugo capital', 'Portelo Rural'];
-  hotels?: Hotel[];
-  curHotel?: Hotel;
-  curIndex = -1;
-  id = 0;
-  form: any = {
-    searchInput: null,
-    range: null,
-    rooms: null,
-    adults: null,
-    children: null
-  };
-  searchInput: string;
-  constructor(private hDataService: HdataService) { }
-  public adRoOptions = [
-    {id: 1},
-    {id: 2},
-    {id: 3},
-    {id: 4},
-    {id: 5},
-    {id: 6},
-    {id: 7},
-    {id: 8},
-    {id: 9},
-    {id: 10}
-  ];
+  private todaysDate = new Date();
+  private tomorrowsDateNumber: number = this.todaysDate.getDate()+1;
+  private tomorrowsDate: Date = new Date(this.tomorrowsDateNumber);
+form: any = {
+  searchInput: null,
+  range: {
+    startDate: this.todaysDate,
+    endDate: this.tomorrowsDate
+  },
+  adultsNumber: 2,
+  childrenNumber: 0,
+  roomsNumber: 1
+};
+searchInput: string;
+constructor(private hDataService: HdataService, private datepipe: DatePipe){
+  this.form.range.startDate= this.datepipe.transform(this.todaysDate, "dd/mm/yyyy"),
+  this.form.range.endDate= this.datepipe.transform(this.tomorrowsDate, "dd/mm/yyyy")
+}
 
-  public adSelected = this.adRoOptions[1].id;
+/**
+ * dontShowbb
+ * emits a boolean variable, showBrowserBanners, set to false, in order not to show this component in the parent component.
+ */
+dontShowbb(): any{
+  this.showBrowserBanners = false;
+  this.dontShowBB.emit(this.showBrowserBanners);
+}
 
-  public chOptions = [
-    {id: 0},
-    {id: 1},
-    {id: 2},
-    {id: 3},
-    {id: 4},
-    {id: 5},
-    {id: 6},
-    {id: 7},
-    {id: 8},
-    {id: 9},
-    {id: 10}
-  ];
-  public chSelected = this.chOptions[0].id;
-
-  public roSelected = this.adRoOptions[0].id;
-  sendData(): any{
-    this.sendHotelsData.emit(this.search);
-  }
-  ngOnInit(): void {
-    // this.getHotels();
-        // subscribo os datos a unha varable que creo e que é a que vou chamar por doquier
-        this.hDataService.searchInputToObservable.subscribe(searchinput => this.searchInput = searchinput);
-  }
-    /**
-   * updateSearchInput
-   * actualizo a variable creada cos datos do meu ngModel.
-   * */ 
-     updateSearchInput(){
-      this.hDataService.editSearchInputData(this.form.searchInput);
-    }
-    onSubmit(): void {
-      this.updateSearchInput();
-      this.reloadPage();
-    }
-  
-    reloadPage(): void {
-      window.location.reload();
-    }
-  getHotels(): void {
-    this.hDataService.getAllHotels().
-    subscribe(
-      hoteldata => {
-        this.hotels = hoteldata;
-        console.log(hoteldata);
-      },
-      error => {
-        console.log(error);
-      }
-    );
-  }
-  refreshList(): void {
-    this.getHotels();
-    this.curHotel = undefined;
-    this.curIndex = -1;
-  }
-
-  setActiveHotel(hotel: Hotel, index: number): void{
-    this.curHotel = hotel;
-    this.curIndex = index;
-  }
-  searchHotelById(): void {
-    this.hDataService.getHotelById(this.id).
-    subscribe(
-      hoteldata => {
-        this.hotels = hoteldata;
-        this.sendHotelId.emit(hoteldata);
-        console.log(hoteldata);
-      },
-      error => {
-        console.log(error);
-      }
-    );
-  }
-  searchByName(): void {
-    this.hDataService.getHotelsByName(this.form.searchInput)
-      .subscribe(
-        data => {
-          this.hotels = data;
-          console.log(data);
-        },
-        error => {
-          console.log(error);
-        });
-  }
+/**
+ * sendData
+ * emits/outputs the search input gotten in the hotels form.
+ */
+sendData(): any{
+  this.sendHotelsData.emit(this.search);
+}
+ngOnInit(): void {
+  // subscribo os datos a unha varable que creo e que é a que vou chamar por doquier
+  this.hDataService.searchInputToObservable.subscribe(searchinput => this.searchInput = searchinput);
+}
+/**
+ * updateSearchInput
+ * actualizo a variable creada cos datos do meu ngModel.
+ * */
+updateSearchInput(){
+  this.hDataService.editSearchInputData(this.form.searchInput);
+}
 }
