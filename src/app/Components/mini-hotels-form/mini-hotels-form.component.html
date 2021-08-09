@@ -85,8 +85,8 @@
                 </mat-form-field>
             </div>
             <div class="buttonSpace">
-                <button type="button"  [routerLink]="['/hotels', search]" routerLinkActive="router-link-active"
-                     (click)="searchByName()" mat-raised-button color="accent">Search Hotels!</button>
+                <button type="submit"
+                     (click)="updateSearchInput()"  [routerLink]="['/hotels', form]"  routerLinkActive="router-link-active" mat-raised-button color="accent">Search Hotels!</button>
             </div>
         </div>
     </form>

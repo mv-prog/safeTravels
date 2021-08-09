@@ -26,12 +26,8 @@ export interface Star {
 export class HotelsComponent implements OnInit {
   hotels?: Hotel[];
   hotel?: Hotel;
-  curIndex = -1;
   id = 0;
   name = '';
-hotelslist$: Observable<Hotel[]>;
-selectedId: number;
-
 
   selected = 'recommended';
   star: Star = {
@@ -44,7 +40,7 @@ selectedId: number;
     ]
   };
   @ViewChild(MatDatepicker) datepicker: MatDatepicker<Date>;
-  public options = ['A Coruña', 'Santiago', 'Hotel A Casa'];
+  public options = ['A Coruña', 'Santiago', 'Hostal dos Reis Católicos'];
   public hideIndication = true;
   public adultsNumber: number;
   public roomsNumber: number;
@@ -60,24 +56,25 @@ selectedId: number;
   };
   public hotelPath;
   showBrowserBanners: boolean;
-   public dataList: any;
+  public dataList: any;
+  searchInput: string;
   // dataList: any = [];
   // dataList: Hotel;
   // constructor(private hdataservice: HdataService) { this used to consume the json server data.
   constructor(private hDataService: HdataService, public route: ActivatedRoute) {
   }
 
-  Search(): any{
-    this.dataList = this.dataList.filter(res => {
+  Search(): any {
+    this.hotels = this.hotels.filter(res => {
       return res.name.toLocaleLowerCase().match(this.name.toLocaleLowerCase());
     });
   }
   reload(): void {
     window.location.reload();
-}
-public dontShowbb(): boolean {
-  return this.showBrowserBanners = false;
-}
+  }
+  public dontShowbb(): boolean {
+    return this.showBrowserBanners = false;
+  }
   public dontShowBrowserBanners(showBrowserBanners: boolean): boolean {
     return showBrowserBanners = false;
   }
@@ -87,34 +84,37 @@ public dontShowbb(): boolean {
 
 
   ngOnInit(): void {
-    this.getHotels();
+    // this.getHotels();
+    // subscribo os datos a unha varable que creo e que é a que vou chamar por doquier
+    this.hDataService.searchInputToObservable.subscribe(searchinput => this.searchInput = searchinput);
+    this.getHotelsByName(this.searchInput);
   }
-  showIdData(data): void{
+  showIdData(data): void {
     console.log(data);
   }
   getHotels(): void {
     this.hDataService.getAllHotels().
-    subscribe(
-      hoteldata => {
-        this.hotels = hoteldata;
-        console.log(hoteldata);
-      },
-      error => {
-        console.log(error);
-      }
-    );
+      subscribe(
+        hoteldata => {
+          this.hotels = hoteldata;
+          console.log(hoteldata);
+        },
+        error => {
+          console.log(error);
+        }
+      );
   }
   searchHotelById(id: any): void {
     this.hDataService.getHotelById(id).
-    subscribe(
-      hoteldata => {
-        this.hotels = hoteldata;
-        console.log(hoteldata);
-      },
-      error => {
-        console.log(error);
-      }
-    );
+      subscribe(
+        hoteldata => {
+          this.hotels = hoteldata;
+          console.log(hoteldata);
+        },
+        error => {
+          console.log(error);
+        }
+      );
   }
 
   // tslint:disable-next-line: typedef
@@ -127,38 +127,33 @@ public dontShowbb(): boolean {
   calculatePercentage(orPrice, percentage): number {
     return orPrice - (orPrice * percentage / 100);
   }
-  getHotelsData(e): any{
+  getHotelsData(e): any {
     return e;
   }
 
-  // tslint:disable-next-line: typedef
-  sendHotelIdHandler(id: number){
-    this.id = id;
-    console.log(id);
-  }
-
-   // Local filter
-performFilter(filterBy: string): any {
-  if (filterBy) {
+  // Local filter
+  performFilter(filterBy: string): any {
+    if (filterBy) {
       filterBy = filterBy.toLocaleLowerCase();
       return this.dataList.filter((hotel: any) =>
-          hotel.name.toLocaleLowerCase().indexOf(filterBy) !== -1);
-  } else {
+        hotel.name.toLocaleLowerCase().indexOf(filterBy) !== -1);
+    } else {
       return this.dataList;
-  }
-}
-// this shouldn't be here but at the end of my mini-hotels-form browser component.
-getHotelByName(): void{
-  this.hDataService.getHotelByName(this.name)
-  .subscribe(
-    data => {
-      this.hotels = data;
-      console.log(data);
-    },
-    error => {
-      console.log(error);
     }
-  );
-}
+  }
+
+  getHotelsByName(name): void {
+    this.hDataService.getHotelsByName(name)
+      .subscribe(
+        data => {
+          this.hotels = data;
+          console.log(data);
+        },
+        error => {
+          console.log(error);
+        }
+      );
+  }
+
 }
 

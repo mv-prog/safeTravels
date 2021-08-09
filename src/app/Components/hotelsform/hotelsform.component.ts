@@ -1,6 +1,7 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { ViewChild } from '@angular/core';
 import { MatDatepicker } from '@angular/material/datepicker';
+import { HdataService } from 'src/app/hdata.service';
 
 @Component({
   selector: 'app-hotelsform',
@@ -9,7 +10,7 @@ import { MatDatepicker } from '@angular/material/datepicker';
 })
 export class HotelsformComponent implements OnInit {
   @ViewChild(MatDatepicker) datepicker: MatDatepicker<Date>;
-  public options = ['Mallorca', 'Santiago', 'Ca Sa Padrina d\'Artà'];
+  public options = ['A Coruña', 'Santiago', 'Hostal dos Reis Católicos'];
   @Input() showBrowserBanners;
   @Input() search;
   @Output() dontShowBB = new EventEmitter<void>();
@@ -17,11 +18,12 @@ export class HotelsformComponent implements OnInit {
   form: any = {
     searchInput: null,
     dateRange: null,
-    adultsNumber: null,
-    childrenNumber: null,
-    roomsNumber: null
+    adultsNumber: 2,
+    childrenNumber: 0,
+    roomsNumber: 1
   };
-  constructor(){
+  searchInput: string;
+  constructor(private hDataService: HdataService){
 
   }
   /**
@@ -33,7 +35,6 @@ export class HotelsformComponent implements OnInit {
     this.dontShowBB.emit(this.showBrowserBanners);
   }
 
-  // tslint:disable-next-line: typedef
   /**
    * sendData
    * emits/outputs the search input gotten in the hotels form.
@@ -42,5 +43,14 @@ export class HotelsformComponent implements OnInit {
     this.sendHotelsData.emit(this.search);
   }
   ngOnInit(): void {
+    // subscribo os datos a unha varable que creo e que é a que vou chamar por doquier
+    this.hDataService.searchInputToObservable.subscribe(searchinput => this.searchInput = searchinput);
+  }
+  /**
+   * updateSearchInput
+   * actualizo a variable creada cos datos do meu ngModel.
+   * */ 
+  updateSearchInput(){
+    this.hDataService.editSearchInputData(this.form.searchInput);
   }
 }

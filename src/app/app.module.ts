@@ -45,6 +45,7 @@ import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import { HotelDetailsComponent } from './Components/hotelDetails/hotelDetails.component';
 import { LogoutComponent } from './Components/logout/logout.component';
 import { authInterceptorProviders } from './../_helpers/auth.interceptor';
+import { HdataService } from './hdata.service';
 @NgModule({
   // tslint:disable-next-line: max-line-length
   declarations: [AppComponent, HomeComponent, ContactComponent, OrderByPipe, LoginComponent, SignupComponent, CitybannersComponent, NlbannerComponent, FooterComponent, OffersComponent, NavbarComponent, HotelsComponent, Error404Component, HotelsformComponent, RecommendedComponent, CalculateOriginalPricePipe,
@@ -54,7 +55,12 @@ import { authInterceptorProviders } from './../_helpers/auth.interceptor';
     BrowserAnimationsModule, MatDatepickerModule, MatNativeDateModule, MatFormFieldModule, MatTabsModule,
     MatSelectModule, MatCheckboxModule, MatAutocompleteModule, MatButtonModule, FormsModule, ReactiveFormsModule,
     MatCardModule, MatDialogModule, ClickOutsideModule, HttpClientModule],
-  providers: [authInterceptorProviders, { provide: MAT_FORM_FIELD_DEFAULT_OPTIONS, useValue: { floatLabel: 'always' } }],
+  providers: [HdataService, 
+    authInterceptorProviders, 
+    { 
+      provide: MAT_FORM_FIELD_DEFAULT_OPTIONS, useValue: { floatLabel: 'always' } 
+    }
+  ],
   bootstrap: [AppComponent],
   entryComponents: [LoginComponent, SignupComponent]
 })

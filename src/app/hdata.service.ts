@@ -6,12 +6,16 @@ import { User } from './models/user';
 import { Hotel } from './models/hotel.model';
 import { Room } from './models/room.model';
 import { Booking } from './models/booking.model';
+import { BehaviorSubject } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
 export class HdataService {
   user: User[];
+  private searchInputFormData = new BehaviorSubject<string>('Santiago');
+  searchInputToObservable = this.searchInputFormData.asObservable();
+
   private baseHotelsUrl = 'http://localhost:8080/hotels';
   private baseHotelUrl = 'http://localhost:8080/hotel';
   private baseUsersUrl = 'http://localhost:8080/users';
@@ -38,6 +42,10 @@ export class HdataService {
   deleteHotel(id): Observable<any> {
     return this.httpClient.delete(`${this.baseHotelsUrl}/${id}`);
   }
+  /** the hotel-data-related searches */
+  editSearchInputData(newSearchInput){
+    this.searchInputFormData.next(newSearchInput);
+  }
 
 
   // rooms methods
@@ -61,4 +69,6 @@ export class HdataService {
   // return this.httpClient.get('http://localhost:3000/hotels'); mock json server
   // }
 }
+
+
 

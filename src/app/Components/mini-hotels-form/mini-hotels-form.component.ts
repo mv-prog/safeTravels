@@ -26,6 +26,7 @@ export class MiniHotelsFormComponent implements OnInit {
     adults: null,
     children: null
   };
+  searchInput: string;
   constructor(private hDataService: HdataService) { }
   public adRoOptions = [
     {id: 1},
@@ -62,11 +63,25 @@ export class MiniHotelsFormComponent implements OnInit {
     this.sendHotelsData.emit(this.search);
   }
   ngOnInit(): void {
-    this.getHotels();
+    // this.getHotels();
+        // subscribo os datos a unha varable que creo e que é a que vou chamar por doquier
+        this.hDataService.searchInputToObservable.subscribe(searchinput => this.searchInput = searchinput);
   }
-  // onSubmit(){
-  //   this.searchByName(this.searchInput);
-  // }
+    /**
+   * updateSearchInput
+   * actualizo a variable creada cos datos do meu ngModel.
+   * */ 
+     updateSearchInput(){
+      this.hDataService.editSearchInputData(this.form.searchInput);
+    }
+    onSubmit(): void {
+      this.updateSearchInput();
+      this.reloadPage();
+    }
+  
+    reloadPage(): void {
+      window.location.reload();
+    }
   getHotels(): void {
     this.hDataService.getAllHotels().
     subscribe(
