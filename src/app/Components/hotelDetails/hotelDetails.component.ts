@@ -80,7 +80,7 @@ export class HotelDetailsComponent implements OnInit {
     // this.getRoomsById(this.route.snapshot.paramMap.get('id'));
     // this.getRooms();
     this.getRoomsById(this.id);
-    console.log(this.getRooms());
+    // console.log(this.getRooms());
   }
   getRoomsById(id: any): void {
     this.hDataService.getAllRoomsByHotel(id).

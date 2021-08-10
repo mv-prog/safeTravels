@@ -1,0 +1,1 @@
+export const UrlService = "http://localhost:8080/";

@@ -78,7 +78,7 @@
         </ul>
     </div>
     <div class="hotel-search-result mb-5">
-        <ng-container *ngFor="let hotel of hotels; let i = index">
+        <ng-container *ngFor="let hotel of hotelsByNameContaining; let i = index">
         <div class="card hotels mb-3">
           <!-- *ngIf=" search.searchInput == hotel.region || search.searchInput == hotel.city || search.searchInput == hotel.name || search.searchInput == 'All hotels and places' && star.id == hotel.star"> -->
           <div class="row g-0">

@@ -1,5 +1,5 @@
 <div class="miniHotelsFormContainer">
-    <form #searchForm="ngForm" name="form" class="formulario1">
+    <form #searchForm="ngForm" name="form" class="formulario1" (ngSubmit)="onSubmit()">
         <!-- {{form.value | json}} -->
         <legend class="leg1">
             <a [routerLink]="['/home']" routerLinkActive="router-link-active"><img class="logo" src="../favicon.ico"

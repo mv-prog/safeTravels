@@ -45,7 +45,11 @@ dontShowbb(): any{
   this.showBrowserBanners = false;
   this.dontShowBB.emit(this.showBrowserBanners);
 }
-
+onSubmit(): void {
+  this.hDataService.editSearchInputData(this.form.searchInput);
+  // window.location.reload();
+  this.updateSearchInput();
+}
 /**
  * sendData
  * emits/outputs the search input gotten in the hotels form.

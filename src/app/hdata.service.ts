@@ -7,6 +7,7 @@ import { Room } from './models/room.model';
 import { BehaviorSubject } from 'rxjs';
 import { Booking } from './models/booking.model';
 import { map } from 'rxjs/operators';
+import { UrlService } from 'src/config/myurls';
 
 @Injectable({
   providedIn: 'root'
@@ -37,10 +38,11 @@ export class HdataService {
     return this.httpClient.get<Hotel[]>(`${this.baseHotelsUrl}?name=${name}`);
   }
   getHotelsByProvince(province: any): Observable<Hotel[]> {
-    return this.httpClient.get<Hotel[]>(`${this.baseHotelsUrl}?province=${province}`);
+    return this.httpClient.get<Hotel[]>(`this.localhost:8080/hotelsByProvince/${province}`);
+    // return this.httpClient.get<Hotel[]>(`${this.baseHotelsUrl}?province=${province}`);
   }
   getHotelsByCity(city: any): Observable<Hotel[]> {
-    return this.httpClient.get<Hotel[]>(`${this.baseHotelsUrl}?city=${city}`);
+    return this.httpClient.get<Hotel[]>(`this.localhost:8080/hotelsByCity/${city}`);
   }
   updateHotel(id: any, data: any): Observable<any> {
     return this.httpClient.put(`${this.baseHotelUrl}/${id}`, data);
@@ -63,7 +65,7 @@ export class HdataService {
 
   // rooms methods
   getAllRoomsByHotel(id: any): Observable<Room[]> {
-    return this.httpClient.get<Room[]>(`/hotel/${id}/rooms`);
+    return this.httpClient.get<Room[]>(UrlService+`hotel/${id}/rooms`);
   }
   getAllRooms(): Observable<Room[]> {
     return this.httpClient.get<Room[]>(this.baseRoomsUrl);

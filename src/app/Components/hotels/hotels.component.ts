@@ -24,7 +24,12 @@ export interface Star {
   styleUrls: ['./hotels.component.scss']
 })
 export class HotelsComponent implements OnInit {
+  //all hotels:
   hotels?: Hotel[];
+  hotelsByNameContaining?: Hotel[];
+  hotelsByProvince?: Hotel[];
+  hotelsByCity?: Hotel[];
+  allHotels?: Hotel[];
   hotel?: Hotel;
   id = 0;
   name = '';
@@ -62,6 +67,24 @@ export class HotelsComponent implements OnInit {
   searchInput: string;
   // constructor(private hdataservice: HdataService) { this used to consume the json server data.
   constructor(private hDataService: HdataService, public route: ActivatedRoute) {
+    let totalLength = 1
+    for (var i = 0; i <= totalLength; i++) {
+      // this.allHotels.push(this.hotels[i]);
+      // if (this.getHotelsByCity[i] != null && this.getHotelsByCity[i] != undefined) {
+      //   totalLength +=this.hotelsByCity.length;
+      //   this.allHotels.push(this.hotelsByCity[i]);
+      // }
+      // if (this.getHotelsByCity[i] != null && this.hotelsByProvince[i] != undefined) {
+      //   totalLength += this.hotelsByProvince.length;
+      //   this.allHotels.push(this.hotelsByProvince[i]);
+      // }
+      // if (this.getHotelsByCity[i] != null && this.hotelsByNameContaining[i] != undefined) {
+      //   totalLength += this.hotelsByNameContaining.length
+      //   this.allHotels.push(this.hotelsByNameContaining[i]);
+      // }
+    }
+
+
   }
 
   Search(): any {
@@ -86,9 +109,12 @@ export class HotelsComponent implements OnInit {
   ngOnInit(): void {
     // this.getHotels();
     // subscribo os datos a unha varable que creo e que é a que vou chamar por doquier
-    this.hDataService.searchInputToObservable.subscribe(searchinput => this.searchInput = searchinput);
-    this.getHotelsByCity(this.searchInput);
-    this.getHotelsByProvince(this.searchInput);
+    this.hDataService.searchInputToObservable.subscribe(searchinput => {
+      this.searchInput = searchinput
+      this.getHotelsByName(this.searchInput);
+    });
+    // this.getHotelsByCity(this.searchInput);
+    // this.getHotelsByProvince(this.searchInput);
     this.getHotelsByName(this.searchInput);
   }
   showIdData(data): void {
@@ -147,7 +173,7 @@ export class HotelsComponent implements OnInit {
     this.hDataService.getHotelsByCity(city)
       .subscribe(
         data => {
-          this.hotels = data;
+          this.hotelsByCity = data;
           console.log(data);
         },
         error => {
@@ -159,7 +185,7 @@ export class HotelsComponent implements OnInit {
     this.hDataService.getHotelsByProvince(province)
       .subscribe(
         data => {
-          this.hotels = data;
+          this.hotelsByProvince = data;
           console.log(data);
         },
         error => {
@@ -171,7 +197,7 @@ export class HotelsComponent implements OnInit {
     this.hDataService.getHotelsByName(name)
       .subscribe(
         data => {
-          this.hotels = data;
+          this.hotelsByNameContaining = data;
           console.log(data);
         },
         error => {
