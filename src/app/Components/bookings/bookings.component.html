@@ -7,11 +7,12 @@
                     *ngIf="numberOfBookings !=null && numberOfBookings != 0; else noBookings">
                     <h1>Bookings List</h1>
                     <ng-container *ngFor="let booking of bookings">
+                        <a [routerLink]="['/booking', booking.roomId]">
                         <div class="eachBooking">
                             <p class="hotelplace">
-                                <!-- {{getHotelById(booking.hotelId).name}} -->
-                                bla
+                                <!-- {{hotel.name}} -->
                             </p>
+                            <!-- <button (click)="getHotelById(booking.hotelId)">hotel</button> -->
                             <p class="text-muted bookingdate">{{booking.checkinDate}} - {{booking.checkoutDate}}</p>
                             <div class="card mb-3" style="max-width: 540px;">
                                 <div class="row g-0">
@@ -24,8 +25,9 @@
                                             <div class="row">
                                                 <h2 class="card-title"><a class="hotelDetailLink"
                                                         [routerLink]="['/hotelDetail']"
-                                                        routerLinkActive="router-link-active">Hostal dos Reis
-                                                        Católicos</a>
+                                                        routerLinkActive="router-link-active">
+                                                        {{booking.hotelName}}
+                                                    </a>
                                                 </h2>
                                                 <span class="bprice text-success">130€</span>
                                                 <!-- <div class="dropdown">
@@ -61,6 +63,7 @@
                                 </div>
                             </div>
                         </div>
+                        </a>
                     </ng-container>
                     <app-footer></app-footer>
                     <!-- </ng-container> -->

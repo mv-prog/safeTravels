@@ -19,8 +19,7 @@ export class MiniHotelsFormComponent implements OnInit {
   @Output() dontShowBB = new EventEmitter<void>();
   @Output() sendHotelsData = new EventEmitter<void>();
   private todaysDate = new Date();
-  private tomorrowsDateNumber: number = this.todaysDate.getDate()+1;
-  private tomorrowsDate: Date = new Date(this.tomorrowsDateNumber);
+  private tomorrowsDate: Date = new Date();
   range = new FormGroup({
     start: new FormControl(),
     end: new FormControl()
@@ -37,8 +36,9 @@ form: any = {
 };
 searchInput: string;
 constructor(private hDataService: HdataService, private datepipe: DatePipe, private formBuilder: FormBuilder){
-  this.form.dateRange.startDate= this.datepipe.transform(this.todaysDate, "dd/mm/yyyy"),
-  this.form.dateRange.endDate= this.datepipe.transform(this.tomorrowsDate, "dd/mm/yyyy")
+  this.tomorrowsDate.setDate(this.tomorrowsDate.getDate()+1);
+  this.form.dateRange.startDate= this.datepipe.transform(this.todaysDate, "dd/mm/yyyy");
+  this.form.dateRange.endDate= this.datepipe.transform(this.tomorrowsDate, "dd/mm/yyyy");
 }
 
 /**

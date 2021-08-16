@@ -47,10 +47,11 @@ import { LogoutComponent } from './Components/logout/logout.component';
 import { authInterceptorProviders } from './../_helpers/auth.interceptor';
 import { HdataService } from './hdata.service';
 import { DatePipe } from '@angular/common';
+import { BookingDetailsComponent } from './Components/booking-details/booking-details.component';
 @NgModule({
   // tslint:disable-next-line: max-line-length
   declarations: [AppComponent, HomeComponent, ContactComponent, OrderByPipe, LoginComponent, SignupComponent, CitybannersComponent, NlbannerComponent, FooterComponent, OffersComponent, NavbarComponent, HotelsComponent, Error404Component, HotelsformComponent, RecommendedComponent, CalculateOriginalPricePipe,
-    FilterPipe, OrderByPipe, ListusersComponent, MiniHotelsFormComponent, BookingsComponent, HotelDetailsComponent, LogoutComponent],
+    FilterPipe, OrderByPipe, ListusersComponent, MiniHotelsFormComponent, BookingsComponent, HotelDetailsComponent, LogoutComponent, BookingDetailsComponent],
   imports: [MDBBootstrapModule.forRoot(), BrowserModule, AppRoutingModule, FlexLayoutModule, MaterialModule, MatIconModule,
   MatInputModule, MatToolbarModule, MatSlideToggleModule,
     BrowserAnimationsModule, MatDatepickerModule, MatNativeDateModule, MatFormFieldModule, MatTabsModule,

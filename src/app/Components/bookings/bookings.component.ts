@@ -60,8 +60,24 @@ export class BookingsComponent implements OnInit {
       this.username = user.username;
       this.bookingsByUserUrl = 'http://localhost:8080/bookings/' + this.currentUser.username;
       this.getBookingsByUsername(this.username);
+      
     }
 
+  }
+  getHotelFromBookingList(bookings: any): void {
+    console.log(bookings);
+    bookings.forEach(booking => {
+      this.hDataService.getHotelById(booking.hotelId).
+      subscribe(
+        hoteldata => {
+          //le metemos este campo en el modelo t lo igualamos al que ya exite en el hotel. 
+          booking.hotelName = hoteldata.name;
+        },
+        error => {
+          console.log(error);
+        }
+      );
+    });
   }
   isBookingCompleted(checkoutDate: Date): boolean {
     let completed = false;
@@ -75,6 +91,8 @@ export class BookingsComponent implements OnInit {
       bookings => {
         this.bookings = bookings;
         console.log("this.bookings", this.bookings);
+        //así tiene que hacer menos trabajo que con el this. y hay qeu llamarlo aquí pq como angular es asíncrono si lo ponemos en el ngOnInit igual aún no ha acabad de¡ cargar los bookings de la llamada del anterior método 
+        this.getHotelFromBookingList(bookings);
         this.numberOfBookings = this.bookings.length;
         console.log("numberOfBookings", this.numberOfBookings);
       },
@@ -107,6 +125,7 @@ export class BookingsComponent implements OnInit {
       subscribe(
         hoteldata => {
           this.hotel = hoteldata;
+          console.log(this.hotel);
           console.log(hoteldata);
         },
         error => {

@@ -64,6 +64,9 @@ export class HdataService {
   editSearchInputData(newSearchInput){
     this.searchInputFormData.next(newSearchInput);
   }
+  editDatesData(newDates){
+    this.datesFormData.next(newDates);
+  }
 
 
   // rooms methods
