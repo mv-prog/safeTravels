@@ -14,8 +14,11 @@ import { UrlService } from 'src/config/myurls';
 })
 export class HdataService {
   user: User[];
-  private searchInputFormData = new BehaviorSubject<string>('Santiago');
+  //i was using Santiago before, but then I couln't show all hotels because searchInput wasn't undefined. 
+  private searchInputFormData = new BehaviorSubject<string>('');
   searchInputToObservable = this.searchInputFormData.asObservable();
+  private datesFormData = new BehaviorSubject<Date[]>([new Date(), new Date()]);
+  datesToObservable = this.datesFormData.asObservable();
 
   private baseHotelsUrl = 'http://localhost:8080/hotels';
   private baseHotelUrl = 'http://localhost:8080/hotel';
@@ -75,9 +78,21 @@ export class HdataService {
   getAllBookings(): Observable<Booking[]> {
     return this.httpClient.get<Booking[]>(this.baseBookingsUrl);
   }
-  getBookingsById(id: any): Observable<Booking[]> {
-    return this.httpClient.get<Booking[]>(`${this.baseBookingsUrl}/${id}`);
+  getBookingsByUsername(username: string): Observable<Booking[]> {
+    return this.httpClient.get<Booking[]>(`${this.baseBookingsUrl}/${username}`);
    }
+   getBookingById(id: any): Observable<Booking> {
+    return this.httpClient.get<Booking>(UrlService+`bookingById/${id}`);
+   }
+   getHotelByBookingsHotelId(id: any):Observable<Hotel> {
+     return this.httpClient.get<Hotel>(UrlService+`hotelByHotelId/${id}`);
+   }
+   postBooking(booking: Booking): Observable<Booking>{
+     return this.httpClient.post<Booking>(UrlService+`addBooking`, booking);
+   }
+   updateBooking(booking: Booking): Observable<Booking>{
+    return this.httpClient.post<Booking>(UrlService+`updateBooking`, booking);
+  }
 
      // my previous json server data, stored in db.json
   // getHData(): any {

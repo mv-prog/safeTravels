@@ -54,13 +54,6 @@ export class HotelsComponent implements OnInit {
   public childrenNumber: number;
   // public showBrowserBanners: boolean;
   public isFalse: boolean;
-  public search: any = {
-    searchInput: 'All hotels and places',
-    dateRange: '',
-    adultsNumber: 2,
-    childrenNumber: 0,
-    roomsNumber: 1,
-  };
   public hotelPath;
   showBrowserBanners: boolean;
   public dataList: any;
@@ -89,35 +82,10 @@ export class HotelsComponent implements OnInit {
     // subscribo os datos a unha variable que é a que vou chamar por doquier
     this.hDataService.searchInputToObservable.subscribe(searchinput => {
       this.searchInput = searchinput;
-      console.log("searchinput", searchinput);
-      // this.getHotelsByName(this.searchInput);
-      this.getHotelsByCity(this.searchInput); this.getHotelsByProvince(this.searchInput); 
       this.getHotelsByName(this.searchInput);
-      let totalLength = 1
-      for (var i = 0; i <= totalLength; i++) {
-        // this.allHotels.push(this.hotels[i]);
-        if (this.getHotelsByCity[i] != null && this.getHotelsByCity[i] != undefined) {
-          totalLength +=this.hotelsByCity.length;
-          this.allHotels.push(this.hotelsByCity[i]);
-        }
-        if (this.getHotelsByCity[i] != null && this.hotelsByProvince[i] != undefined) {
-          totalLength += this.hotelsByProvince.length;
-          this.allHotels.push(this.hotelsByProvince[i]);
-        }
-        if (this.getHotelsByCity[i] != null && this.hotelsByNameContaining[i] != undefined) {
-          totalLength += this.hotelsByNameContaining.length
-          this.allHotels.push(this.hotelsByNameContaining[i]);
-        }
-      }
-      console.log("allHotels", this.allHotels);
       console.log("searchinput", this.searchInput);
       console.log("hotelsByNameContaining", this.hotelsByNameContaining);
-      // this.getHotelsByCityProvinceName();
-      // console.log(this.getHotelsByCityProvinceName(), "getBla Method");
     });
-    // this.getHotelsByCity(this.searchInput);
-    // this.getHotelsByProvince(this.searchInput);
-    // this.getHotelsByName(this.searchInput);
   }
 
   getHotels(): void {

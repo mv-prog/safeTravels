@@ -6,6 +6,7 @@ import { TokenStorageService } from 'src/app/token-storage.service';
 import { UserService } from './../../user.service';
 import { HdataService } from './../../hdata.service';
 import { Booking } from './../../models/booking.model';
+import { Hotel } from './../../models/hotel.model';
 
 @Component({
   selector: 'app-bookings',
@@ -13,15 +14,17 @@ import { Booking } from './../../models/booking.model';
   styleUrls: ['./bookings.component.scss']
 })
 export class BookingsComponent implements OnInit {
+  booking: Booking;
   public numberOfBookings: number;
   public numberOfReviews: number;
-  public bookingList: any;
+  // public bookingList: any;
   public bookingId: number;
   public bookingCompleted: boolean;
   content?: string;
   private currencies: string[];
   private selectedCurrency: string;
   private signedToNl: boolean;
+  private hotel: Hotel;
   isChecked = true;
   formGroup: FormGroup;
   currentUser: any;
@@ -29,9 +32,14 @@ export class BookingsComponent implements OnInit {
   bookingsByUser: any;
   bookings?: Booking[];
   username: string;
-  constructor(formBuilder: FormBuilder, private http: HttpClient, private token: TokenStorageService, 
+  isLoggedIn = false;
+  showAdminBoard = false;
+  showModeratorBoard = false;
+  showUserBoard = false;
+  private roles: string[] = [];
+  today: Date;
+  constructor(formBuilder: FormBuilder, private http: HttpClient, private token: TokenStorageService,
     private userService: UserService, private hDataService: HdataService) {
-    this.numberOfBookings = 1;
     this.numberOfReviews = 0;
     this.bookingCompleted = true;
     this.currencies = ['€ Euro', 'KRW Korean Won', '£ Pound Sterling', 'USD American Dollar', 'JPY Japanese Yen', 'CNY Chinese Yuan'];
@@ -41,40 +49,79 @@ export class BookingsComponent implements OnInit {
       enableWifi: '',
       acceptTerms: ['', Validators.requiredTrue]
     });
+    this.today = new Date();
   }
-  BookingSearch(): any{
-    this.bookingList = this.bookingList.filter(res => {
-      return res.id;
-    });
-  }
+
   ngOnInit(): void {
-    this.currentUser = this.token.getUser();
-    // this.username = this.currentUser.get
-    const bresponse = this.http.get('http://localhost:8080/bookings');
-    this.bookingsByUserUrl='http://localhost:8080/bookings/' + this.currentUser.email;
-    this.bookingsByUser = this.http.get(this.bookingsByUserUrl);
-    bresponse.subscribe((data) => this.bookingList = data);
-    console.log(this.bookingList);
-    this.getBookingsById(this.currentUser.email)
-    this.userService.getUserBoard().subscribe(
-      data => {
-        this.content = data;
-      },
-      err => {
-        this.content = JSON.parse(err.error).message;
-      }
-    );
+    this.isLoggedIn = !!this.token.getToken();
+    if (this.isLoggedIn) {
+      const user = this.token.getUser();
+      this.currentUser = this.token.getUser();
+      this.username = user.username;
+      this.bookingsByUserUrl = 'http://localhost:8080/bookings/' + this.currentUser.username;
+      this.getBookingsByUsername(this.username);
+    }
+
   }
-  getBookingsById(id: any): void {
-    this.hDataService.getBookingsById(id).
-    subscribe(
-      bookingssdata => {
-        this.bookings = bookingssdata;
-        console.log(this.bookings);
+  isBookingCompleted(checkoutDate: Date): boolean {
+    let completed = false;
+    if (BookingsComponent.compareDate(checkoutDate, new Date()) == 0) {
+      completed = true;
+    }
+    return completed;
+  }
+  getBookingsByUsername(username: string): void {
+    this.hDataService.getBookingsByUsername(username).subscribe(
+      bookings => {
+        this.bookings = bookings;
+        console.log("this.bookings", this.bookings);
+        this.numberOfBookings = this.bookings.length;
+        console.log("numberOfBookings", this.numberOfBookings);
       },
       error => {
         console.log(error);
       }
     );
+  }
+
+  // getHotelsByBookingList(bookings: Booking[]){
+  //   bookings.forEach(booking => {
+  //     let hotel = this.getHotelById(booking.hotelId);
+  //   });
+  // }
+
+  getBookingById(id: any): void {
+    this.hDataService.getBookingById(id).
+      subscribe(
+        booking => {
+          this.booking = booking;
+          console.log(this.booking);
+        },
+        error => {
+          console.log(error);
+        }
+      );
+  }
+  getHotelById(id: any): void {
+    this.hDataService.getHotelByBookingsHotelId(id).
+      subscribe(
+        hoteldata => {
+          this.hotel = hoteldata;
+          console.log(hoteldata);
+        },
+        error => {
+          console.log(error);
+        }
+      );
+  }
+
+  public static compareDate(date1: Date, date2: Date): number {
+    let d1 = new Date(date1);
+    let d2 = new Date(date2);
+    if (d1.getTime() === d2.getTime()) return 0;
+
+    else if (d1 > d2) return 1;
+
+    else if (d1 < d2) return -1;
   }
 }

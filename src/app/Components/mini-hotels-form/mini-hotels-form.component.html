@@ -20,10 +20,15 @@
                                 {{option}}
                             </mat-option>
                         </mat-autocomplete>
+                        <!-- <mat-autocomplete #auto="matAutocomplete">
+                            <mat-option *ngFor="let hotelname of hotelList$ | async" [value]="hotelname">
+                              {{hotelname}}
+                            </mat-option>
+                          </mat-autocomplete> -->
                         <mat-icon matSuffix color="warn">search</mat-icon>
-                        <input matInput type="search" [class.is-invalid]="searchInput.invalid"
-                            required #searchInput="ngModel" [matAutocomplete]="auto" [(ngModel)]="form.searchInput"
-                            name="searchInput" placeholder="Search Hotels">
+                        <input matInput type="search" [class.is-invalid]="searchInput.invalid && searchInput.touched" required
+                            #searchInput="ngModel" [matAutocomplete]="auto" [(ngModel)]="form.searchInput" name="searchInput"
+                            placeholder="Search Hotels">
                     </mat-form-field>
                     <small class="wrong-field" *ngIf="searchInput.touched && searchInput.invalid">Search field is
                         required</small>

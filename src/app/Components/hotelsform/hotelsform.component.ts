@@ -16,18 +16,15 @@ import { MatAutocomplete } from '@angular/material/autocomplete';
 })
 export class HotelsformComponent implements OnInit {
   @ViewChild(MatDatepicker, {static: false}) dateRange: MatDatepicker<Date>;
-  public options = ['A Coruña', 'Santiago', 'Hostal dos Reis Católicos', 'A Coruña2'];
+  public options = ['A Coruña', 'Santiago', 'Hostal dos Reis Católicos', 'Sober'];
   @Input() showBrowserBanners;
   // @Input() search;
   @Output() dontShowBB = new EventEmitter<void>();
   @Output() sendHotelsData = new EventEmitter<void>();
   private todaysDate = new Date();
-  range = new FormGroup({
-    start: new FormControl(),
-    end: new FormControl()
-  });
+
   tomorrowsDateNumber: number = this.todaysDate.getDate() + 1;
-  private tomorrowsDate: Date = new Date(this.tomorrowsDateNumber);
+  private tomorrowsDate: Date = new Date();
   hotelList$: Observable<string[]>;
   myControl = new FormControl();
   filteredOptions: Observable<string[]>;
@@ -46,8 +43,9 @@ export class HotelsformComponent implements OnInit {
   searchInput: string;
 
   constructor(private hDataService: HdataService, private datepipe: DatePipe, private formBuilder: FormBuilder) {
-    // this.form.dateRange.startDate = this.datepipe.transform(this.todaysDate, "dd/mm/yyyy");
-    // this.form.dateRange.endDate = this.datepipe.transform(this.tomorrowsDate, "dd/mm/yyyy");
+    this.tomorrowsDate.setDate(this.tomorrowsDate.getDate()+1);
+    this.form.dateRange.startDate = this.datepipe.transform(this.todaysDate, "dd/mm/yyyy");
+    this.form.dateRange.endDate = this.datepipe.transform(this.tomorrowsDate, "dd/mm/yyyy");
 
   }
 

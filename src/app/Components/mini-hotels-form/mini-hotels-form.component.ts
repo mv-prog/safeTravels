@@ -3,7 +3,7 @@ import { MatDatepicker, DateRange } from '@angular/material/datepicker';
 import { EventEmitter } from '@angular/core';
 import { HdataService } from 'src/app/hdata.service';
 import { DatePipe } from '@angular/common';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, FormGroup, FormControl, FormBuilder } from '@angular/forms';
 
 
 @Component({
@@ -21,6 +21,10 @@ export class MiniHotelsFormComponent implements OnInit {
   private todaysDate = new Date();
   private tomorrowsDateNumber: number = this.todaysDate.getDate()+1;
   private tomorrowsDate: Date = new Date(this.tomorrowsDateNumber);
+  range = new FormGroup({
+    start: new FormControl(),
+    end: new FormControl()
+  });
 form: any = {
   searchInput: null,
   dateRange: {
@@ -32,7 +36,7 @@ form: any = {
   rooms: 1
 };
 searchInput: string;
-constructor(private hDataService: HdataService, private datepipe: DatePipe){
+constructor(private hDataService: HdataService, private datepipe: DatePipe, private formBuilder: FormBuilder){
   this.form.dateRange.startDate= this.datepipe.transform(this.todaysDate, "dd/mm/yyyy"),
   this.form.dateRange.endDate= this.datepipe.transform(this.tomorrowsDate, "dd/mm/yyyy")
 }

@@ -1,74 +1,42 @@
 <app-navbar></app-navbar>
 <!-- Gallery -->
 <div class="container">
-<div class="row mt-4">
-  <div class="col-lg-3 col-md-12 mb-4 mb-lg-0">
-    <a href="/assets/{{hotel.name}}/1.jpg">
-    <img
-      src="/assets/{{hotel.name}}/1.jpg"
-      class="w-100 shadow-1-strong rounded mb-4"
-      alt=""
-    />
-  </a>
-  <a href="/assets/{{hotel.name}}/4.jpg">
-    <img
-      src="/assets/{{hotel.name}}/4.jpg"
-      class="w-100 shadow-1-strong rounded mb-4"
-      alt=""
-    />
-  </a>
-  </div>
+  <div class="row mt-4">
+    <div class="col-lg-3 col-md-12 mb-4 mb-lg-0">
+      <a href="/assets/{{hotel.name}}/1.jpg">
+        <img src="/assets/{{hotel.name}}/1.jpg" class="w-100 shadow-1-strong rounded mb-4" alt="" />
+      </a>
+      <a href="/assets/{{hotel.name}}/4.jpg">
+        <img src="/assets/{{hotel.name}}/4.jpg" class="w-100 shadow-1-strong rounded mb-4" alt="" />
+      </a>
+    </div>
 
-  <div class="col-lg-3 mb-4 mb-lg-0">
-    <a href="/assets/{{hotel.name}}/2.jpg">
-    <img
-      src="/assets/{{hotel.name}}/2.jpg"
-      class="w-100 shadow-1-strong rounded mb-4"
-      alt=""
-    />
-  </a>
-  <a href="/assets/{{hotel.name}}/3.jpg">
-    <img
-      src="/assets/{{hotel.name}}/3.jpg"
-      class="w-100 shadow-1-strong rounded mb-4"
-      alt=""
-    />
-  </a>
-  </div>
+    <div class="col-lg-3 mb-4 mb-lg-0">
+      <a href="/assets/{{hotel.name}}/2.jpg">
+        <img src="/assets/{{hotel.name}}/2.jpg" class="w-100 shadow-1-strong rounded mb-4" alt="" />
+      </a>
+      <a href="/assets/{{hotel.name}}/3.jpg">
+        <img src="/assets/{{hotel.name}}/3.jpg" class="w-100 shadow-1-strong rounded mb-4" alt="" />
+      </a>
+    </div>
 
-  <div class="col-lg-3 mb-4 mb-lg-0">
-    <a href="/assets/{{hotel.name}}/20.jpg">
-    <img
-      src="/assets/{{hotel.name}}/20.jpg"
-      class="w-100 shadow-1-strong rounded mb-4"
-      alt=""
-    />
-  </a>
-<a href="/assets/{{hotel.name}}/22.jpg">
-    <img
-      src="/assets/{{hotel.name}}/22.jpg"
-      class="w-100 shadow-1-strong rounded mb-4"
-      alt=""
-    />
-  </a>
+    <div class="col-lg-3 mb-4 mb-lg-0">
+      <a href="/assets/{{hotel.name}}/20.jpg">
+        <img src="/assets/{{hotel.name}}/20.jpg" class="w-100 shadow-1-strong rounded mb-4" alt="" />
+      </a>
+      <a href="/assets/{{hotel.name}}/22.jpg">
+        <img src="/assets/{{hotel.name}}/22.jpg" class="w-100 shadow-1-strong rounded mb-4" alt="" />
+      </a>
+    </div>
+    <div class="col-lg-3 mb-4 mb-lg-0">
+      <a href="/assets/{{hotel.name}}/21.jpg">
+        <img src="/assets/{{hotel.name}}/21.jpg" class="w-100 shadow-1-strong rounded mb-4" alt="" />
+      </a>
+      <a href="/assets/{{hotel.name}}/23.jpg">
+        <img src="/assets/{{hotel.name}}/23.jpg" class="w-100 shadow-1-strong rounded mb-4" alt="" />
+      </a>
+    </div>
   </div>
-  <div class="col-lg-3 mb-4 mb-lg-0">
-    <a href="/assets/{{hotel.name}}/21.jpg">
-    <img
-      src="/assets/{{hotel.name}}/21.jpg"
-      class="w-100 shadow-1-strong rounded mb-4"
-      alt=""
-    />
-  </a>
-<a href="/assets/{{hotel.name}}/23.jpg">
-    <img
-      src="/assets/{{hotel.name}}/23.jpg"
-      class="w-100 shadow-1-strong rounded mb-4"
-      alt=""
-    />
-  </a>
-  </div>
-</div>
 </div>
 <!-- Gallery -->
 <div class="container">
@@ -96,44 +64,50 @@
       <section #roomsSection id="roomsSection" *ngIf="rooms" class="mb-5">
         <p class="h3 text-center my-5">Select your room</p>
         <div class="row my-3 py-3" style="border-bottom: 1px solid rgb(63, 62, 62);">
-          <div class="col-lg-2">
+          <div class="col-lg-3">
             <p> Room Type </p>
           </div>
-          <div class="col-lg-2" style="padding-left: 5em;">
+          <div class="col-lg-1 text-center">
             <p>Maximum Hosts</p>
           </div>
-          <div class="col-lg-1"></div>
-          <div class="col-lg-2" style="padding-left: 7em;">
+          <div class="col-lg-1">
             Price
           </div>
-          <div class="col-lg-3">
-            <p>Included</p>  
+          <div class="col-lg-2 text-center">
+            <p>Included</p>
           </div>
-          <div class="col-lg-2"></div>
-          </div>
-        <div class="row my-3 py-3" style="border-bottom: 1px solid rgb(63, 62, 62);" *ngFor="let room of rooms">
-          <ng-container *ngIf="room.seaView; then noSeaView">
+        </div>
+        <div class="row my-3 py-3" style="border-bottom: 1px solid rgb(63, 62, 62);"
+          *ngFor="let room of rooms; let i = index">
+          <ng-container *ngIf="room.seaView == true; then seaView else noSeaView"></ng-container>
+          <ng-template #seaView>
             <div class="col-lg-3">
-              <p> {{ room.roomType }} room with Sea View</p>
+              <p  class="font-weight-bold"> {{ room.roomType }} room 
+                with Sea View</p>
             </div>
-            <div class="col-lg-1">
+            <div class="col-lg-1 text-center">
               <p>{{room.maxHosts}}</p>
-              
             </div>
 
-            <div class="col-lg-2">
-              {{room.price  + 10 + 20}}
+            <div class="col-lg-1">
+              {{room.price + 10 + 20}}
             </div>
-            <div class="col-lg-3">
+            <div class="col-lg-2">
               <p>Breakfast included</p>
               <p>Free Cancellation </p>
               <!-- before search.checkinDate.getday()-1 -->
             </div>
-            <div class="col-lg-2">
-              <a >Book Me</a>
+            <div class="col-lg-3 col-md-12 mb-4 mr-2 mb-lg-0">
+              <a href="/assets/{{hotel.name}}/{{i}}.jpg">
+                <img src="/assets/{{hotel.name}}/{{i}}.jpg" class="w-100 shadow-1-strong rounded mb-4" alt="" />
+              </a>
             </div>
-          </ng-container>
-          <ng-container #noSeaView>
+            <div class="col-lg-1 pl-2 ml-2 mb-1">
+              <a mat-raised-button class="viewmore" color="accent" target="_blank"
+                (click)="bookHotelGoToCheckout()">Book Me</a>
+            </div>
+          </ng-template>
+          <ng-template #noSeaView>
             <div class="col-lg-3">
               <p class="font-weight-bold">{{ room.roomType }} room</p>
               <p *ngIf="room.privateToilet">with private toilet</p>
@@ -141,21 +115,27 @@
               <p *ngIf="room.balcony">with balcony</p>
               <p *ngIf="room.jacuzzi">with jacuzzi</p>
             </div>
-            <div class="col-lg-3">
+            <div class="col-lg-1 text-center">
               <p>{{room.maxHosts}}</p>
             </div>
 
             <div class="col-lg-1">
-              <p> {{room.price  + 10 }} €</p>
+              <p> {{room.price + 10 }} €</p>
             </div>
-            <div class="col-lg-3">
+            <div class="col-lg-2">
               <p>Breakfast included</p>
               <!-- before search.checkinDate.getday()-1 -->
             </div>
-            <div class="col-lg-2">
-              <a  mat-raised-button class="viewmore" color="accent" target="_blank" (click)="bookHotelGoToCheckout()">Book Me</a>
+            <div class="col-lg-3 col-md-12 mb-4 mr-3 mb-lg-0">
+              <a href="/assets/{{hotel.name}}/{{i}}.jpg">
+                <img src="/assets/{{hotel.name}}/{{i}}.jpg" class="w-100 shadow-1-strong rounded mb-4" alt="" />
+              </a>
             </div>
-          </ng-container>
+            <div class="col-lg-1 pl-2 ml-2 mb-1">
+              <a mat-raised-button class="viewmore" color="accent" target="_blank"
+                (click)="bookHotelGoToCheckout()">Book Me</a>
+            </div>
+          </ng-template>
         </div>
       </section>
     </div>
