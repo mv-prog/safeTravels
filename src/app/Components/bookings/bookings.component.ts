@@ -28,7 +28,9 @@ export class BookingsComponent implements OnInit {
   bookingsByUserUrl: string;
   bookingsByUser: any;
   bookings?: Booking[];
-  constructor(formBuilder: FormBuilder, private http: HttpClient, private token: TokenStorageService, private userService: UserService, private hDataService: HdataService) {
+  username: string;
+  constructor(formBuilder: FormBuilder, private http: HttpClient, private token: TokenStorageService, 
+    private userService: UserService, private hDataService: HdataService) {
     this.numberOfBookings = 1;
     this.numberOfReviews = 0;
     this.bookingCompleted = true;
@@ -47,6 +49,7 @@ export class BookingsComponent implements OnInit {
   }
   ngOnInit(): void {
     this.currentUser = this.token.getUser();
+    // this.username = this.currentUser.get
     const bresponse = this.http.get('http://localhost:8080/bookings');
     this.bookingsByUserUrl='http://localhost:8080/bookings/' + this.currentUser.email;
     this.bookingsByUser = this.http.get(this.bookingsByUserUrl);

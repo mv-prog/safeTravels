@@ -38,11 +38,11 @@ export class HdataService {
     return this.httpClient.get<Hotel[]>(`${this.baseHotelsUrl}?name=${name}`);
   }
   getHotelsByProvince(province: any): Observable<Hotel[]> {
-    return this.httpClient.get<Hotel[]>(`this.localhost:8080/hotelsByProvince/${province}`);
+    return this.httpClient.get<Hotel[]>(`http:localhost:8080/hotelsByProvince/${province}`);
     // return this.httpClient.get<Hotel[]>(`${this.baseHotelsUrl}?province=${province}`);
   }
   getHotelsByCity(city: any): Observable<Hotel[]> {
-    return this.httpClient.get<Hotel[]>(`this.localhost:8080/hotelsByCity/${city}`);
+    return this.httpClient.get<Hotel[]>(`http:localhost:8080/hotelsByCity/${city}`);
   }
   updateHotel(id: any, data: any): Observable<any> {
     return this.httpClient.put(`${this.baseHotelUrl}/${id}`, data);

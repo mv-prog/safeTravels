@@ -7,7 +7,7 @@ import { FilterPipe } from './../filter.pipe';
 import { OrderByPipe } from './../order-by.pipe';
 import { HttpClient } from '@angular/common/http';
 import { Hotel } from './../../models/hotel.model';
-import { Observable } from 'rxjs';
+import { forkJoin, Observable } from 'rxjs';
 import { switchMap } from 'rxjs/operators';
 import { ActivatedRoute } from '@angular/router';
 
@@ -24,12 +24,12 @@ export interface Star {
   styleUrls: ['./hotels.component.scss']
 })
 export class HotelsComponent implements OnInit {
-  //all hotels:
+
   hotels?: Hotel[];
   hotelsByNameContaining?: Hotel[];
   hotelsByProvince?: Hotel[];
   hotelsByCity?: Hotel[];
-  allHotels?: Hotel[];
+  allSearchedHotels?: Hotel[];
   hotel?: Hotel;
   id = 0;
   name = '';
@@ -65,32 +65,10 @@ export class HotelsComponent implements OnInit {
   showBrowserBanners: boolean;
   public dataList: any;
   searchInput: string;
+  allHotels: any;
   // constructor(private hdataservice: HdataService) { this used to consume the json server data.
   constructor(private hDataService: HdataService, public route: ActivatedRoute) {
-    let totalLength = 1
-    for (var i = 0; i <= totalLength; i++) {
-      // this.allHotels.push(this.hotels[i]);
-      // if (this.getHotelsByCity[i] != null && this.getHotelsByCity[i] != undefined) {
-      //   totalLength +=this.hotelsByCity.length;
-      //   this.allHotels.push(this.hotelsByCity[i]);
-      // }
-      // if (this.getHotelsByCity[i] != null && this.hotelsByProvince[i] != undefined) {
-      //   totalLength += this.hotelsByProvince.length;
-      //   this.allHotels.push(this.hotelsByProvince[i]);
-      // }
-      // if (this.getHotelsByCity[i] != null && this.hotelsByNameContaining[i] != undefined) {
-      //   totalLength += this.hotelsByNameContaining.length
-      //   this.allHotels.push(this.hotelsByNameContaining[i]);
-      // }
-    }
-
-
-  }
-
-  Search(): any {
-    this.hotels = this.hotels.filter(res => {
-      return res.name.toLocaleLowerCase().match(this.name.toLocaleLowerCase());
-    });
+    this.allHotels = [];
   }
   reload(): void {
     window.location.reload();
@@ -108,18 +86,40 @@ export class HotelsComponent implements OnInit {
 
   ngOnInit(): void {
     // this.getHotels();
-    // subscribo os datos a unha varable que creo e que é a que vou chamar por doquier
+    // subscribo os datos a unha variable que é a que vou chamar por doquier
     this.hDataService.searchInputToObservable.subscribe(searchinput => {
-      this.searchInput = searchinput
+      this.searchInput = searchinput;
+      console.log("searchinput", searchinput);
+      // this.getHotelsByName(this.searchInput);
+      this.getHotelsByCity(this.searchInput); this.getHotelsByProvince(this.searchInput); 
       this.getHotelsByName(this.searchInput);
+      let totalLength = 1
+      for (var i = 0; i <= totalLength; i++) {
+        // this.allHotels.push(this.hotels[i]);
+        if (this.getHotelsByCity[i] != null && this.getHotelsByCity[i] != undefined) {
+          totalLength +=this.hotelsByCity.length;
+          this.allHotels.push(this.hotelsByCity[i]);
+        }
+        if (this.getHotelsByCity[i] != null && this.hotelsByProvince[i] != undefined) {
+          totalLength += this.hotelsByProvince.length;
+          this.allHotels.push(this.hotelsByProvince[i]);
+        }
+        if (this.getHotelsByCity[i] != null && this.hotelsByNameContaining[i] != undefined) {
+          totalLength += this.hotelsByNameContaining.length
+          this.allHotels.push(this.hotelsByNameContaining[i]);
+        }
+      }
+      console.log("allHotels", this.allHotels);
+      console.log("searchinput", this.searchInput);
+      console.log("hotelsByNameContaining", this.hotelsByNameContaining);
+      // this.getHotelsByCityProvinceName();
+      // console.log(this.getHotelsByCityProvinceName(), "getBla Method");
     });
     // this.getHotelsByCity(this.searchInput);
     // this.getHotelsByProvince(this.searchInput);
-    this.getHotelsByName(this.searchInput);
+    // this.getHotelsByName(this.searchInput);
   }
-  showIdData(data): void {
-    console.log(data);
-  }
+
   getHotels(): void {
     this.hDataService.getAllHotels().
       subscribe(
@@ -145,30 +145,10 @@ export class HotelsComponent implements OnInit {
       );
   }
 
-  // tslint:disable-next-line: typedef
-  public getSearch(adultsNumber: HTMLInputElement, childrenNumber: HTMLInputElement, roomsNumber: HTMLInputElement) {
-    this.adultsNumber = Number(adultsNumber.value),
-      this.childrenNumber = Number(childrenNumber.value),
-      this.roomsNumber = Number(roomsNumber.value);
-  }
-
   calculatePercentage(orPrice, percentage): number {
     return orPrice - (orPrice * percentage / 100);
   }
-  getHotelsData(e): any {
-    return e;
-  }
 
-  // Local filter
-  performFilter(filterBy: string): any {
-    if (filterBy) {
-      filterBy = filterBy.toLocaleLowerCase();
-      return this.dataList.filter((hotel: any) =>
-        hotel.name.toLocaleLowerCase().indexOf(filterBy) !== -1);
-    } else {
-      return this.dataList;
-    }
-  }
   getHotelsByCity(city): void {
     this.hDataService.getHotelsByCity(city)
       .subscribe(
@@ -205,6 +185,9 @@ export class HotelsComponent implements OnInit {
         }
       );
   }
+  getHotelsByCityProvinceName(): Observable<Hotel[]> {
+    return forkJoin([this.hotelsByNameContaining, this.hotelsByProvince, this.hotelsByCity]);
+}
 
 }
 

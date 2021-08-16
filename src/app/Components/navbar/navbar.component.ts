@@ -21,7 +21,6 @@ export class NavbarComponent implements OnInit {
               private router: Router,
               private tokenStorageService: TokenStorageService) { }
   
-  /** Is this really necessary???*/
   public showbb(): void {
     this.showBrowserBanners = true;
     this.showBB.emit(this.showBrowserBanners);

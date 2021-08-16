@@ -1,8 +1,7 @@
 <app-navbar [showBrowserBanners]="showbrowserbanners" (showBB)="showbrowserbanners($event)"></app-navbar>
-<!-- <app-navbar></app-navbar> -->
 <div class="show-browser-banners" [style.display]="showBrowserBanners ? 'inherit':'none'">
   <header class="jumbotron hotels jumbotron shadow">
-    <app-hotelsform [search]='search' (sendHotelId)="sendHotelIdHandler($event)" (sendHotelsData)='getHotelsData($event)'>
+    <app-hotelsform (sendHotelId)="sendHotelIdHandler($event)">
     </app-hotelsform>
   </header>
   <nlbanner></nlbanner>
@@ -10,7 +9,7 @@
   <app-recommended></app-recommended>
 </div>
 <div class="hotelsContainer">
-  <app-mini-hotels-form [search]='form' (sendHotelsData)='getHotelsData($event)'></app-mini-hotels-form>
+  <app-mini-hotels-form></app-mini-hotels-form>
   <div class="searchOrder" [style.display]="showBrowserBanners ? 'none':'inherit'">
     <mat-form-field appearance="outline">
       <mat-label>Select an option</mat-label>
@@ -78,7 +77,7 @@
         </ul>
     </div>
     <div class="hotel-search-result mb-5">
-        <ng-container *ngFor="let hotel of hotelsByNameContaining; let i = index">
+        <ng-container *ngFor="let hotel of allHotels; let i = index">
         <div class="card hotels mb-3">
           <!-- *ngIf=" search.searchInput == hotel.region || search.searchInput == hotel.city || search.searchInput == hotel.name || search.searchInput == 'All hotels and places' && star.id == hotel.star"> -->
           <div class="row g-0">

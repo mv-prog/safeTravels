@@ -18,7 +18,7 @@ export class HotelsformComponent implements OnInit {
   @ViewChild(MatDatepicker, {static: false}) dateRange: MatDatepicker<Date>;
   public options = ['A Coruña', 'Santiago', 'Hostal dos Reis Católicos', 'A Coruña2'];
   @Input() showBrowserBanners;
-  @Input() search;
+  // @Input() search;
   @Output() dontShowBB = new EventEmitter<void>();
   @Output() sendHotelsData = new EventEmitter<void>();
   private todaysDate = new Date();
@@ -60,39 +60,24 @@ export class HotelsformComponent implements OnInit {
     this.dontShowBB.emit(this.showBrowserBanners);
   }
 
-  /**
-   * sendData
-   * emits/outputs the search input gotten in the hotels form.
-   */
-  sendData(): any {
-    this.sendHotelsData.emit(this.search);
-  }
+
   ngOnInit(): void {
     // subscribo os datos a unha varable que creo e que é a que vou chamar por doquier
     this.hDataService.searchInputToObservable.subscribe(searchinput => this.searchInput = searchinput);
-    // this.hotelList$ = this.formHotel.get('name').valueChanges.pipe(
-    //   distinctUntilChanged(),
-    //   debounceTime(1000),
-    //   filter((name) => !!name),
-    //   // switchMap((name: any) => this.hDataService.getByName(name))
-    // ); 
-    // this.hotelList$.subscribe((busqueda: any) => {
-    //   console.log('busqueda', busqueda);
-    // });
-    this.filteredOptions = this.myControl.valueChanges
-      .pipe(
-        startWith(''),
-        map(value => this._filter(value))
-      );
+    // this.filteredOptions = this.myControl.valueChanges
+    //   .pipe(
+    //     startWith(''),
+    //     map(value => this._filter(value))
+    //   );
   }
-  private _filter(value: string): string[] {
-    const filterValue = value.toLowerCase();
-    this.form.searchInput = value;
-    this.form.name = value;
-    this.updateSearchInput();
-    return this.options.filter(option => option.toLowerCase().includes(filterValue));
+  // private _filter(value: string): string[] {
+  //   const filterValue = value.toLowerCase();
+  //   this.form.searchInput = value;
+  //   this.form.name = value;
+  //   this.updateSearchInput();
+  //   return this.options.filter(option => option.toLowerCase().includes(filterValue));
 
-  }
+  // }
   /**
    * updateSearchInput
    * actualizo a variable creada cos datos do meu ngModel.
