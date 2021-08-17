@@ -124,7 +124,8 @@
                 <!-- {{ calculatePercentage(hotel.price, hotel.offer) }}€ I'll have to create a new method in sql for that-->
               </p>
               <!-- <a mat-raised-button class="viewmore" color="accent" target="_blank" routerLink="/hotel/{{ hotel.id }}"></a> -->
-              <a mat-raised-button class="viewmore" color="accent" target="_blank" (click)="searchHotelById(hotel.id)" [routerLink]="['/hotel', hotel.id]">
+              <a mat-raised-button class="viewmore" color="accent" target="_blank" (click)="searchHotelById(hotel.id)" [routerLink]="['/hotel', hotel.id]"
+              [queryParams]="{fechaInicio: dateRange[0], fechaFin: dateRange[1]}" >
               <!-- <a type="submit" mat-raised-button class="viewmore" color="accent" href="{{hotelPath + hotel.id}}" target="_blank"> -->
               View more
             </a>

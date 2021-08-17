@@ -59,6 +59,7 @@ export class HotelsComponent implements OnInit {
   public dataList: any;
   searchInput: string;
   allHotels: any;
+  dateRange: Date[];
   // constructor(private hdataservice: HdataService) { this used to consume the json server data.
   constructor(private hDataService: HdataService, public route: ActivatedRoute) {
     this.allHotels = [];
@@ -86,6 +87,10 @@ export class HotelsComponent implements OnInit {
       console.log("searchinput", this.searchInput);
       console.log("hotelsByNameContaining", this.hotelsByNameContaining);
     });
+    this.hDataService.datesFormData.subscribe(dateRange => {
+      console.log("dateRange", dateRange); 
+       this.dateRange = dateRange;
+     });
   }
 
   getHotels(): void {

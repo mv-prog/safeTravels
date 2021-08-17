@@ -85,6 +85,7 @@ export class HotelsformComponent implements OnInit {
   updateSearchInput() {
     this.hDataService.editSearchInputData(this.form.searchInput);
     this.hDataService.editDatesData(this.form.dateRange)
+    console.log(this.form);
   }
 
 }

@@ -17,7 +17,7 @@ export class HdataService {
   //i was using Santiago before, but then I couln't show all hotels because searchInput wasn't undefined. 
   private searchInputFormData = new BehaviorSubject<string>('');
   searchInputToObservable = this.searchInputFormData.asObservable();
-  private datesFormData = new BehaviorSubject<Date[]>([]);
+  public datesFormData = new BehaviorSubject<Date[]>([]);
   datesToObservable = this.datesFormData.asObservable();
 
   private baseHotelsUrl = 'http://localhost:8080/hotels';
@@ -65,6 +65,7 @@ export class HdataService {
     this.searchInputFormData.next(newSearchInput);
   }
   editDatesData(newDates){
+    console.log(newDates);
     this.datesFormData.next(newDates);
   }
 

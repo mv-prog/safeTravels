@@ -1,5 +1,5 @@
 <div class="miniHotelsFormContainer">
-    <form #searchForm="ngForm" name="form" class="formulario1" (ngSubmit)="onSubmit()">
+    <form #searchForm="ngForm" [formGroup]="range" class="formulario1" (ngSubmit)="onSubmit()">
         <!-- {{form.value | json}} -->
         <legend class="leg1">
             <a [routerLink]="['/home']" routerLinkActive="router-link-active"><img class="logo" src="../favicon.ico"
@@ -26,8 +26,9 @@
                             </mat-option>
                           </mat-autocomplete> -->
                         <mat-icon matSuffix color="warn">search</mat-icon>
-                        <input matInput type="search" [class.is-invalid]="searchInput.invalid && searchInput.touched" required
-                            #searchInput="ngModel" [matAutocomplete]="auto" [(ngModel)]="form.searchInput" name="searchInput"
+                        <input matInput type="search" 
+                         required
+                             [matAutocomplete]="auto" formControlName="searchInput"
                             placeholder="Search Hotels">
                     </mat-form-field>
                     <small class="wrong-field" *ngIf="searchInput.touched && searchInput.invalid">Search field is
@@ -38,11 +39,9 @@
                         <mat-label class="help-block">
                             Check-in - Check-out
                         </mat-label>
-                        <mat-date-range-input [rangePicker]="picker"
-                            [class.is-invalid]="dateRange.invalid && dateRange.touched" #dateRange="ngModel"
-                            [(ngModel)]="form.dateRange" name="dateRange">
-                            <input matStartDate [placeholder]="form.dateRange.startDate" ngModel [(ngModel)]="startDate" name="startDate">
-                            <input matEndDate [placeholder]="form.dateRange.endDate" ngModel [(ngModel)]="endDate" name="endDate">
+                        <mat-date-range-input [rangePicker]="picker">
+                            <input matStartDate formControlName="fechaInicio" >
+                            <input matEndDate  formControlName="fechaFin" >
                         </mat-date-range-input>
                         <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
                         <mat-date-range-picker #picker></mat-date-range-picker>

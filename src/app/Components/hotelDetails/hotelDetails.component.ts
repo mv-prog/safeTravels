@@ -5,6 +5,7 @@ import { HdataService } from 'src/app/hdata.service';
 import { Observable } from 'rxjs';
 import { Room } from 'src/app/models/room.model';
 import { TokenStorageService } from './../../token-storage.service';
+import { DatePipe } from '@angular/common';
 @Component({
   selector: 'app-hotel-details',
   templateUrl: './hotelDetails.component.html',
@@ -53,9 +54,12 @@ export class HotelDetailsComponent implements OnInit {
   searchInput: string;
   dateRange: Date[];
   submitted = false;
+  fechaInicio: Date;
+  fechaFin: Date;
   constructor(
     private hDataService: HdataService,
     public route: ActivatedRoute,
+    public datepipe: DatePipe,
     private tokenStorageService: TokenStorageService) {
       this.numbers = Array.from({length: 10}, (v, k) => k + 1);
 
@@ -70,16 +74,27 @@ export class HotelDetailsComponent implements OnInit {
     });
     this.hDataService.searchInputToObservable.subscribe(searchinput => this.searchInput = searchinput);
     console.log("searchInput in hotelDetails", this.searchInput);
-    this.hDataService.datesToObservable.subscribe(dateRange => this.dateRange = dateRange);
+    this.hDataService.datesFormData.subscribe(dateRange => {
+     console.log("dateRange", dateRange); 
+      this.dateRange = dateRange;
+    });
     console.log("dateRange in hotelDetails", this.dateRange);
     this.getHotel(this.route.snapshot.paramMap.get('id'));
     this.getRoomsById(this.id);
-    // this.isLoggedIn = !!this.tokenStorageService.getToken();
+    this.isLoggedIn = !!this.tokenStorageService.getToken();
 
     if (this.isLoggedIn) {
       const user = this.tokenStorageService.getUser();
       this.username = user.username;
     }
+    this.route.queryParams
+    .subscribe(params => {
+      console.log(params); 
+      this.fechaInicio = params.fechaInicio;
+      this.fechaFin = params.fechaFin;
+      console.log(this.fechaFin); 
+    }
+  );
   }
   getRoomsById(id: any): void {
     this.hDataService.getAllRoomsByHotel(id).
@@ -126,12 +141,13 @@ export class HotelDetailsComponent implements OnInit {
       this.reviewsSection.nativeElement.scrollIntoView({ behavior: 'smooth', block: 'end', inline: 'start' });
   }
   public bookHotelGoToCheckout(roomId:number, roomPrice: number){
+    console.log(this.hDataService.datesFormData.getValue());
     const bookingData = {
       username: this.username,
       roomId: roomId,
       hotelId: this.hotel.id,
-      checkinDate: this.dateRange[0],
-      checkoutDate: this.dateRange[1],
+      checkinDate: this.datepipe.transform(this.fechaInicio, 'yyyy-MM-dd'),
+      checkoutDate: this.datepipe.transform(this.fechaFin, 'yyyy-MM-dd'),
       breakfastIncluded: true,
       price: roomPrice
     };

@@ -21,9 +21,11 @@ export class MiniHotelsFormComponent implements OnInit {
   private todaysDate = new Date();
   private tomorrowsDate: Date = new Date();
   range = new FormGroup({
-    start: new FormControl(),
-    end: new FormControl()
+    searchInput: new FormControl(''),
+    fechaInicio : new FormControl(new Date()),
+    fechaFin : new FormControl(new Date())
   });
+ 
 form: any = {
   searchInput: null,
   dateRange: {
@@ -51,7 +53,7 @@ dontShowbb(): any{
   this.dontShowBB.emit(this.showBrowserBanners);
 }
 onSubmit(): void {
-  this.hDataService.editSearchInputData(this.form.searchInput);
+  this.hDataService.editSearchInputData(this.range.get('searchInput').value);
   this.hDataService.editDatesData(this.form.dateRange);
   // console.log("dateRange", this.dateRange);
   // window.location.reload();
@@ -67,15 +69,22 @@ sendData(): any{
 ngOnInit(): void {
   // subscribo os datos a unha varable que creo e que é a que vou chamar por doquier
   this.hDataService.searchInputToObservable.subscribe(searchinput => this.searchInput = searchinput);
-  this.hDataService.datesToObservable.subscribe(dateRange => this.dateRange = dateRange);
+  // this.hDataService.datesToObservable.subscribe(dateRange => this.dateRange = dateRange);
+  //observable que emite cambios en el valor de la vble
+  this.range.get('fechaInicio').valueChanges
+    .subscribe(fechaInicio => this.hDataService.editDatesData([fechaInicio, this.range.get('fechaFin').value]));
+    //aquí la segunda vble es la que cambia, l aprimera es estática
+    this.range.get('fechaFin').valueChanges
+    .subscribe(fechaFin => this.hDataService.editDatesData([this.range.get('fechaInicio').value, fechaFin]));
+  
 }
 /**
  * updateSearchInput
  * actualizo a variable creada cos datos do meu ngModel.
  * */
 updateSearchInput(){
-  this.hDataService.editSearchInputData(this.form.searchInput);
-  this.hDataService.editDatesData(this.form.dateRange);
+  this.hDataService.editSearchInputData(this.range.get('searchInput').value);
+  this.hDataService.editDatesData([this.range.get('fechaInicio').value, this.range.get('fechaFin').value]);
   console.log("dateRange in miniHotel's update method", this.dateRange);
 }
 }

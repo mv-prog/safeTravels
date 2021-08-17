@@ -3,8 +3,8 @@ export class Booking {
     roomId: number;
     hotelId: number;
     hotelName?: string;
-    checkinDate: Date;
-    checkoutDate: Date;
+    checkinDate: string;
+    checkoutDate: string;
     cancelled?: boolean;
     breakfastIncluded?: boolean;
     freecancellation?: boolean;
