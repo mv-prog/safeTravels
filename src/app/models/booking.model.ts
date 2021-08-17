@@ -1,12 +1,14 @@
 export class Booking {
-    bookingId: number;
+    bookingId?: number;
     roomId: number;
     hotelId: number;
     hotelName?: string;
-    reviewId: number;
     checkinDate: Date;
     checkoutDate: Date;
-    cancelled: boolean;
-    breakfastIncluded: boolean;
-    freecancellation: boolean;
+    cancelled?: boolean;
+    breakfastIncluded?: boolean;
+    freecancellation?: boolean;
+    price: number;
+    review?: string;
+    rating?: number;
 }

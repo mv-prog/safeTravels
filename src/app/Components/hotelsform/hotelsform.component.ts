@@ -15,7 +15,7 @@ import { MatAutocomplete } from '@angular/material/autocomplete';
   styleUrls: ['./hotelsform.component.scss']
 })
 export class HotelsformComponent implements OnInit {
-  @ViewChild(MatDatepicker, {static: false}) dateRange: MatDatepicker<Date>;
+  // @ViewChild(MatDatepicker, {static: false}) dateRange: MatDatepicker<Date>;
   public options = ['A Coruña', 'Santiago', 'Hostal dos Reis Católicos', 'Sober'];
   @Input() showBrowserBanners;
   // @Input() search;
@@ -41,6 +41,7 @@ export class HotelsformComponent implements OnInit {
   };
 
   searchInput: string;
+  dateRange: Date[];
 
   constructor(private hDataService: HdataService, private datepipe: DatePipe, private formBuilder: FormBuilder) {
     this.tomorrowsDate.setDate(this.tomorrowsDate.getDate()+1);
@@ -62,6 +63,7 @@ export class HotelsformComponent implements OnInit {
   ngOnInit(): void {
     // subscribo os datos a unha varable que creo e que é a que vou chamar por doquier
     this.hDataService.searchInputToObservable.subscribe(searchinput => this.searchInput = searchinput);
+    this.hDataService.datesToObservable.subscribe(datesFormData => this.dateRange = datesFormData);
     // this.filteredOptions = this.myControl.valueChanges
     //   .pipe(
     //     startWith(''),
@@ -82,6 +84,7 @@ export class HotelsformComponent implements OnInit {
    * */
   updateSearchInput() {
     this.hDataService.editSearchInputData(this.form.searchInput);
+    this.hDataService.editDatesData(this.form.dateRange)
   }
 
 }

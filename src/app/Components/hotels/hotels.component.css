@@ -1,0 +1,232 @@
+.mat-form-field {
+  min-width: 50px;
+  width: 220px;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}
+
+.formulario {
+  max-width: 600px;
+}
+
+@media (min-width: 0px) {
+  .imgH {
+    width: 400px;
+    height: 350px;
+  }
+  div.hotellist {
+    margin-top: 20px;
+    width: 100%;
+    margin-left: 15px auto;
+    margin-right: 15px auto;
+  }
+  .searchfilters {
+    display: none;
+  }
+  .searchOrder {
+    margin-left: 10%;
+  }
+  .searchOrder mat-form-field {
+    margin-top: 30px;
+  }
+  .viewmore {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    margin-right: 20px;
+    margin-bottom: 20px;
+  }
+}
+
+@media (min-width: 576px) {
+  .card.hotels {
+    max-height: 230px;
+    max-width: 70vh;
+  }
+  .card.hotels .img-fluid.imgH {
+    max-height: 230px;
+  }
+  .viewmore {
+    margin-right: 20px;
+  }
+  div.hotellist {
+    margin-left: 5%;
+  }
+  .searchfilters {
+    display: none;
+  }
+}
+
+@media (min-width: 750px) {
+  .card.hotels {
+    max-height: 230px;
+    max-width: 70vh;
+  }
+  .card.hotels .img-fluid.imgH {
+    max-height: 230px;
+  }
+  .viewmore {
+    margin-right: 20px;
+  }
+  div.hotellist {
+    margin-left: 5%;
+  }
+  .searchfilters {
+    display: none;
+  }
+}
+
+@media (min-width: 768px) {
+  .card.hotels {
+    max-height: 230px;
+    max-width: 70vh;
+  }
+  .card.hotels .img-fluid.imgH {
+    max-height: 230px;
+  }
+  .viewmore {
+    margin-right: 20px;
+  }
+  div.hotellist {
+    margin-left: 5%;
+  }
+  .searchfilters {
+    display: none;
+  }
+}
+
+@media (min-width: 960px) {
+  .imgH {
+    width: 260px;
+    height: 230px;
+  }
+  div.hotellist {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: row;
+            flex-direction: row;
+  }
+  div.hotellist div.searchfilters {
+    width: 15%;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+  }
+  div.hotellist div.hotel-search-result {
+    width: 60%;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+  }
+  div.card.hotels {
+    height: 230px;
+    max-width: 100%;
+  }
+  .searchOrder {
+    margin-left: 70%;
+  }
+  .searchfilters ul,
+  .searchfilters li {
+    list-style-type: none;
+  }
+  .numberResults {
+    font-weight: 400;
+  }
+  h3.h3filter {
+    font-size: 18px;
+  }
+  h3.h3filter .stars {
+    text-align: center;
+  }
+  .viewmore {
+    position: absolute;
+    bottom: 0;
+    margin-bottom: 20px;
+    margin-right: 0px;
+  }
+}
+
+.stars-number {
+  padding-bottom: 5px;
+}
+
+.hotelsContainer {
+  max-width: 100%;
+}
+
+.card-title {
+  font-size: 20px;
+  font-family: Impact, Haettenschweiler, "Arial Narrow Bold", sans-serif;
+}
+
+div.card.hotels {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+}
+
+div.col3rd {
+  display: inline-block;
+  font-family: BlinkMacSystemFont, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif;
+  padding-right: 25px;
+}
+
+div.col3rd div.price1 {
+  margin-top: 95%;
+  text-align: right;
+}
+
+div.col3rd div.price1 .originalprice {
+  background-color: #f7d7d7;
+  color: #ff4081;
+  padding: 3px;
+}
+
+div.col3rd div.price1 .percentage {
+  background-color: #ff4081;
+  font-weight: 600;
+  padding: 3px;
+}
+
+div.col3rd .finalprice {
+  font-size: 28px;
+  position: absolute;
+  padding-right: 30px;
+  bottom: 0;
+  right: 0;
+  margin-bottom: 70px;
+}
+
+div.searchfilters p {
+  margin-left: 20%;
+}
+
+header.jumbotron.hotels {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  background-position: center center;
+  background-image: url("../../../assets/hero/room1.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+/*# sourceMappingURL=hotels.component.css.map */

@@ -4,6 +4,7 @@ import { Hotel } from '../../models/hotel.model';
 import { HdataService } from 'src/app/hdata.service';
 import { Observable } from 'rxjs';
 import { Room } from 'src/app/models/room.model';
+import { TokenStorageService } from './../../token-storage.service';
 @Component({
   selector: 'app-hotel-details',
   templateUrl: './hotelDetails.component.html',
@@ -47,11 +48,17 @@ export class HotelDetailsComponent implements OnInit {
   public hotelId;
   public curHotel;
   numbers: Array<any> = [];
+  isLoggedIn: boolean;
+  username: any;
+  searchInput: string;
+  dateRange: Date[];
+  submitted = false;
   constructor(
     private hDataService: HdataService,
     public route: ActivatedRoute,
-    private router: Router) {
+    private tokenStorageService: TokenStorageService) {
       this.numbers = Array.from({length: 10}, (v, k) => k + 1);
+
      }
   ngOnInit(): void {
     // with the snapshot one can get a parameter, but in order to get the whole thing and get changes done inside the component,
@@ -61,8 +68,18 @@ export class HotelDetailsComponent implements OnInit {
     this.route.paramMap.subscribe((params: ParamMap) => {
       this.id = +params.get('id');
     });
+    this.hDataService.searchInputToObservable.subscribe(searchinput => this.searchInput = searchinput);
+    console.log("searchInput in hotelDetails", this.searchInput);
+    this.hDataService.datesToObservable.subscribe(dateRange => this.dateRange = dateRange);
+    console.log("dateRange in hotelDetails", this.dateRange);
     this.getHotel(this.route.snapshot.paramMap.get('id'));
     this.getRoomsById(this.id);
+    // this.isLoggedIn = !!this.tokenStorageService.getToken();
+
+    if (this.isLoggedIn) {
+      const user = this.tokenStorageService.getUser();
+      this.username = user.username;
+    }
   }
   getRoomsById(id: any): void {
     this.hDataService.getAllRoomsByHotel(id).
@@ -107,5 +124,30 @@ export class HotelDetailsComponent implements OnInit {
   }
   public moveToReviews(): void {
       this.reviewsSection.nativeElement.scrollIntoView({ behavior: 'smooth', block: 'end', inline: 'start' });
+  }
+  public bookHotelGoToCheckout(roomId:number, roomPrice: number){
+    const bookingData = {
+      username: this.username,
+      roomId: roomId,
+      hotelId: this.hotel.id,
+      checkinDate: this.dateRange[0],
+      checkoutDate: this.dateRange[1],
+      breakfastIncluded: true,
+      price: roomPrice
+    };
+    if(this.isLoggedIn == true){
+    this.hDataService.postBooking(bookingData)
+      .subscribe(
+        response => {
+          console.log(response);
+          this.submitted = true;
+        },
+        error => {
+          console.log(error);
+        });
+      }else{
+        alert("you need to be logged in to book a hotel");
+        throw new Error("you need to be logged in to book a hotel");
+      }
   }
 }

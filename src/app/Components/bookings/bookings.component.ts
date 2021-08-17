@@ -70,8 +70,10 @@ export class BookingsComponent implements OnInit {
       this.hDataService.getHotelById(booking.hotelId).
       subscribe(
         hoteldata => {
-          //le metemos este campo en el modelo t lo igualamos al que ya exite en el hotel. 
+          // le metemos este campo en el modelo y 
+          // lo igualamos al que ya exite en el hotel para que sea fácilmente accesible
           booking.hotelName = hoteldata.name;
+          console.log(booking.price);
         },
         error => {
           console.log(error);

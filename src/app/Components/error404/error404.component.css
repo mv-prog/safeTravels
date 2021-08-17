@@ -1,0 +1,26 @@
+.error404 {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  background-color: #eda0a8;
+}
+
+.error404 h2, .error404 h3 {
+  font-family: impact;
+}
+
+.error404 div.hs {
+  font-family: Impact;
+  margin: 10%;
+  width: 350px;
+}
+
+.error404 div.hs h2 {
+  font-size: 70px;
+}
+
+.error404 div.hs h3 {
+  font-size: 50px;
+  line-height: 50px;
+}
+/*# sourceMappingURL=error404.component.css.map */

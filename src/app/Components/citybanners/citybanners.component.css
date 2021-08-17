@@ -1,0 +1,140 @@
+.citybanners {
+  margin-top: 40px;
+  margin-left: 10px;
+  margin-bottom: 20px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+
+.citybanners h2 {
+  margin-top: 20px;
+  margin-left: 18%;
+}
+
+@media (min-width: 0px) {
+  .citybanners .gen, .citybanners h2 {
+    display: none;
+  }
+}
+
+@media (min-width: 576px) {
+  .citybanners h2 {
+    display: inline;
+  }
+  .citybanners .gen {
+    display: inline;
+    position: relative;
+    width: 30%;
+    height: 150px;
+    margin-left: 1%;
+    z-index: 0;
+  }
+  .citybanners .alm {
+    width: 30%;
+  }
+  .citybanners .pont {
+    width: 42%;
+  }
+  .citybanners .cal {
+    width: 18%;
+  }
+  .citybanners .city1 {
+    max-height: 300px;
+  }
+  .citybanners .pal {
+    width: 60%;
+  }
+  .citybanners .cies {
+    width: 45%;
+  }
+  .citybanners .rock {
+    width: 45%;
+  }
+}
+
+@media (min-width: 680px) {
+  .citybanners h2 {
+    display: inline;
+  }
+  .citybanners .gen {
+    display: inline;
+    position: relative;
+    width: 30%;
+    height: 150px;
+    margin-left: 1%;
+    z-index: 0;
+  }
+  .citybanners .alm {
+    width: 30%;
+  }
+  .citybanners .pont {
+    width: 42%;
+  }
+  .citybanners .cal {
+    width: 18%;
+  }
+  .citybanners .city1 {
+    max-height: 300px;
+  }
+  .citybanners .pal {
+    width: 60%;
+  }
+  .citybanners .cies {
+    width: 45%;
+  }
+  .citybanners .rock {
+    width: 45%;
+  }
+}
+
+@media (min-width: 768px) {
+  .citybanners .gen {
+    height: 202px;
+  }
+}
+
+@media (min-width: 960px) {
+  .citybanners .gen {
+    height: 202px;
+  }
+}
+
+@media (min-width: 1200px) {
+  .citybanners {
+    margin-left: 20%;
+  }
+  .citybanners .gen {
+    position: relative;
+    width: 20%;
+    height: 202px;
+    margin-left: 1%;
+    z-index: 0;
+  }
+  .citybanners .alm {
+    width: 22%;
+  }
+  .citybanners .pont {
+    width: 28%;
+  }
+  .citybanners .cal {
+    width: 10%;
+  }
+  .citybanners .city1 {
+    max-height: 300px;
+  }
+  .citybanners .pal {
+    width: 40%;
+  }
+  .citybanners .cies {
+    width: 31%;
+  }
+  .citybanners .rock {
+    width: 31%;
+  }
+}
+/*# sourceMappingURL=citybanners.component.css.map */

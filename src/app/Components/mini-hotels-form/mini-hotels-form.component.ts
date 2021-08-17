@@ -12,7 +12,7 @@ import { FormsModule, FormGroup, FormControl, FormBuilder } from '@angular/forms
   styleUrls: ['./mini-hotels-form.component.scss']
 })
 export class MiniHotelsFormComponent implements OnInit {
-  @ViewChild(MatDatepicker) dateRange: MatDatepicker<Date>;
+  // @ViewChild(MatDatepicker) dateRange: MatDatepicker<Date>;
   public options = ['A Coruña', 'Santiago', 'Hostal dos Reis Católicos'];
   @Input() showBrowserBanners;
   @Input() search;
@@ -35,6 +35,7 @@ form: any = {
   rooms: 1
 };
 searchInput: string;
+  dateRange: Date[];
 constructor(private hDataService: HdataService, private datepipe: DatePipe, private formBuilder: FormBuilder){
   this.tomorrowsDate.setDate(this.tomorrowsDate.getDate()+1);
   this.form.dateRange.startDate= this.datepipe.transform(this.todaysDate, "dd/mm/yyyy");
@@ -51,6 +52,8 @@ dontShowbb(): any{
 }
 onSubmit(): void {
   this.hDataService.editSearchInputData(this.form.searchInput);
+  this.hDataService.editDatesData(this.form.dateRange);
+  // console.log("dateRange", this.dateRange);
   // window.location.reload();
   this.updateSearchInput();
 }
@@ -64,6 +67,7 @@ sendData(): any{
 ngOnInit(): void {
   // subscribo os datos a unha varable que creo e que é a que vou chamar por doquier
   this.hDataService.searchInputToObservable.subscribe(searchinput => this.searchInput = searchinput);
+  this.hDataService.datesToObservable.subscribe(dateRange => this.dateRange = dateRange);
 }
 /**
  * updateSearchInput
@@ -71,5 +75,7 @@ ngOnInit(): void {
  * */
 updateSearchInput(){
   this.hDataService.editSearchInputData(this.form.searchInput);
+  this.hDataService.editDatesData(this.form.dateRange);
+  console.log("dateRange in miniHotel's update method", this.dateRange);
 }
 }
