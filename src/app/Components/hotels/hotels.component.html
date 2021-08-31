@@ -10,131 +10,133 @@
 </div>
 <div class="hotelsContainer">
   <app-mini-hotels-form></app-mini-hotels-form>
-  <div class="searchOrder" [style.display]="showBrowserBanners ? 'none':'inherit'">
-    <mat-form-field appearance="outline">
-      <mat-label>Select an option</mat-label>
-      <mat-select [(value)]="selected">
-        <mat-option>None</mat-option>
-        <mat-option value="lowest">Lowest Price First</mat-option>
-        <mat-option value="highest">Highest Price First</mat-option>
-        <mat-option value="rating">Customer Rating</mat-option>
-        <mat-option value="recommended">Recommended</mat-option>
-      </mat-select>
-    </mat-form-field>
-  </div>
-  <div class="hotellist">
-    <div class="searchfilters">
-      <h3 class="h3filter text-muted">Filter by</h3>
-      <h3 class="h3filter stars text-primary">Stars</h3>
-      <ul>
-        <li *ngFor="let star of star.stars">
-          <mat-checkbox [color]="star.color" class="{{star.name}}">
-            {{star.name}}
-          </mat-checkbox>
-        </li>
-      </ul>
-      <li>
-        <h3 class="h3filter text-primary"> Popular filters</h3>
-        <ul>
-          <li>
-            <mat-checkbox color="primary">
-              Swimming pool
-            </mat-checkbox>
-          </li>
-          <li>
-            <mat-checkbox color="primary">
-              Spa
-            </mat-checkbox>
-          </li>
-          <li>
-            <mat-checkbox color="primary">
-              Free parking
-            </mat-checkbox>
-          </li>
-          <li>
-            <mat-checkbox color="primary">
-              Free Wifi
-            </mat-checkbox>
-          </li>
-        </ul>
-        <h3 class="h3filter text-primary"> Other filters</h3>
-        <ul>
-          <li>
-            <mat-checkbox color="primary">
-              Airport shuttle
-            </mat-checkbox>
-          </li>
-          <li>
-            <mat-checkbox color="primary">
-              Pets allowed
-            </mat-checkbox>
-          </li>
-          <li>
-            <mat-checkbox color="primary">
-              Electric Cars Station
-            </mat-checkbox>
-          </li>
-        </ul>
+  <!-- <form action=""> -->
+    <div class="searchOrder" [style.display]="showBrowserBanners ? 'none':'inherit'">
+      <mat-form-field appearance="outline">
+        <mat-label>Select an option</mat-label>
+        <mat-select [(value)]="selected">
+          <mat-option>None</mat-option>
+          <mat-option value="lowest">Lowest Price First</mat-option>
+          <mat-option value="highest">Highest Price First</mat-option>
+          <mat-option value="rating">Customer Rating</mat-option>
+          <mat-option value="recommended">Recommended</mat-option>
+        </mat-select>
+      </mat-form-field>
     </div>
-    <div class="hotel-search-result mb-5">
+    <div class="hotellist">
+      <div class="searchfilters">
+        <h3 class="h3filter text-muted">Filter by</h3>
+        <h3 class="h3filter stars text-primary">Stars</h3>
+        <ul>
+          <li *ngFor="let star of star.stars">
+            <mat-checkbox [color]="star.color" class="{{star.name}}">
+              {{star.name}}
+            </mat-checkbox>
+          </li>
+        </ul>
+        <li>
+          <h3 class="h3filter text-primary"> Popular filters</h3>
+          <ul>
+            <li>
+              <mat-checkbox color="primary">
+                Swimming pool
+              </mat-checkbox>
+            </li>
+            <li>
+              <mat-checkbox color="primary">
+                Spa
+              </mat-checkbox>
+            </li>
+            <li>
+              <mat-checkbox color="primary">
+                Free parking
+              </mat-checkbox>
+            </li>
+            <li>
+              <mat-checkbox color="primary">
+                Free Wifi
+              </mat-checkbox>
+            </li>
+          </ul>
+          <h3 class="h3filter text-primary"> Other filters</h3>
+          <ul>
+            <li>
+              <mat-checkbox color="primary">
+                Airport shuttle
+              </mat-checkbox>
+            </li>
+            <li>
+              <mat-checkbox color="primary">
+                Pets allowed
+              </mat-checkbox>
+            </li>
+            <li>
+              <mat-checkbox color="primary">
+                Electric Cars Station
+              </mat-checkbox>
+            </li>
+          </ul>
+      </div>
+      <div class="hotel-search-result mb-5">
         <ng-container *ngFor="let hotel of hotelsByNameContaining; let i = index">
-        <div class="card hotels mb-3">
-          <!-- *ngIf=" search.searchInput == hotel.region || search.searchInput == hotel.city || search.searchInput == hotel.name || search.searchInput == 'All hotels and places' && star.id == hotel.star"> -->
-          <div class="row g-0">
-            <div class="col-md-5">
-              <!-- <a href="{{hotelPath + hotel.id}}" target="_blank"> -->
+          <div class="card hotels mb-3">
+            <!-- *ngIf=" search.searchInput == hotel.region || search.searchInput == hotel.city || search.searchInput == hotel.name || search.searchInput == 'All hotels and places' && star.id == hotel.star"> -->
+            <div class="row g-0">
+              <div class="col-md-5">
+                <!-- <a href="{{hotelPath + hotel.id}}" target="_blank"> -->
                 <a target="_blank" [routerLink]="['/hotel', hotel.id]">
-                <img class="imgH" src="assets/sm/{{hotel.name}}.jpg" alt="img {{hotel.name}}">
-              </a>
-            </div>
-            <div class="col-md-5">
-              <div class="card-body ml-4">
-                <a target="_blank" [routerLink]="['/hotel', hotel.id]" >
-                  <h5 class="card-title">{{hotel.name}}</h5>
+                  <img class="imgH" src="assets/sm/{{hotel.name}}.jpg" alt="img {{hotel.name}}">
                 </a>
-                <p class="card-text" *ngIf="hotel.stars!=0">
-                  <span class="stars-number"> {{hotel.stars }} </span>
-                  <span class="material-icons yellow-text yellowstar">star_rate</span>
-                </p>
-                <p class="card-text">
-                  {{ hotel.address }}.
-                  <br>{{ hotel.city }}, {{ hotel.province }} 
-                  <!-- Lorem ipsum dolor sit amet consectetur adipisicing elit. -->
-                </p>
-                <!-- aquí un ngIf para amosar icono de percina e balneario ou non -->
-                <p class="card-text">
-                  <span title="spa" *ngIf="hotel.spa"><i class="fas fa-hot-tub"></i> &nbsp; </span>
-                  <span title="swimming pool" *ngIf="hotel.pool"> <i class="fas fa-swimming-pool"></i> &nbsp;</span>
-                  <span title="wifi" *ngIf="hotel.wifi"> <i class="fas fa-wifi"></i> &nbsp;</span>
-                  <span title="parking" *ngIf="hotel.parking"> <i class="fas fa-parking"></i> </span>
-                </p>
               </div>
-            </div>
-            <div class="col-md-2 col3rd">
-              <div class="price1" *ngIf="hotel.offer>0">
-                <span class="originalprice">
-                  <!-- <s> {{ hotel.price }}€</s> Here i'll have to show the average double/single (depending on the search) room's price-->
-                  50€
-                </span>
-                <span class="percentage text-white">
-                  {{hotel.discount}}% off
-                </span>
+              <div class="col-md-5">
+                <div class="card-body ml-4">
+                  <a target="_blank" [routerLink]="['/hotel', hotel.id]">
+                    <h5 class="card-title">{{hotel.name}}</h5>
+                  </a>
+                  <p class="card-text" *ngIf="hotel.stars!=0">
+                    <span class="stars-number"> {{hotel.stars }} </span>
+                    <span class="material-icons yellow-text yellowstar">star_rate</span>
+                  </p>
+                  <p class="card-text">
+                    {{ hotel.address }}.
+                    <br>{{ hotel.city }}, {{ hotel.province }}
+                    <!-- Lorem ipsum dolor sit amet consectetur adipisicing elit. -->
+                  </p>
+                  <!-- aquí un ngIf para amosar icono de percina e balneario ou non -->
+                  <p class="card-text">
+                    <span title="spa" *ngIf="hotel.spa"><i class="fas fa-hot-tub"></i> &nbsp; </span>
+                    <span title="swimming pool" *ngIf="hotel.pool"> <i class="fas fa-swimming-pool"></i> &nbsp;</span>
+                    <span title="wifi" *ngIf="hotel.wifi"> <i class="fas fa-wifi"></i> &nbsp;</span>
+                    <span title="parking" *ngIf="hotel.parking"> <i class="fas fa-parking"></i> </span>
+                  </p>
+                </div>
               </div>
-              <p class="card-text finalprice">
-                <!-- {{ calculatePercentage(hotel.price, hotel.offer) }}€ I'll have to create a new method in sql for that-->
-              </p>
-              <!-- <a mat-raised-button class="viewmore" color="accent" target="_blank" routerLink="/hotel/{{ hotel.id }}"></a> -->
-              <a mat-raised-button class="viewmore" color="accent" target="_blank" (click)="searchHotelById(hotel.id)" [routerLink]="['/hotel', hotel.id]"
-              [queryParams]="{fechaInicio: dateRange[0], fechaFin: dateRange[1]}" >
-              <!-- <a type="submit" mat-raised-button class="viewmore" color="accent" href="{{hotelPath + hotel.id}}" target="_blank"> -->
-              View more
-            </a>
+              <div class="col-md-2 col3rd">
+                <div class="price1" *ngIf="hotel.offer>0">
+                  <span class="originalprice">
+                    <!-- <s> {{ hotel.price }}€</s> Here i'll have to show the average double/single (depending on the search) room's price-->
+                    50€
+                  </span>
+                  <span class="percentage text-white">
+                    {{hotel.discount}}% off
+                  </span>
+                </div>
+                <p class="card-text finalprice">
+                  <!-- {{ calculatePercentage(hotel.price, hotel.offer) }}€ I'll have to create a new method in sql for that-->
+                </p>
+                <!-- <a mat-raised-button class="viewmore" color="accent" target="_blank" routerLink="/hotel/{{ hotel.id }}"></a> -->
+                <a mat-raised-button class="viewmore" color="accent" target="_blank" (click)="searchHotelById(hotel.id)"
+                  [routerLink]="['/hotel', hotel.id]"
+                  [queryParams]="{fechaInicio: dateRange[0], fechaFin: dateRange[1]}">
+                  <!-- <a type="submit" mat-raised-button class="viewmore" color="accent" href="{{hotelPath + hotel.id}}" target="_blank"> -->
+                  View more
+                </a>
+              </div>
             </div>
           </div>
-        </div>
-      </ng-container>
+        </ng-container>
+      </div>
     </div>
-  </div>
-  <app-footer></app-footer>
-  <router-outlet></router-outlet>
+    <app-footer></app-footer>
+    <router-outlet></router-outlet>
 </div>

@@ -16,7 +16,7 @@ import { MatAutocomplete } from '@angular/material/autocomplete';
 })
 export class HotelsformComponent implements OnInit {
   // @ViewChild(MatDatepicker, {static: false}) dateRange: MatDatepicker<Date>;
-  public options = ['A Coruña', 'Santiago', 'Hostal dos Reis Católicos', 'Sober'];
+  public options = ['A Coruña', 'A Hermida', 'Hostal dos Reis Católicos', 'Sober'];
   @Input() showBrowserBanners;
   // @Input() search;
   @Output() dontShowBB = new EventEmitter<void>();
@@ -28,9 +28,14 @@ export class HotelsformComponent implements OnInit {
   hotelList$: Observable<string[]>;
   myControl = new FormControl();
   filteredOptions: Observable<string[]>;
+  range = new FormGroup({
+    searchInput: new FormControl(''),
+    fechaInicio: new FormControl(this.todaysDate),
+    fechaFin: new FormControl(this.tomorrowsDate)
+  });
   form: any = {
     searchInput: null,
-    name: null,
+    // name: null,
     dateRange: {
       startDate: this.todaysDate,
       endDate: this.tomorrowsDate
@@ -44,9 +49,11 @@ export class HotelsformComponent implements OnInit {
   dateRange: Date[];
 
   constructor(private hDataService: HdataService, private datepipe: DatePipe, private formBuilder: FormBuilder) {
-    this.tomorrowsDate.setDate(this.tomorrowsDate.getDate()+1);
-    this.form.dateRange.startDate = this.datepipe.transform(this.todaysDate, "dd/mm/yyyy");
-    this.form.dateRange.endDate = this.datepipe.transform(this.tomorrowsDate, "dd/mm/yyyy");
+    this.tomorrowsDate.setDate(this.tomorrowsDate.getDate() + 1);
+    // this.form.dateRange.startDate = this.datepipe.transform(this.todaysDate, "dd/mm/yyyy");
+    // this.form.dateRange.endDate = this.datepipe.transform(this.tomorrowsDate, "dd/mm/yyyy");
+    // this.range.get('fechaInicio').setValue(this.datepipe.transform(this.todaysDate, "dd/mm/yyyy"));
+    // this.range.get('fechaFin').setValue(this.datepipe.transform(this.tomorrowsDate, "dd/mm/yyyy"));
 
   }
 
@@ -61,31 +68,24 @@ export class HotelsformComponent implements OnInit {
 
 
   ngOnInit(): void {
-    // subscribo os datos a unha varable que creo e que é a que vou chamar por doquier
+    // subscribo os datos a unha vble á que vou chamar por doquier
     this.hDataService.searchInputToObservable.subscribe(searchinput => this.searchInput = searchinput);
-    this.hDataService.datesToObservable.subscribe(datesFormData => this.dateRange = datesFormData);
-    // this.filteredOptions = this.myControl.valueChanges
-    //   .pipe(
-    //     startWith(''),
-    //     map(value => this._filter(value))
-    //   );
+    // this.hDataService.datesToObservable.subscribe(dateRange => this.dateRange = dateRange);
+    //observable que emite cambios en el valor de la vble
+    this.range.get('fechaInicio').valueChanges
+      .subscribe(fechaInicio => this.hDataService.editDatesData([fechaInicio, this.range.get('fechaFin').value]));
+    //aquí la segunda vble es la que cambia, la primera es estática
+    this.range.get('fechaFin').valueChanges
+      .subscribe(fechaFin => this.hDataService.editDatesData([this.range.get('fechaInicio').value, fechaFin]));
   }
-  // private _filter(value: string): string[] {
-  //   const filterValue = value.toLowerCase();
-  //   this.form.searchInput = value;
-  //   this.form.name = value;
-  //   this.updateSearchInput();
-  //   return this.options.filter(option => option.toLowerCase().includes(filterValue));
 
-  // }
   /**
    * updateSearchInput
    * actualizo a variable creada cos datos do meu ngModel.
    * */
   updateSearchInput() {
-    this.hDataService.editSearchInputData(this.form.searchInput);
-    this.hDataService.editDatesData(this.form.dateRange)
-    console.log(this.form);
+    this.hDataService.editSearchInputData(this.range.get('searchInput').value);
+    this.hDataService.editDatesData([this.range.get('fechaInicio').value, this.range.get('fechaFin').value]);
   }
 
 }

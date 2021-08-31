@@ -51,6 +51,7 @@ export class HotelsComponent implements OnInit {
   public hideIndication = true;
   public adultsNumber: number;
   public roomsNumber: number;
+  public selectedOrder: string;
   public childrenNumber: number;
   // public showBrowserBanners: boolean;
   public isFalse: boolean;

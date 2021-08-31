@@ -32,6 +32,7 @@ export class BookingsComponent implements OnInit {
   bookingsByUser: any;
   bookings?: Booking[];
   username: string;
+  email: string;
   isLoggedIn = false;
   showAdminBoard = false;
   showModeratorBoard = false;
@@ -58,14 +59,17 @@ export class BookingsComponent implements OnInit {
       const user = this.token.getUser();
       this.currentUser = this.token.getUser();
       this.username = user.username;
+      this.email = user.email;
       this.bookingsByUserUrl = 'http://localhost:8080/bookings/' + this.currentUser.username;
       this.getBookingsByUsername(this.username);
-      
+      // console.log("user", user);
+      // console.log("this.username", this.username);
+      // console.log("this.email", this.email);
     }
 
   }
   getHotelFromBookingList(bookings: any): void {
-    console.log(bookings);
+    // console.log(bookings);
     bookings.forEach(booking => {
       this.hDataService.getHotelById(booking.hotelId).
       subscribe(
@@ -73,7 +77,7 @@ export class BookingsComponent implements OnInit {
           // le metemos este campo en el modelo y 
           // lo igualamos al que ya exite en el hotel para que sea fácilmente accesible
           booking.hotelName = hoteldata.name;
-          console.log(booking.price);
+          // console.log("booking.price", booking.price);
         },
         error => {
           console.log(error);
@@ -92,11 +96,11 @@ export class BookingsComponent implements OnInit {
     this.hDataService.getBookingsByUsername(username).subscribe(
       bookings => {
         this.bookings = bookings;
-        console.log("this.bookings", this.bookings);
-        //así tiene que hacer menos trabajo que con el this. y hay qeu llamarlo aquí pq como angular es asíncrono si lo ponemos en el ngOnInit igual aún no ha acabad de¡ cargar los bookings de la llamada del anterior método 
+        // console.log("this.bookings", this.bookings);
+        // así tiene que hacer menos trabajo que con el this. y hay qeu llamarlo aquí pq como angular es asíncrono si lo ponemos en el ngOnInit igual aún no ha acabad de¡ cargar los bookings de la llamada del anterior método 
         this.getHotelFromBookingList(bookings);
         this.numberOfBookings = this.bookings.length;
-        console.log("numberOfBookings", this.numberOfBookings);
+        // console.log("numberOfBookings", this.numberOfBookings);
       },
       error => {
         console.log(error);
@@ -115,7 +119,7 @@ export class BookingsComponent implements OnInit {
       subscribe(
         booking => {
           this.booking = booking;
-          console.log(this.booking);
+          // console.log(this.booking);
         },
         error => {
           console.log(error);
@@ -127,8 +131,8 @@ export class BookingsComponent implements OnInit {
       subscribe(
         hoteldata => {
           this.hotel = hoteldata;
-          console.log(this.hotel);
-          console.log(hoteldata);
+          // console.log(this.hotel);
+          // console.log(hoteldata);
         },
         error => {
           console.log(error);

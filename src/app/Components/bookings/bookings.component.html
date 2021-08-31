@@ -13,7 +13,7 @@
                                 <!-- {{hotel.name}} -->
                             </p>
                             <!-- <button (click)="getHotelById(booking.hotelId)">hotel</button> -->
-                            <p class="text-muted bookingdate">{{booking.checkinDate}} - {{booking.checkoutDate}}</p>
+                            <!-- <p class="text-muted bookingdate">{{booking.checkinDate}} - {{booking.checkoutDate}}</p> -->
                             <div class="card mb-3" style="max-width: 540px;">
                                 <div class="row g-0">
                                     <div class="col-md-4">
@@ -213,7 +213,7 @@
                                             Email linked to your account
                                         </mat-label>
                                         <input matInput type="email" required [matAutocomplete]="auto" name="email"
-                                            id="email" [(ngModel)]="currentUser.email" placeholder="currentUser.email">
+                                            id="email" [(value)]="email">
                                     </mat-form-field>
                                 </div>
                             </div>

@@ -50,7 +50,8 @@ export class HotelDetailsComponent implements OnInit {
   public curHotel;
   numbers: Array<any> = [];
   isLoggedIn: boolean;
-  username: any;
+  username: string;
+  email: string;
   searchInput: string;
   dateRange: Date[];
   submitted = false;
@@ -85,7 +86,9 @@ export class HotelDetailsComponent implements OnInit {
 
     if (this.isLoggedIn) {
       const user = this.tokenStorageService.getUser();
+      console.log(user);
       this.username = user.username;
+      this.email = user.email;
     }
     this.route.queryParams
     .subscribe(params => {
@@ -156,6 +159,7 @@ export class HotelDetailsComponent implements OnInit {
       .subscribe(
         response => {
           console.log(response);
+          
           this.submitted = true;
         },
         error => {

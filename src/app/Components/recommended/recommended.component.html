@@ -8,36 +8,40 @@
         </span>
         Top hotels that our travelers love! <i class="fas fa-heart unicorn-dark-theme"></i>
     </h2>
-    
-    <div class="offers ">
-        
-        <!-- <ng-container *ngFor="let hotel of dataList"> -->
-            <ng-container *ngFor="let hotel of dataList | slice:0:5; let i=index" class="carousel" (click)="onClick(hotel)">
 
-            
+    <div class="offers ">
+        <ng-container *ngFor="let hotel of dataList | slice:0:5; let i=index" class="carousel" (click)="onClick(hotel)">
+
+
             <mdb-card class="eachcard" *ngIf="hotel.recommended">
                 <div class="view imgdiv rgba-white-slight waves-light" mdbWavesEffect>
-                    <a>
-                        <mdb-card-img src="./../../assets/sm/{{hotel.name}}.jpg" alt="img {{hotel.name}}" class="ht"></mdb-card-img>
+                    <a [routerLink]="['/hotel', hotel.id]">
+                        <mdb-card-img src="./../../assets/sm/{{hotel.name}}.jpg" alt="img {{hotel.name}}" class="ht">
+                        </mdb-card-img>
                     </a>
                 </div>
                 <mdb-card-body>
                     <mdb-card-title class="hotelName text-warning">
-                        <a>
+                        <a [routerLink]="['/hotel', hotel.id]">
                             <h3>{{hotel.name}}</h3>
                         </a>
                     </mdb-card-title>
-                    <p class="text-body"><a> {{ hotel.city}}, {{ hotel.province }} </a></p>
-                    <!-- <ng-container *ngFor="let reviews of hotel.reviews"> -->
-                        <!-- instead of {{hotel.reviews.length}} and {{hotel.rating}}: -->
-                    <p class="ratingP"> <a> <span class="rating text-white bg-secondary"> 4,5  </span> <span class="reviewsNumber">25 reviews</span></a>
-                        <!-- <a mat-raised-button href="https://www.google.com/" target="_blank">Link</a> -->
-                        <button mat-raised-button style="margin-left: 50px;" color="accent">Explore ></button>
-                        <!-- <button class="botonExplore btn btn-outline-accent custom-btn my-2 my-sm-0" type="submit">
-                            Explore >
-                        </button> -->
+                    <p class="text-body">
+                        <!-- <a >  -->
+                        {{ hotel.city}}, {{ hotel.province }}
+                        <!-- </a> -->
                     </p>
-                    <!-- </ng-container> -->
+                    <!-- <ng-container *ngFor="let reviews of hotel.reviews"> -->
+                    <!-- instead of {{hotel.reviews.length}} and {{hotel.rating}}: -->
+                    <p class="ratingP">
+                        <!-- <a>  -->
+                        <span class="rating text-white bg-secondary"> 4,5 </span> <span class="reviewsNumber">25
+                            reviews</span>
+                        <!-- </a> -->
+                        <a mat-raised-button type="submit" [routerLink]="['/hotel', hotel.id]"
+                            style="margin-left: 50px;" color="accent">Explore ></a>
+
+                    </p>
 
                 </mdb-card-body>
             </mdb-card>
