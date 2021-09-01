@@ -8,6 +8,7 @@ import { Error404Component } from './Components/error404/error404.component';
 import { ListusersComponent } from './Components/listusers/listusers.component';
 import { BookingsComponent } from './Components/bookings/bookings.component';
 import { HotelDetailsComponent } from './Components/hotelDetails/hotelDetails.component';
+import { SafetyRegulationsComponent } from './Components/safety-regulations/safety-regulations.component';
 
 const routes: Routes = [
   {
@@ -42,12 +43,18 @@ const routes: Routes = [
     path: 'checkout', component: Error404Component
   },
   {
+    path: 'contact', component: ContactComponent
+  },
+  {
+    path: 'safety-regulations', component: SafetyRegulationsComponent
+  },
+  {
     path: '**', redirectTo: 'error404'
   }
 ];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes, { onSameUrlNavigation: 'reload', relativeLinkResolution: 'legacy' })],
-  exports: [RouterModule]
+exports: [RouterModule]
 })
 export class AppRoutingModule { }
