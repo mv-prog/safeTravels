@@ -2,8 +2,16 @@
 @import "../../../variables";
 @include media(mobile) {
     .imgH {
-        width: 400px;
-        height: 350px;
+        width: 350px;
+        height: 300px;
+    }
+    .viewmore {
+        margin-right: 20px;
+        position: absolute;
+        bottom: 0;
+        right: 5%;
+        margin-right: 20px;
+        margin-bottom: 20px;
     }
     div.hotellist {
         margin-top: 20px;
@@ -13,7 +21,6 @@
         // max-width: 400px;
     }
     .searchfilters{
-        // facer unha modal cun boton para chamala onde se amosen os filtros. en grande o boton non se amosa.
         display: none;
     }
     .searchOrder {
@@ -32,25 +39,9 @@
     //         margin-top: 20px;
     //     }
     // }
-    .viewmore {
-        position: absolute;
-        bottom: 0;
-        right: 0;
-        margin-right: 20px;
-        margin-bottom: 20px;
-    }
 }
-@include media(sm, cards, md) {
-    .card.hotels{
-        max-height: 230px;
-        max-width: 70vh;
-        .img-fluid.imgH{
-            max-height: 230px;
-        }
-    }
-    .viewmore {
-        margin-right: 20px;
-    }
+@include media(sm, cards, md, tablet) {
+    
     div.hotellist {
         margin-left: 5%;
     }
@@ -59,7 +50,27 @@
     }
     
 }
-
+@include media(mobile) {
+    .card.hotels{
+        margin-left: 10px;
+        // max-height: 90%;
+        max-width: 350px;
+        .img-fluid.imgH{
+            max-height: 80%;
+        }
+    }
+}
+@include media(sm) {
+    .card.hotels{
+        margin-left: 10px;
+        // max-height: 90%;
+        max-width: 90%;
+        .img-fluid.imgH{
+            max-height: 80%;
+        }
+    }
+}
+    
 @include media(desktop) {
     // .hotelsContainer{
     //     min-height: 1200px !important;
@@ -71,13 +82,9 @@
     div.hotellist {
         display: flex;
         flex-direction: row;
-        div.searchfilters{
-            width: 15%;
-            display: flex;
-            flex-direction: column;
-        }
+        
         div.hotel-search-result{
-            width: 60%;
+            width: 80%;
             display: flex;
             flex-direction: column;
         }
@@ -107,6 +114,7 @@
     .viewmore {
         position: absolute;
         bottom: 0;
+        right: 0;
         margin-bottom: 20px;
         margin-right: 0px;
     }
@@ -168,4 +176,21 @@ header.jumbotron.hotels {
     background-image: url("../../../assets/hero/room1.jpg");
     background-repeat: no-repeat;
     background-size: cover;
+}
+@include media(lg){
+    div.searchfilters{
+        width: 15%;
+        display: flex;
+        flex-direction: column;
+    }
+    div.hotellist {
+        display: flex;
+        flex-direction: row;
+        
+        div.hotel-search-result{
+            width: 60%;
+            display: flex;
+            flex-direction: column;
+        }
+    }
 }

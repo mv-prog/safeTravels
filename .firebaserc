@@ -1,5 +1,14 @@
 {
   "projects": {
     "default": "safetravels-365a8"
+  },
+  "targets": {
+    "safetravels-365a8": {
+      "hosting": {
+        "safeTravels": [
+          "safetravels-365a8"
+        ]
+      }
+    }
   }
 }

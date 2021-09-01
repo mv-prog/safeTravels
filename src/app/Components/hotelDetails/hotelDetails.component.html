@@ -63,7 +63,7 @@
       </section>
       <section #roomsSection id="roomsSection" *ngIf="rooms" class="mb-5">
         <p class="h3 text-center my-5">Select your room</p>
-        <div class="row my-3 py-3" style="border-bottom: 1px solid rgb(63, 62, 62);">
+        <div class="row features my-3 py-3" style="border-bottom: 1px solid rgb(63, 62, 62);">
           <div class="col-lg-3">
             <p> Room Type </p>
           </div>
@@ -71,7 +71,7 @@
             <p>Maximum Hosts</p>
           </div>
           <div class="col-lg-1">
-            Price
+            <p>Price</p>
           </div>
           <div class="col-lg-2 text-center">
             <p>Included</p>
@@ -85,8 +85,8 @@
               <p  class="font-weight-bold"> {{ room.roomType }} room 
                 with Sea View</p>
             </div>
-            <div class="col-lg-1 text-center">
-              <p>{{room.maxHosts}}</p>
+            <div class="maxHosts col-lg-1 text-center">
+              <p class="maxHosts">{{room.maxHosts}}</p>
             </div>
 
             <div class="col-lg-1">

@@ -2,36 +2,55 @@
 @import "../../../variables";
 @import "../../../Themes/theme1";
 @import "~@angular/material/theming";
-@include angular-material-color($dark-theme);  
+@include angular-material-color($dark-theme);
 @import "~@angular/cdk/text-field/text-field";
 @import "../home/home.component.scss";
 @import "../../../reset";
+@import "../../breakpoints";
 // $warn: #ff1744;
 $link-color: $warnColor;
-
-@mixin dark-warn-theming($dark-theme){
-    $dark-warn: map-get($dark-theme, warn)
+@include media(mobile, sm, md) {
+    button.btn-ext {
+        margin-left: 10px;
+        width: 220px;
+    }
+    form.loginForm{
+        padding-top: 10px !important;
+        padding-bottom: 10px !important;
+        padding-left: 0px !important;
+        padding-right: 0px !important;
+    }
+}
+@include media(desktop) {
+    button.btn-ext {
+        margin-left: 30px;
+    }
+    .loginForm {
+        @include formulario(0);
+        display: flex;
+        flex-flow: column wrap;
+    }
+}
+@mixin dark-warn-theming($dark-theme) {
+    $dark-warn: map-get($dark-theme, warn);
 }
 .unicorn-dark-theme {
-    color:mat-color($dark-warn);
+    color: mat-color($dark-warn);
 }
 
-.bg-warn{
-    background-color:$warnColor;
+.bg-warn {
+    background-color: $warnColor;
     color: white;
 }
-.loginForm{
+.loginForm {
     @include formulario(0);
     display: flex;
     flex-flow: column wrap;
 }
-button.btn-ext{
-    margin-left: 30px;
-    width: 220px;
-}
-.wrong-field{
+
+.wrong-field {
     @include wrong-field();
 }
 .unicorn-dark-theme {
     @include angular-material-color($dark-theme);
-  }
+}

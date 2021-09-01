@@ -81,8 +81,8 @@
         <ng-container *ngFor="let hotel of hotelsByNameContaining; let i = index">
           <div class="card hotels mb-3">
             <!-- *ngIf=" search.searchInput == hotel.region || search.searchInput == hotel.city || search.searchInput == hotel.name || search.searchInput == 'All hotels and places' && star.id == hotel.star"> -->
-            <div class="row g-0">
-              <div class="col-md-5">
+            <div class="row w-100">
+              <div class="col-md-6 col-lg-4">
                 <!-- <a href="{{hotelPath + hotel.id}}" target="_blank"> -->
                 <a target="_blank" [routerLink]="['/hotel', hotel.id]">
                   <img class="imgH" src="assets/sm/{{hotel.name}}.jpg" alt="img {{hotel.name}}">
@@ -111,7 +111,7 @@
                   </p>
                 </div>
               </div>
-              <div class="col-md-2 col3rd">
+              <div class="col-md-1 col3rd">
                 <div class="price1" *ngIf="hotel.offer>0">
                   <span class="originalprice">
                     <!-- <s> {{ hotel.price }}€</s> Here i'll have to show the average double/single (depending on the search) room's price-->
@@ -122,13 +122,10 @@
                   </span>
                 </div>
                 <p class="card-text finalprice">
-                  <!-- {{ calculatePercentage(hotel.price, hotel.offer) }}€ I'll have to create a new method in sql for that-->
                 </p>
-                <!-- <a mat-raised-button class="viewmore" color="accent" target="_blank" routerLink="/hotel/{{ hotel.id }}"></a> -->
                 <a mat-raised-button class="viewmore" color="accent" target="_blank" (click)="searchHotelById(hotel.id)"
                   [routerLink]="['/hotel', hotel.id]"
                   [queryParams]="{fechaInicio: dateRange[0], fechaFin: dateRange[1]}">
-                  <!-- <a type="submit" mat-raised-button class="viewmore" color="accent" href="{{hotelPath + hotel.id}}" target="_blank"> -->
                   View more
                 </a>
               </div>
