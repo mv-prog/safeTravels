@@ -86,9 +86,9 @@ export class BookingsComponent implements OnInit {
     });
   }
   isBookingCompleted(checkoutDate: Date): boolean {
-    let completed = false;
-    if (BookingsComponent.compareDate(checkoutDate, new Date()) == 0) {
-      completed = true;
+    let completed = true;
+    if (BookingsComponent.compareDate(checkoutDate, new Date()) != 0) {
+      completed = false;
     }
     return completed;
   }
