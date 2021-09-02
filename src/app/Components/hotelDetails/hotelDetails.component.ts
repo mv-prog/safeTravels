@@ -158,7 +158,7 @@ export class HotelDetailsComponent implements OnInit {
     this.hDataService.postBooking(bookingData)
       .subscribe(
         response => {
-          console.log(response);
+          // console.log(response);
           
           this.submitted = true;
         },

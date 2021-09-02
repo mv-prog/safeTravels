@@ -54,7 +54,7 @@
                                             </p>
                                             <p class="card-text bstatus">
                                                 <a class="bstatus">
-                                                    {{ isBookingCompleted(booking.checkoutDate) < today ? 'Completed' : 'Active' }} </a>
+                                                    {{ isBookingCompleted(booking.checkoutDate) == true ? 'Completed' : 'Active' }} </a>
                                             </p>
                                             <a class="bookingDetailLink" [routerLink]="['/hotelDetail']"
                                                 routerLinkActive="router-link-active">View Booking</a>
