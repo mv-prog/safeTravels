@@ -33,15 +33,15 @@
                     </p>
                     <!-- <ng-container *ngFor="let reviews of hotel.reviews"> -->
                     <!-- instead of {{hotel.reviews.length}} and {{hotel.rating}}: -->
-                    <p class="ratingP">
+                    <div class="ratingP d-flex justify-content-around pb-2 my-3">
                         <!-- <a>  -->
-                        <span class="rating text-white bg-secondary"> 4,5 </span> <span class="reviewsNumber">25
-                            reviews</span>
+                        <div class="rating text-white bg-secondary my-2 py-2 px-2"> 4,5 </div> <div class="reviewsNumber my-auto mx-auto">25
+                            reviews</div>
                         <!-- </a> -->
-                        <a mat-raised-button type="submit" [routerLink]="['/hotel', hotel.id]"
-                            style="margin-left: 50px;" color="accent">Explore ></a>
-
-                    </p>
+                        <div class="my-auto">
+                        <a mat-raised-button type="submit" [routerLink]="['/hotel', hotel.id]" color="accent">Explore ></a>
+                        </div>
+                    </div>
 
                 </mdb-card-body>
             </mdb-card>

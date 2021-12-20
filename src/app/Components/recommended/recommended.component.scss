@@ -103,15 +103,15 @@ div.recommendedsection {
                 .ratingP {
                     display: flex;
                     flex-direction: row;
-                    span.reviewsNumber {
-                        padding-top: 5px;
-                        padding-left: 5px;
+                    .reviewsNumber {
+                    //     padding-top: 5px;
+                    //     padding-left: 5px;
                         font-size: 15px;
                     }
-                    span.rating {
-                        padding-top: 3px;
-                        padding-left: 6px;
-                        padding-right: 2px;
+                    .rating {
+                    //     padding-top: 3px;
+                    //     padding-left: 6px;
+                    //     padding-right: 2px;
                         font-size: 20px;
                         border-radius: 5px;
                     }
