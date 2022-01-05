@@ -8,6 +8,7 @@ import { BehaviorSubject } from 'rxjs';
 import { Booking } from './models/booking.model';
 import { map } from 'rxjs/operators';
 import { UrlService } from 'src/config/myurls';
+import { environment } from './../environments/environment.prod';
 
 @Injectable({
   providedIn: 'root'
@@ -20,11 +21,11 @@ export class HdataService {
   public datesFormData = new BehaviorSubject<Date[]>([]);
   datesToObservable = this.datesFormData.asObservable();
 
-  private baseHotelsUrl = 'http://localhost:8080/hotels';
-  private baseHotelUrl = 'http://localhost:8080/hotel';
-  private baseUsersUrl = 'http://localhost:8080/users';
-  private baseBookingsUrl = 'http://localhost:8080/bookings';
-  private baseRoomsUrl = 'http://localhost:8080/rooms';
+  private baseHotelsUrl = environment.baseUrl+'/hotels';
+  private baseHotelUrl = environment.baseUrl+'/hotel';
+  private baseUsersUrl = environment.baseUrl+'/users';
+  private baseBookingsUrl = environment.baseUrl+'/bookings';
+  private baseRoomsUrl = environment.baseUrl+'/rooms';
   constructor(private httpClient: HttpClient) { }
 
   // Hotels methods
@@ -35,17 +36,17 @@ export class HdataService {
     return this.httpClient.get(`${this.baseHotelUrl}/${id}`);
   }
   getHotelByName(name: any): Observable<Hotel[]> {
-    return this.httpClient.get<Hotel[]>(`http://localhost:8080/hotelByName/${name}`);
+    return this.httpClient.get<Hotel[]>(`${environment.baseUrl}/hotelByName/${name}`);
   }
   getHotelsByName(name: any): Observable<Hotel[]> {
     return this.httpClient.get<Hotel[]>(`${this.baseHotelsUrl}?name=${name}`);
   }
   getHotelsByProvince(province: any): Observable<Hotel[]> {
-    return this.httpClient.get<Hotel[]>(`http:localhost:8080/hotelsByProvince/${province}`);
+    return this.httpClient.get<Hotel[]>(`${environment.baseUrl}/hotelsByProvince/${province}`);
     // return this.httpClient.get<Hotel[]>(`${this.baseHotelsUrl}?province=${province}`);
   }
   getHotelsByCity(city: any): Observable<Hotel[]> {
-    return this.httpClient.get<Hotel[]>(`http:localhost:8080/hotelsByCity/${city}`);
+    return this.httpClient.get<Hotel[]>(`${environment.baseUrl}/hotelsByCity/${city}`);
   }
   updateHotel(id: any, data: any): Observable<any> {
     return this.httpClient.put(`${this.baseHotelUrl}/${id}`, data);
@@ -54,7 +55,7 @@ export class HdataService {
     return this.httpClient.delete(`${this.baseHotelsUrl}/${id}`);
   }
   getByName(name: string): Observable<string[]> {
-    return this.httpClient.get<Hotel[]>(`http://localhost:8080/hotelByName/${name}`)
+    return this.httpClient.get<Hotel[]>(`${environment.baseUrl}/hotelByName/${name}`)
       .pipe(map(hotelList => hotelList.map(({ name }) => name)));
   }
 

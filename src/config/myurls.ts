@@ -1,1 +1,3 @@
-export const UrlService = "http://localhost:8080/";
+import { environment } from './../environments/environment.prod';
+
+export const UrlService = environment.baseUrl;
