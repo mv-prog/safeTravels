@@ -3,12 +3,12 @@
   "version": "1.0.0",
   "engines": {
     "node": "12.18.3",
-    "npm":"6.14.8"
+    "npm": "6.14.8"
   },
   "scripts": {
     "ng": "ng",
-    "heroku-postbuild": "ng build --prod && npm install -g http-server-spa",
-    "start": "http-server-spa dist/angular-reddit-clone index.html $PORT",
+    "heroku-postbuild": "ng build --prod",
+    "start": "ng serve",
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e"
