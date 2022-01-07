@@ -1,7 +1,7 @@
 <app-navbar [showBrowserBanners]="showbrowserbanners" (showBB)="showbrowserbanners($event)"></app-navbar>
 <div class="show-browser-banners" [style.display]="showBrowserBanners ? 'inherit':'none'">
   <header class="jumbotron hotels jumbotron shadow">
-    <app-hotelsform (sendHotelId)="sendHotelIdHandler($event)">
+    <app-hotelsform>
     </app-hotelsform>
   </header>
   <nlbanner></nlbanner>

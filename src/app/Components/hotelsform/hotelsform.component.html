@@ -25,11 +25,11 @@
                     </mat-option>
                   </mat-autocomplete> -->
                 <mat-icon matSuffix color="warn">search</mat-icon>
-                <input matInput type="search" [class.is-invalid]="searchInput.invalid && searchInput.touched" required
+                <input matInput type="search" [class.is-invalid]="range.get('searchInput').invalid && range.get('searchInput').touched" required
                     [matAutocomplete]="auto" formControlName="searchInput"
                     placeholder="Search Hotels">
             </mat-form-field>
-            <small class="wrong-field" *ngIf="searchInput.touched && searchInput.invalid">Search field is
+            <small class="wrong-field" *ngIf="range.get('searchInput').touched && range.get('searchInput').invalid">Search field is
                 required</small>
         </div>
         <!-- hacer unselect que dependiendo del valor de la vble llame luego en el ts a un endpoint u otro.  -->

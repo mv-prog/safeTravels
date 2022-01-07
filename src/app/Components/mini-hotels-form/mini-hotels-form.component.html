@@ -31,7 +31,7 @@
                              [matAutocomplete]="auto" formControlName="searchInput"
                             placeholder="Search Hotels">
                     </mat-form-field>
-                    <small class="wrong-field" *ngIf="searchInput.touched && searchInput.invalid">Search field is
+                    <small class="wrong-field" *ngIf="range.get('searchInput').touched && range.get('searchInput').invalid">Search field is
                         required</small>
                 </div>
                 <div class="form-group mr-1">
